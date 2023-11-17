@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sirius
+Bundle-SymbolicName: uk.ac.york.eugenia.sirius
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: uk.ac.york.eugenia.sirius
+Bundle-RequiredExecutionEnvironment: JavaSE-11
