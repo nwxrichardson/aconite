@@ -23,7 +23,7 @@ public class SiriusGenerator extends Job {
 	public SiriusGenerator(IFile ecore) {
 		super("Generate Odesign from Ecore");
 		this.inputURI = SDScore.getPlatformURI(ecore);
-		this.outputURI = SDScore.getOdesignURI(ecore);
+		this.outputURI = SDScore.getMatchPlatformURI(ecore);
 	}
 	
 	@Override

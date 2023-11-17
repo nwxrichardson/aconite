@@ -1,0 +1,48 @@
+pre {
+	var annotations = Source.allContents.selectByType(Source!EAnnotation);
+}
+
+operation Source!EAnnotation getVal(key : String) : String{
+
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value;
+	}
+	return "";
+
+}
+
+rule Package
+	transform 	s : Source!EPackage
+	to 			t : Target!Group{
+	var viewpoint = new Target!Viewpoint;
+	t.ownedViewpoints.add(viewpoint);
+	var diagrams = annotations.select(i|i.Source = "sirius.diagram").equivalent();
+	viewpoint.ownedRepresentations.addAll(diagrams);	
+	}
+
+
+	
+rule DiagramFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!DiagramDescription {
+	
+	guard : s.Source = "sirius.diagram"
+	
+	t.domainClass = s.eModelElement
+	t.name = s.getVal("name");
+	var defaultLayer = new Target!Layer;
+	defaultLayer.name = "Default";
+	t.defaultLayer = defaultLayer;
+	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	}
+
+@lazy
+rule NodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!NodeMapping {
+	
+	guard : s.Source = "sirius.node"
+	
+	}
+	

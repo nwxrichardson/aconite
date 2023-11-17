@@ -1,4 +1,4 @@
-package util;
+package uk.ac.york.eugenia.sirius.util;
 
 import java.io.File;
 
@@ -55,5 +55,9 @@ public class SDScore {
 		return URI.createPlatformResourceURI(currentTxt, true);
 	}
 	
+	public static URI getOdesignURI(IFile eclipseFile) {
+		String currentTxt = eclipseFile.getFullPath().toString();
+		return URI.createPlatformResourceURI(currentTxt, true);
+	}
 	
 }
