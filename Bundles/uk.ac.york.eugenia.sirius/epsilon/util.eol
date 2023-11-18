@@ -1,0 +1,3 @@
+operation String getColor() : Target!SystemColor  {
+	return colorPalette.selectOne(i|i.name = self);
+}

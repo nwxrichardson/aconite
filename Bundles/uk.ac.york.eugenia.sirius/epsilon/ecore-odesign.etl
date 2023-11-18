@@ -1,7 +1,11 @@
+import "util.eol";
+
 pre {
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
+	//var colorPalette = Target.getResource().getContents().first().systemColorsPalette.entries;
 }
 
+//TODO Create a default option
 operation Source!EAnnotation getVal(key : String) : String{
 
 	var tmp = self.details.selectOne(i|i.key = key);
@@ -10,6 +14,32 @@ operation Source!EAnnotation getVal(key : String) : String{
 	}
 	return "";
 
+}
+
+operation Source!EAnnotation getVal(key : String, def : String) : String{
+
+	var rtn = self.getVal(key);
+	if (rtn != ""){return rtn;}
+	return def;
+
+}
+
+operation Source!EClass getDC() : String {
+	return self.ePackage.name + "::" + self.name;
+}
+
+//TODO Fix to work for multi-level	
+operation Source!EClass getRoute(target : Source!EClass) : String {
+	var seen = Set{self};
+	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
+	
+	while ((not routes.containsKey(target))){
+	for (i in routes.keySet()){
+	i.println();
+	}
+	seen.addAll(routes.keySet());
+	}
+	return routes.get(target);
 }
 
 rule Package
@@ -22,19 +52,21 @@ rule Package
 	}
 
 
-	
+@lazy
 rule DiagramFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!DiagramDescription {
 	
 	guard : s.Source = "sirius.diagram"
-	
-	t.domainClass = s.eModelElement
+	var element = s.eModelElement;
+	t.domainClass = element.getDC();
 	t.name = s.getVal("name");
 	var defaultLayer = new Target!Layer;
 	defaultLayer.name = "Default";
 	t.defaultLayer = defaultLayer;
 	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
+	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	}
 
 @lazy
@@ -44,5 +76,52 @@ rule NodeFromAnnotation
 	
 	guard : s.Source = "sirius.node"
 	
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	t.domainClass = element.getDC();
+	t.name = s.getVal("name");
+	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
+	t.style = new Target!SquareDescription;
+	t.style.resizeKind = Target!ResizeKind#NSEW;
+	t.style.labelPosition = Target!LabelPosition#node;
+	t.style.labelExpression = "feature:" + s.getVal("label");
+	t.style.showIcon = false;
+	t.style.color = s.getVal("color", "light_yellow").getColor();
+	}
+	
+//	@lazy
+//rule ContainerFromAnnotation
+//	transform 	s : Source!EAnnotation
+//	to 			t : Target!ContainerMapping {
+//	
+//	guard : s.Source = "sirius.node"
+//	
+//	var element = s.eModelElement;
+//	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+//	t.domainClass = element.getDC();
+//	t.name = s.getVal("name");
+//	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
+//	t.style = new Target!SquareDescription;
+//	t.style.resizeKind = Target!ResizeKind#NSEW;
+//	t.style.labelPosition = Target!LabelPosition#node;
+//	t.style.labelExpression = "feature:" + s.getVal("label");
+//	t.style.showIcon = false;
+//	}
+	
+	@lazy
+rule EdgeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!EdgeMapping {
+	
+	guard : s.Source = "sirius.edge"
+	
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.name = s.getVal("name", element.name);
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();
+	t.targetMapping = annotations.select(i|i.eModelElement = element.eType).equivalent();
+	t.targetFinderExpression = "aql:self." +  element.name;
+	t.style = new Target!EdgeStyleDescription;	
 	}
 	
