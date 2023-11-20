@@ -36,7 +36,6 @@ class Effort {
 	attr int percentage = 100;
 }
 
-@sirius.node(container="Tasks")
 class Deliverable {
 	attr String title;
 	attr int due;

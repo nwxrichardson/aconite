@@ -111,7 +111,7 @@ rule ContainerFromAnnotation
 	t.name = s.getVal("name");
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
 	t.style = new Target!FlatContainerStyleDescription;
-	t.style.labelExpression = "aql:self." + s.getVal("label");
+	t.style.labelExpression = "aql:self." + s.getVal("label","name");
 	t.style.showIcon = false;
 	defaultLayer.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	defaultLayer.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
@@ -133,9 +133,12 @@ rule RefEdgeFromAnnotation
 	t.targetFinderExpression = "aql:self." +  element.name;
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
+	var label = s.getVal("label");
+	if (label != ""){
 	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
-	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + s.getVal("label");
+	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
 	t.style.centerLabelStyleDescription.showIcon = false;
+	}
 	}
 	
 	@lazy
@@ -157,8 +160,11 @@ rule EleEdgeFromAnnotation
 	t.targetFinderExpression = "aql:self." +  s.getVal("target");
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
+	var label = s.getVal("label");
+	if (label != ""){
 	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
-	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + s.getVal("label");
+	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
 	t.style.centerLabelStyleDescription.showIcon = false;
+	}
 	}
 	
