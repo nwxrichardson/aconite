@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="psl" xmi:id="_otzYsIVZEe6O95Bo1IsR7w">
+  <tasks xmi:id="_5U0OQIVZEe6O95Bo1IsR7w" title="T1"/>
+  <tasks xmi:id="_6486gIVZEe6O95Bo1IsR7w" title="T2" dependencies="_5U0OQIVZEe6O95Bo1IsR7w"/>
+</Project>
