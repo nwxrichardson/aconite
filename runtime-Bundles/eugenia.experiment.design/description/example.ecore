@@ -4,6 +4,9 @@
   <eAnnotations source="sirius"/>
   <eClassifiers xsi:type="ecore:EClass" name="Project">
     <eAnnotations source="sirius.diagram">
+      <details key="name" value="Effort"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.diagram">
       <details key="name" value="Tasks"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -15,13 +18,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
     <eAnnotations source="sirius.node">
+      <details key="name" value="TTask"/>
       <details key="container" value="Tasks"/>
+      <details key="label" value="title"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node">
+      <details key="name" value="ETask"/>
+      <details key="container" value="Effort"/>
+      <details key="label" value="title"/>
+      <details key="color" value="light_blue"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="effort" upperBound="-1"
-        eType="#//Effort" containment="true"/>
+        eType="#//Effort" containment="true" eOpposite="#//Effort/task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//Task">
       <eAnnotations source="sirius.edge">
@@ -32,9 +43,22 @@
         eType="#//Deliverable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="sirius.node">
+      <details key="name" value="Person"/>
+      <details key="container" value="Effort"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Effort">
+    <eAnnotations source="sirius.edge">
+      <details key="name" value="EEffort"/>
+      <details key="container" value="Effort"/>
+      <details key="label" value="percentage"/>
+      <details key="source" value="person"/>
+      <details key="target" value="task"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="#//Task"
+        eOpposite="#//Task/effort"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="100"/>

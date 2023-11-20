@@ -2,7 +2,9 @@ import "util.eol";
 
 pre {
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
-	//var colorPalette = Target.getResource().getContents().first().systemColorsPalette.entries;
+	var randomStyle = new Target!SquareDescription;
+	var colorPalette = randomStyle.color.eContainer.entries;
+	delete randomStyle;
 }
 
 //TODO Create a default option
@@ -32,7 +34,6 @@ operation Source!EClass getDC() : String {
 operation Source!EClass getRoute(target : Source!EClass) : String {
 	var seen = Set{self};
 	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
-	target.println();
 	routes.keySet();
 	while ((not routes.containsKey(target))){
 	var newRoutes = new Map;
@@ -93,7 +94,7 @@ rule NodeFromAnnotation
 	t.style.labelPosition = Target!LabelPosition#node;
 	t.style.labelExpression = "aql:self." + s.getVal("label","name");
 	t.style.showIcon = false;
-//	t.style.color = s.getVal("color", "light_yellow").getColor();
+	t.style.color = s.getVal("color", "light_yellow").getColor();
 	}
 	
 	@lazy
@@ -131,6 +132,9 @@ rule RefEdgeFromAnnotation
 	t.targetFinderExpression = "aql:self." +  element.name;
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
+	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
+	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + s.getVal("label");
+	t.style.centerLabelStyleDescription.showIcon = false;
 	}
 	
 	@lazy
@@ -152,5 +156,8 @@ rule EleEdgeFromAnnotation
 	t.targetFinderExpression = "aql:self." +  s.getVal("target");
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
+	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
+	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + s.getVal("label");
+	t.style.centerLabelStyleDescription.showIcon = false;
 	}
 	
