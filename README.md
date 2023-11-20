@@ -6,20 +6,20 @@
   - Labeling
 
 
- ##Basic use
- ###@sirius.diagram
+ ## Basic use
+ ### @sirius.diagram
  - name
- ###@sirius.node
- - name
- - container
- - label (default name)
- - color
- ###@sirius.container
+ ### @sirius.node
  - name
  - container
  - label (default name)
  - color
- ###@sirius.edge
+ ### @sirius.container
+ - name
+ - container
+ - label (default name)
+ - color
+ ### @sirius.edge
 This can work on both EClass and EReference
  - name
  - container
