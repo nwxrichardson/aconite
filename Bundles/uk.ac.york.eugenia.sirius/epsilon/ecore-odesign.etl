@@ -5,6 +5,7 @@ pre {
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
+	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 }
 
 operation Source!EAnnotation getVal(key : String) : String{
@@ -52,7 +53,7 @@ rule Package
 	to 			t : Target!Group {
 	var viewpoint = new Target!Viewpoint;
 	t.ownedViewpoints.add(viewpoint);
-	var diagrams = annotations.select(i|i.Source = "sirius.diagram").equivalent('DiagramFromAnnotation');
+	var diagrams = annotations.select(i|i.Source = "sirius.diagram").equivalent();
 	viewpoint.ownedRepresentations.addAll(diagrams);	
 	}
 
@@ -69,10 +70,9 @@ rule DiagramFromAnnotation
 	var defaultLayer = new Target!Layer;
 	defaultLayer.name = "Default";
 	t.defaultLayer = defaultLayer;
-	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent('NodeFromAnnotation'));
-//	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent('RefEdgeFromAnnotation'));
-//	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent('RefEdgeFromAnnotation'));
-	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent('ContainerFromAnnotation'));
+	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
+	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	}
 
 @abstract
@@ -80,7 +80,8 @@ rule BorderedStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!BorderedStyleDescription{
 	t.borderColor = s.getVal("border_color","black").getColor();
-//	t.borderLineStyle = s.getVal("border_style","black");
+	t.borderLineStyle = s.getVal("border_style","solid");
+	t.borderSizeComputationExpression = "aql:" + s.getVal("border_size", "2");
 	}
 
 @abstract
@@ -97,7 +98,7 @@ rule SquareNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!SquareDescription 
 	extends NodeStyleFromAnnotation{
-	guard : s.getVal("shape") = "square" or s.getVal("shape") = ""
+	guard : s.Source = "sirius.node.description" and (s.getVal("shape") = "square" or s.getVal("shape") = "")
 	
 	t.color = s.getVal("color", "light_yellow").getColor();
 	
@@ -126,8 +127,9 @@ rule NodeFromAnnotation
 	extends AbstractNodeFromAnnotation{
 	
 	guard : s.Source = "sirius.node"
-	
-	t.style = s.equivalents().selectOne(i|i.isKindOf(Target!NodeStyleDescription));
+	var styleAnnotation = emfTool.getECoreUtil.copy(s);
+	styleAnnotation.Source = s.source + ".description" ;
+	t.style = styleAnnotation.equivalent();
 	t.style.resizeKind = Target!ResizeKind#NSEW;
 	t.style.labelPosition = Target!LabelPosition#node;
 	t.style.labelExpression = "aql:self." + s.getVal("label","name");
