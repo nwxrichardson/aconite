@@ -64,6 +64,9 @@
         defaultValueLiteral="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deliverable">
+    <eAnnotations source="sirius.node">
+      <details key="container" value="Tasks"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="due" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lead" eType="#//Person"/>

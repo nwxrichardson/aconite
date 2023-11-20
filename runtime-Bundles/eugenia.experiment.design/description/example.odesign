@@ -36,6 +36,13 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </nodeMappings>
+        <nodeMappings semanticCandidatesExpression="aql:self.tasks.deliverables" domainClass="psl::Deliverable">
+          <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
         <edgeMappings name="dependencies" sourceMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@nodeMappings[name='TTask'] //@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask']" targetMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@nodeMappings[name='TTask'] //@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask']" targetFinderExpression="aql:self.dependencies">
           <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>

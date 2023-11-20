@@ -32,19 +32,20 @@ operation Source!EClass getDC() : String {
 
 //TODO Fix to work for multi-level	
 operation Source!EClass getRoute(target : Source!EClass) : String {
+	self.println();
+	target.println();
 	var seen = Set{self};
 	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
 	routes.keySet();
 	while ((not routes.containsKey(target))){
+	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
-
 	for (i in routes.keySet()){
-		newRoutes.putAll(i.eAllReferences.aggregate(i|i.eType,"." + i.name));
+		newRoutes.putAll(i.eAllReferences.aggregate(j|j.eType,routes.get(i) + "." + j.name ));
 	}
 	for (i in seen){
 		newRoutes.remove(i);
 	}
-	seen.addAll(routes.keySet());
 	routes = newRoutes;
 	}
 	return routes.get(target);

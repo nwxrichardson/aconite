@@ -3,6 +3,7 @@
   <tasks xmi:id="_IL9ZkIeHEe6O95Bo1IsR7w" title="Implementation" dependencies="_If_I0IeHEe6O95Bo1IsR7w">
     <effort xmi:id="_ZeKhMIeHEe6O95Bo1IsR7w" person="_VxrBUIeHEe6O95Bo1IsR7w" percentage="50"/>
     <effort xmi:id="_axDscIeHEe6O95Bo1IsR7w" person="_Xk1oEIeHEe6O95Bo1IsR7w" percentage="50"/>
+    <deliverables xmi:id="_wYNn0IeXEe6GGpx91FWTvg" title="Hello"/>
   </tasks>
   <tasks xmi:id="_If_I0IeHEe6O95Bo1IsR7w" title="Design" dependencies="_MvqOQIeHEe6O95Bo1IsR7w">
     <effort xmi:id="_XKKeQIeHEe6O95Bo1IsR7w" person="_Xk1oEIeHEe6O95Bo1IsR7w"/>
