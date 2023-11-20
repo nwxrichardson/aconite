@@ -18,7 +18,7 @@
  - name
  - container
  - label (default name)
- - color
+ - color (TODO)
  ### @sirius.edge
 This can work on both EClass and EReference
  - name
