@@ -37,7 +37,7 @@ public class SiriusGenerator extends Job {
 		EtlModule module = new EtlModule();
 		EmfModel source = new EmfModel();
 		EmfModel target = new OdesignModel();
-	
+		
 		source.setModelFileUri(inputURI);;
 		source.setName("Source");
 		source.setReadOnLoad(true);

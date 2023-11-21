@@ -80,8 +80,7 @@ rule BorderedStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!BorderedStyleDescription{
 	t.borderColor = s.getVal("border_color","black").getColor();
-//	t.borderLineStyle = s.getVal("border_style","solid");
-	Target!LineStyle.println();
+	Target!LineStyle#dot.eNum.eLiterals.println();
 	t.borderSizeComputationExpression = "aql:" + s.getVal("border_size", "2");
 	}
 
