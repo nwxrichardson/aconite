@@ -234,7 +234,7 @@ rule LabelStyleFromAnnotation
 	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("label_alignment","CENTER"));
 	t.labelColor = s.getVal("label_colour","black").getColor();
 	t.labelExpression = "aql:self." + s.getVal("label","name");
-// TODO List of ENums	t.labelFormat = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("border_line_style","solid"));
+	t.labelFormat = Target!FontFormat#bold.VALUES.select(i|s.getVals("border_line_style").exists(j|j = i.literal));
 	t.labelSize = s.getVal("label_size","12").asInteger();
 	t.showIcon = s.getVal("show_icon","false").asBoolean();
 	}
@@ -267,7 +267,7 @@ rule NodeStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
 	guard : s.source = "sirius.node.description"
-// TODO List of ENums forbiddenSides
+	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbidden_sides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
  	t.iconPath = s.getVal("icon_path");
  	t.labelPosition = Target!LabelPosition#node.VALUES.selectOne(i|i.literal = s.getVal("label_position","node"));
@@ -282,7 +282,7 @@ rule ContainerStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation , RoundedCornerFromAnnotation
 	{
 	guard : s.source = "sirius.container.description"
-// TODO List of ENums forbiddenSides
+	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbidden_sides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
  	t.iconPath = s.getVal("icon_path");
 	t.heightComputationExpression = s.getVal("height_computation_expression","-1");
