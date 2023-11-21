@@ -80,7 +80,8 @@ rule BorderedStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!BorderedStyleDescription{
 	t.borderColor = s.getVal("border_color","black").getColor();
-	t.borderLineStyle = s.getVal("border_style","solid");
+//	t.borderLineStyle = s.getVal("border_style","solid");
+	Target!LineStyle.println();
 	t.borderSizeComputationExpression = "aql:" + s.getVal("border_size", "2");
 	}
 
@@ -178,9 +179,9 @@ rule RefEdgeFromAnnotation
 	extends AbsEdgeFromAnnotation {
 	guard : s.eModelElement.isTypeOf(Source!EReference)
 	
+	//TODO Make this work the way one would expect
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	
 
 	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();
 	t.targetMapping = annotations.select(i|i.eModelElement = element.eType).equivalent();
