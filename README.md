@@ -31,7 +31,7 @@ This can work on both EClass and EReference
 
 ## Color 
 Example : light_red, dark_chocolate
-### Color
+### Colors
 (white, black, chocolate, gray, green, orange, purple, red, yellow)
 ### Prefix (optional)
 (light_, dark_)
