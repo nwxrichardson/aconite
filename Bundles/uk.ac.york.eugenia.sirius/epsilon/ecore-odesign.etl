@@ -80,16 +80,43 @@ rule BorderedStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!BorderedStyleDescription{
 	t.borderColor = s.getVal("border_color","black").getColor();
-	Target!LineStyle#dot.eNum.eLiterals.println();
+	t.borderLineStyle = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("border_line_style","solid"));
 	t.borderSizeComputationExpression = "aql:" + s.getVal("border_size", "2");
+	}
+	
+	//TODO Do a readability function that 
+@abstract
+rule LabelStyleFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!LabelStyleDescription{
+	t.iconPath = s.getVal("icon_path","");
+	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("label_alignment","CENTER"));
+	t.labelColor = s.getVal("label_colour","black").getColor();
+	t.labelExpression = "aql:self." + s.getVal("label","name");
+// TODO List of ENums	t.labelFormat = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("border_line_style","solid"));
+	t.labelSize = s.getVal("label_size","12").asInteger();
+	t.showIcon = s.getVal("show_icon","false").asBoolean();
+	}
+
+@abstract
+rule TooltipFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!TooltipStyleDescription{
+	t.tooltipExpression = s.getVal("tooltip");
 	}
 
 @abstract
 rule NodeStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!NodeStyleDescription
-	extends BorderedStyleFromAnnotation
+	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
+// TODO List of ENums forbiddenSides
+ 	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
+ 	t.iconPath = s.getVal("icon_path");
+ 	t.labelPosition = Target!LabelPosition#node.VALUES.selectOne(i|i.literal = s.getVal("label_position","node"));
+ 	t.resizeKind = Target!ResizeKind#NSEW.VALUES.selectOne(i|i.literal = s.getVal("resize_kind","NSEW"));
+	t.sizeComputationExpression = s.getVal("size_computation_expression","3");
 	}
 	
 
@@ -101,21 +128,62 @@ rule SquareNodeFromAnnotation
 	guard : s.Source = "sirius.node.description" and (s.getVal("shape") = "square" or s.getVal("shape") = "")
 	
 	t.color = s.getVal("color", "light_yellow").getColor();
-	
+	t.height = s.getVal("height","0").asInteger();
+	t.width = s.getVal("width","0").asInteger();
 	
 	}
+	
+@lazy
+rule DotNodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!DotDescription 
+	extends NodeStyleFromAnnotation{
+	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "dot"
+	
+	t.strokeSizeComputationExpression = s.getVal("stroke_size_computation_expression","2").asInteger();
+	
+	}
+	
+@lazy
+rule EllipseNodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!EllipseNodeDescription 
+	extends NodeStyleFromAnnotation{
+	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "ellipse"
+	//Maybe make a colourable rule
+	t.color = s.getVal("color", "light_yellow").getColor();
+	t.horizontalDiameterComputationExpression = s.getVal("horizontal_diameter_computation_expression","2").asInteger();
+	t.verticalDiameterComputationExpression = s.getVal("vertical_diameter_computation_expression","2").asInteger();
+	}
+	
+//@lazy
+//rule GaugeNodeFromAnnotation
+//	transform 	s : Source!EAnnotation
+//	to 			t : Target!GuageDescription 
+//	extends NodeStyleFromAnnotation{
+//	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "ellipse"
+//	
+//	t.alightment Enum
+//	}
 
+@lazy
+rule LozengeNodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!LozengeNodeDescription 
+	extends NodeStyleFromAnnotation{
+	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "ellipse"
+	//Maybe make a colourable rule
+	t.color = s.getVal("color", "light_yellow").getColor();
+	t.heightComputationExpression = s.getVal("height_computation_expression","2").asInteger();
+	t.widthComputationExpression = s.getVal("width_computation_expression","2").asInteger();
+	}
 
 @abstract
 rule AbstractNodeFromAnnotation 
 	transform 	s : Source!EAnnotation
 	to 			t : Target!AbstractNodeMapping {
 	
-	var element = s.eModelElement;
-	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	t.domainClass = element.getDC();
 	t.name = s.getVal("name");
-	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
 	
 	}
 	
@@ -127,13 +195,16 @@ rule NodeFromAnnotation
 	extends AbstractNodeFromAnnotation{
 	
 	guard : s.Source = "sirius.node"
+	
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.domainClass = element.getDC();
+	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
+	
 	var styleAnnotation = emfTool.getECoreUtil.copy(s);
 	styleAnnotation.Source = s.source + ".description" ;
-	t.style = styleAnnotation.equivalent();
-	t.style.resizeKind = Target!ResizeKind#NSEW;
-	t.style.labelPosition = Target!LabelPosition#node;
-	t.style.labelExpression = "aql:self." + s.getVal("label","name");
-	t.style.showIcon = false;
+	t.style = styleAnnotation.equivalent();	
 	
 	}
 	
@@ -145,6 +216,12 @@ rule ContainerFromAnnotation
 	extends AbstractNodeFromAnnotation{
 	
 	guard : s.Source = "sirius.container"
+	
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.domainClass = element.getDC();
+	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
 	
 	t.style = new Target!FlatContainerStyleDescription;
 	t.style.labelExpression = "aql:self." + s.getVal("label","name");
