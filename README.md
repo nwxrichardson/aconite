@@ -1,56 +1,38 @@
 # Eugenia-Sirius
-## Limitations
-- You are only able to follow references to get to any elements
-- Graphical Options can only be default
-  - Except Colour
-  - Labeling
+## Introduction
+This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/) targeting instead the Sirius Model Editor. It allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius Editor for models that conform to the metamodel. It is done in a way that both allows access to all of the feature but the defaults are set in such a way to be a gental introduction to Sirius and aql. 
 
-
- ## Basic use
+ ## Options use @sirius.________(name="The Name")
  ### @sirius.diagram
  - name
+
  ### @sirius.node
  - name
- - container
+ - container (required)
+   - To point at a sirius.diagram or a sirius.container
  - label (default name)
- - color
+ - color (default light_yellow)
+
  ### @sirius.container
  - name
- - container
+ - container (required)
+   - To point at a sirius.diagram or a sirius.container
  - label (default name)
- - color (TODO)
+ - color (default light_yellow)
+
  ### @sirius.edge
 This can work on both EClass and EReference
  - name
- - container
+ - container (required)
+   - To point at a sirius.diagram or a sirius.container
  - label (default No label)
  - source (EClass only)
  - target (EClass only)
-   
-## Intermediate Use
- ### @sirius.diagram
- - name
- ### @sirius.node
- - name
- - container
- - label (default name)
- - color
- - border_color (default black)
- - border_line_style (default solid)
- - icon_path (default none)
- - label_color (default black)
- - label_position (default CENTER)
- - label_size (default 3)
- - show_icon (default false)
- ### @sirius.container
- - name
- - container
- - label (default name)
- - color (TODO)
- ### @sirius.edge
-This can work on both EClass and EReference
- - name
- - container
- - label (default No label)
- - source (EClass only)
- - target (EClass only)
+
+## Color 
+Example : light_red, dark_chocolate
+### Color
+(white, black, chocolate, gray, green, orange, purple, red, yellow)
+### Prefix (optional)
+(light_, dark_)
+  
