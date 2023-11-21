@@ -114,8 +114,6 @@ rule AbstractNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!AbstractNodeMapping {
 	
-	t.name = s.getVal("name");
-	
 	var styleAnnotation = emfTool.getECoreUtil.copy(s);
 	styleAnnotation.Source = s.source + ".description" ;
 	t.style = styleAnnotation.equivalent();	
@@ -132,6 +130,9 @@ rule NodeFromAnnotation
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.name = s.getVal("name",element.name);
+	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
 	
@@ -147,6 +148,8 @@ rule ContainerFromAnnotation
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.name = s.getVal("name",element.name);
 	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);

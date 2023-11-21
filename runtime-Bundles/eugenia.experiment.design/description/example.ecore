@@ -22,6 +22,7 @@
       <details key="container" value="Effort, Tasks"/>
       <details key="label" value="title"/>
       <details key="color" value="light_blue"/>
+      <details key="show_icon" value="true"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
