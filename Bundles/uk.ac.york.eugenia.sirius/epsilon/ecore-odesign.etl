@@ -104,6 +104,14 @@ rule TooltipFromAnnotation
 	to t : Target!TooltipStyleDescription{
 	t.tooltipExpression = s.getVal("tooltip");
 	}
+	
+@abstract
+rule RoundedCornerFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!TooltipStyleDescription{
+	t.arcHeight = s.getVal("arc_height","1").asInteger();
+	t.arcWidth = s.getVal("arc_width","1").asInteger();
+	}
 
 @abstract
 rule NodeStyleFromAnnotation
@@ -111,6 +119,7 @@ rule NodeStyleFromAnnotation
 	to t : Target!NodeStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
+	guard : s.source = "sirius.node.description"
 // TODO List of ENums forbiddenSides
  	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
  	t.iconPath = s.getVal("icon_path");
@@ -119,13 +128,53 @@ rule NodeStyleFromAnnotation
 	t.sizeComputationExpression = s.getVal("size_computation_expression","3");
 	}
 	
+@abstract
+rule ContainerStyleFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!ContainerStyleDescription
+	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation , RoundedCornerFromAnnotation
+	{
+	guard : s.source = "sirius.container.description"
+// TODO List of ENums forbiddenSides
+ 	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
+ 	t.iconPath = s.getVal("icon_path");
+	t.heightComputationExpression = s.getVal("height_computation_expression","-1");
+	t.widthComputationExpression = s.getVal("width_computation_expression","-1");
+	t.roundedCorner = s.getVal("rounded_corner", "false").asBoolean();
+	}
+	
+@lazy
+rule FlatContainerFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!FlatContainerStyleDescription 
+	extends ContainerStyleFromAnnotation{
+	guard : s.getVal("shape") = "flat" or s.getVal("shape") = ""
+	
+	t.backgroundColor = s.getVal("background_color",s.getVal("color", "light_yellow")).getColor();
+	t.foregroundColor = s.getVal("foreground_color",s.getVal("color", "light_yellow")).getColor();
+	t.backgroundStyle = Target!BackgroundStyle#Liquid.VALUES.selectOne(i|i.literal = s.getVal("background_style","GradientLeftToRight"));
+	
+	}
+	
+@lazy
+rule ShapeContainerFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ShapeContainerStyleDescription 
+	extends ContainerStyleFromAnnotation{
+	guard : s.getVal("shape") = "shape"
+	
+	t.backgroundColor = s.getVal("color", "light_yellow").getColor();
+	//Pointless
+	t.shape = Target!ContainerShape#parallelogram.VALUES.selectOne(i|i.literal = s.getVal("shape","parallelogram"));
+	
+	}
 
 @lazy
 rule SquareNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!SquareDescription 
 	extends NodeStyleFromAnnotation{
-	guard : s.Source = "sirius.node.description" and (s.getVal("shape") = "square" or s.getVal("shape") = "")
+	guard : s.getVal("shape") = "square" or s.getVal("shape") = ""
 	
 	t.color = s.getVal("color", "light_yellow").getColor();
 	t.height = s.getVal("height","0").asInteger();
@@ -138,8 +187,9 @@ rule DotNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!DotDescription 
 	extends NodeStyleFromAnnotation{
-	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "dot"
+	guard : s.getVal("shape") = "dot"
 	
+	t.backgroundColor = s.getVal("color","light_yellow").getColor();
 	t.strokeSizeComputationExpression = s.getVal("stroke_size_computation_expression","2").asInteger();
 	
 	}
@@ -149,7 +199,7 @@ rule EllipseNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!EllipseNodeDescription 
 	extends NodeStyleFromAnnotation{
-	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "ellipse"
+	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
 	t.color = s.getVal("color", "light_yellow").getColor();
 	t.horizontalDiameterComputationExpression = s.getVal("horizontal_diameter_computation_expression","2").asInteger();
@@ -161,7 +211,7 @@ rule EllipseNodeFromAnnotation
 //	transform 	s : Source!EAnnotation
 //	to 			t : Target!GuageDescription 
 //	extends NodeStyleFromAnnotation{
-//	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "ellipse"
+//	guard : s.getVal("shape") = "ellipse"
 //	
 //	t.alightment Enum
 //	}
@@ -171,7 +221,7 @@ rule LozengeNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!LozengeNodeDescription 
 	extends NodeStyleFromAnnotation{
-	guard : s.Source = "sirius.node.description" and s.getVal("shape") = "ellipse"
+	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
 	t.color = s.getVal("color", "light_yellow").getColor();
 	t.heightComputationExpression = s.getVal("height_computation_expression","2").asInteger();
@@ -184,6 +234,10 @@ rule AbstractNodeFromAnnotation
 	to 			t : Target!AbstractNodeMapping {
 	
 	t.name = s.getVal("name");
+	
+	var styleAnnotation = emfTool.getECoreUtil.copy(s);
+	styleAnnotation.Source = s.source + ".description" ;
+	t.style = styleAnnotation.equivalent();	
 	
 	}
 	
@@ -202,10 +256,6 @@ rule NodeFromAnnotation
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
 	
-	var styleAnnotation = emfTool.getECoreUtil.copy(s);
-	styleAnnotation.Source = s.source + ".description" ;
-	t.style = styleAnnotation.equivalent();	
-	
 	}
 	
 @primary
@@ -223,11 +273,9 @@ rule ContainerFromAnnotation
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
 	
-	t.style = new Target!FlatContainerStyleDescription;
-	t.style.labelExpression = "aql:self." + s.getVal("label","name");
-	t.style.showIcon = false;
-	defaultLayer.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
-	defaultLayer.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
+	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
+	
 	}
 
 

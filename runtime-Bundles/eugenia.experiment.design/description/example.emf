@@ -24,7 +24,7 @@ class Task {
 	val Deliverable[*] deliverables;
 }
 
-@sirius.node(border_color="dark_green", name="Person", container="Effort")
+@sirius.container(border_color="dark_green", name="Person", container="Effort")
 class Person {
 	attr String name;
 }

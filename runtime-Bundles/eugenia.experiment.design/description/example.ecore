@@ -43,7 +43,7 @@
         eType="#//Deliverable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="sirius.container">
       <details key="border_color" value="dark_green"/>
       <details key="name" value="Person"/>
       <details key="container" value="Effort"/>
