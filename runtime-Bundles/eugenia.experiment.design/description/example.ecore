@@ -4,10 +4,10 @@
   <eAnnotations source="sirius"/>
   <eClassifiers xsi:type="ecore:EClass" name="Project">
     <eAnnotations source="sirius.diagram">
-      <details key="name" value="Effort"/>
+      <details key="name" value="Tasks"/>
     </eAnnotations>
     <eAnnotations source="sirius.diagram">
-      <details key="name" value="Tasks"/>
+      <details key="name" value="Effort"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -18,13 +18,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
     <eAnnotations source="sirius.node">
-      <details key="name" value="TTask"/>
-      <details key="container" value="Tasks"/>
-      <details key="label" value="title"/>
-    </eAnnotations>
-    <eAnnotations source="sirius.node">
       <details key="name" value="ETask"/>
-      <details key="container" value="Effort"/>
+      <details key="container" value="Effort, Tasks"/>
       <details key="label" value="title"/>
       <details key="color" value="light_blue"/>
     </eAnnotations>
@@ -43,7 +38,7 @@
         eType="#//Deliverable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
-    <eAnnotations source="sirius.container">
+    <eAnnotations source="sirius.node">
       <details key="border_color" value="dark_green"/>
       <details key="name" value="Person"/>
       <details key="container" value="Effort"/>

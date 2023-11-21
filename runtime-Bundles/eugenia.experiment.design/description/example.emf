@@ -3,8 +3,8 @@
 @sirius
 package psl;
 
-@sirius.diagram(name = "Effort")
 @sirius.diagram(name = "Tasks")
+@sirius.diagram(name = "Effort")
 class Project {
 	attr String title;
 	attr String description;
@@ -12,8 +12,7 @@ class Project {
 	val Person[*] people;
 }
 
-@sirius.node(name="TTask", container = "Tasks", label="title")
-@sirius.node(name="ETask", container = "Effort", label="title", color="light_blue")
+@sirius.node(name="ETask", container = "Effort, Tasks", label="title", color="light_blue")
 class Task {
 	attr String title;
 	attr int start;

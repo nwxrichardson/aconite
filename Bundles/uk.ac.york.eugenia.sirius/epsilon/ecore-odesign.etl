@@ -1,11 +1,24 @@
 import "util.eol";
 
 pre {
+	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
+	var newAnnotations = new Sequence;
+	for (i in annotations){
+		var containers = i.getVals("container");
+		if (containers.size() != 1){
+			for (j in containers){
+				var `new` = emfTool.getECoreUtil.copy(i);
+				`new`.details.put("container",j);
+				`new`.eModelElement = i.eModelElement;
+				newAnnotations.add(`new`);
+			} delete i;
+		} 
+	} annotations.addAll(newAnnotations);
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
-	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+	
 }
 
 operation Source!EAnnotation getVal(key : String) : String{
@@ -24,6 +37,20 @@ operation Source!EAnnotation getVal(key : String, def : String) : String{
 	if (rtn != ""){return rtn;}
 	return def;
 
+}
+
+
+operation Source!EAnnotation getVals(key : String) : Sequence{
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value.split(",").collect(i|i.trim());
+	}
+	return Sequence{""};
+}
+operation Source!EAnnotation getVals(key : String, def : String) : Sequence{
+	var rtn = self.getVals(key);
+	if (rtn != Sequence{""}){return rtn;}
+	return Sequence(def);
 }
 
 operation Source!EClass getDC() : String {
@@ -105,7 +132,6 @@ rule NodeFromAnnotation
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
 	
