@@ -57,6 +57,12 @@ rule Package
 	viewpoint.ownedRepresentations.addAll(diagrams);	
 	}
 
+/*
+ *----------------------------------------------------------------------------------
+ *      SIRIUS ELEMENTS
+ *----------------------------------------------------------------------------------
+ */
+
 
 @lazy
 rule DiagramFromAnnotation
@@ -74,6 +80,115 @@ rule DiagramFromAnnotation
 	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
 	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	}
+	
+
+@abstract
+rule AbstractNodeFromAnnotation 
+	transform 	s : Source!EAnnotation
+	to 			t : Target!AbstractNodeMapping {
+	
+	t.name = s.getVal("name");
+	
+	var styleAnnotation = emfTool.getECoreUtil.copy(s);
+	styleAnnotation.Source = s.source + ".description" ;
+	t.style = styleAnnotation.equivalent();	
+	
+	}
+	
+@lazy
+rule NodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!NodeMapping 
+	extends AbstractNodeFromAnnotation{
+	
+	guard : s.Source = "sirius.node"
+	
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.domainClass = element.getDC();
+	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
+	
+	}
+	
+@lazy
+rule ContainerFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ContainerMapping 
+	extends AbstractNodeFromAnnotation{
+	
+	guard : s.Source = "sirius.container"
+	
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.domainClass = element.getDC();
+	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
+	
+	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
+	
+	}
+
+
+@abstract
+rule AbsEdgeFromAnnotation	
+	transform 	s : Source!EAnnotation
+	to 			t : Target!EdgeMapping {
+	guard : s.Source = "sirius.edge"
+	
+	t.name = s.getVal("name", element.name);
+		t.style = new Target!EdgeStyleDescription;	
+	t.style.endsCentering = Target!CenteringStyle#Both;
+	var label = s.getVal("label");
+	if (label != ""){
+	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
+	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
+	t.style.centerLabelStyleDescription.showIcon = false;
+	}
+	}
+	
+@lazy
+rule RefEdgeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!EdgeMapping 
+	extends AbsEdgeFromAnnotation {
+	guard : s.eModelElement.isTypeOf(Source!EReference)
+	
+	//TODO Make this work the way one would expect
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();
+	t.targetMapping = annotations.select(i|i.eModelElement = element.eType).equivalent();
+	t.targetFinderExpression = "aql:self." +  element.name;
+	}
+	
+@lazy
+rule EleEdgeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!EdgeMapping 
+	extends AbsEdgeFromAnnotation {
+	
+	guard : s.eModelElement.isTypeOf(Source!EClass)
+	
+	var element = s.eModelElement;
+	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
+	
+	t.useDomainElement = true;
+	t.domainClass = element.getDC();
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.eAllReferences.selectOne(j|j.name = s.getVal("source")).eType).equivalent();
+	t.targetMapping = annotations.select(i|i.eModelElement = element.eAllReferences.selectOne(j|j.name = s.getVal("target")).eType).equivalent();
+	t.sourceFinderExpression = "aql:self." +  s.getVal("source");
+	t.targetFinderExpression = "aql:self." +  s.getVal("target");
+
+	}
+
+/*
+ *----------------------------------------------------------------------------------
+ *      ABSTRACT META SIRIUS STYLES 
+ *----------------------------------------------------------------------------------
+ */	
 
 @abstract
 rule BorderedStyleFromAnnotation
@@ -113,6 +228,12 @@ rule RoundedCornerFromAnnotation
 	t.arcWidth = s.getVal("arc_width","1").asInteger();
 	}
 
+/*
+ *----------------------------------------------------------------------------------
+ *      ABSTRACT SIRIUS STYLES 
+ *----------------------------------------------------------------------------------
+ */	
+
 @abstract
 rule NodeStyleFromAnnotation
 	transform s : Source!EAnnotation
@@ -142,6 +263,12 @@ rule ContainerStyleFromAnnotation
 	t.widthComputationExpression = s.getVal("width_computation_expression","-1");
 	t.roundedCorner = s.getVal("rounded_corner", "false").asBoolean();
 	}
+	
+/*
+ *----------------------------------------------------------------------------------
+ *      SIRIUS STYLES 
+ *----------------------------------------------------------------------------------
+ */		
 	
 @lazy
 rule FlatContainerFromAnnotation
@@ -227,108 +354,3 @@ rule LozengeNodeFromAnnotation
 	t.heightComputationExpression = s.getVal("height_computation_expression","2").asInteger();
 	t.widthComputationExpression = s.getVal("width_computation_expression","2").asInteger();
 	}
-
-@abstract
-rule AbstractNodeFromAnnotation 
-	transform 	s : Source!EAnnotation
-	to 			t : Target!AbstractNodeMapping {
-	
-	t.name = s.getVal("name");
-	
-	var styleAnnotation = emfTool.getECoreUtil.copy(s);
-	styleAnnotation.Source = s.source + ".description" ;
-	t.style = styleAnnotation.equivalent();	
-	
-	}
-	
-@primary
-@lazy
-rule NodeFromAnnotation
-	transform 	s : Source!EAnnotation
-	to 			t : Target!NodeMapping 
-	extends AbstractNodeFromAnnotation{
-	
-	guard : s.Source = "sirius.node"
-	
-	var element = s.eModelElement;
-	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	
-	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
-	
-	}
-	
-@primary
-@lazy
-rule ContainerFromAnnotation
-	transform 	s : Source!EAnnotation
-	to 			t : Target!ContainerMapping 
-	extends AbstractNodeFromAnnotation{
-	
-	guard : s.Source = "sirius.container"
-	
-	var element = s.eModelElement;
-	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	
-	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
-	
-	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
-	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
-	
-	}
-
-
-@abstract
-rule AbsEdgeFromAnnotation	
-	transform 	s : Source!EAnnotation
-	to 			t : Target!EdgeMapping {
-	guard : s.Source = "sirius.edge"
-	
-	t.name = s.getVal("name", element.name);
-		t.style = new Target!EdgeStyleDescription;	
-	t.style.endsCentering = Target!CenteringStyle#Both;
-	var label = s.getVal("label");
-	if (label != ""){
-	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
-	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
-	t.style.centerLabelStyleDescription.showIcon = false;
-	}
-	}
-	
-@lazy
-rule RefEdgeFromAnnotation
-	transform 	s : Source!EAnnotation
-	to 			t : Target!EdgeMapping 
-	extends AbsEdgeFromAnnotation {
-	guard : s.eModelElement.isTypeOf(Source!EReference)
-	
-	//TODO Make this work the way one would expect
-	var element = s.eModelElement;
-	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();
-	t.targetMapping = annotations.select(i|i.eModelElement = element.eType).equivalent();
-	t.targetFinderExpression = "aql:self." +  element.name;
-	}
-	
-@lazy
-rule EleEdgeFromAnnotation
-	transform 	s : Source!EAnnotation
-	to 			t : Target!EdgeMapping 
-	extends AbsEdgeFromAnnotation {
-	
-	guard : s.eModelElement.isTypeOf(Source!EClass)
-	
-	var element = s.eModelElement;
-	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	
-	t.useDomainElement = true;
-	t.domainClass = element.getDC();
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.eAllReferences.selectOne(j|j.name = s.getVal("source")).eType).equivalent();
-	t.targetMapping = annotations.select(i|i.eModelElement = element.eAllReferences.selectOne(j|j.name = s.getVal("target")).eType).equivalent();
-	t.sourceFinderExpression = "aql:self." +  s.getVal("source");
-	t.targetFinderExpression = "aql:self." +  s.getVal("target");
-
-	}
-	
