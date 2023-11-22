@@ -62,7 +62,7 @@ public class SDScore {
 	
 	public static URI getGenEcoreURI(IFile eclipseFile) {
 		String currentTxt = eclipseFile.getFullPath().toString();
-		return URI.createPlatformResourceURI(currentTxt.replace(".odesign", "_GEN.ecore"), true);
+		return URI.createPlatformResourceURI(currentTxt.replace(".ecore", "_GEN.ecore"), true);
 	}
 	
 }

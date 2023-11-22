@@ -1,3 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    name="psl" nsURI="psl" nsPrefix=""/>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="psl" nsURI="psl" nsPrefix="">
+  <eAnnotations source="sirius"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Project">
+    <eAnnotations source="sirius.diagram">
+      <details key="name" value="Tasks"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.diagram">
+      <details key="name" value="Effort"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eAnnotations source="sirius.node">
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Task"/>
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="name" value="ETask"/>
+      <details key="label" value="ETask"/>
+      <details key="semantic_candidates_expression" value="aql:self.tasks"/>
+      <details key="container" value="Tasks"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node">
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Task"/>
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="name" value="ETask"/>
+      <details key="label" value="ETask"/>
+      <details key="semantic_candidates_expression" value="aql:self.tasks"/>
+      <details key="container" value="Effort"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="sirius.node">
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Person"/>
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="name" value="Person"/>
+      <details key="label" value="Person"/>
+      <details key="semantic_candidates_expression" value="aql:self.people"/>
+      <details key="container" value="Effort"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Effort"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Deliverable"/>
+</ecore:EPackage>

@@ -17,9 +17,10 @@ public class SiriusRevHandler extends AbstractHandler{
 		if (selection0 instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) selection0;
 			final IFile ecore = (IFile) selection.getFirstElement();
+			final IFile odesign = (IFile) selection.toList().get(1);
 			
 			if (ecore != null) {
-				SiriusReverser  job = new SiriusReverser(ecore);
+				SiriusReverser  job = new SiriusReverser(ecore, odesign);
 				job.setUser(true);
 				job.schedule();
 			}

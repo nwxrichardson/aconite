@@ -1,12 +1,98 @@
-import "util.eol";
+pre {
+var classes = Source.allContents.selectByType(Source!EClass);
+}
+
+operation String toEugenia() : String{
+var rtn = new String;
+for (i in self.split("")){
+	if (i.matches("[A-Z]")){
+		rtn = rtn.concat("_");
+	}
+	rtn = rtn.concat(i.ftlc());
+}
+return rtn;
+}
+
+operation Source!EAnnotation getVal(key : String) : String{
+
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value;
+	}
+	return "";
+
+}
+
+operation Source!EAnnotation getVal(key : String, def : String) : String{
+
+	var rtn = self.getVal(key);
+	if (rtn != ""){return rtn;}
+	return def;
+
+}
 
 rule Package2Package
 	transform s : Source!EPackage
 	to t : Target!EPackage{
-	t.eClassifiers ::= s.eClassifiers;
-	t.eFactoryInstance ::= s.eFactoryInstance;
-	t.eSubpackages ::= s.eSubpackages;
+	var sirius = (new Target!EAnnotation);
+	sirius.source = "sirius";
 	t.name = s.name;
 	t.nsPrefix = s.nsPrefix;
 	t.nsURI = s.nsURI;
+	t.eClassifiers ::= s.eClassifiers;
+	t.eFactoryInstance ::= s.eFactoryInstance;
+	t.eSubpackages ::= s.eSubpackages;
+	t.eAnnotations = s.eAnnotations;
+	t.eAnnotations.add(sirius);
 	}
+	
+rule Class2Class
+	transform s : Source!EClass
+	to t : Target!EClass {
+	t.name = s.name;
+	t.interface = s.interface;
+	t.instanceTypeName = s.instanceTypeName;
+	t.instanceClassName = s.instanceClassName;
+	t.eTypeParameters ::= s.eTypeParameters;
+	t.eSuperTypes ::= s.eSuperTypes;
+	t.eStructuralFeatures ::= s.eStructuralFeatures;
+	t.eOperations = s.eOperations;
+	}
+	
+rule Diagram2Annotation
+	transform s : Odesign!DiagramDescription
+	to t : Target!EAnnotation {
+	t.source = "sirius.diagram";
+	var clazz = s.domainClass.split("::");
+	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
+	
+	t.details.put("name",s.name);
+	s.defaultLayer.nodeMappings.equivalent().collect(i|i.details.put("container",s.name));
+	}
+	
+rule Node2Annotation
+	transform s : Odesign!NodeMapping
+	to t : Target!EAnnotation {
+	t.source = "sirius.node";
+	var clazz = s.domainClass.split("::");
+	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
+	
+	var tmp = s.eClass.eAllAttributes;
+	t.details.putAll(tmp.aggregate(i|i.name.toEugenia(),s.eGet(i).asString()));
+	}
+	
+rule NodeDescription2Annotation
+	transform s : Odesign!NodeMapping
+	to t : Target!EAnnotation {
+	t.source = "sirius.node";
+	var clazz = s.domainClass.split("::");
+	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
+	
+	var tmp = s.eClass.eAllAttributes;
+	t.details.putAll(tmp.aggregate(i|i.name.toEugenia(),s.eGet(i).asString()));
+	}
+	
+post {
+var ann = Target.allContents.selectByType(Target!EAnnotation);
+//Filter Out Duplicates
+}

@@ -1,5 +1,4 @@
 @namespace(uri="psl", prefix="")
-
 package psl;
 
 class Project {
@@ -24,7 +23,7 @@ class Person {
 
 class Effort {
 	ref Task[1]#effort task;
-    ref Person person;
+	ref Person person;
 	attr int percentage = 100;
 }
 
@@ -33,3 +32,4 @@ class Deliverable {
 	attr int due;
 	ref Person lead;
 }
+

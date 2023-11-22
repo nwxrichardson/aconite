@@ -1,0 +1,24 @@
+@sirius
+@namespace(uri="psl", prefix="")
+package psl;
+
+@sirius.diagram(name="Tasks")
+@sirius.diagram(name="Effort")
+class Project {
+}
+
+@sirius.node(synchronizationLock="false", documentation="", name="ETask", preconditionExpression="", label="ETask", semanticCandidatesExpression="aql:self.tasks", createElements="true", domainClass="psl::Task", semanticElements="", container="Tasks")
+@sirius.node(synchronizationLock="false", documentation="", name="ETask", preconditionExpression="", label="ETask", semanticCandidatesExpression="aql:self.tasks", createElements="true", domainClass="psl::Task", semanticElements="", container="Effort")
+class Task {
+}
+
+@sirius.node(synchronizationLock="false", documentation="", name="Person", preconditionExpression="", label="Person", semanticCandidatesExpression="aql:self.people", createElements="true", domainClass="psl::Person", semanticElements="", container="Effort")
+class Person {
+}
+
+class Effort {
+}
+
+class Deliverable {
+}
+

@@ -17,12 +17,14 @@ public class SiriusReverser extends Job {
 
 	private URI outputURI;
 	private Resource output;
-	private URI inputURI;
+	private URI ecoreURI;
+	private URI odesignURI;
 	protected static final String PATH_TO_ETL = "/epsilon/odesign-ecore.etl";
 
-	public SiriusReverser(IFile ecore) {
+	public SiriusReverser(IFile ecore,IFile odesign) {
 		super("Generate Odesign from Ecore");
-		this.inputURI = SDScore.getPlatformURI(ecore);
+		this.ecoreURI = SDScore.getPlatformURI(ecore);
+		this.odesignURI = SDScore.getPlatformURI(odesign);
 		this.outputURI = SDScore.getGenEcoreURI(ecore);
 	}
 	
@@ -35,13 +37,19 @@ public class SiriusReverser extends Job {
 
 	public void generateEcore() {
 		EtlModule module = new EtlModule();
-		EmfModel source = new OdesignModel();
+		EmfModel source = new EmfModel();
+		EmfModel odesign = new OdesignModel();
 		EmfModel target = new EmfModel();
 		
-		source.setModelFileUri(inputURI);;
+		source.setModelFileUri(ecoreURI);;
 		source.setName("Source");
 		source.setReadOnLoad(true);
 		source.setStoredOnDisposal(false);
+		
+		odesign.setModelFileUri(odesignURI);;
+		odesign.setName("Odesign");
+		odesign.setReadOnLoad(true);
+		odesign.setStoredOnDisposal(false);
 		
 		target.setModelFileUri(outputURI);
 		target.setName("Target");
@@ -50,10 +58,12 @@ public class SiriusReverser extends Job {
 		
 		try {
 			source.load();
+			odesign.load();
 			target.load();
 			module.parse(getClass().getResource(PATH_TO_ETL).toURI());
 			module.getContext().getNativeTypeDelegates().add(new ExtensionPointToolNativeTypeDelegate());
 			module.getContext().getModelRepository().addModel(source);
+			module.getContext().getModelRepository().addModel(odesign);
 			module.getContext().getModelRepository().addModel(target);
 			module.execute();
 		} catch (Exception e) {
