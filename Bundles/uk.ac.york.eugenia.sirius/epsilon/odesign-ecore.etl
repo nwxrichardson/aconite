@@ -123,6 +123,15 @@ rule SquareDescription2Annotation
 	t.details.putall(s.getDetails());
 	}
 	
+@lazy	
+rule FlatDescription2Annotation
+	transform s : Odesign!FlatContainerStyle
+	to t : Target!EAnnotation{
+	t.source = "sirius.container.description";
+	t.details.putall(s.getDetails());
+	}
+	
+	
 post {
 var ann = Target.allContents.selectByType(Target!EAnnotation);
 //Filter Out Duplicates
