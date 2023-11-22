@@ -4,17 +4,17 @@ This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/)
 
  ## Options use @sirius.________(name="The Name")
  ### @sirius.diagram
- - name
+ - name (Unique ID)
 
  ### @sirius.node
- - name
+ - name (Unique ID)
  - container (required)
    - To point at a sirius.diagram or a sirius.container
  - label (default name)
  - color (default light_yellow)
 
  ### @sirius.container
- - name
+ - name (Unique ID)
  - container (required)
    - To point at a sirius.diagram or a sirius.container
  - label (default name)
@@ -22,7 +22,7 @@ This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/)
 
  ### @sirius.edge
 This can work on both EClass and EReference
- - name
+ - name (Unique ID)
  - container (required)
    - To point at a sirius.diagram or a sirius.container
  - label (default No label)
