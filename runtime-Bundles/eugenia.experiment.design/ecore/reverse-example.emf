@@ -1,10 +1,7 @@
 @namespace(uri="psl", prefix="")
 
-@sirius
 package psl;
 
-@sirius.diagram(name = "Tasks")
-@sirius.diagram(name = "Effort")
 class Project {
 	attr String title;
 	attr String description;
@@ -12,23 +9,19 @@ class Project {
 	val Person[*] people;
 }
 
-@sirius.node(name="ETask", container = "Effort, Tasks", label_expression="title", color="light_blue")
 class Task {
 	attr String title;
 	attr int start;
 	attr int duration;
 	val Effort[*]#task effort;
-	@sirius.edge(container = "Tasks")
 	ref Task[*] dependencies;
 	val Deliverable[*] deliverables;
 }
 
-@sirius.node(border_color="dark_green", name="Person", container="Effort")
 class Person {
 	attr String name;
 }
 
-@sirius.edge(name="EEffort", container="Effort",label_expression="percentage",source="person", target="task")
 class Effort {
 	ref Task[1]#effort task;
     ref Person person;

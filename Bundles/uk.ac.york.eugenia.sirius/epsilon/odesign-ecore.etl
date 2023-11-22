@@ -1,0 +1,12 @@
+import "util.eol";
+
+rule Package2Package
+	transform s : Source!EPackage
+	to t : Target!EPackage{
+	t.eClassifiers ::= s.eClassifiers;
+	t.eFactoryInstance ::= s.eFactoryInstance;
+	t.eSubpackages ::= s.eSubpackages;
+	t.name = s.name;
+	t.nsPrefix = s.nsPrefix;
+	t.nsURI = s.nsURI;
+	}

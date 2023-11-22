@@ -135,7 +135,7 @@ rule NodeFromAnnotation
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
+	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression","aql:self" + container.getRoute(element));
 	
 	}
 	
@@ -154,7 +154,7 @@ rule ContainerFromAnnotation
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
+	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression","aql:self" + container.getRoute(element));
 	
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
@@ -169,9 +169,11 @@ rule AbsEdgeFromAnnotation
 	guard : s.Source = "sirius.edge"
 	
 	t.name = s.getVal("name", element.name);
+	t.label = s.getVal("label", t.name);
+	
 		t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
-	var label = s.getVal("label");
+	var label = s.getVal("label_expression");
 	if (label != ""){
 	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
 	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
@@ -238,7 +240,7 @@ rule LabelStyleFromAnnotation
 	t.iconPath = s.getVal("icon_path","");
 	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("label_alignment","CENTER"));
 	t.labelColor = s.getVal("label_colour","black").getColor();
-	t.labelExpression = "aql:self." + s.getVal("label","name");
+	t.labelExpression = "aql:self." + s.getVal("label_expression","name");
 	t.labelFormat = Target!FontFormat#bold.VALUES.select(i|s.getVals("border_line_style").exists(j|j = i.literal));
 	t.labelSize = s.getVal("label_size","12").asInteger();
 	t.showIcon = s.getVal("show_icon","false").asBoolean();
