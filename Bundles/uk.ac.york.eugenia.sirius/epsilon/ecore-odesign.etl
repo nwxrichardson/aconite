@@ -132,6 +132,7 @@ rule NodeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
 	t.name = s.getVal("name",element.name);
+	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
@@ -150,6 +151,7 @@ rule ContainerFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
 	t.name = s.getVal("name",element.name);
+	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + container.getRoute(element);
