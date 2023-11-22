@@ -23,6 +23,25 @@
       <details key="semantic_candidates_expression" value="aql:self.tasks"/>
       <details key="container" value="Tasks"/>
     </eAnnotations>
+    <eAnnotations source="sirius.node.description">
+      <details key="label_size" value="12"/>
+      <details key="forbidden_sides" value=""/>
+      <details key="label_format" value=""/>
+      <details key="border_line_style" value="solid"/>
+      <details key="label_alignment" value="CENTER"/>
+      <details key="size_computation_expression" value="3"/>
+      <details key="label_position" value="node"/>
+      <details key="label_expression" value="aql:self.title"/>
+      <details key="show_icon" value="false"/>
+      <details key="tooltip_expression" value=""/>
+      <details key="icon_path" value=""/>
+      <details key="resize_kind" value="NSEW"/>
+      <details key="hide_label_by_default" value="false"/>
+      <details key="width" value="0"/>
+      <details key="border_size_computation_expression" value="aql:2"/>
+      <details key="height" value="0"/>
+      <details key="node" value="ETask"/>
+    </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="precondition_expression" value=""/>
       <details key="domain_class" value="psl::Task"/>
@@ -35,8 +54,40 @@
       <details key="semantic_candidates_expression" value="aql:self.tasks"/>
       <details key="container" value="Effort"/>
     </eAnnotations>
+    <eAnnotations source="sirius.node.description">
+      <details key="label_size" value="12"/>
+      <details key="forbidden_sides" value=""/>
+      <details key="label_format" value=""/>
+      <details key="border_line_style" value="solid"/>
+      <details key="label_alignment" value="CENTER"/>
+      <details key="size_computation_expression" value="3"/>
+      <details key="label_position" value="node"/>
+      <details key="label_expression" value="aql:self.title"/>
+      <details key="show_icon" value="false"/>
+      <details key="tooltip_expression" value=""/>
+      <details key="icon_path" value=""/>
+      <details key="resize_kind" value="NSEW"/>
+      <details key="hide_label_by_default" value="false"/>
+      <details key="width" value="0"/>
+      <details key="border_size_computation_expression" value="aql:2"/>
+      <details key="height" value="0"/>
+      <details key="node" value="ETask"/>
+    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="sirius.container">
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Person"/>
+      <details key="children_presentation" value="FreeForm"/>
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="name" value=""/>
+      <details key="label" value=""/>
+      <details key="semantic_candidates_expression" value=""/>
+      <details key="container" value="Tasks"/>
+    </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="precondition_expression" value=""/>
       <details key="domain_class" value="psl::Person"/>
@@ -48,6 +99,25 @@
       <details key="label" value="Person"/>
       <details key="semantic_candidates_expression" value="aql:self.people"/>
       <details key="container" value="Effort"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node.description">
+      <details key="label_size" value="12"/>
+      <details key="forbidden_sides" value=""/>
+      <details key="label_format" value=""/>
+      <details key="border_line_style" value="solid"/>
+      <details key="label_alignment" value="CENTER"/>
+      <details key="size_computation_expression" value="3"/>
+      <details key="label_position" value="node"/>
+      <details key="label_expression" value="aql:self.name"/>
+      <details key="show_icon" value="false"/>
+      <details key="tooltip_expression" value=""/>
+      <details key="icon_path" value=""/>
+      <details key="resize_kind" value="NSEW"/>
+      <details key="hide_label_by_default" value="false"/>
+      <details key="width" value="0"/>
+      <details key="border_size_computation_expression" value="aql:2"/>
+      <details key="height" value="0"/>
+      <details key="node" value="Person"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Effort"/>

@@ -13,6 +13,13 @@ for (i in self.split("")){
 return rtn;
 }
 
+operation Any toValue() : String{
+	if (self.isKindOf(Collection)){
+	return self.concat(", ");
+	}
+	return self.asString();
+}
+
 operation Source!EAnnotation getVal(key : String) : String{
 
 	var tmp = self.details.selectOne(i|i.key = key);
@@ -29,6 +36,11 @@ operation Source!EAnnotation getVal(key : String, def : String) : String{
 	if (rtn != ""){return rtn;}
 	return def;
 
+}
+
+operation Any getDetails() : Map{
+	var tmp = self.eClass.eAllAttributes;
+	return tmp.aggregate(i|i.name.toEugenia(),self.eGet(i).toValue());
 }
 
 rule Package2Package
@@ -68,8 +80,10 @@ rule Diagram2Annotation
 	
 	t.details.put("name",s.name);
 	s.defaultLayer.nodeMappings.equivalent().collect(i|i.details.put("container",s.name));
+	s.defaultLayer.containerMappings.equivalent().collect(i|i.details.put("container",s.name));
 	}
 	
+@lazy
 rule Node2Annotation
 	transform s : Odesign!NodeMapping
 	to t : Target!EAnnotation {
@@ -77,19 +91,36 @@ rule Node2Annotation
 	var clazz = s.domainClass.split("::");
 	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
 	
-	var tmp = s.eClass.eAllAttributes;
-	t.details.putAll(tmp.aggregate(i|i.name.toEugenia(),s.eGet(i).asString()));
+	t.details.putAll(s.getDetails());
+	var style = s.style.equivalent();
+	if (style.isDefined()) {
+		style.eModelElement = t.eModelElement;
+		style.details.put("node",t.getVal("name"));
+	}
 	}
 	
-rule NodeDescription2Annotation
-	transform s : Odesign!NodeMapping
+@lazy
+rule Container2Annotation
+	transform s : Odesign!ContainerMapping
 	to t : Target!EAnnotation {
-	t.source = "sirius.node";
+	t.source = "sirius.container";
 	var clazz = s.domainClass.split("::");
 	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
 	
-	var tmp = s.eClass.eAllAttributes;
-	t.details.putAll(tmp.aggregate(i|i.name.toEugenia(),s.eGet(i).asString()));
+	t.details.putAll(s.getDetails());
+	var style = s.style.equivalent();
+	if (style.isDefined()) {
+		style.eModelElement = t.eModelElement;
+		style.details.put("node",t.getVal("name"));
+	}
+	}
+
+@lazy	
+rule SquareDescription2Annotation
+	transform s : Odesign!SquareDescription
+	to t : Target!EAnnotation{
+	t.source = "sirius.node.description";
+	t.details.putall(s.getDetails());
 	}
 	
 post {
