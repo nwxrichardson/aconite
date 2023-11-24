@@ -2,6 +2,7 @@ import "util.eol";
 
 pre {
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+	//Todo Look into removing
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
 	var newAnnotations = new Sequence;
 	for (i in annotations){
@@ -161,7 +162,7 @@ rule ContainerFromAnnotation
 	
 	}
 
-
+//Add in the ability to point at the correct nodes to get the source and target Expression and be able to manage this
 @abstract
 rule AbsEdgeFromAnnotation	
 	transform 	s : Source!EAnnotation

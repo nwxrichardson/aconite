@@ -17,9 +17,18 @@
         eType="#//Person" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eAnnotations source="sirius.relation">
+      <details key="node" value="ETask"/>
+    </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="ETask"/>
-      <details key="container" value="Effort, Tasks"/>
+      <details key="container" value="Effort"/>
+      <details key="label_expression" value="title"/>
+      <details key="color" value="light_blue"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node">
+      <details key="name" value="ETask"/>
+      <details key="container" value="Tasks"/>
       <details key="label_expression" value="title"/>
       <details key="color" value="light_blue"/>
     </eAnnotations>
