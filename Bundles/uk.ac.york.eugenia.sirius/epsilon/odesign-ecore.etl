@@ -76,7 +76,7 @@ rule Ref2Ref
 	to t : Target!EReference{
 	t.containment = s.containment;
 	t.eKeys = s.eKeys;
-	t.eOpposite = s.eOpposite;
+	t.eOpposite ::= s.eOpposite;
 	t.resolveProxies;
 	
 	t.name = s.name;
@@ -85,7 +85,7 @@ rule Ref2Ref
 	t.derived = s.derived;
 	t.eAnnotations = s.eAnnotations;
 	t.eGenericType = s.eGenericType;
-	t.eType = s.eType;
+	t.eType ::= s.eType;
 	t.lowerBound = s.lowerBound;
 	t.ordered = s.ordered;
 	t.transient = s.transient;
@@ -106,7 +106,7 @@ rule Attr2Attr
 	t.derived = s.derived;
 	t.eAnnotations = s.eAnnotations;
 	t.eGenericType = s.eGenericType;
-	t.eType = s.eType;
+	t.eType ::= s.eType;
 	t.lowerBound = s.lowerBound;
 	t.ordered = s.ordered;
 	t.transient = s.transient;
@@ -186,8 +186,10 @@ rule EdgeMapping2Annotation
 		var clazz = s.domainClass.split("::");
 		t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
 	} else {
-		var tmp = s.sourceMapping.equivalent().eModelElement;
-		tmp.println();
+		var sourceNodes = s.sourceMapping.equivalent().asSet();
+		t.eModelElement = sourceNodes.eModelElement.first().eAllReferences.selectOne(i|i.name = s.targetFinderExpression.split("\\.").get(1));		
+		t.details.put("source_node", sourceNodes.collect(i|i.getVal("name")).toValue());
+		t.details.put("target_node", s.targetMapping.equivalent().collect(i|i.getVal("name")).asSet().toValue());
 	}
 	t.details.putAll(s.getDetails());
 	t.details.remove("use_domain_element");

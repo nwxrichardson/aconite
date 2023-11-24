@@ -1,170 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
-  <ecore:EPackage name="psl" nsURI="psl" nsPrefix="">
-    <eAnnotations source="sirius"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Project">
-      <eAnnotations source="sirius.diagram">
-        <details key="name" value="Tasks"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.diagram">
-        <details key="name" value="Effort"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="title"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="description"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-          containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="people" upperBound="-1"
-          containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Task">
-      <eAnnotations source="sirius.node">
-        <details key="precondition_expression" value=""/>
-        <details key="domain_class" value="psl::Task"/>
-        <details key="create_elements" value="true"/>
-        <details key="semantic_elements" value=""/>
-        <details key="synchronization_lock" value="false"/>
-        <details key="documentation" value=""/>
-        <details key="name" value="ETask"/>
-        <details key="label" value="ETask"/>
-        <details key="semantic_candidates_expression" value="aql:self.tasks"/>
-        <details key="container" value="Tasks"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.node.description">
-        <details key="label_size" value="12"/>
-        <details key="forbidden_sides" value=""/>
-        <details key="label_format" value=""/>
-        <details key="border_line_style" value="solid"/>
-        <details key="label_alignment" value="CENTER"/>
-        <details key="size_computation_expression" value="3"/>
-        <details key="label_position" value="node"/>
-        <details key="label_expression" value="aql:self.title"/>
-        <details key="show_icon" value="false"/>
-        <details key="tooltip_expression" value=""/>
-        <details key="icon_path" value=""/>
-        <details key="resize_kind" value="NSEW"/>
-        <details key="hide_label_by_default" value="false"/>
-        <details key="width" value="0"/>
-        <details key="border_size_computation_expression" value="aql:2"/>
-        <details key="height" value="0"/>
-        <details key="node" value="ETask"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.node">
-        <details key="precondition_expression" value=""/>
-        <details key="domain_class" value="psl::Task"/>
-        <details key="create_elements" value="true"/>
-        <details key="semantic_elements" value=""/>
-        <details key="synchronization_lock" value="false"/>
-        <details key="documentation" value=""/>
-        <details key="name" value="ETask"/>
-        <details key="label" value="ETask"/>
-        <details key="semantic_candidates_expression" value="aql:self.tasks"/>
-        <details key="container" value="Effort"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.node.description">
-        <details key="label_size" value="12"/>
-        <details key="forbidden_sides" value=""/>
-        <details key="label_format" value=""/>
-        <details key="border_line_style" value="solid"/>
-        <details key="label_alignment" value="CENTER"/>
-        <details key="size_computation_expression" value="3"/>
-        <details key="label_position" value="node"/>
-        <details key="label_expression" value="aql:self.title"/>
-        <details key="show_icon" value="false"/>
-        <details key="tooltip_expression" value=""/>
-        <details key="icon_path" value=""/>
-        <details key="resize_kind" value="NSEW"/>
-        <details key="hide_label_by_default" value="false"/>
-        <details key="width" value="0"/>
-        <details key="border_size_computation_expression" value="aql:2"/>
-        <details key="height" value="0"/>
-        <details key="node" value="ETask"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="title"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="start"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="effort" upperBound="-1"
-          containment="true" eOpposite="reverse-example.ecore#//Effort/task"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"
-          containment="true"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Person">
-      <eAnnotations source="sirius.node">
-        <details key="precondition_expression" value=""/>
-        <details key="domain_class" value="psl::Person"/>
-        <details key="create_elements" value="true"/>
-        <details key="semantic_elements" value=""/>
-        <details key="synchronization_lock" value="false"/>
-        <details key="documentation" value=""/>
-        <details key="name" value="Person"/>
-        <details key="label" value="Person"/>
-        <details key="semantic_candidates_expression" value="aql:self.people"/>
-        <details key="container" value="Effort"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.node.description">
-        <details key="label_size" value="12"/>
-        <details key="forbidden_sides" value=""/>
-        <details key="label_format" value=""/>
-        <details key="border_line_style" value="solid"/>
-        <details key="label_alignment" value="CENTER"/>
-        <details key="size_computation_expression" value="3"/>
-        <details key="label_position" value="node"/>
-        <details key="label_expression" value="aql:self.name"/>
-        <details key="show_icon" value="false"/>
-        <details key="tooltip_expression" value=""/>
-        <details key="icon_path" value=""/>
-        <details key="resize_kind" value="NSEW"/>
-        <details key="hide_label_by_default" value="false"/>
-        <details key="width" value="0"/>
-        <details key="border_size_computation_expression" value="aql:2"/>
-        <details key="height" value="0"/>
-        <details key="node" value="Person"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Effort">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="psl" nsURI="psl" nsPrefix="">
+  <eAnnotations source="sirius"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Project">
+    <eAnnotations source="sirius.diagram">
+      <details key="name" value="Tasks"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.diagram">
+      <details key="name" value="Effort"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="people" upperBound="-1"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eAnnotations source="sirius.node">
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Task"/>
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="name" value="ETask"/>
+      <details key="label" value="ETask"/>
+      <details key="semantic_candidates_expression" value="aql:self.tasks"/>
+      <details key="container" value="Tasks"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node.description">
+      <details key="label_size" value="12"/>
+      <details key="forbidden_sides" value=""/>
+      <details key="label_format" value=""/>
+      <details key="border_line_style" value="solid"/>
+      <details key="label_alignment" value="CENTER"/>
+      <details key="size_computation_expression" value="3"/>
+      <details key="label_position" value="node"/>
+      <details key="label_expression" value="aql:self.title"/>
+      <details key="show_icon" value="false"/>
+      <details key="tooltip_expression" value=""/>
+      <details key="icon_path" value=""/>
+      <details key="resize_kind" value="NSEW"/>
+      <details key="hide_label_by_default" value="false"/>
+      <details key="width" value="0"/>
+      <details key="border_size_computation_expression" value="aql:2"/>
+      <details key="height" value="0"/>
+      <details key="node" value="ETask"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node">
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Task"/>
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="name" value="ETask"/>
+      <details key="label" value="ETask"/>
+      <details key="semantic_candidates_expression" value="aql:self.tasks"/>
+      <details key="container" value="Effort"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node.description">
+      <details key="label_size" value="12"/>
+      <details key="forbidden_sides" value=""/>
+      <details key="label_format" value=""/>
+      <details key="border_line_style" value="solid"/>
+      <details key="label_alignment" value="CENTER"/>
+      <details key="size_computation_expression" value="3"/>
+      <details key="label_position" value="node"/>
+      <details key="label_expression" value="aql:self.title"/>
+      <details key="show_icon" value="false"/>
+      <details key="tooltip_expression" value=""/>
+      <details key="icon_path" value=""/>
+      <details key="resize_kind" value="NSEW"/>
+      <details key="hide_label_by_default" value="false"/>
+      <details key="width" value="0"/>
+      <details key="border_size_computation_expression" value="aql:2"/>
+      <details key="height" value="0"/>
+      <details key="node" value="ETask"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="duration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effort" upperBound="-1"
+        containment="true" eOpposite="#//Effort/task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1">
       <eAnnotations source="sirius.edge">
+        <details key="source_node" value="ETask, ETask"/>
+        <details key="target_node" value="ETask"/>
         <details key="create_elements" value="true"/>
         <details key="semantic_elements" value=""/>
         <details key="synchronization_lock" value="false"/>
         <details key="documentation" value=""/>
-        <details key="label" value="EEffort"/>
+        <details key="label" value="Project"/>
         <details key="precondition_expression" value=""/>
-        <details key="domain_class" value="psl::Effort"/>
-        <details key="name" value="EEffort"/>
-        <details key="source_finder_expression" value="aql:self.person"/>
+        <details key="domain_class" value=""/>
+        <details key="name" value="Project"/>
+        <details key="source_finder_expression" value=""/>
         <details key="path_expression" value=""/>
         <details key="semantic_candidates_expression" value=""/>
-        <details key="target_finder_expression" value="aql:self.task"/>
+        <details key="target_finder_expression" value="aql:self.dependencies"/>
         <details key="target_expression" value=""/>
-        <details key="container" value="Effort"/>
+        <details key="container" value="Tasks"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1"
-          eOpposite="reverse-example.ecore#//Task/effort"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="person"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentage" defaultValueLiteral="100"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Deliverable">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="title"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="due"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="lead"/>
-    </eClassifiers>
-  </ecore:EPackage>
-  <ecore:EAnnotation source="sirius.edge">
-    <details key="create_elements" value="true"/>
-    <details key="semantic_elements" value=""/>
-    <details key="synchronization_lock" value="false"/>
-    <details key="documentation" value=""/>
-    <details key="label" value="Project"/>
-    <details key="precondition_expression" value=""/>
-    <details key="domain_class" value=""/>
-    <details key="name" value="Project"/>
-    <details key="source_finder_expression" value=""/>
-    <details key="path_expression" value=""/>
-    <details key="semantic_candidates_expression" value=""/>
-    <details key="target_finder_expression" value="aql:self.dependencies"/>
-    <details key="target_expression" value=""/>
-    <details key="container" value="Tasks"/>
-  </ecore:EAnnotation>
-</xmi:XMI>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="sirius.node">
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Person"/>
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="name" value="Person"/>
+      <details key="label" value="Person"/>
+      <details key="semantic_candidates_expression" value="aql:self.people"/>
+      <details key="container" value="Effort"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node.description">
+      <details key="label_size" value="12"/>
+      <details key="forbidden_sides" value=""/>
+      <details key="label_format" value=""/>
+      <details key="border_line_style" value="solid"/>
+      <details key="label_alignment" value="CENTER"/>
+      <details key="size_computation_expression" value="3"/>
+      <details key="label_position" value="node"/>
+      <details key="label_expression" value="aql:self.name"/>
+      <details key="show_icon" value="false"/>
+      <details key="tooltip_expression" value=""/>
+      <details key="icon_path" value=""/>
+      <details key="resize_kind" value="NSEW"/>
+      <details key="hide_label_by_default" value="false"/>
+      <details key="width" value="0"/>
+      <details key="border_size_computation_expression" value="aql:2"/>
+      <details key="height" value="0"/>
+      <details key="node" value="Person"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Effort">
+    <eAnnotations source="sirius.edge">
+      <details key="create_elements" value="true"/>
+      <details key="semantic_elements" value=""/>
+      <details key="synchronization_lock" value="false"/>
+      <details key="documentation" value=""/>
+      <details key="label" value="EEffort"/>
+      <details key="precondition_expression" value=""/>
+      <details key="domain_class" value="psl::Effort"/>
+      <details key="name" value="EEffort"/>
+      <details key="source_finder_expression" value="aql:self.person"/>
+      <details key="path_expression" value=""/>
+      <details key="semantic_candidates_expression" value=""/>
+      <details key="target_finder_expression" value="aql:self.task"/>
+      <details key="target_expression" value=""/>
+      <details key="container" value="Effort"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eOpposite="#//Task/effort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="person"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentage" defaultValueLiteral="100"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Deliverable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="due"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lead"/>
+  </eClassifiers>
+</ecore:EPackage>

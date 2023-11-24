@@ -65,6 +65,7 @@ operation Source!EClass getRoute(target : Source!EClass) : String {
 	while ((not routes.containsKey(target))){
 	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
+	routes.println();
 	for (i in routes.keySet()){
 		newRoutes.putAll(i.eAllReferences.aggregate(j|j.eType,routes.get(i) + "." + j.name ));
 	}
@@ -74,6 +75,22 @@ operation Source!EClass getRoute(target : Source!EClass) : String {
 	routes = newRoutes;
 	}
 	return routes.get(target);
+}
+
+operation Source!EClass getEndOf(expression : String) : Source!EClass{
+	var splited = expression.split("\\.");
+	if (splited.size() = 0){return self;}
+	var rtn = self.eAllReferences.selectOne(j|j.name = splited.get(0)).eType;
+	if (splited.size() = 1){
+	return rtn;}
+	else {
+	splited.remove(splited.get(0));
+	return rtn.getEndOf(splited.concat());}
+}
+
+operation String dot() : String {
+	if (self != "") {return "."+self;}
+	return self;
 }
 
 rule Package
@@ -136,6 +153,8 @@ rule NodeFromAnnotation
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
+	element.println();
+	container.println();
 	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression","aql:self" + container.getRoute(element));
 	
 	}
@@ -162,18 +181,19 @@ rule ContainerFromAnnotation
 	
 	}
 
-//Add in the ability to point at the correct nodes to get the source and target Expression and be able to manage this
 @abstract
 rule AbsEdgeFromAnnotation	
 	transform 	s : Source!EAnnotation
 	to 			t : Target!EdgeMapping {
 	guard : s.Source = "sirius.edge"
 	
-	t.name = s.getVal("name", element.name);
-	t.label = s.getVal("label", t.name);
-	
-		t.style = new Target!EdgeStyleDescription;	
+	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
+	if (not (s.getVals("source_node") = Sequence{""})){
+	t.sourceMapping = annotations.select(i|s.getVals("source_node").exists(j|j = i.getVal("name"))).equivalent();}
+	if (not (s.getVals("target_node")= Sequence{""})){
+	t.targetMapping = annotations.select(i|s.getVals("target_node").exists(j|j = i.getVal("name"))).equivalent();}	
+	
 	var label = s.getVal("label_expression");
 	if (label != ""){
 	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
@@ -193,9 +213,14 @@ rule RefEdgeFromAnnotation
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();
-	t.targetMapping = annotations.select(i|i.eModelElement = element.eType).equivalent();
-	t.targetFinderExpression = "aql:self." +  element.name;
+	t.name = s.getVal("name", element.name);
+	t.label = s.getVal("label", t.name);
+	if (t.sourceMapping.isEmpty()){
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
+	
+	t.targetFinderExpression = "aql:self." + element.name + s.getVal("target").dot();
+	if (t.targetMapping.isEmpty()){
+	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target"))).equivalent();}
 	}
 	
 @lazy
@@ -209,12 +234,19 @@ rule EleEdgeFromAnnotation
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
+	t.name = s.getVal("name", element.name);
+	t.label = s.getVal("label", t.name);
+	
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.eAllReferences.selectOne(j|j.name = s.getVal("source")).eType).equivalent();
-	t.targetMapping = annotations.select(i|i.eModelElement = element.eAllReferences.selectOne(j|j.name = s.getVal("target")).eType).equivalent();
 	t.sourceFinderExpression = "aql:self." +  s.getVal("source");
-	t.targetFinderExpression = "aql:self." +  s.getVal("target");
+	if (t.sourceMapping.isEmpty()){
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
+	
+	t.targetFinderExpression = "aql:self" +  s.getVal("target").dot();
+	if (t.targetMapping.isEmpty()){
+	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target"))).equivalent();}
+	
 
 	}
 

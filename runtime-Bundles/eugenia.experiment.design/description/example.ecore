@@ -17,9 +17,6 @@
         eType="#//Person" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
-    <eAnnotations source="sirius.relation">
-      <details key="node" value="ETask"/>
-    </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="ETask"/>
       <details key="container" value="Effort"/>
@@ -27,7 +24,7 @@
       <details key="color" value="light_blue"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
-      <details key="name" value="ETask"/>
+      <details key="name" value="TTask"/>
       <details key="container" value="Tasks"/>
       <details key="label_expression" value="title"/>
       <details key="color" value="light_blue"/>
@@ -41,6 +38,8 @@
         eType="#//Task">
       <eAnnotations source="sirius.edge">
         <details key="container" value="Tasks"/>
+        <details key="source_node" value="TTask"/>
+        <details key="target" value="effort"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"

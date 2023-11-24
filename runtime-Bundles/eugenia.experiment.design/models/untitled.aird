@@ -4,7 +4,7 @@
     <semanticResources>untitled.model</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_mUjNkIkjEe6Er-pQpv9KOQ">
       <viewpoint xmi:type="description:Viewpoint" href="../description/example.odesign#//@ownedViewpoints[name='']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nmqVsIkjEe6Er-pQpv9KOQ" name="new Effort" repPath="#_nmO34IkjEe6Er-pQpv9KOQ" changeId="1700653339663">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_nmqVsIkjEe6Er-pQpv9KOQ" name="new Effort" repPath="#_nmO34IkjEe6Er-pQpv9KOQ" changeId="1700826970186">
         <description xmi:type="description_1:DiagramDescription" href="../description/example.odesign#//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']"/>
         <target xmi:type="Project" href="untitled.model#_HdZqcIeHEe6O95Bo1IsR7w"/>
       </ownedRepresentationDescriptors>
@@ -193,7 +193,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_np4BwIkjEe6Er-pQpv9KOQ" name="50" sourceNode="_npdLAIkjEe6Er-pQpv9KOQ" targetNode="_nptpsokjEe6Er-pQpv9KOQ">
       <target xmi:type="Effort" href="untitled.model#_ZeKhMIeHEe6O95Bo1IsR7w"/>
       <semanticElements xmi:type="Effort" href="untitled.model#_ZeKhMIeHEe6O95Bo1IsR7w"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np528IkjEe6Er-pQpv9KOQ" centered="Both">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np528IkjEe6Er-pQpv9KOQ" size="0" centered="Both">
         <description xmi:type="style:EdgeStyleDescription" href="../description/example.odesign#//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@edgeMappings[name='EEffort']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_np528YkjEe6Er-pQpv9KOQ" showIcon="false"/>
       </ownedStyle>
@@ -202,7 +202,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_np6eAokjEe6Er-pQpv9KOQ" name="50" sourceNode="_nptCoIkjEe6Er-pQpv9KOQ" targetNode="_nptpsokjEe6Er-pQpv9KOQ">
       <target xmi:type="Effort" href="untitled.model#_axDscIeHEe6O95Bo1IsR7w"/>
       <semanticElements xmi:type="Effort" href="untitled.model#_axDscIeHEe6O95Bo1IsR7w"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np7FEIkjEe6Er-pQpv9KOQ" centered="Both">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np7FEIkjEe6Er-pQpv9KOQ" size="0" centered="Both">
         <description xmi:type="style:EdgeStyleDescription" href="../description/example.odesign#//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@edgeMappings[name='EEffort']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_np7FEYkjEe6Er-pQpv9KOQ" showIcon="false"/>
       </ownedStyle>
@@ -211,7 +211,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_np7FFIkjEe6Er-pQpv9KOQ" name="100" sourceNode="_nptCoIkjEe6Er-pQpv9KOQ" targetNode="_npu30YkjEe6Er-pQpv9KOQ">
       <target xmi:type="Effort" href="untitled.model#_XKKeQIeHEe6O95Bo1IsR7w"/>
       <semanticElements xmi:type="Effort" href="untitled.model#_XKKeQIeHEe6O95Bo1IsR7w"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np7FFYkjEe6Er-pQpv9KOQ" centered="Both">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np7FFYkjEe6Er-pQpv9KOQ" size="0" centered="Both">
         <description xmi:type="style:EdgeStyleDescription" href="../description/example.odesign#//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@edgeMappings[name='EEffort']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_np7FFokjEe6Er-pQpv9KOQ" showIcon="false"/>
       </ownedStyle>
@@ -220,7 +220,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_np7FGYkjEe6Er-pQpv9KOQ" name="100" sourceNode="_npdLAIkjEe6Er-pQpv9KOQ" targetNode="_npu31IkjEe6Er-pQpv9KOQ">
       <target xmi:type="Effort" href="untitled.model#_U89m4IeHEe6O95Bo1IsR7w"/>
       <semanticElements xmi:type="Effort" href="untitled.model#_U89m4IeHEe6O95Bo1IsR7w"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np8TMIkjEe6Er-pQpv9KOQ" centered="Both">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_np8TMIkjEe6Er-pQpv9KOQ" size="0" centered="Both">
         <description xmi:type="style:EdgeStyleDescription" href="../description/example.odesign#//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@edgeMappings[name='EEffort']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_np8TMYkjEe6Er-pQpv9KOQ" showIcon="false"/>
       </ownedStyle>
