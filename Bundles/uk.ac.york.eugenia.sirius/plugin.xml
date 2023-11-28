@@ -3,18 +3,18 @@
 <plugin>
 	<extension point = "org.eclipse.ui.commands">
 	<category
-		id = "uk.ac.york.eugenia.sirius.category"
+		id = "uk.ac.york.aconite.category"
 		name = "Ecore2Sirius">
 	</category>
 	 <command
- 		categoryId="uk.ac.york.eugenia.sirius.category"
-		defaultHandler="uk.ac.york.eugenia.sirius.handlers.SiriusGenHandler"
+ 		categoryId="uk.ac.york.aconnite.category"
+		defaultHandler="uk.ac.york.aconite.handlers.SiriusGenHandler"
        	id="uk.ac.york.eugenia.sirius.Ecore2Sirius"
        	name="Generate Odesign from Ecore">
      </command>
       <command
- 		categoryId="uk.ac.york.eugenia.sirius.category"
-		defaultHandler="uk.ac.york.eugenia.sirius.handlers.SiriusRevHandler"
+ 		categoryId="uk.ac.york.aconite.category"
+		defaultHandler="uk.ac.york.aconite.handlers.SiriusRevHandler"
        	id="uk.ac.york.eugenia.sirius.Sirius2Ecore"
        	name="Generate Annotated Ecore from Odesign">
      </command>
@@ -25,7 +25,7 @@
    			allPopups="false"
    			locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
    			<command
-   				commandId="uk.ac.york.eugenia.sirius.Ecore2Sirius"
+   				commandId="uk.ac.york.aconite.Ecore2Sirius"
    				label="Generate Odesign from Ecore"
    				style="push">
    			</command>
@@ -34,7 +34,7 @@
    			allPopups="false"
    			locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
    			<command
-   				commandId="uk.ac.york.eugenia.sirius.Sirius2Ecore"
+   				commandId="uk.ac.york.aconite.Sirius2Ecore"
    				label="Generate Annotated Ecore from Odesign"
    				style="push">
    			</command>

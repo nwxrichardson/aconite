@@ -77,14 +77,13 @@ rule Ref2Ref
 	t.containment = s.containment;
 	t.eKeys = s.eKeys;
 	t.eOpposite ::= s.eOpposite;
-	t.resolveProxies;
 	
 	t.name = s.name;
 	t.changeable = s.changeable;
 	t.defaultValueLiteral = s.defaultValueLiteral;
 	t.derived = s.derived;
 	t.eAnnotations = s.eAnnotations;
-	t.eGenericType = s.eGenericType;
+	t.eGenericType ::= s.eGenericType;
 	t.eType ::= s.eType;
 	t.lowerBound = s.lowerBound;
 	t.ordered = s.ordered;
@@ -105,8 +104,8 @@ rule Attr2Attr
 	t.defaultValueLiteral = s.defaultValueLiteral;
 	t.derived = s.derived;
 	t.eAnnotations = s.eAnnotations;
-	t.eGenericType = s.eGenericType;
-	t.eType ::= s.eType;
+	t.eGenericType ::= s.eGenericType;
+	t.eType = s.eType;
 	t.lowerBound = s.lowerBound;
 	t.ordered = s.ordered;
 	t.transient = s.transient;

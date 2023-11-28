@@ -1,4 +1,4 @@
-package uk.ac.york.eugenia.sirius.atom;
+package uk.ac.york.aconite.atom;
 
 import java.util.Arrays;
 

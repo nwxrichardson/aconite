@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
-  <description:Group version="12.0.0.2017041100">
+  <description:Group>
     <ownedViewpoints/>
   </description:Group>
   <description_1:DiagramDescription name="Tasks" domainClass="psl::Project">
-    <defaultLayer name="Default"/>
+    <defaultLayer name="Default">
+      <nodeMappings name="ETask" label="ETask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </style>
+      </nodeMappings>
+      <edgeMappings name="Project" label="Project" sourceMapping="/1/@defaultLayer/@nodeMappings[name='ETask'] /2/@defaultLayer/@nodeMappings[name='ETask']" targetMapping="/1/@defaultLayer/@nodeMappings[name='ETask'] /2/@defaultLayer/@nodeMappings[name='ETask']" targetFinderExpression="aql:self.dependencies">
+        <style endsCentering="Both">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+    </defaultLayer>
   </description_1:DiagramDescription>
-  <description_1:NodeMapping name="ETask" label="ETask" domainClass="psl::Task">
-    <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
-      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-      <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+  <description_1:DiagramDescription name="Effort" domainClass="psl::Project">
+    <defaultLayer name="Default">
+      <nodeMappings name="ETask" label="ETask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="Person" label="Person" semanticCandidatesExpression="aql:self.people" domainClass="psl::Person">
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </style>
+      </nodeMappings>
+    </defaultLayer>
+  </description_1:DiagramDescription>
+  <description_1:EdgeMapping name="EEffort" label="EEffort" sourceFinderExpression="aql:self." domainClass="psl::Effort" useDomainElement="true">
+    <style endsCentering="Both">
+      <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
     </style>
-  </description_1:NodeMapping>
+  </description_1:EdgeMapping>
 </xmi:XMI>

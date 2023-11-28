@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Sirius
-Bundle-SymbolicName: uk.ac.york.eugenia.sirius;singleton:=true
+Bundle-Name: Aconite
+Bundle-SymbolicName: uk.ac.york.aconite;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Automatic-Module-Name: uk.ac.york.eugenia.sirius
+Automatic-Module-Name: uk.ac.york.aconite
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

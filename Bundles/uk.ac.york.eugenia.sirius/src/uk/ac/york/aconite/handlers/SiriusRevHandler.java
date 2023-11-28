@@ -1,4 +1,4 @@
-package uk.ac.york.eugenia.sirius.handlers;
+package uk.ac.york.aconite.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -7,9 +7,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import uk.ac.york.eugenia.sirius.atom.SiriusGenerator;
+import uk.ac.york.aconite.atom.SiriusReverser;
 
-public class SiriusGenHandler extends AbstractHandler{
+public class SiriusRevHandler extends AbstractHandler{
 	
 	@Override
 	public Object execute(ExecutionEvent event) {
@@ -17,9 +17,10 @@ public class SiriusGenHandler extends AbstractHandler{
 		if (selection0 instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) selection0;
 			final IFile ecore = (IFile) selection.getFirstElement();
+			final IFile odesign = (IFile) selection.toList().get(1);
 			
 			if (ecore != null) {
-				SiriusGenerator  job = new SiriusGenerator(ecore);
+				SiriusReverser  job = new SiriusReverser(ecore, odesign);
 				job.setUser(true);
 				job.schedule();
 			}

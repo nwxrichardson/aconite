@@ -65,7 +65,6 @@ operation Source!EClass getRoute(target : Source!EClass) : String {
 	while ((not routes.containsKey(target))){
 	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
-	routes.println();
 	for (i in routes.keySet()){
 		newRoutes.putAll(i.eAllReferences.aggregate(j|j.eType,routes.get(i) + "." + j.name ));
 	}
@@ -80,6 +79,8 @@ operation Source!EClass getRoute(target : Source!EClass) : String {
 operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	var splited = expression.split("\\.");
 	if (splited.size() = 0){return self;}
+	self.println();
+	splited.size().println();
 	var rtn = self.eAllReferences.selectOne(j|j.name = splited.get(0)).eType;
 	if (splited.size() = 1){
 	return rtn;}
@@ -153,8 +154,6 @@ rule NodeFromAnnotation
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
-	element.println();
-	container.println();
 	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression","aql:self" + container.getRoute(element));
 	
 	}

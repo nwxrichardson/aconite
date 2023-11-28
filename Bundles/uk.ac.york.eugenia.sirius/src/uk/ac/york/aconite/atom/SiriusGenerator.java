@@ -1,4 +1,4 @@
-package uk.ac.york.eugenia.sirius.atom;
+package uk.ac.york.aconite.atom;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -10,7 +10,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.etl.EtlModule;
-import uk.ac.york.eugenia.sirius.util.SDScore;
+
+import uk.ac.york.aconite.util.SDScore;
 
 public class SiriusGenerator extends Job {
 
