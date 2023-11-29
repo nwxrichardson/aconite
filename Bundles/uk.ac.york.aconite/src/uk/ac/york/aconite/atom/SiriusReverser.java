@@ -63,9 +63,10 @@ public class SiriusReverser extends Job {
 			target.load();
 			module.parse(getClass().getResource(PATH_TO_ETL).toURI());
 			module.getContext().getNativeTypeDelegates().add(new ExtensionPointToolNativeTypeDelegate());
+			//TODO Remove this workaround
+			module.getContext().getModelRepository().addModel(target);
 			module.getContext().getModelRepository().addModel(source);
 			module.getContext().getModelRepository().addModel(odesign);
-			module.getContext().getModelRepository().addModel(target);
 			module.execute();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

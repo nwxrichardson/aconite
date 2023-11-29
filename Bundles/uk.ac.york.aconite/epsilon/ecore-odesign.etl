@@ -1,4 +1,5 @@
 import "util.eol";
+import "config.eol";
 
 pre {
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
@@ -28,7 +29,7 @@ operation Source!EAnnotation getVal(key : String) : String{
 	if (tmp.isDefined()){
 	return tmp.value;
 	}
-	return "";
+	return self.getDefault(key);
 
 }
 
@@ -87,10 +88,7 @@ operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	return rtn.getEndOf(splited.concat());}
 }
 
-operation String dot() : String {
-	if (self != "") {return "."+self;}
-	return self;
-}
+
 
 rule Package
 	transform 	s : Source!EPackage
@@ -125,6 +123,13 @@ rule DiagramFromAnnotation
 	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	}
 	
+@abstract 
+rule AbstractMappingFromAnnotation
+	transform 	s : Source!EAnnotaion
+	to 			t : Target!DiagramElementMapping {
+	t.createElements = s.getVal("create_elements").asBoolean;
+	t.syncronizationLock = s.getVal("syncronization_lock").asBoolean;
+	} 
 
 @abstract
 rule AbstractNodeFromAnnotation 
@@ -219,7 +224,7 @@ rule RefEdgeFromAnnotation
 	if (t.sourceMapping.isEmpty()){
 	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
 
-	t.targetFinderExpression = s.getVal("target_finder_expression", "aql:self." + element.name + s.getVal("target").dot());
+	t.targetFinderExpression = s.getVal("target_finder_expression");
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target"))).equivalent();}
 	}
@@ -235,7 +240,7 @@ rule EleEdgeFromAnnotation
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
-	t.name = s.getVal("name", element.name);
+	t.name = s.getVal("name");
 	t.label = s.getVal("label", t.name);
 	
 	t.useDomainElement = true;
@@ -245,7 +250,7 @@ rule EleEdgeFromAnnotation
 //	if (t.sourceMapping.isEmpty()){
 //	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
 
-	t.targetFinderExpression = s.getVal("target_finder_expression" ,"aql:self" +  s.getVal("target").dot());
+	t.targetFinderExpression = s.getVal("target_finder_expression");
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target"))).equivalent();}
 	
@@ -262,9 +267,9 @@ rule EleEdgeFromAnnotation
 rule BorderedStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!BorderedStyleDescription{
-	t.borderColor = s.getVal("border_color","black").getColor();
-	t.borderLineStyle = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("border_line_style","solid"));
-	t.borderSizeComputationExpression = "aql:" + s.getVal("border_size", "2");
+	t.borderColor = s.getVal("border_color").getColor();
+	t.borderLineStyle = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("border_line_style"));
+	t.borderSizeComputationExpression = "aql:" + s.getVal("border_size");
 	}
 	
 	//TODO Do a readability function that 
@@ -272,13 +277,13 @@ rule BorderedStyleFromAnnotation
 rule LabelStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!LabelStyleDescription{
-	t.iconPath = s.getVal("icon_path","");
-	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("label_alignment","CENTER"));
-	t.labelColor = s.getVal("label_colour","black").getColor();
-	t.labelExpression = "aql:self." + s.getVal("label_expression","name");
+	t.iconPath = s.getVal("icon_path");
+	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("label_alignment"));
+	t.labelColor = s.getVal("label_color").getColor();
+	t.labelExpression = "aql:self." + s.getVal("label_expression");
 	t.labelFormat = Target!FontFormat#bold.VALUES.select(i|s.getVals("border_line_style").exists(j|j = i.literal));
-	t.labelSize = s.getVal("label_size","12").asInteger();
-	t.showIcon = s.getVal("show_icon","false").asBoolean();
+	t.labelSize = s.getVal("label_size").asInteger();
+	t.showIcon = s.getVal("show_icon").asBoolean();
 	}
 
 @abstract
@@ -292,8 +297,8 @@ rule TooltipFromAnnotation
 rule RoundedCornerFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!TooltipStyleDescription{
-	t.arcHeight = s.getVal("arc_height","1").asInteger();
-	t.arcWidth = s.getVal("arc_width","1").asInteger();
+	t.arcHeight = s.getVal("arc_height").asInteger();
+	t.arcWidth = s.getVal("arc_width").asInteger();
 	}
 
 /*
@@ -310,11 +315,11 @@ rule NodeStyleFromAnnotation
 	{
 	guard : s.source = "sirius.node.description"
 	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbidden_sides").exists(j|j = i.literal));
- 	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
+ 	t.hideLabelByDefault = s.getVal("hide_label_by_default").asBoolean();
  	t.iconPath = s.getVal("icon_path");
- 	t.labelPosition = Target!LabelPosition#node.VALUES.selectOne(i|i.literal = s.getVal("label_position","node"));
- 	t.resizeKind = Target!ResizeKind#NSEW.VALUES.selectOne(i|i.literal = s.getVal("resize_kind","NSEW"));
-	t.sizeComputationExpression = s.getVal("size_computation_expression","3");
+ 	t.labelPosition = Target!LabelPosition#node.VALUES.selectOne(i|i.literal = s.getVal("label_position"));
+ 	t.resizeKind = Target!ResizeKind#NSEW.VALUES.selectOne(i|i.literal = s.getVal("resize_kind"));
+	t.sizeComputationExpression = s.getVal("size_computation_expression");
 	}
 	
 @abstract
@@ -327,9 +332,9 @@ rule ContainerStyleFromAnnotation
 	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbidden_sides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
  	t.iconPath = s.getVal("icon_path");
-	t.heightComputationExpression = s.getVal("height_computation_expression","-1");
-	t.widthComputationExpression = s.getVal("width_computation_expression","-1");
-	t.roundedCorner = s.getVal("rounded_corner", "false").asBoolean();
+	t.heightComputationExpression = s.getVal("height_computation_expression");
+	t.widthComputationExpression = s.getVal("width_computation_expression");
+	t.roundedCorner = s.getVal("rounded_corner").asBoolean();
 	}
 	
 /*
@@ -345,8 +350,8 @@ rule FlatContainerFromAnnotation
 	extends ContainerStyleFromAnnotation{
 	guard : s.getVal("shape") = "flat" or s.getVal("shape") = ""
 	
-	t.backgroundColor = s.getVal("background_color",s.getVal("color", "light_yellow")).getColor();
-	t.foregroundColor = s.getVal("foreground_color",s.getVal("color", "light_yellow")).getColor();
+	t.backgroundColor = s.getVal("background_color",s.getVal("color")).getColor();
+	t.foregroundColor = s.getVal("foreground_color",s.getVal("color")).getColor();
 	t.backgroundStyle = Target!BackgroundStyle#Liquid.VALUES.selectOne(i|i.literal = s.getVal("background_style","GradientLeftToRight"));
 	
 	}
@@ -371,9 +376,9 @@ rule SquareNodeFromAnnotation
 	extends NodeStyleFromAnnotation{
 	guard : s.getVal("shape") = "square" or s.getVal("shape") = ""
 	
-	t.color = s.getVal("color", "light_yellow").getColor();
-	t.height = s.getVal("height","0").asInteger();
-	t.width = s.getVal("width","0").asInteger();
+	t.color = s.getVal("color").getColor();
+	t.height = s.getVal("height").asInteger();
+	t.width = s.getVal("width").asInteger();
 	
 	}
 	
@@ -384,7 +389,7 @@ rule DotNodeFromAnnotation
 	extends NodeStyleFromAnnotation{
 	guard : s.getVal("shape") = "dot"
 	
-	t.backgroundColor = s.getVal("color","light_yellow").getColor();
+	t.backgroundColor = s.getVal("color").getColor();
 	t.strokeSizeComputationExpression = s.getVal("stroke_size_computation_expression","2").asInteger();
 	
 	}
@@ -396,7 +401,7 @@ rule EllipseNodeFromAnnotation
 	extends NodeStyleFromAnnotation{
 	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
-	t.color = s.getVal("color", "light_yellow").getColor();
+	t.color = s.getVal("color").getColor();
 	t.horizontalDiameterComputationExpression = s.getVal("horizontal_diameter_computation_expression","2").asInteger();
 	t.verticalDiameterComputationExpression = s.getVal("vertical_diameter_computation_expression","2").asInteger();
 	}
@@ -418,7 +423,7 @@ rule LozengeNodeFromAnnotation
 	extends NodeStyleFromAnnotation{
 	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
-	t.color = s.getVal("color", "light_yellow").getColor();
+	t.color = s.getVal("color").getColor();
 	t.heightComputationExpression = s.getVal("height_computation_expression","2").asInteger();
 	t.widthComputationExpression = s.getVal("width_computation_expression","2").asInteger();
 	}

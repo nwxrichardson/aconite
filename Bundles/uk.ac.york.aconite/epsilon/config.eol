@@ -1,1 +1,44 @@
 //Needed?
+
+// Note: Whichever one needs to access its default should be put first in the java code
+operation EAnnotation getDefault(key : String) : String {
+	key.println();
+	switch (key){
+		case "name"	: return self.eModelElement.name;
+		case "create_elements" 	: return "true";	
+		case "synchronization_lock" 	: return "false";	
+		case "color" 	: return "light_yellow";
+		case "height" 	: return "0";	
+		case "width" 	: return "0";
+		case "rounded_corner" 	: return "false";
+		case "height_computation_expression"	: return "-1";
+		case "width_computation_expression"	: return "-1";
+		case "size_computation_expression" : return "3";
+		case "resize_kind"	: return "NSEW";
+		case "label_position"	: return "node";
+		case "hide_label_by_default"	: return "false";
+		case "arc_height"	: return "1";
+		case "arc_width"	: return "1";
+		case "show_icon"	: return "false";
+		case "label_size"	: return "12";
+		case "label_color"	: return "black";
+		case "label_expression"	: return "name";
+		case "label_alignment"	: return "CENTER";
+		case "border_size"	: return "2";
+		case "border_line_style"	: return "solid";
+		case "border_color"	: return "black";
+		case "target_finder_expression" : {
+			if (self.isTypeOf(EReference)){
+				return "aql:self." + self.eModelElement.name + self.getVal("target").dot();
+			} else {
+				return "aql:self" +  self.getVal("target").dot();
+			}
+		}
+		default : return "";
+	}
+}
+
+	operation String dot() : String {
+	if (self != "") {return "."+self;}
+	return self;
+}

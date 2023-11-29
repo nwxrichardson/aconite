@@ -1,3 +1,5 @@
+import "config.eol";
+
 pre {
 var classes = Source.allContents.selectByType(Source!EClass);
 }
@@ -11,14 +13,6 @@ for (i in self.split("")){
 	rtn = rtn.concat(i.ftlc());
 }
 return rtn;
-}
-
-operation Source!EAnnotation dupe(target : Source!EAnnotation) : Boolean {
-	for (deat in target.details){
-		if (deat.key() != "container"){
-			deat.key().println();
-		}
-	} return true;
 }
 
 operation Any toValue() : String{
@@ -210,12 +204,13 @@ rule EdgeMapping2Annotation
 post {
 var ann = Target.allContents.selectByType(Target!EAnnotation).select(i|i.source.startsWith("sirius")).flatten();
 //Filter Out Duplicates
-	while (ann.size() != 1 and ann.size() != 0){
-		ann.println();
-		var toDelete = ann.select(i|i.dupe(ann.get(0))); 
-		for (i in toDelete) {
-			delete i;
+for (i in ann){
+	i.details.remove("domain_class");
+	var toRemove = Set{};
+	for (j in i.details) {
+		if (j.getValue = i.getDefault(j.getKey())){
+			toRemove.add(j.getKey());
 		}
-		ann.remove(ann.get(0));
-	}
+	} for (rmv in toRemove) {i.details.remove(rmv);}
+}
 }
