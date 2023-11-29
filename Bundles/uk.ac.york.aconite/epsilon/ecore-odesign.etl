@@ -79,8 +79,6 @@ operation Source!EClass getRoute(target : Source!EClass) : String {
 operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	var splited = expression.split("\\.");
 	if (splited.size() = 0){return self;}
-	self.println();
-	splited.size().println();
 	var rtn = self.eAllReferences.selectOne(j|j.name = splited.get(0)).eType;
 	if (splited.size() = 1){
 	return rtn;}
@@ -132,10 +130,14 @@ rule DiagramFromAnnotation
 rule AbstractNodeFromAnnotation 
 	transform 	s : Source!EAnnotation
 	to 			t : Target!AbstractNodeMapping {
-	
+	var preStyled = emfTool.getECoreUtil.copy(annotations.select(i|i.source = s.source + ".description").selectOne(i|i.getVal("node") = s.getVal("name")));
+	if (preStyled.isUndefined()){
 	var styleAnnotation = emfTool.getECoreUtil.copy(s);
 	styleAnnotation.Source = s.source + ".description" ;
 	t.style = styleAnnotation.equivalent();	
+	} else {
+	t.style = preStyled.equivalent();
+	}
 	
 	}
 	
@@ -216,8 +218,8 @@ rule RefEdgeFromAnnotation
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
 	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
-	
-	t.targetFinderExpression = "aql:self." + element.name + s.getVal("target").dot();
+
+	t.targetFinderExpression = s.getVal("target_finder_expression", "aql:self." + element.name + s.getVal("target").dot());
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target"))).equivalent();}
 	}
@@ -238,11 +240,12 @@ rule EleEdgeFromAnnotation
 	
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
-	t.sourceFinderExpression = "aql:self." +  s.getVal("source");
-	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
-	
-	t.targetFinderExpression = "aql:self" +  s.getVal("target").dot();
+	t.sourceFinderExpression = s.getVal("source_finder_expression", "aql:self." +  s.getVal("source"));
+	t.sourceMapping.println();
+//	if (t.sourceMapping.isEmpty()){
+//	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
+
+	t.targetFinderExpression = s.getVal("target_finder_expression" ,"aql:self" +  s.getVal("target").dot());
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target"))).equivalent();}
 	

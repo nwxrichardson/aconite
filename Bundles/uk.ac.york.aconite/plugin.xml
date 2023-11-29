@@ -7,15 +7,15 @@
 		name = "Ecore2Sirius">
 	</category>
 	 <command
- 		categoryId="uk.ac.york.aconnite.category"
+ 		categoryId="uk.ac.york.aconite.category"
 		defaultHandler="uk.ac.york.aconite.handlers.SiriusGenHandler"
-       	id="uk.ac.york.eugenia.sirius.Ecore2Sirius"
+       	id="uk.ac.york.aconite.Ecore2Sirius"
        	name="Generate Odesign from Ecore">
      </command>
       <command
  		categoryId="uk.ac.york.aconite.category"
 		defaultHandler="uk.ac.york.aconite.handlers.SiriusRevHandler"
-       	id="uk.ac.york.eugenia.sirius.Sirius2Ecore"
+       	id="uk.ac.york.aconite.Sirius2Ecore"
        	name="Generate Annotated Ecore from Odesign">
      </command>
 	</extension>

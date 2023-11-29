@@ -5,20 +5,43 @@ package psl;
 @sirius.diagram(name="Tasks")
 @sirius.diagram(name="Effort")
 class Project {
+	attr String title;
+	attr String description;
+	val Task[*] tasks;
+	val Person[*] people;
 }
 
-@sirius.node(synchronizationLock="false", documentation="", name="ETask", preconditionExpression="", label="ETask", semanticCandidatesExpression="aql:self.tasks", createElements="true", domainClass="psl::Task", semanticElements="", container="Tasks")
-@sirius.node(synchronizationLock="false", documentation="", name="ETask", preconditionExpression="", label="ETask", semanticCandidatesExpression="aql:self.tasks", createElements="true", domainClass="psl::Task", semanticElements="", container="Effort")
+@sirius.node(precondition_expression="", domain_class="psl::Task", create_elements="true", semantic_elements="", synchronization_lock="false", documentation="", name="ETask", label="ETask", semantic_candidates_expression="aql:self.tasks", container="Tasks")
+@sirius.node.description(label_size="12", forbidden_sides="", label_format="", border_line_style="solid", label_alignment="CENTER", size_computation_expression="3", label_position="node", label_expression="aql:self.title", show_icon="false", tooltip_expression="", icon_path="", resize_kind="NSEW", hide_label_by_default="false", width="0", border_size_computation_expression="aql:2", height="0", color="light_blue", node="ETask")
+@sirius.node(precondition_expression="", domain_class="psl::Task", create_elements="true", semantic_elements="", synchronization_lock="false", documentation="", name="ETask", label="ETask", semantic_candidates_expression="aql:self.tasks", container="Effort")
+@sirius.node.description(label_size="12", forbidden_sides="", label_format="", border_line_style="solid", label_alignment="CENTER", size_computation_expression="3", label_position="node", label_expression="aql:self.title", show_icon="false", tooltip_expression="", icon_path="", resize_kind="NSEW", hide_label_by_default="false", width="0", border_size_computation_expression="aql:2", height="0", color="light_blue", node="ETask")
 class Task {
+	attr String title;
+	attr int start;
+	attr int duration;
+	val Effort[*]#task effort;
+
+	@sirius.edge(create_elements="true", semantic_elements="", synchronization_lock="false", documentation="", label="Project", precondition_expression="", domain_class="", name="Project", source_finder_expression="", path_expression="", semantic_candidates_expression="", target_finder_expression="aql:self.dependencies", target_expression="", source_node="ETask, ETask", target_node="ETask", container="Tasks")
+	ref Task[*] dependencies;
+	val Deliverable[*] deliverables;
 }
 
-@sirius.node(synchronizationLock="false", documentation="", name="Person", preconditionExpression="", label="Person", semanticCandidatesExpression="aql:self.people", createElements="true", domainClass="psl::Person", semanticElements="", container="Effort")
+@sirius.node(precondition_expression="", domain_class="psl::Person", create_elements="true", semantic_elements="", synchronization_lock="false", documentation="", name="Person", label="Person", semantic_candidates_expression="aql:self.people", container="Effort")
+@sirius.node.description(label_size="12", forbidden_sides="", label_format="", border_line_style="solid", label_alignment="CENTER", size_computation_expression="3", label_position="node", label_expression="aql:self.name", show_icon="false", tooltip_expression="", icon_path="", resize_kind="NSEW", hide_label_by_default="false", width="0", border_size_computation_expression="aql:2", height="0", color="light_yellow", node="Person")
 class Person {
+	attr String name;
 }
 
+@sirius.edge(create_elements="true", semantic_elements="", synchronization_lock="false", documentation="", label="EEffort", precondition_expression="", domain_class="psl::Effort", name="EEffort", source_finder_expression="aql:self.person", path_expression="", semantic_candidates_expression="", target_finder_expression="aql:self.task", target_expression="", target_node="ETask", container="Effort")
 class Effort {
+	ref Task[1]#effort task;
+	ref Person person;
+	attr int percentage = 100;
 }
 
 class Deliverable {
+	attr String title;
+	attr int due;
+	ref Person lead;
 }
 

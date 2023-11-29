@@ -13,6 +13,14 @@ for (i in self.split("")){
 return rtn;
 }
 
+operation Source!EAnnotation dupe(target : Source!EAnnotation) : Boolean {
+	for (deat in target.details){
+		if (deat.key() != "container"){
+			deat.key().println();
+		}
+	} return true;
+}
+
 operation Any toValue() : String{
 	if (self.isKindOf(Collection)){
 	return self.concat(", ");
@@ -160,12 +168,15 @@ rule Container2Annotation
 	}
 	}
 
+//Manage all of the different styles
+//Manage all of the references
 @lazy	
 rule SquareDescription2Annotation
 	transform s : Odesign!SquareDescription
 	to t : Target!EAnnotation{
 	t.source = "sirius.node.description";
 	t.details.putall(s.getDetails());
+	t.details.put("color", s.color.name);
 	}
 	
 @lazy	
@@ -181,20 +192,30 @@ rule EdgeMapping2Annotation
 	transform s : Odesign!EdgeMapping
 	to t : Target!EAnnotation{
 	t.source = "sirius.edge";
+	t.details.putAll(s.getDetails());
+	t.details.remove("use_domain_element");
+	//Alter this to swap to target from target_finder_expression
 	if (s.useDomainElement){
 		var clazz = s.domainClass.split("::");
 		t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
+		t.details.put("target_node", s.targetMapping.equivalent().collect(i|i.getVal("name")).asSet().toValue());
 	} else {
 		var sourceNodes = s.sourceMapping.equivalent().asSet();
 		t.eModelElement = sourceNodes.eModelElement.first().eAllReferences.selectOne(i|i.name = s.targetFinderExpression.split("\\.").get(1));		
 		t.details.put("source_node", sourceNodes.collect(i|i.getVal("name")).toValue());
 		t.details.put("target_node", s.targetMapping.equivalent().collect(i|i.getVal("name")).asSet().toValue());
 	}
-	t.details.putAll(s.getDetails());
-	t.details.remove("use_domain_element");
 	}
 	
 post {
-var ann = Target.allContents.selectByType(Target!EAnnotation);
+var ann = Target.allContents.selectByType(Target!EAnnotation).select(i|i.source.startsWith("sirius")).flatten();
 //Filter Out Duplicates
+	while (ann.size() != 1 and ann.size() != 0){
+		ann.println();
+		var toDelete = ann.select(i|i.dupe(ann.get(0))); 
+		for (i in toDelete) {
+			delete i;
+		}
+		ann.remove(ann.get(0));
+	}
 }
