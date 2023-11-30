@@ -125,16 +125,17 @@ rule DiagramFromAnnotation
 	
 @abstract 
 rule AbstractMappingFromAnnotation
-	transform 	s : Source!EAnnotaion
+	transform 	s : Source!EAnnotation
 	to 			t : Target!DiagramElementMapping {
 	t.createElements = s.getVal("create_elements").asBoolean;
-	t.syncronizationLock = s.getVal("syncronization_lock").asBoolean;
+	t.synchronizationLock = s.getVal("synchronization_lock").asBoolean;
 	} 
 
 @abstract
 rule AbstractNodeFromAnnotation 
 	transform 	s : Source!EAnnotation
-	to 			t : Target!AbstractNodeMapping {
+	to 			t : Target!AbstractNodeMapping 
+	extends AbstractMappingFromAnnotation {
 	var preStyled = emfTool.getECoreUtil.copy(annotations.select(i|i.source = s.source + ".description").selectOne(i|i.getVal("node") = s.getVal("name")));
 	if (preStyled.isUndefined()){
 	var styleAnnotation = emfTool.getECoreUtil.copy(s);
@@ -190,7 +191,8 @@ rule ContainerFromAnnotation
 @abstract
 rule AbsEdgeFromAnnotation	
 	transform 	s : Source!EAnnotation
-	to 			t : Target!EdgeMapping {
+	to 			t : Target!EdgeMapping 
+	extends AbstractMappingFromAnnotation {
 	guard : s.Source = "sirius.edge"
 	
 	t.style = new Target!EdgeStyleDescription;	
@@ -218,8 +220,7 @@ rule RefEdgeFromAnnotation
 	//TODO Make this work the way one would expect
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-
-	t.name = s.getVal("name", element.name);
+	t.name = s.getVal("name");
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
 	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
@@ -246,7 +247,6 @@ rule EleEdgeFromAnnotation
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
 	t.sourceFinderExpression = s.getVal("source_finder_expression", "aql:self." +  s.getVal("source"));
-	t.sourceMapping.println();
 //	if (t.sourceMapping.isEmpty()){
 //	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
 
