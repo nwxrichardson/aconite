@@ -18,6 +18,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "size_computation_expression" : return "3";
 		case "resize_kind"	: return "NSEW";
 		case "label_position"	: return "node";
+		case "labal_expression"	: return "aql:self.name";
 		case "hide_label_by_default"	: return "false";
 		case "arc_height"	: return "1";
 		case "arc_width"	: return "1";
@@ -30,7 +31,10 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "border_line_style"	: return "solid";
 		case "border_color"	: return "black";
 		case "border_size_computation_expression"	: return "aql:2";
-		case "semantic_candidates_expression"	: return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
+		case "semantic_candidates_expression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
+		return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
+		} else {return "";}
+		}
 		case "target_finder_expression" : {
 			if (self.eModelElement.isTypeOf(Source!EReference) or self.eModelElement.isTypeOf(Target!EReference)){
 				return "aql:self." + self.eModelElement.name + self.getVal("target").dot();

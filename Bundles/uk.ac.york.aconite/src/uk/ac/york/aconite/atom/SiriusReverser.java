@@ -23,7 +23,7 @@ public class SiriusReverser extends Job {
 	protected static final String PATH_TO_ETL = "/epsilon/odesign-ecore.etl";
 
 	public SiriusReverser(IFile ecore,IFile odesign) {
-		super("Generate Odesign from Ecore");
+		super("Generate Annotated Ecore from Odesign");
 		this.ecoreURI = SDScore.getPlatformURI(ecore);
 		this.odesignURI = SDScore.getPlatformURI(odesign);
 		this.outputURI = SDScore.getGenEcoreURI(ecore);
