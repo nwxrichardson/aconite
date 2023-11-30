@@ -1,4 +1,3 @@
-import "util.eol";
 import "config.eol";
 
 pre {
@@ -59,25 +58,8 @@ operation Source!EClass getDC() : String {
 	return self.ePackage.name + "::" + self.name;
 }
 	
-operation Source!EClass getRoute(target : Source!EClass) : String {
-	var seen = Set{self};
-	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
-	routes.keySet();
-	while ((not routes.containsKey(target))){
-	seen.addAll(routes.keySet());
-	var newRoutes = new Map;
-	for (i in routes.keySet()){
-		newRoutes.putAll(i.eAllReferences.aggregate(j|j.eType,routes.get(i) + "." + j.name ));
-	}
-	for (i in seen){
-		newRoutes.remove(i);
-	}
-	routes = newRoutes;
-	}
-	return routes.get(target);
-}
-
 operation Source!EClass getEndOf(expression : String) : Source!EClass{
+	if (expression = ""){return self;}
 	var splited = expression.split("\\.");
 	if (splited.size() = 0){return self;}
 	var rtn = self.eAllReferences.selectOne(j|j.name = splited.get(0)).eType;
@@ -127,6 +109,8 @@ rule DiagramFromAnnotation
 rule AbstractMappingFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!DiagramElementMapping {
+	
+	t.name = s.getVal("name");
 	t.createElements = s.getVal("create_elements").asBoolean;
 	t.synchronizationLock = s.getVal("synchronization_lock").asBoolean;
 	} 
@@ -158,11 +142,10 @@ rule NodeFromAnnotation
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
-	t.name = s.getVal("name",element.name);
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression","aql:self" + container.getRoute(element));
+	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression");
 	
 	}
 	
@@ -177,7 +160,6 @@ rule ContainerFromAnnotation
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
-	t.name = s.getVal("name",element.name);
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
@@ -220,7 +202,7 @@ rule RefEdgeFromAnnotation
 	//TODO Make this work the way one would expect
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	t.name = s.getVal("name");
+
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
 	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
@@ -240,12 +222,12 @@ rule EleEdgeFromAnnotation
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-	
-	t.name = s.getVal("name");
+
 	t.label = s.getVal("label", t.name);
 	
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
+	//TODO
 	t.sourceFinderExpression = s.getVal("source_finder_expression", "aql:self." +  s.getVal("source"));
 //	if (t.sourceMapping.isEmpty()){
 //	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}

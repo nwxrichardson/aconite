@@ -202,9 +202,9 @@ rule EdgeMapping2Annotation
 	}
 	
 post {
-var ann = Target.allContents.selectByType(Target!EAnnotation).select(i|i.source.startsWith("sirius")).flatten();
+var annotations = Target.allContents.selectByType(Target!EAnnotation).select(i|i.source.startsWith("sirius")).flatten();
 //Filter Out Duplicates
-for (i in ann){
+for (i in annotations){
 	i.details.remove("domain_class");
 	var toRemove = Set{};
 	for (j in i.details) {

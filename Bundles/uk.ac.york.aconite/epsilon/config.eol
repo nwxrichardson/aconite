@@ -1,3 +1,5 @@
+import "util.eol";
+
 //Needed?
 
 // Note: Whichever one needs to access its default should be put first in the java code
@@ -27,8 +29,10 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "border_size"	: return "2";
 		case "border_line_style"	: return "solid";
 		case "border_color"	: return "black";
+		case "border_size_computation_expression"	: return "aql:2";
+		case "semantic_candidates_expression"	: return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		case "target_finder_expression" : {
-			if (self.isTypeOf(Target!EReference)){
+			if (self.eModelElement.isTypeOf(Source!EReference) or self.eModelElement.isTypeOf(Target!EReference)){
 				return "aql:self." + self.eModelElement.name + self.getVal("target").dot();
 			} else {
 				return "aql:self" +  self.getVal("target").dot();
@@ -38,7 +42,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 	}
 }
 
-	operation String dot() : String {
+operation String dot() : String {
 	if (self != "") {return "."+self;}
 	return self;
 }

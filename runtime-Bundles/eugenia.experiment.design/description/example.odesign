@@ -10,7 +10,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="dependencies" label="dependencies" sourceMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@nodeMappings[name='TTask']" targetMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@edgeMappings[name='EEffort']" targetFinderExpression="aql:self.effort">
+        <edgeMappings name="dependencies" label="dependencies" sourceMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@nodeMappings[name='TTask']" targetMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@nodeMappings[name='TTask']" targetFinderExpression="aql:self.dependencies">
           <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">

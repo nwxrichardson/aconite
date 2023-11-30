@@ -39,7 +39,6 @@
       <eAnnotations source="sirius.edge">
         <details key="container" value="Tasks"/>
         <details key="source_node" value="TTask"/>
-        <details key="target" value="effort"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"

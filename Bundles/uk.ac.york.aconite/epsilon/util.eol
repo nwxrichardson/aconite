@@ -1,3 +1,22 @@
 operation String getColor() : Target!SystemColor  {
 	return colorPalette.selectOne(i|i.name = self);
 }
+
+//Warning Any
+operation Any getRoute(target : Any) : String {
+	var seen = Set{self};
+	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
+	routes.keySet();
+	while ((not routes.containsKey(target))){
+	seen.addAll(routes.keySet());
+	var newRoutes = new Map;
+	for (i in routes.keySet()){
+		newRoutes.putAll(i.eAllReferences.aggregate(j|j.eType,routes.get(i) + "." + j.name ));
+	}
+	for (i in seen){
+		newRoutes.remove(i);
+	}
+	routes = newRoutes;
+	}
+	return routes.get(target);
+}

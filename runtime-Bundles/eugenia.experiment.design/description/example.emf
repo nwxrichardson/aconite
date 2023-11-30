@@ -19,7 +19,7 @@ class Task {
 	attr int duration;
 	val Effort[*]#task effort;
 
-	@sirius.edge(container="Tasks", source_node="TTask", target="effort")
+	@sirius.edge(container="Tasks", source_node="TTask")
 	ref Task[*] dependencies;
 	val Deliverable[*] deliverables;
 }
