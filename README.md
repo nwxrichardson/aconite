@@ -1,4 +1,4 @@
-# Eugenia-Sirius
+# Aconite
 ## Introduction
 This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/) targeting instead the Sirius Model Editor. It allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius Editor for models that conform to the metamodel. It is done in a way that both allows access to all of the feature but the defaults are set in such a way to be a gental introduction to Sirius and aql. 
 
