@@ -1,0 +1,47 @@
+@sirius
+@namespace(uri="psl", prefix="")
+package psl;
+
+@sirius.diagram(name="Tasks")
+@sirius.diagram(name="Effort")
+class Project {
+	attr String title;
+	attr String description;
+	val Task[*] tasks;
+	val Person[*] people;
+}
+
+@sirius.node(name="TTask", container="Tasks")
+@sirius.node.description(labelExpression="aql:self.title", color="light_blue", node="TTask")
+@sirius.node(name="ETask", container="Effort")
+@sirius.node.description(labelExpression="aql:self.title", color="gray", node="ETask")
+class Task {
+	attr String title;
+	attr int start;
+	attr int duration;
+	val Effort[*]#task effort;
+
+	@sirius.edge(sourceNode="TTask", targetNode="ETask, TTask", container="Tasks")
+	ref Task[*] dependencies;
+	val Deliverable[*] deliverables;
+}
+
+@sirius.node(container="Effort")
+@sirius.node.description(labelExpression="aql:self.name", node="Person")
+class Person {
+	attr String name;
+}
+
+@sirius.edge(targetFinderExpression="aql:self.task", semanticCandidatesExpression="", name="EEffort", sourceFinderExpression="aql:self.person", targetNode="ETask, TTask", container="Effort")
+class Effort {
+	ref Task[1]#effort task;
+	ref Person person;
+	attr int percentage = 100;
+}
+
+class Deliverable {
+	attr String title;
+	attr int due;
+	ref Person lead;
+}
+

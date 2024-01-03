@@ -20,13 +20,13 @@
     <eAnnotations source="sirius.node">
       <details key="name" value="ETask"/>
       <details key="container" value="Effort"/>
-      <details key="label_expression" value="title"/>
-      <details key="color" value="light_blue"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="&#x9;"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="TTask"/>
       <details key="container" value="Tasks"/>
-      <details key="label_expression" value="title"/>
+      <details key="labelExpression" value="title"/>
       <details key="color" value="light_blue"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,7 +38,7 @@
         eType="#//Task">
       <eAnnotations source="sirius.edge">
         <details key="container" value="Tasks"/>
-        <details key="source_node" value="TTask"/>
+        <details key="sourceNode" value="TTask"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"
@@ -55,7 +55,7 @@
     <eAnnotations source="sirius.edge">
       <details key="name" value="EEffort"/>
       <details key="container" value="Effort"/>
-      <details key="label_expression" value="percentage"/>
+      <details key="labelExpression" value="percentage"/>
       <details key="source" value="person"/>
       <details key="target" value="task"/>
     </eAnnotations>

@@ -11,15 +11,15 @@ class Project {
 	val Person[*] people;
 }
 
-@sirius.node(name="ETask", container="Effort", label_expression="title", color="	")
-@sirius.node(name="TTask", container="Tasks", label_expression="title", color="light_blue")
+@sirius.node(name="ETask", container="Effort", labelExpression="title", color="	")
+@sirius.node(name="TTask", container="Tasks", labelExpression="title", color="light_blue")
 class Task {
 	attr String title;
 	attr int start;
 	attr int duration;
 	val Effort[*]#task effort;
 
-	@sirius.edge(container="Tasks", source_node="TTask")
+	@sirius.edge(container="Tasks", sourceNode="TTask")
 	ref Task[*] dependencies;
 	val Deliverable[*] deliverables;
 }
@@ -29,7 +29,7 @@ class Person {
 	attr String name;
 }
 
-@sirius.edge(name="EEffort", container="Effort", label_expression="percentage", source="person", target="task")
+@sirius.edge(name="EEffort", container="Effort", labelExpression="percentage", source="person", target="task")
 class Effort {
 	ref Task[1]#effort task;
 	ref Person person;

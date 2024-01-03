@@ -111,8 +111,8 @@ rule AbstractMappingFromAnnotation
 	to 			t : Target!DiagramElementMapping {
 	
 	t.name = s.getVal("name");
-	t.createElements = s.getVal("create_elements").asBoolean;
-	t.synchronizationLock = s.getVal("synchronization_lock").asBoolean;
+	t.createElements = s.getVal("createElements").asBoolean;
+	t.synchronizationLock = s.getVal("synchronizationLock").asBoolean;
 	} 
 
 @abstract
@@ -145,7 +145,7 @@ rule NodeFromAnnotation
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression");
+	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression");
 	
 	}
 	
@@ -163,7 +163,7 @@ rule ContainerFromAnnotation
 	t.label = s.getVal("label", t.name);
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = s.getVal("semantic_candidates_expression","aql:self" + container.getRoute(element));
+	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression","aql:self" + container.getRoute(element));
 	
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
@@ -179,12 +179,12 @@ rule AbsEdgeFromAnnotation
 	
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
-	if (not (s.getVals("source_node") = Sequence{""})){
-	t.sourceMapping = annotations.select(i|s.getVals("source_node").exists(j|j = i.getVal("name"))).equivalent();}
-	if (not (s.getVals("target_node")= Sequence{""})){
-	t.targetMapping = annotations.select(i|s.getVals("target_node").exists(j|j = i.getVal("name"))).equivalent();}	
+	if (not (s.getVals("sourceNode") = Sequence{""})){
+	t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name"))).equivalent();}
+	if (not (s.getVals("targetNode")= Sequence{""})){
+	t.targetMapping = annotations.select(i|s.getVals("targetNode").exists(j|j = i.getVal("name"))).equivalent();}	
 	
-	var label = s.getVal("label_expression");
+	var label = s.getVal("labelExpression");
 	if (label != ""){
 	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
 	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
@@ -207,7 +207,7 @@ rule RefEdgeFromAnnotation
 	if (t.sourceMapping.isEmpty()){
 	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
 
-	t.targetFinderExpression = s.getVal("target_finder_expression");
+	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target"))).equivalent();}
 	}
@@ -228,11 +228,11 @@ rule EleEdgeFromAnnotation
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
 	//TODO
-	t.sourceFinderExpression = s.getVal("source_finder_expression", "aql:self." +  s.getVal("source"));
+	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 //	if (t.sourceMapping.isEmpty()){
 //	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
 
-	t.targetFinderExpression = s.getVal("target_finder_expression");
+	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target"))).equivalent();}
 	
@@ -249,9 +249,9 @@ rule EleEdgeFromAnnotation
 rule BorderedStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!BorderedStyleDescription{
-	t.borderColor = s.getVal("border_color").getColor();
-	t.borderLineStyle = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("border_line_style"));
-	t.borderSizeComputationExpression = "aql:" + s.getVal("border_size");
+	t.borderColor = s.getVal("borderColor").getColor();
+	t.borderLineStyle = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("borderLineStyle"));
+	t.borderSizeComputationExpression = "aql:" + s.getVal("borderSize");
 	}
 	
 	//TODO Do a readability function that 
@@ -259,13 +259,13 @@ rule BorderedStyleFromAnnotation
 rule LabelStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!LabelStyleDescription{
-	t.iconPath = s.getVal("icon_path");
-	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("label_alignment"));
-	t.labelColor = s.getVal("label_color").getColor();
-	t.labelExpression = "aql:self." + s.getVal("label_expression");
-	t.labelFormat = Target!FontFormat#bold.VALUES.select(i|s.getVals("border_line_style").exists(j|j = i.literal));
-	t.labelSize = s.getVal("label_size").asInteger();
-	t.showIcon = s.getVal("show_icon").asBoolean();
+	t.iconPath = s.getVal("iconPath");
+	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("labelAlignment"));
+	t.labelColor = s.getVal("labelColor").getColor();
+	t.labelExpression = "aql:self." + s.getVal("labelExpression");
+	t.labelFormat = Target!FontFormat#bold.VALUES.select(i|s.getVals("borderLineStyle").exists(j|j = i.literal));
+	t.labelSize = s.getVal("labelSize").asInteger();
+	t.showIcon = s.getVal("showIcon").asBoolean();
 	}
 
 @abstract
@@ -279,8 +279,8 @@ rule TooltipFromAnnotation
 rule RoundedCornerFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!TooltipStyleDescription{
-	t.arcHeight = s.getVal("arc_height").asInteger();
-	t.arcWidth = s.getVal("arc_width").asInteger();
+	t.arcHeight = s.getVal("arcHeight").asInteger();
+	t.arcWidth = s.getVal("arcWidth").asInteger();
 	}
 
 /*
@@ -296,12 +296,12 @@ rule NodeStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
 	guard : s.source = "sirius.node.description"
-	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbidden_sides").exists(j|j = i.literal));
- 	t.hideLabelByDefault = s.getVal("hide_label_by_default").asBoolean();
- 	t.iconPath = s.getVal("icon_path");
- 	t.labelPosition = Target!LabelPosition#node.VALUES.selectOne(i|i.literal = s.getVal("label_position"));
- 	t.resizeKind = Target!ResizeKind#NSEW.VALUES.selectOne(i|i.literal = s.getVal("resize_kind"));
-	t.sizeComputationExpression = s.getVal("size_computation_expression");
+	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
+ 	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
+ 	t.iconPath = s.getVal("iconPath");
+ 	t.labelPosition = Target!LabelPosition#node.VALUES.selectOne(i|i.literal = s.getVal("labelPosition"));
+ 	t.resizeKind = Target!ResizeKind#NSEW.VALUES.selectOne(i|i.literal = s.getVal("resizeKind"));
+	t.sizeComputationExpression = s.getVal("sizeComputationExpression");
 	}
 	
 @abstract
@@ -311,12 +311,12 @@ rule ContainerStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation , RoundedCornerFromAnnotation
 	{
 	guard : s.source = "sirius.container.description"
-	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbidden_sides").exists(j|j = i.literal));
- 	t.hideLabelByDefault = s.getVal("hide_label_by_default","false").asBoolean();
- 	t.iconPath = s.getVal("icon_path");
-	t.heightComputationExpression = s.getVal("height_computation_expression");
-	t.widthComputationExpression = s.getVal("width_computation_expression");
-	t.roundedCorner = s.getVal("rounded_corner").asBoolean();
+	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
+ 	t.hideLabelByDefault = s.getVal("hideLabelByDefault","false").asBoolean();
+ 	t.iconPath = s.getVal("iconPath");
+	t.heightComputationExpression = s.getVal("heightComputationExpression");
+	t.widthComputationExpression = s.getVal("widthComputationExpression");
+	t.roundedCorner = s.getVal("roundedCorner").asBoolean();
 	}
 	
 /*
@@ -332,9 +332,9 @@ rule FlatContainerFromAnnotation
 	extends ContainerStyleFromAnnotation{
 	guard : s.getVal("shape") = "flat" or s.getVal("shape") = ""
 	
-	t.backgroundColor = s.getVal("background_color",s.getVal("color")).getColor();
-	t.foregroundColor = s.getVal("foreground_color",s.getVal("color")).getColor();
-	t.backgroundStyle = Target!BackgroundStyle#Liquid.VALUES.selectOne(i|i.literal = s.getVal("background_style","GradientLeftToRight"));
+	t.backgroundColor = s.getVal("backgroundColor",s.getVal("color")).getColor();
+	t.foregroundColor = s.getVal("foregroundColor",s.getVal("color")).getColor();
+	t.backgroundStyle = Target!BackgroundStyle#Liquid.VALUES.selectOne(i|i.literal = s.getVal("backgroundStyle","GradientLeftToRight"));
 	
 	}
 	
@@ -345,7 +345,7 @@ rule ShapeContainerFromAnnotation
 	extends ContainerStyleFromAnnotation{
 	guard : s.getVal("shape") = "shape"
 	
-	t.backgroundColor = s.getVal("color", "light_yellow").getColor();
+	t.backgroundColor = s.getVal("color", "lightYellow").getColor();
 	//Pointless
 	t.shape = Target!ContainerShape#parallelogram.VALUES.selectOne(i|i.literal = s.getVal("shape","parallelogram"));
 	
@@ -372,7 +372,7 @@ rule DotNodeFromAnnotation
 	guard : s.getVal("shape") = "dot"
 	
 	t.backgroundColor = s.getVal("color").getColor();
-	t.strokeSizeComputationExpression = s.getVal("stroke_size_computation_expression","2").asInteger();
+	t.strokeSizeComputationExpression = s.getVal("strokeSizeComputationExpression","2").asInteger();
 	
 	}
 	
@@ -384,8 +384,8 @@ rule EllipseNodeFromAnnotation
 	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
 	t.color = s.getVal("color").getColor();
-	t.horizontalDiameterComputationExpression = s.getVal("horizontal_diameter_computation_expression","2").asInteger();
-	t.verticalDiameterComputationExpression = s.getVal("vertical_diameter_computation_expression","2").asInteger();
+	t.horizontalDiameterComputationExpression = s.getVal("horizontalDiameterComputationExpression","2").asInteger();
+	t.verticalDiameterComputationExpression = s.getVal("verticalDiameterComputationExpression","2").asInteger();
 	}
 	
 //@lazy
@@ -406,6 +406,6 @@ rule LozengeNodeFromAnnotation
 	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
 	t.color = s.getVal("color").getColor();
-	t.heightComputationExpression = s.getVal("height_computation_expression","2").asInteger();
-	t.widthComputationExpression = s.getVal("width_computation_expression","2").asInteger();
+	t.heightComputationExpression = s.getVal("heightComputationExpression","2").asInteger();
+	t.widthComputationExpression = s.getVal("widthComputationExpression","2").asInteger();
 	}

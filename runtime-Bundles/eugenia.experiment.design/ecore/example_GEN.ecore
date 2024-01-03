@@ -19,22 +19,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="Task">
     <eAnnotations source="sirius.node">
       <details key="name" value="TTask"/>
-      <details key="label" value="TTask"/>
       <details key="container" value="Tasks"/>
     </eAnnotations>
     <eAnnotations source="sirius.node.description">
-      <details key="label_expression" value="aql:self.title"/>
+      <details key="labelExpression" value="aql:self.title"/>
       <details key="color" value="light_blue"/>
       <details key="node" value="TTask"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="ETask"/>
-      <details key="label" value="ETask"/>
       <details key="container" value="Effort"/>
     </eAnnotations>
     <eAnnotations source="sirius.node.description">
-      <details key="label_expression" value="aql:self.title"/>
-      <details key="color" value="light_blue"/>
+      <details key="labelExpression" value="aql:self.title"/>
+      <details key="color" value="gray"/>
       <details key="node" value="ETask"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -45,9 +43,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//Task">
       <eAnnotations source="sirius.edge">
-        <details key="label" value="dependencies"/>
-        <details key="source_node" value="TTask"/>
-        <details key="target_node" value="ETask, TTask"/>
+        <details key="sourceNode" value="TTask"/>
+        <details key="targetNode" value="ETask, TTask"/>
         <details key="container" value="Tasks"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -56,23 +53,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
     <eAnnotations source="sirius.node">
-      <details key="label" value="Person"/>
       <details key="container" value="Effort"/>
     </eAnnotations>
     <eAnnotations source="sirius.node.description">
-      <details key="label_expression" value="aql:self.name"/>
+      <details key="labelExpression" value="aql:self.name"/>
       <details key="node" value="Person"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Effort">
     <eAnnotations source="sirius.edge">
-      <details key="label" value="EEffort"/>
+      <details key="targetFinderExpression" value="aql:self.task"/>
+      <details key="semanticCandidatesExpression" value=""/>
       <details key="name" value="EEffort"/>
-      <details key="source_finder_expression" value="aql:self.person"/>
-      <details key="semantic_candidates_expression" value=""/>
-      <details key="target_finder_expression" value="aql:self.task"/>
-      <details key="target_node" value="ETask, TTask"/>
+      <details key="sourceFinderExpression" value="aql:self.person"/>
+      <details key="targetNode" value="ETask, TTask"/>
       <details key="container" value="Effort"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="task" lowerBound="1" eType="#//Task"

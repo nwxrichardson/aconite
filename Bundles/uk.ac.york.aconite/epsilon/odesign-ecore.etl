@@ -4,17 +4,6 @@ pre {
 var classes = Source.allContents.selectByType(Source!EClass);
 }
 
-operation String toEugenia() : String{
-var rtn = new String;
-for (i in self.split("")){
-	if (i.matches("[A-Z]")){
-		rtn = rtn.concat("_");
-	}
-	rtn = rtn.concat(i.ftlc());
-}
-return rtn;
-}
-
 operation Any toValue() : String{
 	if (self.isKindOf(Collection)){
 	return self.concat(", ");
@@ -42,7 +31,7 @@ operation Source!EAnnotation getVal(key : String, def : String) : String{
 
 operation Any getDetails() : Map{
 	var tmp = self.eClass.eAllAttributes;
-	return tmp.aggregate(i|i.name.toEugenia(),self.eGet(i).toValue());
+	return tmp.aggregate(i|i.name,self.eGet(i).toValue());
 }
 
 rule Package2Package
@@ -187,17 +176,17 @@ rule EdgeMapping2Annotation
 	to t : Target!EAnnotation{
 	t.source = "sirius.edge";
 	t.details.putAll(s.getDetails());
-	t.details.remove("use_domain_element");
-	//Alter this to swap to target from target_finder_expression
+	t.details.remove("useDomainElement");
+	//Alter this to swap to target from targetFinderExpression
 	if (s.useDomainElement){
 		var clazz = s.domainClass.split("::");
 		t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
-		t.details.put("target_node", s.targetMapping.equivalent().collect(i|i.getVal("name")).asSet().toValue());
+		t.details.put("targetNode", s.targetMapping.equivalent().collect(i|i.getVal("name")).asSet().toValue());
 	} else {
 		var sourceNodes = s.sourceMapping.equivalent().asSet();
 		t.eModelElement = sourceNodes.eModelElement.first().eAllReferences.selectOne(i|i.name = s.targetFinderExpression.split("\\.").get(1));		
-		t.details.put("source_node", sourceNodes.collect(i|i.getVal("name")).toValue());
-		t.details.put("target_node", s.targetMapping.equivalent().collect(i|i.getVal("name")).asSet().toValue());
+		t.details.put("sourceNode", sourceNodes.collect(i|i.getVal("name")).toValue());
+		t.details.put("targetNode", s.targetMapping.equivalent().collect(i|i.getVal("name")).asSet().toValue());
 	}
 	}
 	
@@ -205,7 +194,7 @@ post {
 var annotations = Target.allContents.selectByType(Target!EAnnotation).select(i|i.source.startsWith("sirius")).flatten();
 //Filter Out Duplicates
 for (i in annotations){
-	i.details.remove("domain_class");
+	i.details.remove("domainClass");
 	var toRemove = Set{};
 	for (j in i.details) {
 		if (j.getValue = i.getDefault(j.getKey())){
