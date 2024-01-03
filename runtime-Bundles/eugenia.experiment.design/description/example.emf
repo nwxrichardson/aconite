@@ -11,7 +11,7 @@ class Project {
 	val Person[*] people;
 }
 
-@sirius.node(name="ETask", container="Effort", label_expression="title", color="light_blue")
+@sirius.node(name="ETask", container="Effort", label_expression="title", color="	")
 @sirius.node(name="TTask", container="Tasks", label_expression="title", color="light_blue")
 class Task {
 	attr String title;
@@ -24,7 +24,7 @@ class Task {
 	val Deliverable[*] deliverables;
 }
 
-@sirius.node(border_color="dark_green", name="Person", container="Effort")
+@sirius.node(name="Person", container="Effort")
 class Person {
 	attr String name;
 }

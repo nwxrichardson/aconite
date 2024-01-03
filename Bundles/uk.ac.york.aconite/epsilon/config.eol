@@ -23,6 +23,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "arc_height"	: return "1";
 		case "arc_width"	: return "1";
 		case "show_icon"	: return "false";
+		case "label"	: return self.getVal("name");
 		case "label_size"	: return "12";
 		case "label_color"	: return "black";
 		case "label_expression"	: return "name";

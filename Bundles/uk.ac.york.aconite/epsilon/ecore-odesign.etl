@@ -223,7 +223,7 @@ rule EleEdgeFromAnnotation
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 
-	t.label = s.getVal("label", t.name);
+	t.label = s.getVal("label");
 	
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
