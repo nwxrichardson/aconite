@@ -8,7 +8,7 @@ package psl;
 class Project {
 	attr String title;
 	attr String description;
-//	@sirius.tool.creation(name = "Test", container = "TTask")
+	@sirius.tool.creation(name = "Test", container = "TTask")
 	val Task[*] tasks;
 	val Person[*] people;
 }

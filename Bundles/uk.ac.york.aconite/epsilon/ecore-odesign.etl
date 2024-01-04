@@ -22,10 +22,10 @@ pre {
 	
 }
 
-//operation Source!EAnnotation getDiagram() : Source!EAnnotation{
-//	if (self.Source = "sirius.diagram") {return self;}
-//	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
-//}  
+operation Source!EAnnotation getDiagram() : Source!EAnnotation{
+	if (self.Source = "sirius.diagram") {return self;}
+	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
+}  
 
 operation Source!EAnnotation getVal(key : String) : String{
 
@@ -109,10 +109,13 @@ rule DiagramFromAnnotation
 	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
 	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
-//	var tools = annotations.select(i|i.Source = "sirius.tool.creation" and i.getDiagram().getVal("name") = i.getVal("name"));
-//	tools.println();
-//	var toolBox = new Target!ToolSection;
-//	defaultLayer.toolSection = toolBox;
+	var tools = annotations.select(i|i.Source = "sirius.tool.creation" and i.getDiagram().getVal("name") = s.getVal("name"));
+	if (tools.notEmpty()){
+		var toolBox = new Target!ToolSection;
+		toolBox.name = "Generated Adding Tools";
+		defaultLayer.toolSections.add(toolBox);
+		toolBox.ownedTools ::= tools;
+	}
 	}
 	
 @abstract 
@@ -255,40 +258,40 @@ rule EleEdgeFromAnnotation
  *----------------------------------------------------------------------------------
  */	
 
-//@abstract
-//rule CreationToolFromAnnotation
-//	transform s : Source!EAnnotation 
-//	to t : Target!MappingBasedToolDescription {
-//	guard : s.Source = "sirius.tool.creation" and not s.getVal("abstract").asBoolean()
-//	t.forceRefresh = true;
-//	t.name = "Add to " + s.eModelElement.name.ftuc();
-//	}
-//
-//@lazy
-//rule ContainerCreationToolFromAnnotation
-//	transform s : Source!EAnnotation
-//	to t : Target!ContainerCreationDescription 
-//	extends CreationToolFromAnnotation {
-//	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.container"
-//	t.containerMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
-//	var changeContext = new Target!ChangeContext;
-//	t.initialOperation = new Target!InitialNodeCreationOperation;
-//	changeContext.browseExpression = "var:container";
-//	t.initialOperation.firstModelOperations = changeContext;
-//	var create = new Target!CreateInstance;
-//	create.referenceName = s.eModelElement.name;
-//	create.typeName = s.eModelElement.eReferenceType.getDC();
-//	changeContext.subModelOperations.add(create);
-//	}
-//	
-//@lazy
-//rule NodeCreationToolFromAnnotation
-//	transform s : Source!EAnnotation
-//	to t : Target!NodeCreationDescription 
-//	extends CreationToolFromAnnotation {
-//	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.node"
-//	t.nodeMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
-//	}
+@abstract
+rule CreationToolFromAnnotation
+	transform s : Source!EAnnotation 
+	to t : Target!MappingBasedToolDescription {
+	guard : s.Source = "sirius.tool.creation" and not s.getVal("abstract").asBoolean()
+	t.forceRefresh = true;
+	t.name = "Add to " + s.eModelElement.name.ftuc();
+	}
+
+@lazy
+rule ContainerCreationToolFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!ContainerCreationDescription 
+	extends CreationToolFromAnnotation {
+	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.container"
+	t.containerMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
+	var changeContext = new Target!ChangeContext;
+	t.initialOperation = new Target!InitialNodeCreationOperation;
+	changeContext.browseExpression = "var:container";
+	t.initialOperation.firstModelOperations = changeContext;
+	var create = new Target!CreateInstance;
+	create.referenceName = s.eModelElement.name;
+	create.typeName = s.eModelElement.eReferenceType.getDC();
+	changeContext.subModelOperations.add(create);
+	}
+	
+@lazy
+rule NodeCreationToolFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!NodeCreationDescription 
+	extends CreationToolFromAnnotation {
+	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.node"
+	t.nodeMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
+	}
 
 /*
  *----------------------------------------------------------------------------------
