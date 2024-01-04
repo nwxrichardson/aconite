@@ -9,6 +9,9 @@
     <eAnnotations source="sirius.diagram">
       <details key="name" value="Effort"/>
     </eAnnotations>
+    <eAnnotations source="sirius.diagram">
+      <details key="name" value="Project"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
@@ -21,11 +24,16 @@
       <details key="name" value="ETask"/>
       <details key="container" value="Effort"/>
       <details key="labelExpression" value="title"/>
-      <details key="color" value="&#x9;"/>
     </eAnnotations>
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="sirius.container">
       <details key="name" value="TTask"/>
       <details key="container" value="Tasks"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_blue"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask"/>
+      <details key="container" value="Project"/>
       <details key="labelExpression" value="title"/>
       <details key="color" value="light_blue"/>
     </eAnnotations>
@@ -66,6 +74,12 @@
         defaultValueLiteral="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deliverable">
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverable"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="due" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lead" eType="#//Person"/>

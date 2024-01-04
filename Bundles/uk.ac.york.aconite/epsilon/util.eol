@@ -4,6 +4,7 @@ operation String getColor() : Target!SystemColor  {
 
 //Warning Any
 operation Any getRoute(target : Any) : String {
+	if (self = target) {return "";}
 	var seen = Set{self};
 	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
 	routes.keySet();

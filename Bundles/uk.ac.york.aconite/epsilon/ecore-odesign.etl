@@ -22,6 +22,11 @@ pre {
 	
 }
 
+//operation Source!EAnnotation getDiagram() : Source!EAnnotation{
+//	if (self.Source = "sirius.diagram") {return self;}
+//	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
+//}  
+
 operation Source!EAnnotation getVal(key : String) : String{
 
 	var tmp = self.details.selectOne(i|i.key = key);
@@ -98,11 +103,16 @@ rule DiagramFromAnnotation
 	t.domainClass = element.getDC();
 	t.name = s.getVal("name");
 	var defaultLayer = new Target!Layer;
+
 	defaultLayer.name = "Default";
 	t.defaultLayer = defaultLayer;
 	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
 	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
+//	var tools = annotations.select(i|i.Source = "sirius.tool.creation" and i.getDiagram().getVal("name") = i.getVal("name"));
+//	tools.println();
+//	var toolBox = new Target!ToolSection;
+//	defaultLayer.toolSection = toolBox;
 	}
 	
 @abstract 
@@ -137,7 +147,7 @@ rule NodeFromAnnotation
 	to 			t : Target!NodeMapping 
 	extends AbstractNodeFromAnnotation{
 	
-	guard : s.Source = "sirius.node"
+	guard : s.Source.startsWith("sirius.node") and not s.Source.endsWith("description")
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
@@ -241,6 +251,70 @@ rule EleEdgeFromAnnotation
 
 /*
  *----------------------------------------------------------------------------------
+ *      SHORTCUT TOOLS
+ *----------------------------------------------------------------------------------
+ */	
+
+//@abstract
+//rule CreationToolFromAnnotation
+//	transform s : Source!EAnnotation 
+//	to t : Target!MappingBasedToolDescription {
+//	guard : s.Source = "sirius.tool.creation" and not s.getVal("abstract").asBoolean()
+//	t.forceRefresh = true;
+//	t.name = "Add to " + s.eModelElement.name.ftuc();
+//	}
+//
+//@lazy
+//rule ContainerCreationToolFromAnnotation
+//	transform s : Source!EAnnotation
+//	to t : Target!ContainerCreationDescription 
+//	extends CreationToolFromAnnotation {
+//	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.container"
+//	t.containerMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
+//	var changeContext = new Target!ChangeContext;
+//	t.initialOperation = new Target!InitialNodeCreationOperation;
+//	changeContext.browseExpression = "var:container";
+//	t.initialOperation.firstModelOperations = changeContext;
+//	var create = new Target!CreateInstance;
+//	create.referenceName = s.eModelElement.name;
+//	create.typeName = s.eModelElement.eReferenceType.getDC();
+//	changeContext.subModelOperations.add(create);
+//	}
+//	
+//@lazy
+//rule NodeCreationToolFromAnnotation
+//	transform s : Source!EAnnotation
+//	to t : Target!NodeCreationDescription 
+//	extends CreationToolFromAnnotation {
+//	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.node"
+//	t.nodeMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
+//	}
+
+/*
+ *----------------------------------------------------------------------------------
+ *      SIRIUS IMPORTS
+ *----------------------------------------------------------------------------------
+ */	
+
+@abstract
+rule AbstractMappingImportFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!AbstractMappingImport{
+	guard : s.Source.endsWith("import")
+	t.hideSubMappings = s.getVal("hideSubMappings");
+	t.inheritsAncestorFilters = s.getVal("inheritsAncestorFilters");
+	}
+
+@lazy
+rule ImportNodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!NodeMappingImport
+	extends AbstractNodeFromAnnotation, AbstractMappingImportFromAnnotation{
+	importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.node").equivalent();
+	}
+
+/*
+ *----------------------------------------------------------------------------------
  *      ABSTRACT META SIRIUS STYLES 
  *----------------------------------------------------------------------------------
  */	
@@ -311,7 +385,6 @@ rule ContainerStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation , RoundedCornerFromAnnotation
 	{
 	guard : s.source = "sirius.container.description"
-	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault","false").asBoolean();
  	t.iconPath = s.getVal("iconPath");
 	t.heightComputationExpression = s.getVal("heightComputationExpression");

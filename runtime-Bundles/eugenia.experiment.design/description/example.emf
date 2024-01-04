@@ -4,21 +4,24 @@ package psl;
 
 @sirius.diagram(name="Tasks")
 @sirius.diagram(name="Effort")
+@sirius.diagram(name="Project")
 class Project {
 	attr String title;
 	attr String description;
+//	@sirius.tool.creation(name = "Test", container = "TTask")
 	val Task[*] tasks;
 	val Person[*] people;
 }
 
-@sirius.node(name="ETask", container="Effort", labelExpression="title", color="	")
-@sirius.node(name="TTask", container="Tasks", labelExpression="title", color="light_blue")
+@sirius.node(name="ETask", container="Effort", labelExpression="title")
+@sirius.container(name="TTask", container="Tasks", labelExpression="title", color="light_blue")
+@sirius.container(name="PTask", container="Project", labelExpression="title", color="light_blue")
 class Task {
 	attr String title;
 	attr int start;
 	attr int duration;
 	val Effort[*]#task effort;
-
+//	@sirius.tool.creation(name = "", node = "TTask")
 	@sirius.edge(container="Tasks", sourceNode="TTask")
 	ref Task[*] dependencies;
 	val Deliverable[*] deliverables;
@@ -36,7 +39,8 @@ class Effort {
 	attr int percentage = 100;
 }
 
-class Deliverable {
+@sirius.container(name="Deliverable", container="PTask", labelExpression="title", color="light_green")
+class Deliverable {	
 	attr String title;
 	attr int due;
 	ref Person lead;

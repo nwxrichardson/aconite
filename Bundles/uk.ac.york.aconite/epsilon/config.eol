@@ -31,7 +31,11 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "borderSize"	: return "2";
 		case "borderLineStyle"	: return "solid";
 		case "borderColor"	: return "black";
+		case "hideSubMappings"	: return "true";
+		case "inheritsAncestorFilters"	: return "true";
 		case "borderSizeComputationExpression"	: return "aql:2";
+		case "importedMapping"	: return self.getVal("import");
+		case "abstract"	: return "false";
 		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}
