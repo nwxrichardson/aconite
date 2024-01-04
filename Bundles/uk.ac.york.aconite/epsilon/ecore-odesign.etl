@@ -291,6 +291,14 @@ rule NodeCreationToolFromAnnotation
 	extends CreationToolFromAnnotation {
 	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.node"
 	t.nodeMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
+	var changeContext = new Target!ChangeContext;
+	t.initialOperation = new Target!InitialNodeCreationOperation;
+	changeContext.browseExpression = "var:container";
+	t.initialOperation.firstModelOperations = changeContext;
+	var create = new Target!CreateInstance;
+	create.referenceName = s.eModelElement.name;
+	create.typeName = s.eModelElement.eReferenceType.getDC();
+	changeContext.subModelOperations.add(create);
 	}
 
 /*
