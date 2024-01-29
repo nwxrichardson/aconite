@@ -242,8 +242,8 @@ rule EleEdgeFromAnnotation
 	t.domainClass = element.getDC();
 	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
-//	if (t.sourceMapping.isEmpty()){
-//	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
+	if (t.sourceMapping.isEmpty()){
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
