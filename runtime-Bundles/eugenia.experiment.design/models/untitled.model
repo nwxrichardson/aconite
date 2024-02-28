@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="psl" xmi:id="_HdZqcIeHEe6O95Bo1IsR7w" title="Default">
-  <tasks xmi:id="_IL9ZkIeHEe6O95Bo1IsR7w" title="Implementation" dependencies="_If_I0IeHEe6O95Bo1IsR7w">
-    <effort xmi:id="_ZeKhMIeHEe6O95Bo1IsR7w" person="_VxrBUIeHEe6O95Bo1IsR7w" percentage="50"/>
-    <effort xmi:id="_axDscIeHEe6O95Bo1IsR7w" person="_Xk1oEIeHEe6O95Bo1IsR7w" percentage="50"/>
-    <deliverables xmi:id="_wYNn0IeXEe6GGpx91FWTvg" title="Hello"/>
+  <tasks title="Implementation" dependencies="_If_I0IeHEe6O95Bo1IsR7w">
+    <effort person="_VxrBUIeHEe6O95Bo1IsR7w" percentage="50"/>
+    <effort person="_Xk1oEIeHEe6O95Bo1IsR7w" percentage="50"/>
+    <deliverables title="Hello"/>
   </tasks>
   <tasks xmi:id="_If_I0IeHEe6O95Bo1IsR7w" title="Design" dependencies="_MvqOQIeHEe6O95Bo1IsR7w">
     <effort xmi:id="_XKKeQIeHEe6O95Bo1IsR7w" person="_Xk1oEIeHEe6O95Bo1IsR7w"/>

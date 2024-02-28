@@ -224,7 +224,7 @@ rule RefEdgeFromAnnotation
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target"))).equivalent();}
+	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
 	}
 	
 @lazy
@@ -245,11 +245,11 @@ rule EleEdgeFromAnnotation
 	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source"))).equivalent();}
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source")) and i.Source != "sirius.diagram").equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target"))).equivalent();}
+	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
 	
 
 	}
@@ -259,6 +259,7 @@ rule EleEdgeFromAnnotation
  *      SHORTCUT TOOLS
  *----------------------------------------------------------------------------------
  */	
+
 
 @abstract
 rule ReferenceCreationToolFromAnnotation
@@ -275,10 +276,29 @@ rule ContainerReferenceCreationToolFromAnnotation
 	to t : Target!ToolDescription 
 	extends ReferenceCreationToolFromAnnotation {
 	guard : s.getVal("container") != ""
-	t.precondition = "aql:elementView.actualMapping.name = 'TTask'";
+	
+	var p = annotations.selectOne(i|i.getVal("name") = s.getVal("container"));
+	t.precondition = "aql:elementView.actualMapping.name = '" + annotations.selectOne(i|i.getVal("name") = p.getVal("container")).equivalent().name + "'";
 	var changeContext = new Target!ChangeContext;
 	t.initialOperation = new Target!InitialOperation;
 	t.initialOperation.firstModelOperations = changeContext;
+	if (s.getVal("proxyType") =  "Container"){changeContext.browseExpression = "aql:element.eContainer()";}
+	if (s.getVal("proxyType") =  "Diagram"){changeContext.browseExpression = "aql:diagram.target";}
+	if (s.getVal("proxyType") =  "Personal"){changeContext.browseExpression = s.getVal("proxyStatement");}
+	
+	var create = new Target!CreateInstance;
+	create.referenceName = p.eModelElement.name;
+	create.typeName = p.eModelElement.eReferenceType.getDC();
+	changeContext.subModelOperations.add(create);
+	
+	var refContext = new Target!ChangeContext;
+	refContext.browseExpression = "aql:element";
+	changeContext.subModelOperations.add(refContext);
+	//TODO Check that this works if it is only able to hold one reference
+	var setRef = new Target!SetValue;
+	setRef.featureName = s.eModelElement.name;
+	setRef.valueExpression = "aql: element." + s.eModelElement.name + " + Sequence{instance}";
+	refContext.subModelOperations.add(setRef);
 	}
 
 @abstract

@@ -3,15 +3,15 @@
   <ownedViewpoints name="Project Specification Language">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Tasks" domainClass="psl::Project">
       <defaultLayer name="Default">
-        <edgeMappings name="dependencies" label="dependencies" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.dependencies" reconnections="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@toolSections.1/@ownedTools[name='Source%20Changer'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@toolSections.1/@ownedTools[name='Target%20Changer']">
-          <style endsCentering="Both">
+        <edgeMappings name="dependencies" label="dependencies" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.dependencies">
+          <style sizeComputationExpression="[eContents()->size()/]" endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="TTask" label="TTask" detailDescriptions="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@toolSections.1/@ownedTools[name='Task%20Details']" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+        <containerMappings name="TTask" label="TTask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -32,55 +32,61 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-        </toolSections>
-        <toolSections>
-          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Task Details" forceRefresh="true" diagramDescription="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Deliverables']">
-            <initialOperation/>
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel">
-            <mask mask="{0}"/>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext">
-                <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Target Changer" precondition="aql:true" forceRefresh="true">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element">
-                <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql: source"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql:self.dependencies + Sequence{target}"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Source Changer" precondition="aql:true" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql: otherEnd.target"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:target">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql:self.dependencies + Sequence{otherEnd.target}"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="psl::Task" referenceName="tasks"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql: element.dependencies + Sequence{instance}"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
-            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
+      <toolSection name="Testing">
+        <ownedTools xsi:type="tool_1:DirectEditLabel">
+          <mask mask="{0}"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext">
+              <subModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Target Changer" precondition="aql:true" forceRefresh="true">
+          <source name="source"/>
+          <target name="target"/>
+          <sourceView name="sourceView"/>
+          <targetView name="targetView"/>
+          <element name="element"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element">
+              <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql: source"/>
+            </firstModelOperations>
+          </initialOperation>
+          <edgeView name="edgeView"/>
+        </ownedTools>
+        <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Source Changer" precondition="aql:true" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+          <source name="source"/>
+          <target name="target"/>
+          <sourceView name="sourceView"/>
+          <targetView name="targetView"/>
+          <element name="element"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql: otherEnd.target"/>
+              </subModelOperations>
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:target">
+                <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql:self.dependencies + Sequence{otherEnd.target}"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+          <edgeView name="edgeView"/>
+        </ownedTools>
+      </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Effort" domainClass="psl::Project">
       <defaultLayer name="Default">
@@ -99,7 +105,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="EEffort" label="EEffort" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='Person']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.task" sourceFinderExpression="aql:self.person" domainClass="psl::Effort" useDomainElement="true">
-          <style endsCentering="Both">
+          <style sizeComputationExpression="[eContents()->size()/]" endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.percentage">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -124,19 +130,6 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </containerMappings>
-        <toolSections/>
-      </defaultLayer>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Deliverables" domainClass="psl::Task">
-      <defaultLayer name="Default">
-        <containerMappings name="DeliverableTwo" label="DeliverableTwo" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
       </defaultLayer>

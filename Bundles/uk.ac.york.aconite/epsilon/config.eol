@@ -36,6 +36,8 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "borderSizeComputationExpression"	: return "aql:2";
 		case "importedMapping"	: return self.getVal("import");
 		case "abstract"	: return "false";
+		case "proxyType"	: return "Diagram";
+		case "proxyStatement"	: return "aql:diagram.target";
 		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}

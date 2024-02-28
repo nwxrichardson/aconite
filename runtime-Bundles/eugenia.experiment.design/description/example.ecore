@@ -28,6 +28,9 @@
         eType="#//Person" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eAnnotations source="sirius.diagram">
+      <details key="name" value="Deliverables"/>
+    </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="ETask"/>
       <details key="container" value="Effort"/>
@@ -55,6 +58,7 @@
       <eAnnotations source="sirius.tool.creation.reference">
         <details key="name" value="Add Dependent"/>
         <details key="container" value="Dependencies Meta"/>
+        <details key="proxyType" value="Diagram"/>
       </eAnnotations>
       <eAnnotations source="sirius.edge">
         <details key="container" value="Tasks"/>
@@ -86,6 +90,12 @@
         defaultValueLiteral="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deliverable">
+    <eAnnotations source="sirius.container">
+      <details key="name" value="DeliverableTwo"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
     <eAnnotations source="sirius.container">
       <details key="name" value="Deliverable"/>
       <details key="container" value="PTask"/>
