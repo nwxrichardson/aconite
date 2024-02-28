@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="psl" nsURI="psl" nsPrefix="">
-  <eAnnotations source="sirius"/>
+  <eAnnotations source="sirius">
+    <details key="name" value="Project Specification Language"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Project">
     <eAnnotations source="sirius.diagram">
       <details key="name" value="Tasks"/>
@@ -17,7 +19,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task" containment="true">
       <eAnnotations source="sirius.tool.creation">
-        <details key="name" value="Test"/>
+        <details key="abstract" value="true"/>
+        <details key="name" value="Dependencies Meta"/>
         <details key="container" value="TTask"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -49,6 +52,10 @@
         eType="#//Effort" containment="true" eOpposite="#//Effort/task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//Task">
+      <eAnnotations source="sirius.tool.creation.reference">
+        <details key="name" value="Add Dependent"/>
+        <details key="container" value="Dependencies Meta"/>
+      </eAnnotations>
       <eAnnotations source="sirius.edge">
         <details key="container" value="Tasks"/>
         <details key="sourceNode" value="TTask"/>

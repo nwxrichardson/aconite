@@ -75,16 +75,17 @@ operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	return rtn.getEndOf(splited.concat());}
 }
 
-
-
-rule Package
-	transform 	s : Source!EPackage
+rule PackageFromAnnotation
+	transform 	s : Source!EAnnotation
 	to 			t : Target!Group {
+	
+	guard : s.Source = "sirius"
 	var viewpoint = new Target!Viewpoint;
 	t.ownedViewpoints.add(viewpoint);
 	var diagrams = annotations.select(i|i.Source = "sirius.diagram").equivalent();
 	viewpoint.ownedRepresentations.addAll(diagrams);	
-	}
+	viewpoint.name = s.getVal("name");
+}
 
 /*
  *----------------------------------------------------------------------------------
@@ -109,10 +110,11 @@ rule DiagramFromAnnotation
 	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
 	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
-	var tools = annotations.select(i|i.Source = "sirius.tool.creation" and i.getDiagram().getVal("name") = s.getVal("name"));
+	var tools = annotations.select(i|i.Source.startsWith("sirius.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
 	if (tools.notEmpty()){
+		tools.println();
 		var toolBox = new Target!ToolSection;
-		toolBox.name = "Generated Adding Tools";
+		toolBox.name = "Generated Creation Tools";
 		defaultLayer.toolSections.add(toolBox);
 		toolBox.ownedTools ::= tools;
 	}
@@ -257,6 +259,27 @@ rule EleEdgeFromAnnotation
  *      SHORTCUT TOOLS
  *----------------------------------------------------------------------------------
  */	
+
+@abstract
+rule ReferenceCreationToolFromAnnotation
+	transform s : Source!EAnnotation 
+	to t : Target!MappingBasedToolDescription {
+	guard : s.Source = "sirius.tool.creation.reference" and not s.getVal("abstract").asBoolean()
+	t.forceRefresh = true;
+	t.name = "Add to " + s.eModelElement.name.ftuc();
+	}
+
+@lazy
+rule ContainerReferenceCreationToolFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!ToolDescription 
+	extends ReferenceCreationToolFromAnnotation {
+	guard : s.getVal("container") != ""
+	t.precondition = "aql:elementView.actualMapping.name = 'TTask'";
+	var changeContext = new Target!ChangeContext;
+	t.initialOperation = new Target!InitialOperation;
+	t.initialOperation.firstModelOperations = changeContext;
+	}
 
 @abstract
 rule CreationToolFromAnnotation

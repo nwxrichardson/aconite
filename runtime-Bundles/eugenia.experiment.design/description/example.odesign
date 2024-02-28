@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0">
-  <ownedViewpoints>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="12.0.0.2017041100">
+  <ownedViewpoints name="Project Specification Language">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Tasks" domainClass="psl::Project">
       <defaultLayer name="Default">
-        <edgeMappings name="dependencies" label="dependencies" sourceMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask']" targetMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.dependencies">
-          <style endsCentering="Both">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
+        <edgeMappings name="dependencies" label="dependencies" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.dependencies">
+          <style sizeComputationExpression="[eContents()->size()/]" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
@@ -19,13 +19,16 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </containerMappings>
-        <toolSections name="Generated Adding Tools">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add to Tasks" forceRefresh="true" containerMappings="//@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+        <toolSections name="Generated Creation Tools">
+          <ownedTools xsi:type="tool:ToolDescription" name="Add to Dependencies" precondition="aql:elementView.actualMapping.name = 'TTask'" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="psl::Task" referenceName="tasks"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element.eContainer()">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="psl::Task" referenceName="tasks"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql: element.dependencies + Sequence{instance}"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -48,11 +51,11 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="EEffort" label="EEffort" sourceMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='Person']" targetMapping="//@ownedViewpoints[name='']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.task" sourceFinderExpression="aql:self.person" domainClass="psl::Effort" useDomainElement="true">
-          <style endsCentering="Both">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
+        <edgeMappings name="EEffort" label="EEffort" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='Person']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.task" sourceFinderExpression="aql:self.person" domainClass="psl::Effort" useDomainElement="true">
+          <style sizeComputationExpression="[eContents()->size()/]" endsCentering="Both">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.percentage">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>

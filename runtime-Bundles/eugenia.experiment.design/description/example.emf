@@ -1,4 +1,4 @@
-@sirius
+@sirius(name = "Project Specification Language")
 @namespace(uri="psl", prefix="")
 package psl;
 
@@ -8,7 +8,8 @@ package psl;
 class Project {
 	attr String title;
 	attr String description;
-	@sirius.tool.creation(name = "Test", container = "TTask")
+
+	@sirius.tool.creation(~abstract="true", name="Dependencies Meta", container="TTask")
 	val Task[*] tasks;
 	val Person[*] people;
 }
@@ -21,7 +22,8 @@ class Task {
 	attr int start;
 	attr int duration;
 	val Effort[*]#task effort;
-//	@sirius.tool.creation(name = "", node = "TTask")
+
+	@sirius.tool.creation.reference(name="Add Dependent", container="Dependencies Meta")
 	@sirius.edge(container="Tasks", sourceNode="TTask")
 	ref Task[*] dependencies;
 	val Deliverable[*] deliverables;
@@ -40,7 +42,7 @@ class Effort {
 }
 
 @sirius.container(name="Deliverable", container="PTask", labelExpression="title", color="light_green")
-class Deliverable {	
+class Deliverable {
 	attr String title;
 	attr int due;
 	ref Person lead;
