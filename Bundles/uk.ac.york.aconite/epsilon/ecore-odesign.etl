@@ -5,6 +5,7 @@ pre {
 	//Todo Look into removing
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
 	var newAnnotations = new Sequence;
+	var revAnnotations = new Sequence;
 	for (i in annotations){
 		var containers = i.getVals("container");
 		if (containers.size() != 1){
@@ -12,10 +13,12 @@ pre {
 				var `new` = emfTool.getECoreUtil.copy(i);
 				`new`.details.put("container",j);
 				`new`.eModelElement = i.eModelElement;
+				`new`.details.selectOne(i|i.key = 'name').value = j.ftuc() + " - " + `new`.getVal("name");
 				newAnnotations.add(`new`);
-			} delete i;
+			} revAnnotations.add(i);
 		} 
 	} annotations.addAll(newAnnotations);
+	annotations.removeAll(revAnnotations);
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
@@ -75,6 +78,10 @@ operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	return rtn.getEndOf(splited.concat());}
 }
 
+operation Target!AbstractToolDescription addToHidden(diagram : Target!DiagramDescription){
+	diagram.defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(self);
+}
+
 rule PackageFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!Group {
@@ -86,6 +93,8 @@ rule PackageFromAnnotation
 	viewpoint.ownedRepresentations.addAll(diagrams);	
 	viewpoint.name = s.getVal("name");
 }
+
+
 
 /*
  *----------------------------------------------------------------------------------
@@ -105,19 +114,24 @@ rule DiagramFromAnnotation
 	t.name = s.getVal("name");
 	var defaultLayer = new Target!Layer;
 
-	defaultLayer.name = "Default";
-	t.defaultLayer = defaultLayer;
-	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
-	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
-	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	var tools = annotations.select(i|i.Source.startsWith("sirius.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
 	if (tools.notEmpty()){
-		tools.println();
+//		tools.println();
 		var toolBox = new Target!ToolSection;
 		toolBox.name = "Generated Creation Tools";
 		defaultLayer.toolSections.add(toolBox);
 		toolBox.ownedTools ::= tools;
 	}
+	var hiddenBox = new Target!ToolSection;
+	defaultLayer.toolSections.add(hiddenBox);
+	hiddenBox.name = "Generated Hidden Tools";
+
+	defaultLayer.name = "Default";
+	t.defaultLayer = defaultLayer;
+	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
+	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
+
 	}
 	
 @abstract 
@@ -195,7 +209,7 @@ rule AbsEdgeFromAnnotation
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
 	if (not (s.getVals("sourceNode") = Sequence{""})){
-	t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name"))).equivalent();}
+	t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name")) ).equivalent();}
 	if (not (s.getVals("targetNode")= Sequence{""})){
 	t.targetMapping = annotations.select(i|s.getVals("targetNode").exists(j|j = i.getVal("name"))).equivalent();}	
 	
@@ -225,6 +239,57 @@ rule RefEdgeFromAnnotation
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
+	
+	if (s.getVal("reconnectable").asBoolean()){
+		var sourceConnect = new Target!ReconnectEdgeDescription;
+		sourceConnect.addToHidden(s.getDiagram().equivalent());
+		
+		sourceConnect.name = t.name + " Source Reconnector";
+		t.reconnections.add(sourceConnect);
+		sourceConnect.forceRefresh = true;
+		sourceConnect.reconnectionKind = Target!ReconnectionKind#RECONNECT_SOURCE;
+		
+		var init = new Target!InitialOperation;
+		sourceConnect.initialOperation = init;
+		var chng = new Target!ChangeContext;
+		init.firstModelOperations = chng;
+		var sorc = new Target!ChangeContext;
+		chng.subModelOperations.add(sorc);
+		sorc.browseExpression = "aql:source";
+		var uns = new Target!Unset;
+		sorc.subModelOperations.add(uns);
+		uns.featureName = element.name;
+		uns.elementExpression = "aql:otherEnd.target";
+		var targ = new Target!ChangeContext;
+		targ.browseExpression = "aql:target";
+		chng.subModelOperations.add(targ);
+		var set = new Target!SetValue;
+		targ.subModelOperations.add(set);
+		set.featureName = element.name;
+		set.valueExpression = "aql:self." + element.name + " + Sequence{otherEnd.target}";
+		
+		var targerConnect = new Target!ReconnectEdgeDescription;
+		targerConnect.addToHidden(s.getDiagram().equivalent());
+		
+		targerConnect.name = t.name + " Target Reconnector";
+		t.reconnections.add(targerConnect);
+		targerConnect.forceRefresh = true;
+		targerConnect.reconnectionKind = Target!ReconnectionKind#RECONNECT_TARGET;
+		
+		var init = new Target!InitialOperation;
+		targerConnect.initialOperation = init;
+		var chng = new Target!ChangeContext;
+		init.firstModelOperations = chng;
+
+		var uns = new Target!Unset;
+		uns.featureName = element.name;
+		uns.elementExpression = "aql:source";
+		var set = new Target!SetValue;
+		set.featureName = element.name;
+		set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
+		chng.subModelOperations.add(uns);
+		chng.subModelOperations.add(set);
+	}
 	}
 	
 @lazy
@@ -251,7 +316,7 @@ rule EleEdgeFromAnnotation
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
 	
-
+//	if (s.getVal("reconnectable"))
 	}
 
 /*

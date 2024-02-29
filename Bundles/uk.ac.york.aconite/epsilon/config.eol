@@ -5,6 +5,7 @@ import "util.eol";
 // Note: Whichever one needs to access its default should be put first in the java code
 operation Target!EAnnotation getDefault(key : String) : String {
 //	key.println();
+//	self.details.println();
 	switch (key){
 		case "name"	: return self.eModelElement.name;
 		case "createElements" 	: return "true";	
@@ -38,15 +39,17 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "abstract"	: return "false";
 		case "proxyType"	: return "Diagram";
 		case "proxyStatement"	: return "aql:diagram.target";
+		case "reconnectable"	: return "false";
 		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}
 		}
-		case "targetFinderExpression" : {
+		case "targetFinderExpression" : return "aql:self." + self.getVal("targetFinder");
+		case "targetFinder" : {
 			if (self.eModelElement.isTypeOf(Source!EReference) or self.eModelElement.isTypeOf(Target!EReference)){
-				return "aql:self." + self.eModelElement.name + self.getVal("target").dot();
+				return self.eModelElement.name + self.getVal("target").dot();
 			} else {
-				return "aql:self" +  self.getVal("target").dot();
+				return self.getVal("target").dot();
 			}
 		}
 		default : return "";

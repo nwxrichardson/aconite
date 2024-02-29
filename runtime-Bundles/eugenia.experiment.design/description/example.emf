@@ -25,7 +25,7 @@ class Task {
 	val Effort[*]#task effort;
 
 	@sirius.tool.creation.reference(name="Add Dependent", container="Dependencies Meta", proxyType="Diagram")
-	@sirius.edge(container="Tasks", sourceNode="TTask")
+	@sirius.edge(container="Tasks", sourceNode="TTask", reconnectable="true")
 	ref Task[*] dependencies;
 	val Deliverable[*] deliverables;
 }
@@ -42,8 +42,7 @@ class Effort {
 	attr int percentage = 100;
 }
 
-@sirius.container(name="DeliverableTwo", container="Deliverables", labelExpression="title", color="light_green")
-@sirius.container(name="Deliverable", container="PTask", labelExpression="title", color="light_green")
+@sirius.container(name="Deli", container="PTask, Deliverables", labelExpression="title", color="light_green")
 class Deliverable {
 	attr String title;
 	attr int due;

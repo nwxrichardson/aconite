@@ -63,6 +63,7 @@
       <eAnnotations source="sirius.edge">
         <details key="container" value="Tasks"/>
         <details key="sourceNode" value="TTask"/>
+        <details key="reconnectable" value="true"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="deliverables" upperBound="-1"
@@ -91,14 +92,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Deliverable">
     <eAnnotations source="sirius.container">
-      <details key="name" value="DeliverableTwo"/>
-      <details key="container" value="Deliverables"/>
-      <details key="labelExpression" value="title"/>
-      <details key="color" value="light_green"/>
-    </eAnnotations>
-    <eAnnotations source="sirius.container">
-      <details key="name" value="Deliverable"/>
-      <details key="container" value="PTask"/>
+      <details key="name" value="Deli"/>
+      <details key="container" value="PTask, Deliverables"/>
       <details key="labelExpression" value="title"/>
       <details key="color" value="light_green"/>
     </eAnnotations>
