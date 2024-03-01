@@ -39,8 +39,8 @@
     </eAnnotations>
     <eAnnotations source="sirius.container">
       <details key="name" value="TTask"/>
-      <details key="container" value="Tasks"/>
       <details key="directlyEditable" value="true"/>
+      <details key="container" value="Tasks"/>
       <details key="labelExpression" value="title"/>
       <details key="color" value="light_blue"/>
     </eAnnotations>

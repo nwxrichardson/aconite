@@ -16,7 +16,7 @@ class Project {
 
 @sirius.diagram(name="Deliverables")
 @sirius.node(name="ETask", directlyEditable="true", container="Effort", labelExpression="title")
-@sirius.container(name="TTask", container="Tasks", directlyEditable="true", labelExpression="title", color="light_blue")
+@sirius.container(name="TTask", directlyEditable="true", container="Tasks", directlyEditable="true", labelExpression="title", color="light_blue")
 @sirius.container(name="PTask", container="Project", labelExpression="title", color="light_blue")
 class Task {
 	attr String title;
