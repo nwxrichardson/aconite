@@ -82,6 +82,14 @@ operation Target!AbstractToolDescription addToHidden(diagram : Target!DiagramDes
 	diagram.defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(self);
 }
 
+operation Source!EClass oneRef(ref : String) : Boolean {
+	return self.eReferences.selectOne(i|i.name = 'person').oneRef();
+}
+
+operation Source!EReference oneRef() : Boolean {
+	return self.upperBound = 1;
+}
+
 rule PackageFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!Group {
@@ -266,8 +274,11 @@ rule RefEdgeFromAnnotation
 		var set = new Target!SetValue;
 		targ.subModelOperations.add(set);
 		set.featureName = element.name;
-		set.valueExpression = "aql:self." + element.name + " + Sequence{otherEnd.target}";
-		
+		if (element.oneRef()){
+			set.valueExpression = "aql:target";
+		} else {
+			set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
+		}
 		var targerConnect = new Target!ReconnectEdgeDescription;
 		targerConnect.addToHidden(s.getDiagram().equivalent());
 		
@@ -286,7 +297,11 @@ rule RefEdgeFromAnnotation
 		uns.elementExpression = "aql:source";
 		var set = new Target!SetValue;
 		set.featureName = element.name;
-		set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
+		if (element.oneRef()){
+			set.valueExpression = "aql:target";
+		} else {
+			set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
+		}
 		chng.subModelOperations.add(uns);
 		chng.subModelOperations.add(set);
 	}
@@ -316,7 +331,7 @@ rule EleEdgeFromAnnotation
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
 	
-	if (s.getVal("reconnectable")) {
+	if (s.getVal("reconnectable").asBoolean()) {
 		var sourceConnect = new Target!ReconnectEdgeDescription;
 		sourceConnect.addToHidden(s.getDiagram().equivalent());
 		
@@ -335,8 +350,11 @@ rule EleEdgeFromAnnotation
 		uns.elementExpression = "aql:source";
 		var set = new Target!SetValue;
 		set.featureName = s.getVal("source");
-		set.valueExpression = "aql:target";
-	//	set.valueExpression = "aql:self." + s.getVal("source") + " + Sequence{target}";
+		if (element.oneRef(s.getVal("source"))){
+			set.valueExpression = "aql:target";
+		} else {
+			set.valueExpression = "aql:self." + s.getVal("source") + " + Sequence{target}";
+		}
 		chng.subModelOperations.add(uns);
 		chng.subModelOperations.add(set);
 		
@@ -358,8 +376,11 @@ rule EleEdgeFromAnnotation
 		uns.elementExpression = "aql:source";
 		var set = new Target!SetValue;
 		set.featureName = s.getVal("target");
-		set.valueExpression = "aql:target";
-	//	set.valueExpression = "aql:self." + s.getVal("target") + " + Sequence{target}";
+		if (element.oneRef(s.getVal("target"))){
+			set.valueExpression = "aql:target";
+		} else {
+			set.valueExpression = "aql:self." + s.getVal("target") + " + Sequence{target}";
+		}
 		chng.subModelOperations.add(uns);
 		chng.subModelOperations.add(set);
 	}
