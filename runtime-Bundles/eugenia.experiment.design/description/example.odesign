@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="12.0.0.2017041100">
   <ownedViewpoints name="Project Specification Language">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Tasks" domainClass="psl::Project">
       <defaultLayer name="Default">
@@ -11,7 +11,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="TTask" label="TTask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+        <containerMappings name="TTask" label="TTask" labelDirectEdit="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -34,6 +34,12 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Generated Hidden Tools">
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
@@ -108,6 +114,12 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Target Reconnector" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
@@ -121,12 +133,6 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:{0}"/>
-            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -142,6 +148,14 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
             </style>
           </subContainerMappings>
+          <subContainerMappings name="PTask - Deli" label="PTask - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -149,7 +163,6 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </containerMappings>
-        <toolSections name="Generated Hidden Tools"/>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Deliverables" domainClass="psl::Task">
@@ -162,7 +175,14 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
-        <toolSections name="Generated Hidden Tools"/>
+        <containerMappings name="Deliverables - Deli" label="Deliverables - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>

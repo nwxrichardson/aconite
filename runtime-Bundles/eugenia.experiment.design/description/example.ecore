@@ -40,6 +40,7 @@
     <eAnnotations source="sirius.container">
       <details key="name" value="TTask"/>
       <details key="container" value="Tasks"/>
+      <details key="directlyEditable" value="true"/>
       <details key="labelExpression" value="title"/>
       <details key="color" value="light_blue"/>
     </eAnnotations>
@@ -96,6 +97,18 @@
     <eAnnotations source="sirius.container">
       <details key="name" value="Deli"/>
       <details key="container" value="PTask, Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
       <details key="labelExpression" value="title"/>
       <details key="color" value="light_green"/>
     </eAnnotations>

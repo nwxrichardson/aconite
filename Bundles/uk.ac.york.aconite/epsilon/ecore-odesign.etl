@@ -3,6 +3,7 @@ import "config.eol";
 pre {
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 	//Todo Look into removing
+	var hiddenTools = new Map<Target!AbstractToolDescription,Source!EAnnotation>;
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
 	var newAnnotations = new Sequence;
 	var revAnnotations = new Sequence;
@@ -78,8 +79,8 @@ operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	return rtn.getEndOf(splited.concat());}
 }
 
-operation Target!AbstractToolDescription addToHidden(diagram : Target!DiagramDescription){
-	diagram.defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(self);
+operation Target!AbstractToolDescription addToHidden(diagram : Source!EAnnotation){
+	hiddenTools.put(self, diagram);
 }
 
 operation Source!EClass oneRef(ref : String) : Boolean {
@@ -124,15 +125,12 @@ rule DiagramFromAnnotation
 
 	var tools = annotations.select(i|i.Source.startsWith("sirius.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
 	if (tools.notEmpty()){
-//		tools.println();
 		var toolBox = new Target!ToolSection;
 		toolBox.name = "Generated Creation Tools";
 		defaultLayer.toolSections.add(toolBox);
 		toolBox.ownedTools ::= tools;
 	}
-	var hiddenBox = new Target!ToolSection;
-	defaultLayer.toolSections.add(hiddenBox);
-	hiddenBox.name = "Generated Hidden Tools";
+
 
 	defaultLayer.name = "Default";
 	t.defaultLayer = defaultLayer;
@@ -153,7 +151,7 @@ rule AbstractMappingFromAnnotation
 	
 	if (s.getVal("directlyEditable").asBoolean()){
 		var directEdit = new Target!DirectEditLabel;
-		directEdit.addToHidden(s.getDiagram().equivalent());
+		directEdit.addToHidden(s.getDiagram());
 		t.labelDirectEdit = directEdit;
 		
 		var init = new Target!InitialOperation;
@@ -161,7 +159,7 @@ rule AbstractMappingFromAnnotation
 		directEdit.initialOperation = init;
 		init.firstModelOperations = set;
 		set.featureName = s.getVal("labelExpression");
-		set.valueExpression = "var:{0}";
+		set.valueExpression = "var:0";
 	}
 	} 
 
@@ -263,7 +261,7 @@ rule RefEdgeFromAnnotation
 	
 	if (s.getVal("reconnectable").asBoolean()){
 		var sourceConnect = new Target!ReconnectEdgeDescription;
-		sourceConnect.addToHidden(s.getDiagram().equivalent());
+		sourceConnect.addToHidden(s.getDiagram());
 		
 		sourceConnect.name = t.name + " Source Reconnector";
 		t.reconnections.add(sourceConnect);
@@ -293,7 +291,7 @@ rule RefEdgeFromAnnotation
 			set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
 		}
 		var targerConnect = new Target!ReconnectEdgeDescription;
-		targerConnect.addToHidden(s.getDiagram().equivalent());
+		targerConnect.addToHidden(s.getDiagram());
 		
 		targerConnect.name = t.name + " Target Reconnector";
 		t.reconnections.add(targerConnect);
@@ -346,7 +344,7 @@ rule EleEdgeFromAnnotation
 	//TODO make this a function
 	if (s.getVal("reconnectable").asBoolean()) {
 		var sourceConnect = new Target!ReconnectEdgeDescription;
-		sourceConnect.addToHidden(s.getDiagram().equivalent());
+		sourceConnect.addToHidden(s.getDiagram());
 		
 		sourceConnect.name = t.name + " Source Reconnector";
 		t.reconnections.add(sourceConnect);
@@ -372,7 +370,7 @@ rule EleEdgeFromAnnotation
 		chng.subModelOperations.add(set);
 		
 		var targerConnect = new Target!ReconnectEdgeDescription;
-		targerConnect.addToHidden(s.getDiagram().equivalent());
+		targerConnect.addToHidden(s.getDiagram());
 		
 		targerConnect.name = t.name + " Target Reconnector";
 		t.reconnections.add(targerConnect);
@@ -681,3 +679,17 @@ rule LozengeNodeFromAnnotation
 	t.heightComputationExpression = s.getVal("heightComputationExpression","2").asInteger();
 	t.widthComputationExpression = s.getVal("widthComputationExpression","2").asInteger();
 	}
+
+	
+post {
+	var gotHidden = new Sequence;
+	for (tool in hiddenTools.keySet()){
+		if (not gotHidden.contains(hiddenTools.get(tool))){
+			gotHidden.add(hiddenTools.get(tool));
+			var hiddenBox = new Target!ToolSection;
+			hiddenBox.name = "Generated Hidden Tools";
+			hiddenTools.get(tool).equivalent().defaultLayer.toolSections.add(hiddenBox);
+		}
+		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.println().selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
+	}
+}	
