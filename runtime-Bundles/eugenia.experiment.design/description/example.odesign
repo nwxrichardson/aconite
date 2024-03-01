@@ -34,12 +34,6 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Generated Hidden Tools">
-          <ownedTools xsi:type="tool_1:DirectEditLabel">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
@@ -57,6 +51,12 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
+            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Target Reconnector" forceRefresh="true">
             <source name="source"/>
@@ -100,26 +100,6 @@
           </style>
         </edgeMappings>
         <toolSections name="Generated Hidden Tools">
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext">
-                <subModelOperations xsi:type="tool:Unset" featureName="person" elementExpression="aql:source"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="person" valueExpression="aql:target"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Target Reconnector" forceRefresh="true">
             <source name="source"/>
             <target name="target"/>
@@ -134,20 +114,32 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext">
+                <subModelOperations xsi:type="tool:Unset" featureName="person" elementExpression="aql:source"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="person" valueExpression="aql:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Project" domainClass="psl::Project">
       <defaultLayer name="Default">
         <containerMappings name="PTask" label="PTask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
-          <subContainerMappings name="PTask - Deli" label="PTask - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            </style>
-          </subContainerMappings>
           <subContainerMappings name="PTask - Deli" label="PTask - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -167,14 +159,6 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Deliverables" domainClass="psl::Task">
       <defaultLayer name="Default">
-        <containerMappings name="Deliverables - Deli" label="Deliverables - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </containerMappings>
         <containerMappings name="Deliverables - Deli" label="Deliverables - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
