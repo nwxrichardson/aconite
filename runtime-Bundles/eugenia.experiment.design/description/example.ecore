@@ -80,6 +80,7 @@
     <eAnnotations source="sirius.edge">
       <details key="name" value="EEffort"/>
       <details key="container" value="Effort"/>
+      <details key="reconnectable" value="true"/>
       <details key="labelExpression" value="percentage"/>
       <details key="source" value="person"/>
       <details key="target" value="task"/>

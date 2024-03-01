@@ -1,134 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="12.0.0.2017041100">
-  <ownedViewpoints name="Project Specification Language">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Tasks" domainClass="psl::Project">
-      <defaultLayer name="Default">
-        <edgeMappings name="dependencies" label="dependencies" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.dependencies" reconnections="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@toolSections.1/@ownedTools[name='dependencies%20Source%20Reconnector'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@toolSections.1/@ownedTools[name='dependencies%20Target%20Reconnector']">
-          <style endsCentering="Both">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="TTask" label="TTask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </containerMappings>
-        <toolSections name="Generated Creation Tools">
-          <ownedTools xsi:type="tool:ToolDescription" name="Add to Dependencies" precondition="aql:elementView.actualMapping.name = 'TTask'" forceRefresh="true">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="psl::Task" referenceName="tasks"/>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql: element.dependencies + Sequence{instance}"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-        </toolSections>
-        <toolSections name="Generated Hidden Tools">
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql:otherEnd.target"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:target">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql:self.dependencies + Sequence{otherEnd.target}"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Target Reconnector" forceRefresh="true">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext">
-                <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql:source"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql:self.dependencies + Sequence{target}"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-        </toolSections>
-      </defaultLayer>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Effort" domainClass="psl::Project">
-      <defaultLayer name="Default">
-        <nodeMappings name="ETask" label="ETask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Person" label="Person" semanticCandidatesExpression="aql:self.people" domainClass="psl::Person">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
-          </style>
-        </nodeMappings>
-        <edgeMappings name="EEffort" label="EEffort" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='Person']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self..task" sourceFinderExpression="aql:self.person" domainClass="psl::Effort" useDomainElement="true">
-          <style endsCentering="Both">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.percentage">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <toolSections name="Generated Hidden Tools"/>
-      </defaultLayer>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Project" domainClass="psl::Project">
-      <defaultLayer name="Default">
-        <containerMappings name="PTask" label="PTask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
-          <subContainerMappings name="PTask - Deli" label="PTask - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            </style>
-          </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </containerMappings>
-        <toolSections name="Generated Hidden Tools"/>
-      </defaultLayer>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Deliverables" domainClass="psl::Task">
-      <defaultLayer name="Default">
-        <containerMappings name="Deliverables - Deli" label="Deliverables - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
-          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </containerMappings>
-        <toolSections name="Generated Hidden Tools"/>
-      </defaultLayer>
-    </ownedRepresentations>
-  </ownedViewpoints>
-</description:Group>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0">
+  <description:Group>
+    <ownedViewpoints/>
+  </description:Group>
+  <description_1:DiagramDescription name="Tasks" domainClass="psl::Project">
+    <defaultLayer name="Default">
+      <edgeMappings name="dependencies" label="dependencies" sourceMapping="/1/@defaultLayer/@containerMappings[name='TTask']" targetMapping="/3/@defaultLayer/@nodeMappings[name='ETask'] /1/@defaultLayer/@containerMappings[name='TTask'] /2" targetFinderExpression="aql:self.dependencies" reconnections="/1/@defaultLayer/@toolSections.1/@ownedTools[name='dependencies%20Source%20Reconnector'] /1/@defaultLayer/@toolSections.1/@ownedTools[name='dependencies%20Target%20Reconnector']">
+        <style endsCentering="Both">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <containerMappings name="TTask" label="TTask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+        <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+      </containerMappings>
+      <toolSections name="Generated Creation Tools">
+        <ownedTools xsi:type="tool:ToolDescription" name="Add to Dependencies" precondition="aql:elementView.actualMapping.name = 'TTask'" forceRefresh="true">
+          <element name="element"/>
+          <elementView name="elementView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:diagram.target">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="psl::Task" referenceName="tasks"/>
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:element">
+                <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql: element.dependencies + Sequence{instance}"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+      </toolSections>
+      <toolSections name="Generated Hidden Tools">
+        <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+          <source name="source"/>
+          <target name="target"/>
+          <sourceView name="sourceView"/>
+          <targetView name="targetView"/>
+          <element name="element"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:source">
+                <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql:otherEnd.target"/>
+              </subModelOperations>
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql:target">
+                <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql:self.dependencies + Sequence{otherEnd.target}"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+          <edgeView name="edgeView"/>
+        </ownedTools>
+        <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Target Reconnector" forceRefresh="true">
+          <source name="source"/>
+          <target name="target"/>
+          <sourceView name="sourceView"/>
+          <targetView name="targetView"/>
+          <element name="element"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext">
+              <subModelOperations xsi:type="tool:Unset" featureName="dependencies" elementExpression="aql:source"/>
+              <subModelOperations xsi:type="tool:SetValue" featureName="dependencies" valueExpression="aql:self.dependencies + Sequence{target}"/>
+            </firstModelOperations>
+          </initialOperation>
+          <edgeView name="edgeView"/>
+        </ownedTools>
+      </toolSections>
+    </defaultLayer>
+  </description_1:DiagramDescription>
+  <description_1:ContainerMapping name="PTask" label="PTask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+    <subContainerMappings name="PTask - Deli" label="PTask - Deli" semanticCandidatesExpression="aql:self.deliverables" domainClass="psl::Deliverable">
+      <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
+        <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+        <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+      </style>
+    </subContainerMappings>
+    <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title">
+      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+      <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+      <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+    </style>
+  </description_1:ContainerMapping>
+  <description_1:DiagramDescription name="Effort" domainClass="psl::Project">
+    <defaultLayer name="Default">
+      <nodeMappings name="ETask" label="ETask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title" labelPosition="node" resizeKind="NSEW">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="Person" label="Person" semanticCandidatesExpression="aql:self.people" domainClass="psl::Person">
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </style>
+      </nodeMappings>
+      <toolSections name="Generated Hidden Tools"/>
+    </defaultLayer>
+  </description_1:DiagramDescription>
+  <description_1:EdgeMapping name="EEffort" label="EEffort" sourceMapping="/3/@defaultLayer/@nodeMappings[name='Person']" targetMapping="/3/@defaultLayer/@nodeMappings[name='ETask'] /1/@defaultLayer/@containerMappings[name='TTask'] /2" targetFinderExpression="aql:self.task" sourceFinderExpression="aql:self.person" domainClass="psl::Effort" useDomainElement="true">
+    <style endsCentering="Both">
+      <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
+      <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.percentage">
+        <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
+      </centerLabelStyleDescription>
+    </style>
+  </description_1:EdgeMapping>
+</xmi:XMI>

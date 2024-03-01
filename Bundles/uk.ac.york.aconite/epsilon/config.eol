@@ -44,10 +44,10 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}
 		}
-		case "targetFinderExpression" : return "aql:self." + self.getVal("targetFinder");
+		case "targetFinderExpression" : return "aql:self" + self.getVal("targetFinder");
 		case "targetFinder" : {
 			if (self.eModelElement.isTypeOf(Source!EReference) or self.eModelElement.isTypeOf(Target!EReference)){
-				return self.eModelElement.name + self.getVal("target").dot();
+				return self.eModelElement.name.dot() + self.getVal("target").dot();
 			} else {
 				return self.getVal("target").dot();
 			}

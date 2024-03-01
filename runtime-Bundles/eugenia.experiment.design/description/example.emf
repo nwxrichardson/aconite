@@ -35,7 +35,7 @@ class Person {
 	attr String name;
 }
 
-@sirius.edge(name="EEffort", container="Effort", labelExpression="percentage", source="person", target="task")
+@sirius.edge(name="EEffort", container="Effort", reconnectable="true", labelExpression="percentage", source="person", target="task")
 class Effort {
 	ref Task[1]#effort task;
 	ref Person person;

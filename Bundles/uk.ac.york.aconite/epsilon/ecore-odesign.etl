@@ -316,8 +316,54 @@ rule EleEdgeFromAnnotation
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
 	
-//	if (s.getVal("reconnectable"))
+	if (s.getVal("reconnectable")) {
+		var sourceConnect = new Target!ReconnectEdgeDescription;
+		sourceConnect.addToHidden(s.getDiagram().equivalent());
+		
+		sourceConnect.name = t.name + " Source Reconnector";
+		t.reconnections.add(sourceConnect);
+		sourceConnect.forceRefresh = true;
+		sourceConnect.reconnectionKind = Target!ReconnectionKind#RECONNECT_SOURCE;
+		
+		var init = new Target!InitialOperation;
+		sourceConnect.initialOperation = init;
+		var chng = new Target!ChangeContext;
+		init.firstModelOperations = chng;
+		
+		var uns = new Target!Unset;
+		uns.featureName = s.getVal("source");
+		uns.elementExpression = "aql:source";
+		var set = new Target!SetValue;
+		set.featureName = s.getVal("source");
+		set.valueExpression = "aql:target";
+	//	set.valueExpression = "aql:self." + s.getVal("source") + " + Sequence{target}";
+		chng.subModelOperations.add(uns);
+		chng.subModelOperations.add(set);
+		
+		var targerConnect = new Target!ReconnectEdgeDescription;
+		targerConnect.addToHidden(s.getDiagram().equivalent());
+		
+		targerConnect.name = t.name + " Target Reconnector";
+		t.reconnections.add(targerConnect);
+		targerConnect.forceRefresh = true;
+		targerConnect.reconnectionKind = Target!ReconnectionKind#RECONNECT_TARGET;
+		
+		var init = new Target!InitialOperation;
+		targerConnect.initialOperation = init;
+		var chng = new Target!ChangeContext;
+		init.firstModelOperations = chng;
+	
+		var uns = new Target!Unset;
+		uns.featureName = s.getVal("target");
+		uns.elementExpression = "aql:source";
+		var set = new Target!SetValue;
+		set.featureName = s.getVal("target");
+		set.valueExpression = "aql:target";
+	//	set.valueExpression = "aql:self." + s.getVal("target") + " + Sequence{target}";
+		chng.subModelOperations.add(uns);
+		chng.subModelOperations.add(set);
 	}
+}
 
 /*
  *----------------------------------------------------------------------------------

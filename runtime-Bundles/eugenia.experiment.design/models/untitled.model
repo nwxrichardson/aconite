@@ -9,7 +9,7 @@
     <deliverables title="Hello"/>
   </tasks>
   <tasks xmi:id="_MvqOQIeHEe6O95Bo1IsR7w" title="Analysis">
-    <effort xmi:id="_U89m4IeHEe6O95Bo1IsR7w" person="_VxrBUIeHEe6O95Bo1IsR7w"/>
+    <effort person="_VxrBUIeHEe6O95Bo1IsR7w"/>
   </tasks>
   <people xmi:id="_VxrBUIeHEe6O95Bo1IsR7w" name="Alice"/>
   <people xmi:id="_Xk1oEIeHEe6O95Bo1IsR7w" name="Bob"/>
