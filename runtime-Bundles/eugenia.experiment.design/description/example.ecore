@@ -33,6 +33,7 @@
     </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="ETask"/>
+      <details key="directlyEditable" value="true"/>
       <details key="container" value="Effort"/>
       <details key="labelExpression" value="title"/>
     </eAnnotations>

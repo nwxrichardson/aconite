@@ -4,11 +4,11 @@
     <semanticResources>untitled.model</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_J3XRQNexEe6FONN7uJAjZw">
       <viewpoint xmi:type="description:Viewpoint" href="../description/example.odesign#//@ownedViewpoints[name='Project%20Specification%20Language']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_L63aENexEe6FONN7uJAjZw" name="new Tasks" repPath="#_L6090NexEe6FONN7uJAjZw" changeId="05f1b929-f91f-4452-ab90-c07eac3013c8">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_L63aENexEe6FONN7uJAjZw" name="new Tasks" repPath="#_L6090NexEe6FONN7uJAjZw" changeId="5ff18a20-c645-4e4a-a0fe-d53e49ca2f62">
         <description xmi:type="description_1:DiagramDescription" href="../description/example.odesign#//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']"/>
         <target xmi:type="Project" href="untitled.model#_HdZqcIeHEe6O95Bo1IsR7w"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XXdZMtexEe6FONN7uJAjZw" name="new Effort" repPath="#_XXdZMNexEe6FONN7uJAjZw" changeId="52a863bb-403d-44f2-9bb7-f444ed94dc6e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_XXdZMtexEe6FONN7uJAjZw" name="new Effort" repPath="#_XXdZMNexEe6FONN7uJAjZw" changeId="4829ef06-738f-4630-ae4e-5432d6b61ab2">
         <description xmi:type="description_1:DiagramDescription" href="../description/example.odesign#//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']"/>
         <target xmi:type="Project" href="untitled.model#_HdZqcIeHEe6O95Bo1IsR7w"/>
       </ownedRepresentationDescriptors>
@@ -111,7 +111,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_fIblsNeyEe6FONN7uJAjZw" sourceNode="_L8piwNexEe6FONN7uJAjZw" targetNode="_L8xekdexEe6FONN7uJAjZw">
       <target xmi:type="Task" href="untitled.model#//@tasks.0"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fIblsdeyEe6FONN7uJAjZw" size="0" centered="Both">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fIblsdeyEe6FONN7uJAjZw" size="2" centered="Both">
         <description xmi:type="style:EdgeStyleDescription" href="../description/example.odesign#//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@edgeMappings[name='dependencies']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fIblsteyEe6FONN7uJAjZw" showIcon="false"/>
       </ownedStyle>
@@ -119,7 +119,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_fIhsUteyEe6FONN7uJAjZw" sourceNode="_L8xekdexEe6FONN7uJAjZw" targetNode="_L8xelNexEe6FONN7uJAjZw">
       <target xmi:type="Task" href="untitled.model#_If_I0IeHEe6O95Bo1IsR7w"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fIhsU9eyEe6FONN7uJAjZw" size="0" centered="Both">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_fIhsU9eyEe6FONN7uJAjZw" size="2" centered="Both">
         <description xmi:type="style:EdgeStyleDescription" href="../description/example.odesign#//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@edgeMappings[name='dependencies']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_fIhsVNeyEe6FONN7uJAjZw" showIcon="false"/>
       </ownedStyle>

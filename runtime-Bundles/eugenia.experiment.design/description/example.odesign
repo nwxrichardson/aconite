@@ -71,7 +71,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Effort" domainClass="psl::Project">
       <defaultLayer name="Default">
-        <nodeMappings name="ETask" label="ETask" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
+        <nodeMappings name="ETask" label="ETask" labelDirectEdit="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@toolSections.0/@ownedTools[name='']" semanticCandidatesExpression="aql:self.tasks" domainClass="psl::Task">
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.title" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -121,6 +121,12 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:{0}"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>

@@ -150,6 +150,19 @@ rule AbstractMappingFromAnnotation
 	t.name = s.getVal("name");
 	t.createElements = s.getVal("createElements").asBoolean;
 	t.synchronizationLock = s.getVal("synchronizationLock").asBoolean;
+	
+	if (s.getVal("directlyEditable").asBoolean()){
+		var directEdit = new Target!DirectEditLabel;
+		directEdit.addToHidden(s.getDiagram().equivalent());
+		t.labelDirectEdit = directEdit;
+		
+		var init = new Target!InitialOperation;
+		var set = new Target!SetValue;
+		directEdit.initialOperation = init;
+		init.firstModelOperations = set;
+		set.featureName = s.getVal("labelExpression");
+		set.valueExpression = "var:{0}";
+	}
 	} 
 
 @abstract
@@ -330,7 +343,7 @@ rule EleEdgeFromAnnotation
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
-	
+	//TODO make this a function
 	if (s.getVal("reconnectable").asBoolean()) {
 		var sourceConnect = new Target!ReconnectEdgeDescription;
 		sourceConnect.addToHidden(s.getDiagram().equivalent());
