@@ -9,7 +9,7 @@ class Project {
 	attr String title;
 	attr String description;
 
-	@sirius.tool.creation("abstract"="true", name="Dependencies Meta", container="TTask")
+	@sirius.tool.creation(~abstract="true", name="Dependencies Meta", container="TTask")
 	val Task[*] tasks;
 	val Person[*] people;
 }

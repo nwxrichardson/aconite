@@ -1,7 +1,5 @@
 import "util.eol";
 
-//Needed?
-
 // Note: Whichever one needs to access its default should be put first in the java code
 operation Target!EAnnotation getDefault(key : String) : String {
 //	key.println();
