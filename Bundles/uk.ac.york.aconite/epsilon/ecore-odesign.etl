@@ -2,7 +2,6 @@ import "config.eol";
 
 pre {
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
-	//Todo Look into removing
 	var hiddenTools = new Map<Target!AbstractToolDescription,Source!EAnnotation>;
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
 	var newAnnotations = new Sequence;
@@ -171,6 +170,7 @@ rule AbstractNodeFromAnnotation
 	if (preStyled.isUndefined()){
 	var styleAnnotation = emfTool.getECoreUtil.copy(s);
 	styleAnnotation.Source = s.source + ".description" ;
+	styleAnnotation.details.put("node", s.getVal("name"));
 	t.style = styleAnnotation.equivalent();	
 	} else {
 	t.style = preStyled.equivalent();
@@ -569,7 +569,6 @@ rule BorderedStyleFromAnnotation
 	t.borderSizeComputationExpression = "aql:" + s.getVal("borderSize");
 	}
 	
-	//TODO Do a readability function that 
 @abstract
 rule LabelStyleFromAnnotation
 	transform s : Source!EAnnotation

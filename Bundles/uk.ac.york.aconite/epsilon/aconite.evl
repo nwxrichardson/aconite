@@ -1,0 +1,7 @@
+context EAnnotation {
+
+	critique test {
+		check : false
+	}
+
+}
