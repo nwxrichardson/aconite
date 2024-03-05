@@ -23,7 +23,6 @@ pre {
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
-	
 }
 
 operation Source!EAnnotation getDiagram() : Source!EAnnotation{
@@ -159,7 +158,7 @@ rule AbstractMappingFromAnnotation
 		directEdit.initialOperation = init;
 		init.firstModelOperations = set;
 		set.featureName = s.getVal("labelExpression");
-		set.valueExpression = "var:0";
+		set.valueExpression = "aql:0";
 	}
 	} 
 
@@ -192,6 +191,8 @@ rule NodeFromAnnotation
 	
 	t.label = s.getVal("label", t.name);
 	
+	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
+	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression");
 	
@@ -210,6 +211,8 @@ rule ContainerFromAnnotation
 	
 	t.label = s.getVal("label", t.name);
 	
+	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
+	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression","aql:self" + container.getRoute(element));
 	
@@ -224,6 +227,8 @@ rule AbsEdgeFromAnnotation
 	to 			t : Target!EdgeMapping 
 	extends AbstractMappingFromAnnotation {
 	guard : s.Source = "sirius.edge"
+	
+	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalEdgeFromAnnotation");
 	
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
@@ -336,11 +341,12 @@ rule EleEdgeFromAnnotation
 	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source")) and i.Source != "sirius.diagram").equivalent();}
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source")) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
+	//TODO Remove this work around
+	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
 	//TODO make this a function
 	if (s.getVal("reconnectable").asBoolean()) {
 		var sourceConnect = new Target!ReconnectEdgeDescription;
@@ -396,6 +402,44 @@ rule EleEdgeFromAnnotation
 		chng.subModelOperations.add(set);
 	}
 }
+
+/*
+ *----------------------------------------------------------------------------------
+ *      CONDITIONAL STYLES
+ *----------------------------------------------------------------------------------
+ */	
+
+@abstarct
+rule ConditionalFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ConditionalStyleDescription {
+	guard : s.Source = "sirius.condition"
+	t.predicateExpression = s.getVal("condition");
+	} 
+	
+@lazy
+rule ConditionalNodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ConditionalNodeStyleDescription 
+	extends ConditionalFromAnnotation {
+		 t.style = annotations.selectOne(i|i.Source = "sirius.node.description" and i.getVal("node") = s.getVal("name")).equivalent();
+	} 
+
+@lazy
+rule ConditionalContainerFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ConditionalContainerStyleDescription 
+	extends ConditionalFromAnnotation {
+		 t.style = annotations.selectOne(i|i.Source = "sirius.container.description" and i.getVal("node") = s.getVal("name")).equivalent();
+	} 
+	
+@lazy
+rule ConditionalContainerFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ConditionalEdgeStyleDescription 
+	extends ConditionalFromAnnotation {
+		 t.style = annotations.selectOne(i|i.Source = "sirius.edge.description" and i.getVal("node") = s.getVal("name")).equivalent();
+	} 
 
 /*
  *----------------------------------------------------------------------------------

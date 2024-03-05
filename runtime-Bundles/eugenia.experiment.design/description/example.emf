@@ -9,14 +9,14 @@ class Project {
 	attr String title;
 	attr String description;
 
-	@sirius.tool.creation(~abstract="true", name="Dependencies Meta", container="TTask")
+	@sirius.tool.creation("abstract"="true", name="Dependencies Meta", container="TTask")
 	val Task[*] tasks;
 	val Person[*] people;
 }
 
 @sirius.diagram(name="Deliverables")
 @sirius.node(name="ETask", directlyEditable="true", container="Effort", labelExpression="title")
-@sirius.container(name="TTask", directlyEditable="true", container="Tasks", directlyEditable="true", labelExpression="title", color="light_blue")
+@sirius.container(name="TTask", directlyEditable="true", container="Tasks", labelExpression="title", color="light_blue")
 @sirius.container(name="PTask", container="Project", labelExpression="title", color="light_blue")
 class Task {
 	attr String title;
@@ -30,6 +30,8 @@ class Task {
 	val Deliverable[*] deliverables;
 }
 
+@sirius.condition(name="always", node="Person")
+@sirius.node.description(node="always")
 @sirius.node(name="Person", container="Effort")
 class Person {
 	attr String name;

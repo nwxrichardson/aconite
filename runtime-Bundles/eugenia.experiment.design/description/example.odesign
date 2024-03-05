@@ -34,6 +34,12 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Generated Hidden Tools">
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="aql:0"/>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
@@ -51,12 +57,6 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
-            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Target Reconnector" forceRefresh="true">
             <source name="source"/>
@@ -90,6 +90,13 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
+          <conditionnalStyles predicateExpression="aql:false">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <edgeMappings name="EEffort" label="EEffort" sourceMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='Person']" targetMapping="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@nodeMappings[name='ETask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Tasks']/@defaultLayer/@containerMappings[name='TTask'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Project']/@defaultLayer/@containerMappings[name='PTask']" targetFinderExpression="aql:self.task" sourceFinderExpression="aql:self.person" domainClass="psl::Effort" useDomainElement="true" reconnections="//@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@toolSections.0/@ownedTools[name='EEffort%20Source%20Reconnector'] //@ownedViewpoints[name='Project%20Specification%20Language']/@ownedRepresentations[name='Effort']/@defaultLayer/@toolSections.0/@ownedTools[name='EEffort%20Target%20Reconnector']">
           <style endsCentering="Both">
@@ -100,24 +107,10 @@
           </style>
         </edgeMappings>
         <toolSections name="Generated Hidden Tools">
-          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Target Reconnector" forceRefresh="true">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext">
-                <subModelOperations xsi:type="tool:Unset" featureName="task" elementExpression="aql:source"/>
-                <subModelOperations xsi:type="tool:SetValue" featureName="task" valueExpression="aql:target"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:DirectEditLabel">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="aql:0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
@@ -130,6 +123,20 @@
               <firstModelOperations xsi:type="tool:ChangeContext">
                 <subModelOperations xsi:type="tool:Unset" featureName="person" elementExpression="aql:source"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="person" valueExpression="aql:target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Target Reconnector" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext">
+                <subModelOperations xsi:type="tool:Unset" featureName="task" elementExpression="aql:source"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="task" valueExpression="aql:target"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>

@@ -72,6 +72,13 @@
         eType="#//Deliverable" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="sirius.condition">
+      <details key="name" value="always"/>
+      <details key="node" value="Person"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node.description">
+      <details key="node" value="always"/>
+    </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="Person"/>
       <details key="container" value="Effort"/>
