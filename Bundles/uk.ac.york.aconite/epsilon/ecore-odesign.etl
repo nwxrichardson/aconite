@@ -219,6 +219,7 @@ rule ContainerFromAnnotation
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	
+	t.childrenPresentation = Target!ContainerLayout#~List.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
 	}
 
 @abstract
@@ -630,6 +631,7 @@ rule ContainerStyleFromAnnotation
 	t.heightComputationExpression = s.getVal("heightComputationExpression");
 	t.widthComputationExpression = s.getVal("widthComputationExpression");
 	t.roundedCorner = s.getVal("roundedCorner").asBoolean();
+
 	}
 	
 /*

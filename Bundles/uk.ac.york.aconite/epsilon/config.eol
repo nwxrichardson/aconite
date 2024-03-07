@@ -40,6 +40,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "reconnectable"	: return "false";
 		case "directlyEditable"	: return "false";
 		case "condition"	: return "aql:false";
+		case "childrenPresentation"	: return "FreeForm";
 		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return "aql:self" + annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}
