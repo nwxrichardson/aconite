@@ -45,8 +45,7 @@
       <constraintsBinding
             compose="true"
             constraints="epsilon/aconite.evl"
-            namespaceURI="http://uk.ac.york.aconite.validator"
-            validator="aconite.valitator">
+            namespaceURI="http://www.eclipse.org/emf/2002/Ecore">
       </constraintsBinding>
    </extension>
 </plugin>

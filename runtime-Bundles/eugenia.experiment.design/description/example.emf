@@ -32,7 +32,7 @@ class Task {
 
 @sirius.condition(name="always", node="Person")
 @sirius.node.description(node="always")
-@sirius.node(name="Person", container="Effort", tooltip="Here to change!")
+@sirius.node(name="Person", container="Effort", tooltip="Here to change")
 class Person {
 	attr String name;
 }

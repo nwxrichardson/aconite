@@ -2,6 +2,37 @@ operation String getColor() : Target!SystemColor  {
 	return colorPalette.selectOne(i|i.name = self);
 }
 
+operation Source!EAnnotation getVal(key : String) : String{
+
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value;
+	}
+	return self.getDefault(key);
+
+}
+
+operation Source!EAnnotation getVal(key : String, def : String) : String{
+
+	var rtn = self.getVal(key);
+	if (rtn != ""){return rtn;}
+	return def;
+
+}
+
+operation Source!EAnnotation getVals(key : String) : Sequence{
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value.split(",").collect(i|i.trim());
+	}
+	return Sequence{""};
+}
+operation Source!EAnnotation getVals(key : String, def : String) : Sequence{
+	var rtn = self.getVals(key);
+	if (rtn != Sequence{""}){return rtn;}
+	return Sequence(def);
+}
+
 //Warning Any
 operation Any getRoute(target : Any) : String {
 	if (self = target) {return "";}

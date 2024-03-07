@@ -82,7 +82,7 @@
     <eAnnotations source="sirius.node">
       <details key="name" value="Person"/>
       <details key="container" value="Effort"/>
-      <details key="tooltip" value="Here to change!"/>
+      <details key="tooltip" value="Here to change"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

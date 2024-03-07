@@ -1,7 +1,10 @@
-context EAnnotation {
+import "util.eol";
 
-	critique test {
-		check : false
+
+context EAnnotation { guard : self.Source = "sirius.node" or self.Source = "sirius.container" or self.Source = "sirius.edge"
+
+	constraint MustHaveContainer {
+		check : self.details.exists(i|i.key = "container")
 	}
 
 }

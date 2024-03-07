@@ -29,38 +29,6 @@ operation Source!EAnnotation getDiagram() : Source!EAnnotation{
 	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
 }  
 
-operation Source!EAnnotation getVal(key : String) : String{
-
-	var tmp = self.details.selectOne(i|i.key = key);
-	if (tmp.isDefined()){
-	return tmp.value;
-	}
-	return self.getDefault(key);
-
-}
-
-operation Source!EAnnotation getVal(key : String, def : String) : String{
-
-	var rtn = self.getVal(key);
-	if (rtn != ""){return rtn;}
-	return def;
-
-}
-
-
-operation Source!EAnnotation getVals(key : String) : Sequence{
-	var tmp = self.details.selectOne(i|i.key = key);
-	if (tmp.isDefined()){
-	return tmp.value.split(",").collect(i|i.trim());
-	}
-	return Sequence{""};
-}
-operation Source!EAnnotation getVals(key : String, def : String) : Sequence{
-	var rtn = self.getVals(key);
-	if (rtn != Sequence{""}){return rtn;}
-	return Sequence(def);
-}
-
 operation Source!EClass getDC() : String {
 	return self.ePackage.name + "::" + self.name;
 }
@@ -733,6 +701,6 @@ post {
 			hiddenBox.name = "Generated Hidden Tools";
 			hiddenTools.get(tool).equivalent().defaultLayer.toolSections.add(hiddenBox);
 		}
-		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.println().selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
+		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
 	}
 }	
