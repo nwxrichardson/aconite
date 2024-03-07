@@ -108,6 +108,102 @@
       <details key="labelExpression" value="title"/>
       <details key="color" value="light_green"/>
     </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="PTask - Deli"/>
+      <details key="container" value="PTask"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Deliverables - Deli"/>
+      <details key="container" value="Deliverables"/>
+      <details key="labelExpression" value="title"/>
+      <details key="color" value="light_green"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="due" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lead" eType="#//Person"/>

@@ -58,7 +58,7 @@ public class SDScore {
 	public static URI getOdesignURI(IFile eclipseFile) {
 		String currentTxt = eclipseFile.getFullPath().toString();
 		URI rtn =  URI.createPlatformResourceURI(currentTxt,true);
-		rtn.appendFileExtension(".odesign");
+		rtn.trimFileExtension().appendFileExtension(".odesign");
 		return rtn;
 	}
 	
