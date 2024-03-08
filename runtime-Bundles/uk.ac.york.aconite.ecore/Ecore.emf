@@ -17,7 +17,7 @@ class EAnnotation extends EModelElement {
 	ref EObject[*] references;
 }
 
-@sirius.container(name = "EC EClass", childrenPresentation = "List", container = "Class Diagram")
+@sirius.container(name = "EC EClass", childrenPresentation = "List", container = "Class Diagram", sce = "eClassifiers")
 @Ecore(constraints="InterfaceIsAbstract AtMostOneID UniqueFeatureNames UniqueOperationSignatures NoCircularSuperTypes WellFormedMapEntryClass ConsistentSuperTypes DisjointFeatureAndOperationSignatures")
 class EClass extends EClassifier {
 	op EBoolean isSuperTypeOf(EClass someClass);

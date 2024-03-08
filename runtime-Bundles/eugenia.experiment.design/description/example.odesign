@@ -48,12 +48,6 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DirectEditLabel">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="aql:0"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="dependencies Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
@@ -71,6 +65,12 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="aql:0"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -107,12 +107,6 @@
           </style>
         </edgeMappings>
         <toolSections name="Generated Hidden Tools">
-          <ownedTools xsi:type="tool_1:DirectEditLabel">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="aql:0"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="EEffort Source Reconnector" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
@@ -140,6 +134,12 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="title" valueExpression="aql:0"/>
+            </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>

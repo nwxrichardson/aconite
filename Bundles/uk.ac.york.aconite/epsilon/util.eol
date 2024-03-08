@@ -6,9 +6,11 @@ operation String getColor() : Target!SystemColor  {
 operation Any getRoute(target : Any) : String {
 	if (self = target) {return "";}
 	var seen = Set{self};
+	var curSize = -1;
 	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
 	routes.keySet();
 	while ((not routes.containsKey(target))){
+	curSize = seen.size();
 	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
 	for (i in routes.keySet()){

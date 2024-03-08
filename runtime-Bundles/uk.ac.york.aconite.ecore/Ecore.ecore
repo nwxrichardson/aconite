@@ -31,6 +31,7 @@
       <details key="name" value="EC EClass"/>
       <details key="childrenPresentation" value="List"/>
       <details key="container" value="Class Diagram"/>
+      <details key="sce" value="eClassifiers"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="InterfaceIsAbstract AtMostOneID UniqueFeatureNames UniqueOperationSignatures NoCircularSuperTypes WellFormedMapEntryClass ConsistentSuperTypes DisjointFeatureAndOperationSignatures"/>

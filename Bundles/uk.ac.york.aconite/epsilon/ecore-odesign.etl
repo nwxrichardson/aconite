@@ -194,7 +194,7 @@ rule NodeFromAnnotation
 	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression");
+	t.semanticCandidatesExpression = "aql:self." + s.getVal("sce");
 	
 	}
 	
@@ -214,12 +214,12 @@ rule ContainerFromAnnotation
 	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression","aql:self" + container.getRoute(element));
+	t.semanticCandidatesExpression = "aql:self." + s.getVal("sce");
 	
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	
-	t.childrenPresentation = Target!ContainerLayout#~List.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
+	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
 	}
 
 @abstract
@@ -735,6 +735,6 @@ post {
 			hiddenBox.name = "Generated Hidden Tools";
 			hiddenTools.get(tool).equivalent().defaultLayer.toolSections.add(hiddenBox);
 		}
-		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.println().selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
+		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
 	}
 }	
