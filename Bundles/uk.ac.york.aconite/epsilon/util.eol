@@ -9,7 +9,7 @@ operation Any getRoute(target : Any) : String {
 	var curSize = -1;
 	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
 	routes.keySet();
-	while ((not routes.containsKey(target))){
+	while ((not routes.containsKey(target)) and seen.size() > curSize){
 	curSize = seen.size();
 	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
@@ -21,5 +21,7 @@ operation Any getRoute(target : Any) : String {
 	}
 	routes = newRoutes;
 	}
+	if  (routes.containsKey(target)){
 	return routes.get(target);
+	} return "";
 }

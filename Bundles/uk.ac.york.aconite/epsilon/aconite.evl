@@ -1,7 +1,7 @@
 context EAnnotation {
 
-	critique test {
-		check : false
+	critique ContainerIsName {
+		check : EAnnotation.all.exists(i|i.details.get("name") = self.details.get("container"))
 	}
 
 }

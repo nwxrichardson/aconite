@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ecoreAconite:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecoreAconite="http://york.ac.uk/Aconite.EcoreCopy" xmi:id="_xmaggN0vEe6dZfEIu9azjQ">
+  <eClassifiers xsi:type="ecoreAconite:EClass" xmi:id="_5O7KAN0vEe6dZfEIu9azjQ" name="Test"/>
+  <eClassifiers xsi:type="ecoreAconite:EClass" xmi:id="_IHcgoN00Ee6dZfEIu9azjQ" name="Test 2">
+    <eStructuralFeatures xsi:type="ecoreAconite:EAttribute" xmi:id="_K5sl0N00Ee6dZfEIu9azjQ" name="TestAttr"/>
+  </eClassifiers>
+</ecoreAconite:EPackage>

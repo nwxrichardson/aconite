@@ -2,6 +2,7 @@
 @namespace(uri="http://york.ac.uk/Aconite.EcoreCopy", prefix="ecoreAconite")
 package ecoreAconite;
 
+@sirius.node(name = "EC EAttribute", container = "EC EClass" , sce = "eStructuralFeatures", iconPath = "/org.eclipse.emf.ecoretools.design/icons/full/obj16/Role.gif")
 @Ecore(constraints="ConsistentTransient")
 class EAttribute extends EStructuralFeature {
 	attr EBoolean iD;
@@ -17,7 +18,7 @@ class EAnnotation extends EModelElement {
 	ref EObject[*] references;
 }
 
-@sirius.container(name = "EC EClass", childrenPresentation = "List", container = "Class Diagram", sce = "eClassifiers")
+@sirius.container(name = "EC EClass", childrenPresentation = "List", container = "Class Diagram", sce = "eClassifiers", directlyEditable = "true", labelExpression = "/org.eclipse.emf.ecoretools.design/icons/full/obj16/Role.gif")
 @Ecore(constraints="InterfaceIsAbstract AtMostOneID UniqueFeatureNames UniqueOperationSignatures NoCircularSuperTypes WellFormedMapEntryClass ConsistentSuperTypes DisjointFeatureAndOperationSignatures")
 class EClass extends EClassifier {
 	op EBoolean isSuperTypeOf(EClass someClass);
@@ -45,6 +46,9 @@ class EClass extends EClassifier {
 	readonly volatile transient derived ref EStructuralFeature[*] eAllStructuralFeatures;
 	readonly volatile transient derived ref EClass[*] eAllSuperTypes;
 	readonly volatile transient derived !resolve ref EAttribute eIDAttribute;
+	
+	@sirius.tool.creation(name="Create Attribute", container="EC EAttribute")
+	@sirius.tool.creation(name="Create Reference", container="EC EReferenceNode")
 	!resolve val EStructuralFeature[*]#eContainingClass eStructuralFeatures;
 
 	@GenModel(suppressedIsSetVisibility="true", suppressedUnsetVisibility="true")
@@ -72,6 +76,7 @@ class EDataType extends EClassifier {
 	attr EBoolean serializable = "true";
 }
 
+@sirius.container(name = "EC ENum", childrenPresentation = "List", container = "Class Diagram", sce = "eClassifiers.eAttributes.eDataType")
 @Ecore(constraints="UniqueEnumeratorNames UniqueEnumeratorLiterals")
 class EEnum extends EDataType {
 	op EEnumLiteral getEEnumLiteral(EString name);
@@ -122,6 +127,7 @@ class EObject {
 	op EJavaObject eInvoke(EOperation operation, EEList<?> arguments) throws EInvocationTargetException;
 }
 
+@sirius.node(name = "Operation", container = "EC EClass")
 @Ecore(constraints="UniqueParameterNames UniqueTypeParameterNames NoRepeatingVoid")
 class EOperation extends ETypedElement {
 	op EInt getOperationID();
@@ -144,6 +150,7 @@ class EPackage extends ENamedElement {
 	attr EString nsURI;
 	attr EString nsPrefix;
 	transient !resolve ref EFactory[1]#ePackage eFactoryInstance;
+	@sirius.tool.creation(name="Create Class", container="EC EClass")
 	val EClassifier[*]#ePackage eClassifiers;
 	val EPackage[*]#eSuperPackage eSubpackages;
 	readonly transient ref EPackage#eSubpackages eSuperPackage;
@@ -153,6 +160,7 @@ class EParameter extends ETypedElement {
 	readonly transient !resolve ref EOperation#eParameters eOperation;
 }
 
+@sirius.node(name = "EC EReferenceNode", container = "EC EClass", sce = "eStructuralFeatures")
 @Ecore(constraints="ConsistentOpposite SingleContainer ConsistentKeys ConsistentUnique ConsistentContainer")
 class EReference extends EStructuralFeature {
 	attr EBoolean containment;

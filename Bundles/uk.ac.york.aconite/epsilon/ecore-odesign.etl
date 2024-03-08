@@ -157,7 +157,7 @@ rule AbstractMappingFromAnnotation
 		directEdit.initialOperation = init;
 		init.firstModelOperations = set;
 		set.featureName = s.getVal("labelExpression");
-		set.valueExpression = "aql:0";
+		set.valueExpression = "var:0";
 	}
 	} 
 
@@ -495,7 +495,7 @@ rule CreationToolFromAnnotation
 	to t : Target!MappingBasedToolDescription {
 	guard : s.Source = "sirius.tool.creation" and not s.getVal("abstract").asBoolean()
 	t.forceRefresh = true;
-	t.name = "Add to " + s.eModelElement.name.ftuc();
+	t.name = "Add to " + s.getVal("name").ftuc();
 	}
 
 @lazy
@@ -504,14 +504,15 @@ rule ContainerCreationToolFromAnnotation
 	to t : Target!ContainerCreationDescription 
 	extends CreationToolFromAnnotation {
 	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.container"
-	t.containerMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
+	var element = annotations.select(i|i.getVal("name") = s.getVal("container"));
+	t.containerMappings = element.equivalent();
 	var changeContext = new Target!ChangeContext;
 	t.initialOperation = new Target!InitialNodeCreationOperation;
 	changeContext.browseExpression = "var:container";
 	t.initialOperation.firstModelOperations = changeContext;
 	var create = new Target!CreateInstance;
 	create.referenceName = s.eModelElement.name;
-	create.typeName = s.eModelElement.eReferenceType.getDC();
+	create.typeName = element.random().eModelElement.getDC();
 	changeContext.subModelOperations.add(create);
 	}
 	
@@ -521,14 +522,15 @@ rule NodeCreationToolFromAnnotation
 	to t : Target!NodeCreationDescription 
 	extends CreationToolFromAnnotation {
 	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.node"
-	t.nodeMappings = annotations.select(i|i.getVal("name") = s.getVal("container")).equivalent();
+	var element = annotations.select(i|i.getVal("name") = s.getVal("container"));
+	t.nodeMappings = element.equivalent();
 	var changeContext = new Target!ChangeContext;
 	t.initialOperation = new Target!InitialNodeCreationOperation;
 	changeContext.browseExpression = "var:container";
 	t.initialOperation.firstModelOperations = changeContext;
 	var create = new Target!CreateInstance;
 	create.referenceName = s.eModelElement.name;
-	create.typeName = s.eModelElement.eReferenceType.getDC();
+	create.typeName = element.random().eModelElement.getDC();
 	changeContext.subModelOperations.add(create);
 	}
 

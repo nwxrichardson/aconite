@@ -5,6 +5,12 @@
     <details key="name" value="Ecore Tool Aconite"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="EAttribute" eSuperTypes="#//EStructuralFeature">
+    <eAnnotations source="sirius.node">
+      <details key="name" value="EC EAttribute"/>
+      <details key="container" value="EC EClass"/>
+      <details key="sce" value="eStructuralFeatures"/>
+      <details key="iconPath" value="/org.eclipse.emf.ecoretools.design/icons/full/obj16/Role.gif"/>
+    </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="ConsistentTransient"/>
     </eAnnotations>
@@ -32,6 +38,8 @@
       <details key="childrenPresentation" value="List"/>
       <details key="container" value="Class Diagram"/>
       <details key="sce" value="eClassifiers"/>
+      <details key="directlyEditable" value="true"/>
+      <details key="labelExpression" value="/org.eclipse.emf.ecoretools.design/icons/full/obj16/Role.gif"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="InterfaceIsAbstract AtMostOneID UniqueFeatureNames UniqueOperationSignatures NoCircularSuperTypes WellFormedMapEntryClass ConsistentSuperTypes DisjointFeatureAndOperationSignatures"/>
@@ -99,7 +107,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="eIDAttribute" eType="#//EAttribute"
         changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eStructuralFeatures" upperBound="-1"
-        eType="#//EStructuralFeature" containment="true" resolveProxies="false" eOpposite="#//EStructuralFeature/eContainingClass"/>
+        eType="#//EStructuralFeature" containment="true" resolveProxies="false" eOpposite="#//EStructuralFeature/eContainingClass">
+      <eAnnotations source="sirius.tool.creation">
+        <details key="name" value="Create Attribute"/>
+        <details key="container" value="EC EAttribute"/>
+      </eAnnotations>
+      <eAnnotations source="sirius.tool.creation">
+        <details key="name" value="Create Reference"/>
+        <details key="container" value="EC EReferenceNode"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eGenericSuperTypes" upperBound="-1"
         eType="#//EGenericType" unsettable="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -151,6 +168,12 @@
         defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EEnum" eSuperTypes="#//EDataType">
+    <eAnnotations source="sirius.container">
+      <details key="name" value="EC ENum"/>
+      <details key="childrenPresentation" value="List"/>
+      <details key="container" value="Class Diagram"/>
+      <details key="sce" value="eClassifiers.eAttributes.eDataType"/>
+    </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="UniqueEnumeratorNames UniqueEnumeratorLiterals"/>
     </eAnnotations>
@@ -251,6 +274,10 @@
     </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EOperation" eSuperTypes="#//ETypedElement">
+    <eAnnotations source="sirius.node">
+      <details key="name" value="Operation"/>
+      <details key="container" value="EC EClass"/>
+    </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="UniqueParameterNames UniqueTypeParameterNames NoRepeatingVoid"/>
     </eAnnotations>
@@ -294,7 +321,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="eFactoryInstance" lowerBound="1"
         eType="#//EFactory" transient="true" resolveProxies="false" eOpposite="#//EFactory/ePackage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eClassifiers" upperBound="-1"
-        eType="#//EClassifier" containment="true" eOpposite="#//EClassifier/ePackage"/>
+        eType="#//EClassifier" containment="true" eOpposite="#//EClassifier/ePackage">
+      <eAnnotations source="sirius.tool.creation">
+        <details key="name" value="Create Class"/>
+        <details key="container" value="EC EClass"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eSubpackages" upperBound="-1"
         eType="#//EPackage" containment="true" eOpposite="#//EPackage/eSuperPackage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eSuperPackage" eType="#//EPackage"
@@ -305,6 +337,11 @@
         changeable="false" transient="true" resolveProxies="false" eOpposite="#//EOperation/eParameters"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EReference" eSuperTypes="#//EStructuralFeature">
+    <eAnnotations source="sirius.node">
+      <details key="name" value="EC EReferenceNode"/>
+      <details key="container" value="EC EClass"/>
+      <details key="sce" value="eStructuralFeatures"/>
+    </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="ConsistentOpposite SingleContainer ConsistentKeys ConsistentUnique ConsistentContainer"/>
     </eAnnotations>
