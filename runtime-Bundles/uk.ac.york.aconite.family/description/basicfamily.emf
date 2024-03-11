@@ -6,9 +6,9 @@ abstract class Person {
 	attr String name;
 	ref Person[*]#parents children;
 	ref Person[0..2]#children parents;
-	@sirius.edge(creatable = "true", name = "Mother", container = "Persons" , sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "")
+	@sirius.edge(creatable = "true", name = "Mother", container = "Persons" , sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "", color = "purple")
 	derived ref Woman mother;
-	@sirius.edge(creatable = "true", name = "Father", container = "Persons", sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "")
+	@sirius.edge(creatable = "true", name = "Father", container = "Persons", sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "", color = "blue")
 	derived ref Man father;
 }
 
@@ -20,11 +20,11 @@ class Family {
 	val Person[*] members;
 }
 
-@sirius.node(name = "Man", container = "Persons", sce = "members")
+@sirius.node(name = "Man", container = "Persons", sce = "members", shape = "image", imagePath = "uk.ac.york.aconite.family/icons/man.svg")
 class Man extends Person {
 }
 
-@sirius.node(name = "Woman", container = "Persons", sce = "members")
+@sirius.node(name = "Woman", container = "Persons", sce = "members", shape = "image", imagePath = "uk.ac.york.aconite.family/icons/woman.svg")
 class Woman extends Person {
 }
 

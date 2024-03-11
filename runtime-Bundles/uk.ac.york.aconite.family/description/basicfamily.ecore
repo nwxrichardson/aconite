@@ -18,6 +18,7 @@
         <details key="sourceNode" value="Man, Woman"/>
         <details key="reconnectable" value="true"/>
         <details key="labelExpression" value=""/>
+        <details key="color" value="purple"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="father" eType="#//Man"
@@ -29,6 +30,7 @@
         <details key="sourceNode" value="Man, Woman"/>
         <details key="reconnectable" value="true"/>
         <details key="labelExpression" value=""/>
+        <details key="color" value="blue"/>
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
@@ -54,6 +56,8 @@
       <details key="name" value="Man"/>
       <details key="container" value="Persons"/>
       <details key="sce" value="members"/>
+      <details key="shape" value="image"/>
+      <details key="imagePath" value="uk.ac.york.aconite.family/icons/man.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
@@ -61,6 +65,8 @@
       <details key="name" value="Woman"/>
       <details key="container" value="Persons"/>
       <details key="sce" value="members"/>
+      <details key="shape" value="image"/>
+      <details key="imagePath" value="uk.ac.york.aconite.family/icons/woman.svg"/>
     </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

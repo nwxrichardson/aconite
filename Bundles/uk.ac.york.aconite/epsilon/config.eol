@@ -16,7 +16,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "widthComputationExpression"	: return "-1";
 		case "sizeComputationExpression" : return "3";
 		case "resizeKind"	: return "NSEW";
-		case "labelPosition"	: return "node";
+		case "labelPosition"	: if (self.getVal("shape") != "image"){return "node";} return "border";
 		case "labalExpression"	: return "aql:self.name";
 		case "hideLabelByDefault"	: return "false";
 		case "arcHeight"	: return "1";

@@ -24,6 +24,11 @@ pre {
 	delete randomStyle;
 }
 
+@cached
+operation String getColor() : Target!SystemColor  {
+	return colorPalette.selectOne(i|i.name = self);
+}
+
 operation Source!EAnnotation getDiagram() : Source!EAnnotation{
 	if (self.Source = "sirius.diagram") {return self;}
 	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
@@ -69,7 +74,6 @@ operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	if (expression = ""){return self;}
 	var splited = expression.split("\\.");
 	if (splited.size() = 0){return self;}
-	self.getEAllReferences().println();
 	var rtn = self.getEAllReferences().selectOne(j|j.name = splited.get(0)).eType;
 	if (splited.size() = 1){
 	return rtn;}
@@ -246,6 +250,7 @@ rule AbsEdgeFromAnnotation
 	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
 	t.style.centerLabelStyleDescription.showIcon = false;
 	}
+	t.style.strokeColor = s.getVal("color").getColor();
 	}
 	
 @lazy
@@ -269,15 +274,21 @@ rule RefEdgeFromAnnotation
 	
 	if (s.getVal("creatable").asBoolean()){
 		var createEdge = new Target!EdgeCreationDescription;
+		createEdge.name = "Add to " + s.eModelElement.name.ftuc();
 		createEdge.addToHidden(s.getDiagram());
-		var init = new Target!InitialOperation;
-		sourceConnect.initialOperation = init;
+		createEdge.edgeMappings.add(t);
+		var init = new Target!InitEdgeCreationOperation;
+		createEdge.initialOperation = init;
 		var chng = new Target!ChangeContext;
 		init.firstModelOperations = chng;
 		var set = new Target!SetValue;
-		targ.subModelOperations.add(set);
+		chng.subModelOperations.add(set);
 		set.featureName = element.name;
-		set.valueExpression = "aql:target";
+		if (element.oneRef()){
+			set.valueExpression = "aql:target";
+		} else {
+			set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
+		}
 	}
 	
 	if (s.getVal("reconnectable").asBoolean()){
@@ -704,8 +715,7 @@ rule DotNodeFromAnnotation
 	guard : s.getVal("shape") = "dot"
 	
 	t.backgroundColor = s.getVal("color").getColor();
-	t.strokeSizeComputationExpression = s.getVal("strokeSizeComputationExpression","2").asInteger();
-	
+	t.strokeSizeComputationExpression = s.getVal("strokeSizeComputationExpression","2");
 	}
 	
 @lazy
@@ -716,8 +726,8 @@ rule EllipseNodeFromAnnotation
 	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
 	t.color = s.getVal("color").getColor();
-	t.horizontalDiameterComputationExpression = s.getVal("horizontalDiameterComputationExpression","2").asInteger();
-	t.verticalDiameterComputationExpression = s.getVal("verticalDiameterComputationExpression","2").asInteger();
+	t.horizontalDiameterComputationExpression = s.getVal("horizontalDiameterComputationExpression","2");
+	t.verticalDiameterComputationExpression = s.getVal("verticalDiameterComputationExpression","2");
 	}
 	
 //@lazy
@@ -738,8 +748,19 @@ rule LozengeNodeFromAnnotation
 	guard : s.getVal("shape") = "ellipse"
 	//Maybe make a colourable rule
 	t.color = s.getVal("color").getColor();
-	t.heightComputationExpression = s.getVal("heightComputationExpression","2").asInteger();
-	t.widthComputationExpression = s.getVal("widthComputationExpression","2").asInteger();
+	t.heightComputationExpression = s.getVal("heightComputationExpression","2");
+	t.widthComputationExpression = s.getVal("widthComputationExpression","2");
+	}
+	
+@lazy
+rule WorkspaceImageNodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!WorkspaceImageDescription
+	extends NodeStyleFromAnnotation
+{
+	guard : s.getVal("shape") = "image"
+	
+	t.workspacePath = s.getVal("imagePath");
 	}
 
 	
