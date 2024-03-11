@@ -38,6 +38,17 @@ pre {
 }
 
 @cached
+operation getImgFolder() : String {
+	return  annotations.selectOne(i|i.Source = "sirius").getVal("iconFolder");
+} 
+
+operation String makeImg() : String {
+	if (self != "") {
+	return getImgFolder() + self;
+	} return "";
+}
+
+@cached
 operation String getColor() : Target!SystemColor  {
 	return colorPalette.selectOne(i|i.name = self);
 }
@@ -594,6 +605,14 @@ rule ImportNodeFromAnnotation
 	extends AbstractNodeFromAnnotation, AbstractMappingImportFromAnnotation{
 	importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.node").equivalent();
 	}
+	
+@lazy
+rule ImportContainerFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ContainerMappingImport
+	extends ContainerFromAnnotation, AbstractMappingImportFromAnnotation{
+	importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.container").equivalent();
+	}
 
 /*
  *----------------------------------------------------------------------------------
@@ -614,7 +633,7 @@ rule BorderedStyleFromAnnotation
 rule LabelStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!LabelStyleDescription{
-	t.iconPath = s.getVal("iconPath");
+	t.iconPath = s.getVal("iconPath").makeImg();
 	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("labelAlignment"));
 	t.labelColor = s.getVal("labelColor").getColor();
 	t.labelExpression = s.getVal("proLabelExpression");
@@ -772,7 +791,7 @@ rule WorkspaceImageNodeFromAnnotation
 {
 	guard : s.getVal("shape") = "image"
 	
-	t.workspacePath = s.getVal("imagePath");
+	t.workspacePath = s.getVal("imagePath").makeImg();
 	}
 
 	

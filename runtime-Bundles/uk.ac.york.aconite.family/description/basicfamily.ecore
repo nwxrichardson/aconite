@@ -26,6 +26,7 @@
       <details key="import" value="Rel Default"/>
       <details key="name" value="Parent"/>
       <details key="container" value="Person"/>
+      <details key="sce" value="parents"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="import" value="Rel Default"/>
@@ -39,6 +40,7 @@
       <details key="proLabelExpression" value="Siblings"/>
       <details key="foregroundColor" value="light_yellow"/>
       <details key="container" value="Relationships"/>
+      <details key="showIcon" value="false"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="Sibling"/>
@@ -51,7 +53,7 @@
         eType="#//Person" eOpposite="#//Person/parents">
       <eAnnotations source="sirius.edge">
         <details key="name" value="SiblingsEdge"/>
-        <details key="proLabelExpression" value=""/>
+        <details key="labelExpression" value=""/>
         <details key="color" value="gray"/>
         <details key="container" value="Relationships"/>
         <details key="targetFinderExpression" value="aql:self"/>
@@ -105,14 +107,15 @@
       <details key="container" value="Persons"/>
       <details key="sce" value="members"/>
       <details key="shape" value="image"/>
-      <details key="imagePath" value="uk.ac.york.aconite.family/icons/man.svg"/>
+      <details key="imagePath" value="man.svg"/>
+      <details key="borderSize" value="0"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
     <eAnnotations source="sirius.node">
       <details key="import" value="Man"/>
       <details key="name" value="Woman"/>
-      <details key="imagePath" value="uk.ac.york.aconite.family/icons/woman.svg"/>
+      <details key="imagePath" value="woman.svg"/>
     </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

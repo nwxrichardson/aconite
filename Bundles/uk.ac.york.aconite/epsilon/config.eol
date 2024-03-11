@@ -29,12 +29,12 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "labelExpression"	: return "name";
 		case "proLabelExpression"	: return "aql:self." + self.getVal("labelExpression");
 		case "labelAlignment"	: return "CENTER";
-		case "borderSize"	: return "2";
+		case "borderSize"	: return self.getVal("borderSizeComputationExpression");
 		case "borderLineStyle"	: return "solid";
 		case "borderColor"	: return "black";
 		case "hideSubMappings"	: return "true";
 		case "inheritsAncestorFilters"	: return "true";
-		case "borderSizeComputationExpression"	: return "aql:2";
+		case "borderSizeComputationExpression"	: return "2";
 		case "importedMapping"	: return self.getVal("import");
 		case "abstract"	: return "false";
 		case "proxyType"	: return "Diagram";
