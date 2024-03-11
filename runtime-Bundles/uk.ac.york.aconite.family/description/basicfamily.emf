@@ -1,13 +1,13 @@
-@sirius
+@sirius(iconFolder = "uk.ac.york.aconite.family/icons/")
 @namespace(uri="http://www.eclipse.org/sirius/sample/basicfamily", prefix="basicfamily")
 package basicfamily;
 
 @sirius.diagram(name = "Relationships")
-@sirius.container(name = "Person", foregroundColor = "light_green", backgroundColor = "white", container = "Relationships", childrenPresentation = "List")
-@sirius.border(name = "Parent", container =  "Person", color = "white")
-@sirius.node(name = "Child", container = "Person", sce = "children")
+@sirius.container(name = "Person", foregroundColor = "light_green", backgroundColor = "white", container = "Relationships", childrenPresentation = "List", showIcon = "true")
+@sirius.border(name = "Parent", container =  "Person", color = "white", showIcon = "true")
+@sirius.node(name = "Child", container = "Person", sce = "children", showIcon = "true")
 @sirius.container(name = "Siblings", proLabelExpression = "Siblings", foregroundColor = "light_yellow", backgroundColor = "white", container = "Relationships", childrenPresentation = "List")
-@sirius.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)")
+@sirius.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
 abstract class Person {
 	attr String name;
 	@sirius.edge(name = "SiblingsEdge", proLabelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")

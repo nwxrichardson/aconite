@@ -22,6 +22,18 @@ pre {
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
+	for (i in annotations) {
+		if (i.details.containsKey("import")){
+		
+		var copyDetails = i.details;
+		var imports =  i.getVals("import").invert();
+		for (j in imports) {
+			i.details.println();
+			i.details.putAll(annotations.selectOne(k|k.getVal("name") = j));
+		}
+		i.details.putAll(copyDetails);
+		}
+	}
 }
 
 @cached
@@ -638,7 +650,7 @@ rule NodeStyleFromAnnotation
 	to t : Target!NodeStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
-	guard : (s.source = "sirius.node.description" or s.source = "sirius.border.description") and not s.getVal("abstract")
+	guard : (s.source = "sirius.node.description" or s.source = "sirius.border.description") and (not s.getVal("abstract").asBoolean())
 	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
  	t.iconPath = s.getVal("iconPath");
@@ -653,7 +665,7 @@ rule ContainerStyleFromAnnotation
 	to t : Target!ContainerStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation , RoundedCornerFromAnnotation
 	{
-	guard : s.source = "sirius.container.description" and not s.getVal("abstract")
+	guard : s.source = "sirius.container.description" and not s.getVal("abstract").asBoolean()
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault","false").asBoolean();
  	t.iconPath = s.getVal("iconPath");
 	t.heightComputationExpression = s.getVal("heightComputationExpression");

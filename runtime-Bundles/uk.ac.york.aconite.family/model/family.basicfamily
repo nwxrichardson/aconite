@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <basicfamily:Family xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basicfamily="http://www.eclipse.org/sirius/sample/basicfamily">
-  <members xsi:type="basicfamily:Man" name="man1" parents="//@members.4"/>
+  <members xsi:type="basicfamily:Man" name="man1" parents="//@members.4" father="//@members.4"/>
   <members xsi:type="basicfamily:Woman" name="woman1" children="//@members.5" parents="//@members.2"/>
   <members xsi:type="basicfamily:Man" name="man2" children="//@members.1" parents="//@members.3"/>
   <members xsi:type="basicfamily:Man" name="man3" children="//@members.2 //@members.4"/>
