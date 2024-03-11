@@ -28,7 +28,7 @@ class Family {
 	val Person[*] members;
 }
 
-@sirius.node(name = "Man", container = "Persons", sce = "members", shape = "image", imagePath = "man.svg", borderSize= "0")
+@sirius.node(name = "Man", container = "Persons", sce = "members", shape = "image", imagePath = "man.svg", borderSize= "0", directlyEditable = "true")
 class Man extends Person {
 }
 

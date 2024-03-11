@@ -109,6 +109,7 @@
       <details key="shape" value="image"/>
       <details key="imagePath" value="man.svg"/>
       <details key="borderSize" value="0"/>
+      <details key="directlyEditable" value="true"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
