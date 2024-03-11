@@ -38,6 +38,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "proxyType"	: return "Diagram";
 		case "proxyStatement"	: return "aql:diagram.target";
 		case "reconnectable"	: return "false";
+		case "creatable"	: return "false";
 		case "directlyEditable"	: return "false";
 		case "condition"	: return "aql:false";
 		case "childrenPresentation"	: return "FreeForm";

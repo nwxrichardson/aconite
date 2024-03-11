@@ -69,7 +69,8 @@ operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	if (expression = ""){return self;}
 	var splited = expression.split("\\.");
 	if (splited.size() = 0){return self;}
-	var rtn = self.eAllReferences.selectOne(j|j.name = splited.get(0)).eType;
+	self.getEAllReferences().println();
+	var rtn = self.getEAllReferences().selectOne(j|j.name = splited.get(0)).eType;
 	if (splited.size() = 1){
 	return rtn;}
 	else {
@@ -122,6 +123,7 @@ rule DiagramFromAnnotation
 	var defaultLayer = new Target!Layer;
 
 	var tools = annotations.select(i|i.Source.startsWith("sirius.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
+	tools.println();
 	if (tools.notEmpty()){
 		var toolBox = new Target!ToolSection;
 		toolBox.name = "Generated Creation Tools";
@@ -261,9 +263,22 @@ rule RefEdgeFromAnnotation
 	if (t.sourceMapping.isEmpty()){
 	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
 
-	t.targetFinderExpression = s.getVal("targetFinderExpression");
+	t.targetFinderExpression = s.getVal("targetFinderExpression");	
 	if (t.targetMapping.isEmpty()){
 	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
+	
+	if (s.getVal("creatable").asBoolean()){
+		var createEdge = new Target!EdgeCreationDescription;
+		createEdge.addToHidden(s.getDiagram());
+		var init = new Target!InitialOperation;
+		sourceConnect.initialOperation = init;
+		var chng = new Target!ChangeContext;
+		init.firstModelOperations = chng;
+		var set = new Target!SetValue;
+		targ.subModelOperations.add(set);
+		set.featureName = element.name;
+		set.valueExpression = "aql:target";
+	}
 	
 	if (s.getVal("reconnectable").asBoolean()){
 		var sourceConnect = new Target!ReconnectEdgeDescription;

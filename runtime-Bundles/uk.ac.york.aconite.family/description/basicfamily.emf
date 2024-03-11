@@ -1,0 +1,30 @@
+@sirius
+@namespace(uri="http://www.eclipse.org/sirius/sample/basicfamily", prefix="basicfamily")
+package basicfamily;
+
+abstract class Person {
+	attr String name;
+	ref Person[*]#parents children;
+	ref Person[0..2]#children parents;
+	@sirius.edge(creatable = "true", name = "Mother", container = "Persons" , sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "")
+	derived ref Woman mother;
+	@sirius.edge(creatable = "true", name = "Father", container = "Persons", sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "")
+	derived ref Man father;
+}
+
+@sirius.diagram(name = "Persons")
+class Family {
+	attr String name;
+	@sirius.tool.creation(name = "Men", container = "Man")
+	@sirius.tool.creation(name = "Women", container = "Woman")
+	val Person[*] members;
+}
+
+@sirius.node(name = "Man", container = "Persons", sce = "members")
+class Man extends Person {
+}
+
+@sirius.node(name = "Woman", container = "Persons", sce = "members")
+class Woman extends Person {
+}
+
