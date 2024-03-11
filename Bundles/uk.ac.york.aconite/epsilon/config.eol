@@ -9,6 +9,8 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "createElements" 	: return "true";	
 		case "synchronizationLock" 	: return "false";	
 		case "color" 	: return "light_yellow";
+		case "backgroundColor" 	: return self.getVal("color");
+		case "foregroundColor" 	: return self.getVal("color");
 		case "height" 	: return "0";	
 		case "width" 	: return "0";
 		case "roundedCorner" 	: return "false";

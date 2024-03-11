@@ -9,33 +9,36 @@
     <eAnnotations source="sirius.diagram">
       <details key="name" value="Relationships"/>
     </eAnnotations>
-    <eAnnotations source="sirius.container">
-      <details key="name" value="Person"/>
-      <details key="foregroundColor" value="light_green"/>
-      <details key="backgroundColor" value="white"/>
-      <details key="container" value="Relationships"/>
-      <details key="childrenPresentation" value="List"/>
-      <details key="showIcon" value="true"/>
-    </eAnnotations>
-    <eAnnotations source="sirius.border">
-      <details key="name" value="Parent"/>
-      <details key="container" value="Person"/>
+    <eAnnotations source="sirius.node">
+      <details key="name" value="Rel Default"/>
+      <details key="abstract" value="true"/>
       <details key="color" value="white"/>
       <details key="showIcon" value="true"/>
+      <details key="childrenPresentation" value="List"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="import" value="Rel Default"/>
+      <details key="name" value="Person"/>
+      <details key="foregroundColor" value="light_green"/>
+      <details key="container" value="Relationships"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.border">
+      <details key="import" value="Rel Default"/>
+      <details key="name" value="Parent"/>
+      <details key="container" value="Person"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
+      <details key="import" value="Rel Default"/>
       <details key="name" value="Child"/>
       <details key="container" value="Person"/>
       <details key="sce" value="children"/>
-      <details key="showIcon" value="true"/>
     </eAnnotations>
     <eAnnotations source="sirius.container">
+      <details key="import" value="Rel Default"/>
       <details key="name" value="Siblings"/>
       <details key="proLabelExpression" value="Siblings"/>
       <details key="foregroundColor" value="light_yellow"/>
-      <details key="backgroundColor" value="white"/>
       <details key="container" value="Relationships"/>
-      <details key="childrenPresentation" value="List"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="name" value="Sibling"/>
@@ -73,12 +76,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="father" eType="#//Man"
         derived="true">
       <eAnnotations source="sirius.edge">
-        <details key="creatable" value="true"/>
+        <details key="import" value="Mother"/>
         <details key="name" value="Father"/>
-        <details key="container" value="Persons"/>
-        <details key="sourceNode" value="Man, Woman"/>
-        <details key="reconnectable" value="true"/>
-        <details key="labelExpression" value=""/>
         <details key="color" value="blue"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -111,10 +110,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
     <eAnnotations source="sirius.node">
+      <details key="import" value="Man"/>
       <details key="name" value="Woman"/>
-      <details key="container" value="Persons"/>
-      <details key="sce" value="members"/>
-      <details key="shape" value="image"/>
       <details key="imagePath" value="uk.ac.york.aconite.family/icons/woman.svg"/>
     </eAnnotations>
   </eClassifiers>

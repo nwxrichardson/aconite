@@ -3,10 +3,11 @@
 package basicfamily;
 
 @sirius.diagram(name = "Relationships")
-@sirius.container(name = "Person", foregroundColor = "light_green", backgroundColor = "white", container = "Relationships", childrenPresentation = "List", showIcon = "true")
-@sirius.border(name = "Parent", container =  "Person", color = "white", showIcon = "true")
-@sirius.node(name = "Child", container = "Person", sce = "children", showIcon = "true")
-@sirius.container(name = "Siblings", proLabelExpression = "Siblings", foregroundColor = "light_yellow", backgroundColor = "white", container = "Relationships", childrenPresentation = "List")
+@sirius.node(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
+@sirius.container(~import = "Rel Default", name = "Person", foregroundColor = "light_green", container = "Relationships")
+@sirius.border(~import = "Rel Default", name = "Parent", container =  "Person")
+@sirius.node(~import = "Rel Default", name = "Child", container = "Person", sce = "children")
+@sirius.container(~import = "Rel Default", name = "Siblings", proLabelExpression = "Siblings", foregroundColor = "light_yellow", container = "Relationships")
 @sirius.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
 abstract class Person {
 	attr String name;
@@ -15,7 +16,7 @@ abstract class Person {
 	ref Person[0..2]#children parents;
 	@sirius.edge(creatable = "true", name = "Mother", container = "Persons" , sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "", color = "purple")
 	derived ref Woman mother;
-	@sirius.edge(creatable = "true", name = "Father", container = "Persons", sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "", color = "blue")
+	@sirius.edge(~import = "Mother", name = "Father", color = "blue")
 	derived ref Man father;
 }
 
@@ -31,7 +32,7 @@ class Family {
 class Man extends Person {
 }
 
-@sirius.node(name = "Woman", container = "Persons", sce = "members", shape = "image", imagePath = "uk.ac.york.aconite.family/icons/woman.svg")
+@sirius.node(~import = "Man", name = "Woman", imagePath = "uk.ac.york.aconite.family/icons/woman.svg")
 class Woman extends Person {
 }
 

@@ -4,6 +4,18 @@ pre {
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 	var hiddenTools = new Map<Target!AbstractToolDescription,Source!EAnnotation>;
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
+	for (i in annotations) {
+		i.details.put("abstract", i.getVal("abstract"));
+		if (i.details.containsKey("import")){
+		
+		var copyDetails = emfTool.getECoreUtil.copy(i).details;
+		var imports =  i.getVals("import").invert();
+		for (j in imports) {
+			i.details.putAll(emfTool.getECoreUtil.copy(annotations.selectOne(k|k.getVal("name") = j)).details);
+		}
+		i.details.putAll(copyDetails);
+		}
+	}
 	var newAnnotations = new Sequence;
 	var revAnnotations = new Sequence;
 	for (i in annotations){
@@ -22,18 +34,7 @@ pre {
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
-	for (i in annotations) {
-		if (i.details.containsKey("import")){
-		
-		var copyDetails = i.details;
-		var imports =  i.getVals("import").invert();
-		for (j in imports) {
-			i.details.println();
-			i.details.putAll(annotations.selectOne(k|k.getVal("name") = j));
-		}
-		i.details.putAll(copyDetails);
-		}
-	}
+	annotations.details.println();
 }
 
 @cached
@@ -275,10 +276,9 @@ rule RefEdgeFromAnnotation
 	//TODO Make this work the way one would expect
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
-
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass).equivalent();}
+	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass and i.Source != "sirius.diagram" and (not s.getVal("abstract").asBoolean())).equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");	
 	if (t.targetMapping.isEmpty()){
@@ -687,8 +687,8 @@ rule FlatContainerFromAnnotation
 	extends ContainerStyleFromAnnotation{
 	guard : s.getVal("shape") = "flat" or s.getVal("shape") = ""
 	
-	t.backgroundColor = s.getVal("backgroundColor",s.getVal("color")).getColor();
-	t.foregroundColor = s.getVal("foregroundColor",s.getVal("color")).getColor();
+	t.backgroundColor = s.getVal("backgroundColor").getColor();
+	t.foregroundColor = s.getVal("foregroundColor").getColor();
 	t.backgroundStyle = Target!BackgroundStyle#Liquid.VALUES.selectOne(i|i.literal = s.getVal("backgroundStyle","GradientLeftToRight"));
 	
 	}
