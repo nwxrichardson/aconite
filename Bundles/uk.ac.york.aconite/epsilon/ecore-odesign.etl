@@ -120,14 +120,13 @@ rule DiagramFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!DiagramDescription {
 	
-	guard : s.Source = "sirius.diagram"
+	guard : s.Source = "sirius.diagram" and not s.getVal("abstract").asBoolean()
 	var element = s.eModelElement;
 	t.domainClass = element.getDC();
 	t.name = s.getVal("name");
 	var defaultLayer = new Target!Layer;
 
 	var tools = annotations.select(i|i.Source.startsWith("sirius.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
-	tools.println();
 	if (tools.notEmpty()){
 		var toolBox = new Target!ToolSection;
 		toolBox.name = "Generated Creation Tools";
@@ -148,7 +147,7 @@ rule DiagramFromAnnotation
 rule AbstractMappingFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!DiagramElementMapping {
-	
+	guard : not s.getVal("abstract").asBoolean()
 	t.name = s.getVal("name");
 	t.createElements = s.getVal("createElements").asBoolean;
 	t.synchronizationLock = s.getVal("synchronizationLock").asBoolean;
@@ -639,7 +638,7 @@ rule NodeStyleFromAnnotation
 	to t : Target!NodeStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
-	guard : s.source = "sirius.node.description" or s.source = "sirius.border.description"
+	guard : (s.source = "sirius.node.description" or s.source = "sirius.border.description") and not s.getVal("abstract")
 	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
  	t.iconPath = s.getVal("iconPath");
@@ -654,7 +653,7 @@ rule ContainerStyleFromAnnotation
 	to t : Target!ContainerStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation , RoundedCornerFromAnnotation
 	{
-	guard : s.source = "sirius.container.description"
+	guard : s.source = "sirius.container.description" and not s.getVal("abstract")
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault","false").asBoolean();
  	t.iconPath = s.getVal("iconPath");
 	t.heightComputationExpression = s.getVal("heightComputationExpression");
