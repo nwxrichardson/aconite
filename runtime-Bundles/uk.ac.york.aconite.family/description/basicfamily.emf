@@ -2,6 +2,12 @@
 @namespace(uri="http://www.eclipse.org/sirius/sample/basicfamily", prefix="basicfamily")
 package basicfamily;
 
+@sirius.diagram(name = "Relationships")
+@sirius.container(name = "Person", container = "Relationships", childrenPresentation = "List")
+@sirius.border(name = "Parent")
+@sirius.node(name = "Child", container = "Person", sce = "children")
+@sirius.container(name = "Siblings", container = "Relationships", childrenPresentation = "List")
+@sirius.node(name = "Sibling", labelExpression = "Siblings",  container = "Siblings", sce = "parents.children->excluding(self)")
 abstract class Person {
 	attr String name;
 	ref Person[*]#parents children;

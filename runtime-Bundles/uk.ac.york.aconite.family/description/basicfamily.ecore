@@ -4,6 +4,33 @@
     nsPrefix="basicfamily">
   <eAnnotations source="sirius"/>
   <eClassifiers xsi:type="ecore:EClass" name="Person" abstract="true">
+    <eAnnotations source="sirius.diagram">
+      <details key="name" value="Relationships"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Person"/>
+      <details key="container" value="Relationships"/>
+      <details key="childrenPresentation" value="List"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.border">
+      <details key="name" value="Parent"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node">
+      <details key="name" value="Child"/>
+      <details key="container" value="Person"/>
+      <details key="sce" value="children"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.container">
+      <details key="name" value="Siblings"/>
+      <details key="container" value="Relationships"/>
+      <details key="childrenPresentation" value="List"/>
+    </eAnnotations>
+    <eAnnotations source="sirius.node">
+      <details key="name" value="Sibling"/>
+      <details key="labelExpression" value="Siblings"/>
+      <details key="container" value="Siblings"/>
+      <details key="sce" value="parents.children->excluding(self)"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Person" eOpposite="#//Person/parents"/>

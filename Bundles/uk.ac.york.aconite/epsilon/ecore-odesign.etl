@@ -200,7 +200,7 @@ rule NodeFromAnnotation
 	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = "aql:self." + s.getVal("sce");
+	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	
 	}
 	
@@ -220,7 +220,7 @@ rule ContainerFromAnnotation
 	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = "aql:self." + s.getVal("sce");
+	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
