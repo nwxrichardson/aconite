@@ -190,7 +190,7 @@ rule NodeFromAnnotation
 	to 			t : Target!NodeMapping 
 	extends AbstractNodeFromAnnotation{
 	
-	guard : s.Source.startsWith("sirius.node") and not s.Source.endsWith("description")
+	guard : (s.Source.startsWith("sirius.node") or s.Source.startsWith("sirius.border")) and not s.Source.endsWith("description")
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
@@ -223,6 +223,7 @@ rule ContainerFromAnnotation
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.border").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
 	
 	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
@@ -605,7 +606,7 @@ rule LabelStyleFromAnnotation
 	t.iconPath = s.getVal("iconPath");
 	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("labelAlignment"));
 	t.labelColor = s.getVal("labelColor").getColor();
-	t.labelExpression = "aql:self." + s.getVal("labelExpression");
+	t.labelExpression = s.getVal("proLabelExpression");
 	t.labelFormat = Target!FontFormat#bold.VALUES.select(i|s.getVals("borderLineStyle").exists(j|j = i.literal));
 	t.labelSize = s.getVal("labelSize").asInteger();
 	t.showIcon = s.getVal("showIcon").asBoolean();
@@ -638,7 +639,7 @@ rule NodeStyleFromAnnotation
 	to t : Target!NodeStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
-	guard : s.source = "sirius.node.description"
+	guard : s.source = "sirius.node.description" or s.source = "sirius.border.description"
 	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
  	t.iconPath = s.getVal("iconPath");

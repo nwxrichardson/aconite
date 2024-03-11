@@ -25,6 +25,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "labelSize"	: return "12";
 		case "labelColor"	: return "black";
 		case "labelExpression"	: return "name";
+		case "proLabelExpression"	: return "aql:self." + self.getVal("labelExpression");
 		case "labelAlignment"	: return "CENTER";
 		case "borderSize"	: return "2";
 		case "borderLineStyle"	: return "solid";
