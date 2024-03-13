@@ -64,7 +64,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Pool" eSuperTypes="#//Swimlane">
     <eAnnotations source="sirius.container">
       <details key="name" value="Pool"/>
-      <details key="sce" value="elements"/>
       <details key="container" value="BPD"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lanes" upperBound="-1"
@@ -120,7 +119,6 @@
       <details key="container" value="Lane"/>
       <details key="name" value="Flow"/>
       <details key="shape" value="image"/>
-      <details key="sce" value="flowObjects"/>
       <details key="borderSize" value="0"/>
     </eAnnotations>
   </eClassifiers>

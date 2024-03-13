@@ -2,7 +2,6 @@ import "config.eol";
 
 
 /*
-Make is so the get end of checks the super types and sees which is shorter and then their super types
 Make source and target try and figure out for themselves the same as sce
 Add creatable to them all and make it so that each object trys to figure out if it has a valid creation -> Maybe see if you can add proxies to references
 Fix Annotation statements with a function that offloads the getting of the right sources -> This woulld maybe have to check the equivalent type is a subtype 

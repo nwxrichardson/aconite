@@ -1,6 +1,34 @@
 
-//Warning Any
+//Warning Any and slight inefficency if inheritance is wrong
 operation Any getRoute(target : Any) : String {
+	var rtn = self.getPosRoute(target);
+	if (rtn != ""){return rtn;}
+	
+	var len = 0;
+	var pos =  "";
+	var supers =  Sequence{};
+	supers.add(self);
+	while (rtn = "" and supers.size() != len) {
+		len = supers.size();
+		var newSuper = Sequence{};
+		for (i in supers){
+			newSuper.addAll(i.eSuperTypes);
+		}
+		supers.addAll(newSuper);
+		for (i in supers) {
+			var pos = i.getPosRoute(target);
+			if (pos != "" and rtn.split(".").size() > pos.split(".").size()){
+				rtn = pos;
+			}
+		} 
+	}
+	return rtn;
+}
+
+
+//Could be made more effiecent if you can pass a limit which stops if it is going to be longer than any previous solution
+@cached
+operation Any getPosRoute(target : Any) : String {
 	if (self = target) {return "";}
 	var seen = Set{self};
 	var curSize = -1;

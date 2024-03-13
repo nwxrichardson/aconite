@@ -33,7 +33,7 @@ class Lane extends Swimlane {
 	val FlowObject[*] flowObjects;
 }
 
-@sirius.container(name = "Pool", sce = "elements", container = "BPD")
+@sirius.container(name = "Pool", container = "BPD")
 class Pool extends Swimlane {
 	@sirius.tool.creation(container = "Lane", name = "Lane Creation")	
 	val Lane[*] lanes;
@@ -65,7 +65,7 @@ class Association extends ConnectingObject {
 
 /* FLOW OBJECTS */
 
-@sirius.node(~abstract = "true",container = "Lane", name = "Flow", shape = "image", sce = "flowObjects", borderSize = "0")
+@sirius.node(~abstract = "true",container = "Lane", name = "Flow", shape = "image", borderSize = "0")
 abstract class FlowObject extends BPMNElement {
 
 }
