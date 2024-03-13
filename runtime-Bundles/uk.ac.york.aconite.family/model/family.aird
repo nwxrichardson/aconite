@@ -1,1335 +1,383 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basicfamily="http://www.eclipse.org/sirius/sample/basicfamily" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_5hbF4N1IEe6dZfEIu9azjQ" selectedViews="_EftYYN1JEe6dZfEIu9azjQ _UpLO8N1MEe6i1owEqUeyrg" version="14.5.1.202106111100">
+  <viewpoint:DAnalysis uid="_2jLN8OErEe6F9tgXVVr5kA" selectedViews="_CHm6cOEsEe65S5aYbde1Ug" version="14.5.1.202106111100">
     <semanticResources>family.basicfamily</semanticResources>
-    <ownedViews xmi:type="viewpoint:DView" uid="_EftYYN1JEe6dZfEIu9azjQ">
-      <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_-oPj0N1KEe6dZfEIu9azjQ" name="Relations of man1" repPath="#_-oO8wN1KEe6dZfEIu9azjQ" changeId="e5a05d58-4fa2-49fd-b945-44e8df52643f">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_s92-0N-REe6ssqp_o9BxyA" name="Relations of man3" repPath="#_s91JoN-REe6ssqp_o9BxyA" changeId="6f7893c5-16e0-49bb-b5b0-e4dd50bc0555">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_coO-wt-SEe6ssqp_o9BxyA" name="Relations of man5" repPath="#_coO-wN-SEe6ssqp_o9BxyA" changeId="a6a91f99-ff6a-4d04-85d2-d3a2347d7a57">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_pRzxkt-WEe6ssqp_o9BxyA" name="Relations of man4" repPath="#_pRzxkN-WEe6ssqp_o9BxyA" changeId="acf69718-be73-4093-a372-a927ffdd011a">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_MShE0t-jEe6ssqp_o9BxyA" name="new Persons diagram" repPath="#_MShE0N-jEe6ssqp_o9BxyA" changeId="58f07455-6b56-4548-97e9-59d0de8b1214">
-        <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']"/>
-        <target xmi:type="basicfamily:Family" href="family.basicfamily#/"/>
-      </ownedRepresentationDescriptors>
-    </ownedViews>
-    <ownedViews xmi:type="viewpoint:DView" uid="_UpLO8N1MEe6i1owEqUeyrg">
+    <ownedViews xmi:type="viewpoint:DView" uid="_CHm6cOEsEe65S5aYbde1Ug">
       <viewpoint xmi:type="description:Viewpoint" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_U79oEN1MEe6i1owEqUeyrg" name="new Persons" repPath="#_U77L0N1MEe6i1owEqUeyrg" changeId="ecdacd41-1b35-4046-8261-f0eb9524df51">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_CboCoOEsEe65S5aYbde1Ug" name="new Persons" repPath="#_CbF3IOEsEe65S5aYbde1Ug" changeId="bbe2c92a-3a80-4f70-86f4-58c242771d75">
         <description xmi:type="description_1:DiagramDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']"/>
         <target xmi:type="basicfamily:Family" href="family.basicfamily#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_yRamUt-VEe6ssqp_o9BxyA" name="new Relationships" repPath="#_yRamUN-VEe6ssqp_o9BxyA" changeId="db62bcdf-1524-4182-98d6-c20580a29d68">
-        <description xmi:type="description_1:DiagramDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']"/>
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_-oO8wN1KEe6dZfEIu9azjQ">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_-oQK4N1KEe6dZfEIu9azjQ" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_-oQK4d1KEe6dZfEIu9azjQ" type="Sirius" element="_-oO8wN1KEe6dZfEIu9azjQ" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_-oSnIt1KEe6dZfEIu9azjQ" type="2003" element="_-oQK491KEe6dZfEIu9azjQ">
-          <children xmi:type="notation:Node" xmi:id="_noq0QN1LEe6i1owEqUeyrg" type="3012" element="_nocKwN1LEe6i1owEqUeyrg">
-            <children xmi:type="notation:Node" xmi:id="_nozXIN1LEe6i1owEqUeyrg" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_nozXId1LEe6i1owEqUeyrg" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_npG5IN1LEe6i1owEqUeyrg" type="3003" element="_nod_8N1LEe6i1owEqUeyrg">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_npG5Id1LEe6i1owEqUeyrg" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_npG5It1LEe6i1owEqUeyrg"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_noq0Qd1LEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_noq0Qt1LEe6i1owEqUeyrg" x="-112" width="120" height="63"/>
+  <diagram:DSemanticDiagram uid="_CbF3IOEsEe65S5aYbde1Ug">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_CcPtsOEsEe65S5aYbde1Ug" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_CcPtseEsEe65S5aYbde1Ug" type="Sirius" element="_CbF3IOEsEe65S5aYbde1Ug" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_CshlYOEsEe65S5aYbde1Ug" type="2001" element="_CsAoAOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CsnsAOEsEe65S5aYbde1Ug" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CsnsAeEsEe65S5aYbde1Ug" x="31" y="5"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_-oSnJd1KEe6dZfEIu9azjQ" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_-oSnJt1KEe6dZfEIu9azjQ" type="7004">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_-oSnJ91KEe6dZfEIu9azjQ"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_-oSnKN1KEe6dZfEIu9azjQ"/>
+          <children xmi:type="notation:Node" xmi:id="_CyhfsOEsEe65S5aYbde1Ug" type="3005" element="_CsCdMOEsEe65S5aYbde1Ug">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CyhfseEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CyhfsuEsEe65S5aYbde1Ug"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_-oSnI91KEe6dZfEIu9azjQ" fontName="Segoe UI" fontHeight="12" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-oSnJN1KEe6dZfEIu9azjQ" x="330" y="330" width="201"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CshlYeEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CshlYuEsEe65S5aYbde1Ug" x="270" y="384" width="30" height="30"/>
         </children>
-        <children xmi:type="notation:Node" xmi:id="_-oTOMN1KEe6dZfEIu9azjQ" type="2003" element="_-oRZAd1KEe6dZfEIu9azjQ">
-          <children xmi:type="notation:Node" xmi:id="_-oTOM91KEe6dZfEIu9azjQ" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_-oTONN1KEe6dZfEIu9azjQ" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_-9ArMN1QEe6i1owEqUeyrg" type="3010" element="_-87ytt1QEe6i1owEqUeyrg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_-9ArMd1QEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_-9ArMt1QEe6i1owEqUeyrg"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_-oTONd1KEe6dZfEIu9azjQ"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_-oTONt1KEe6dZfEIu9azjQ"/>
+        <children xmi:type="notation:Node" xmi:id="_CxgMAOEsEe65S5aYbde1Ug" type="2001" element="_CsGuoOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CxgzEOEsEe65S5aYbde1Ug" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CxgzEeEsEe65S5aYbde1Ug" x="31" y="5"/>
           </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_-oTOMd1KEe6dZfEIu9azjQ" fontName="Segoe UI" fontHeight="10" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-oTOMt1KEe6dZfEIu9azjQ" x="348" y="78"/>
+          <children xmi:type="notation:Node" xmi:id="_CyiGwOEsEe65S5aYbde1Ug" type="3005" element="_CsGuoeEsEe65S5aYbde1Ug">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CyiGweEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CyiGwuEsEe65S5aYbde1Ug"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CxgMAeEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CxgMAuEsEe65S5aYbde1Ug" x="4" y="91" width="30" height="30"/>
         </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_-oQK4t1KEe6dZfEIu9azjQ"/>
-        <edges xmi:type="notation:Edge" xmi:id="_-oTON91KEe6dZfEIu9azjQ" type="4001" element="_-oSAEN1KEe6dZfEIu9azjQ" source="_-oSnIt1KEe6dZfEIu9azjQ" target="_-oTOMN1KEe6dZfEIu9azjQ">
-          <children xmi:type="notation:Node" xmi:id="_-oTOO91KEe6dZfEIu9azjQ" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-oTOPN1KEe6dZfEIu9azjQ" x="-36" y="-1"/>
+        <children xmi:type="notation:Node" xmi:id="_CxwqsOEsEe65S5aYbde1Ug" type="2001" element="_CsHVsOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CxxRwOEsEe65S5aYbde1Ug" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CxxRweEsEe65S5aYbde1Ug" x="31" y="5"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_-oTOPd1KEe6dZfEIu9azjQ" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-oTOPt1KEe6dZfEIu9azjQ" x="39" y="-2"/>
+          <children xmi:type="notation:Node" xmi:id="_Cyit0OEsEe65S5aYbde1Ug" type="3005" element="_CsHVseEsEe65S5aYbde1Ug">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Cyit0eEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cyit0uEsEe65S5aYbde1Ug"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_-oTOP91KEe6dZfEIu9azjQ" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-oTOQN1KEe6dZfEIu9azjQ" x="-10" y="2"/>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CxwqseEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CxwqsuEsEe65S5aYbde1Ug" x="62" y="2" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_Cx9fAOEsEe65S5aYbde1Ug" type="2001" element="_CsHVs-EsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_Cx9fA-EsEe65S5aYbde1Ug" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Cx9fBOEsEe65S5aYbde1Ug" x="31" y="5"/>
           </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_-oTOON1KEe6dZfEIu9azjQ"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_-oTOOd1KEe6dZfEIu9azjQ" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-oTOOt1KEe6dZfEIu9azjQ" points="[0, 0, -23, 199]$[23, -199, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-oUcUN1KEe6dZfEIu9azjQ" id="(0.19095477386934673,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-oVDYN1KEe6dZfEIu9azjQ" id="(0.5058823529411764,1.0)"/>
+          <children xmi:type="notation:Node" xmi:id="_Cyit0-EsEe65S5aYbde1Ug" type="3005" element="_CsH8wOEsEe65S5aYbde1Ug">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Cyit1OEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cyit1eEsEe65S5aYbde1Ug"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_Cx9fAeEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cx9fAuEsEe65S5aYbde1Ug" x="150" y="192" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_CyHQAOEsEe65S5aYbde1Ug" type="2001" element="_CsH8wuEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CyIeIOEsEe65S5aYbde1Ug" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CyIeIeEsEe65S5aYbde1Ug" x="31" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CyjU4OEsEe65S5aYbde1Ug" type="3005" element="_CsH8w-EsEe65S5aYbde1Ug">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CyjU4eEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CyjU4uEsEe65S5aYbde1Ug"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CyHQAeEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CyHQAuEsEe65S5aYbde1Ug" x="102" y="342" width="30" height="30"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_CyPy4OEsEe65S5aYbde1Ug" type="2001" element="_CsIj0OEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CyQZ8OEsEe65S5aYbde1Ug" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_CyQZ8eEsEe65S5aYbde1Ug" x="31" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CyjU4-EsEe65S5aYbde1Ug" type="3005" element="_CsIj0eEsEe65S5aYbde1Ug">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CyjU5OEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CyjU5eEsEe65S5aYbde1Ug"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CyPy4eEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CyPy4uEsEe65S5aYbde1Ug" x="4" y="181" width="30" height="30"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_CcPtsuEsEe65S5aYbde1Ug"/>
+        <edges xmi:type="notation:Edge" xmi:id="_Cy3d8OEsEe65S5aYbde1Ug" type="4001" element="_CsPRgOEsEe65S5aYbde1Ug" source="_Cx9fAOEsEe65S5aYbde1Ug" target="_CyPy4OEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_Cy4sEOEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cy4sEeEsEe65S5aYbde1Ug" x="3" y="-4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Cy5TIOEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cy5TIeEsEe65S5aYbde1Ug" x="-4" y="6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Cy5TIuEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cy5TI-EsEe65S5aYbde1Ug" x="-2" y="7"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Cy3d8eEsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Cy3d8uEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Cy3d8-EsEe65S5aYbde1Ug" points="[-15, -2, 131, 9]$[-131, -10, 15, 1]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzB2AOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzB2AeEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_CzCdEOEsEe65S5aYbde1Ug" type="4001" element="_CsQfoeEsEe65S5aYbde1Ug" source="_CyHQAOEsEe65S5aYbde1Ug" target="_CyPy4OEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CzCdFOEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzCdFeEsEe65S5aYbde1Ug" x="7" y="-9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzCdFuEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzCdF-EsEe65S5aYbde1Ug" x="-4" y="8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzCdGOEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzCdGeEsEe65S5aYbde1Ug" x="-3" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_CzCdEeEsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_CzCdEuEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CzCdE-EsEe65S5aYbde1Ug" points="[-10, -15, 88, 146]$[-89, -146, 9, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzCdGuEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzCdG-EsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_CzCdHOEsEe65S5aYbde1Ug" type="4001" element="_CsRtwOEsEe65S5aYbde1Ug" source="_CshlYOEsEe65S5aYbde1Ug" target="_Cx9fAOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CzCdIOEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzCdIeEsEe65S5aYbde1Ug" x="-4" y="-1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzCdIuEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzCdI-EsEe65S5aYbde1Ug" x="7" y="-2"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzCdJOEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzCdJeEsEe65S5aYbde1Ug" x="8" y="-1"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_CzCdHeEsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_CzCdHuEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CzCdH-EsEe65S5aYbde1Ug" points="[-10, -15, 110, 177]$[-111, -177, 9, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDEIOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDEIeEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_CzDEIuEsEe65S5aYbde1Ug" type="4001" element="_CsSU0uEsEe65S5aYbde1Ug" source="_CxgMAOEsEe65S5aYbde1Ug" target="_CxwqsOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CzDEJuEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDEJ-EsEe65S5aYbde1Ug" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzDEKOEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDEKeEsEe65S5aYbde1Ug" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzDEKuEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDEK-EsEe65S5aYbde1Ug" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_CzDEI-EsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_CzDEJOEsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CzDEJeEsEe65S5aYbde1Ug" points="[9, -15, -49, 74]$[48, -74, -10, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDELOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDrMOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_CzDrMeEsEe65S5aYbde1Ug" type="4001" element="_CsS74OEsEe65S5aYbde1Ug" source="_Cx9fAOEsEe65S5aYbde1Ug" target="_CxwqsOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CzDrNeEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDrNuEsEe65S5aYbde1Ug" x="2" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzDrN-EsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDrOOEsEe65S5aYbde1Ug" x="-1" y="4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzDrOeEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDrOuEsEe65S5aYbde1Ug" x="2" y="5"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_CzDrMuEsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_CzDrM-EsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CzDrNOEsEe65S5aYbde1Ug" points="[-7, -15, 81, 175]$[-82, -175, 6, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDrO-EsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDrPOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_CzDrPeEsEe65S5aYbde1Ug" type="4001" element="_CsS74-EsEe65S5aYbde1Ug" source="_CyHQAOEsEe65S5aYbde1Ug" target="_Cx9fAOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CzDrQeEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDrQuEsEe65S5aYbde1Ug" x="1" y="-3"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzDrQ-EsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDrROEsEe65S5aYbde1Ug" x="-1" y="1"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzDrReEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzDrRuEsEe65S5aYbde1Ug" x="-1" y="3"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_CzDrPuEsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_CzDrP-EsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CzDrQOEsEe65S5aYbde1Ug" points="[4, -15, -44, 135]$[43, -135, -5, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDrR-EsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzDrSOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_CzDrSeEsEe65S5aYbde1Ug" type="4001" element="_CsTi8OEsEe65S5aYbde1Ug" source="_CyPy4OEsEe65S5aYbde1Ug" target="_CxgMAOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_CzESQOEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzESQeEsEe65S5aYbde1Ug" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzESQuEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzESQ-EsEe65S5aYbde1Ug" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CzESROEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CzESReEsEe65S5aYbde1Ug" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_CzDrSuEsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_CzDrS-EsEe65S5aYbde1Ug" fontName="Segoe UI"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CzDrTOEsEe65S5aYbde1Ug" points="[0, -15, 0, 75]$[0, -75, 0, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzESRuEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CzESR-EsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_eDO30OEsEe65S5aYbde1Ug" type="4001" element="_eB6CIOEsEe65S5aYbde1Ug" source="_CshlYOEsEe65S5aYbde1Ug" target="_CxwqsOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_eDQF8OEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDQF8eEsEe65S5aYbde1Ug" x="4" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eDQF8uEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDQF8-EsEe65S5aYbde1Ug" x="-10" y="2"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eDQF9OEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDQF9eEsEe65S5aYbde1Ug" x="-4" y="-9"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_eDO30eEsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eDO30uEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eDO30-EsEe65S5aYbde1Ug" points="[3, -14, 211, 368]$[51, -255, 259, 127]$[-200, -375, 8, 7]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eDQtAOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eDQtAeEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_eDQtAuEsEe65S5aYbde1Ug" type="4001" element="_eCIEkOEsEe65S5aYbde1Ug" source="_CyHQAOEsEe65S5aYbde1Ug" target="_CxwqsOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_eDQtBuEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDQtB-EsEe65S5aYbde1Ug" x="3" y="-11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eDQtCOEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDQtCeEsEe65S5aYbde1Ug" x="-3" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eDQtCuEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDQtC-EsEe65S5aYbde1Ug" x="-4" y="9"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_eDQtA-EsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eDQtBOEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eDQtBeEsEe65S5aYbde1Ug" points="[-2, -15, 38, 325]$[-39, -325, 1, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eDQtDOEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eDQtDeEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_eDQtDuEsEe65S5aYbde1Ug" type="4001" element="_eCJ5wOEsEe65S5aYbde1Ug" source="_CyPy4OEsEe65S5aYbde1Ug" target="_CxwqsOEsEe65S5aYbde1Ug">
+          <children xmi:type="notation:Node" xmi:id="_eDRUEOEsEe65S5aYbde1Ug" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDRUEeEsEe65S5aYbde1Ug" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eDRUEuEsEe65S5aYbde1Ug" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDRUE-EsEe65S5aYbde1Ug" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eDRUFOEsEe65S5aYbde1Ug" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eDRUFeEsEe65S5aYbde1Ug" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_eDQtD-EsEe65S5aYbde1Ug"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eDQtEOEsEe65S5aYbde1Ug" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eDQtEeEsEe65S5aYbde1Ug" points="[4, -15, -54, 164]$[53, -164, -5, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eDRUFuEsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eDRUF-EsEe65S5aYbde1Ug" id="(0.5,0.5)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_-oSnIN1KEe6dZfEIu9azjQ" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_-oSnId1KEe6dZfEIu9azjQ"/>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_CsUKAOEsEe65S5aYbde1Ug" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_CsUKAeEsEe65S5aYbde1Ug"/>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_-oQK491KEe6dZfEIu9azjQ" name="man1" outgoingEdges="_-oSAEN1KEe6dZfEIu9azjQ">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_nocKwN1LEe6i1owEqUeyrg" name="man2" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" uid="_nod_8N1LEe6i1owEqUeyrg" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']"/>
-      </ownedBorderedNodes>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_-oQx8N1KEe6dZfEIu9azjQ" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_-oRZAd1KEe6dZfEIu9azjQ" name="Siblings" incomingEdges="_-oSAEN1KEe6dZfEIu9azjQ">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_CsAoAOEsEe65S5aYbde1Ug" name="man1" outgoingEdges="_CsRtwOEsEe65S5aYbde1Ug _eB6CIOEsEe65S5aYbde1Ug" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
       <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_-oRZAt1KEe6dZfEIu9azjQ" labelSize="10" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,245,181">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_-87ytt1QEe6i1owEqUeyrg" name="woman1">
-        <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <semanticElements xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_-87yt91QEe6i1owEqUeyrg">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_-oSAEN1KEe6dZfEIu9azjQ" sourceNode="_-oQK491KEe6dZfEIu9azjQ" targetNode="_-oRZAd1KEe6dZfEIu9azjQ">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_-oSAEd1KEe6dZfEIu9azjQ" sourceArrow="OutputFillClosedArrow" targetArrow="OutputFillClosedArrow" size="2">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_-oSAEt1KEe6dZfEIu9azjQ"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_-oO8wd1KEe6dZfEIu9azjQ"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer"/>
-    <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_U77L0N1MEe6i1owEqUeyrg">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_U8Fj4N1MEe6i1owEqUeyrg" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_U8Fj4d1MEe6i1owEqUeyrg" type="Sirius" element="_U77L0N1MEe6i1owEqUeyrg" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_U8LDcN1MEe6i1owEqUeyrg" type="2001" element="_U8JOQN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_U8LqgN1MEe6i1owEqUeyrg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_U8Lqgd1MEe6i1owEqUeyrg" x="25" y="35"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_04a3EN-QEe6--PDzPN0fzA" type="3005" element="_00uC0N-QEe6--PDzPN0fzA">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_04beIN-QEe6--PDzPN0fzA" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_04beId-QEe6--PDzPN0fzA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_U8LDcd1MEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U8LDct1MEe6i1owEqUeyrg" x="236" y="246" width="55" height="60"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_U8MRkN1MEe6i1owEqUeyrg" type="2001" element="_U8KcYd1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_U8MRk91MEe6i1owEqUeyrg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_U8MRlN1MEe6i1owEqUeyrg" x="25" y="35"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_04jZ8N-QEe6--PDzPN0fzA" type="3005" element="_00uC09-QEe6--PDzPN0fzA">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_04jZ8d-QEe6--PDzPN0fzA" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_04jZ8t-QEe6--PDzPN0fzA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_U8MRkd1MEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U8MRkt1MEe6i1owEqUeyrg" x="350" y="42" width="55" height="60"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_U8M4oN1MEe6i1owEqUeyrg" type="2001" element="_U8KcZN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_U8NfsN1MEe6i1owEqUeyrg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_U8Nfsd1MEe6i1owEqUeyrg" x="25" y="35"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_04kBAN-QEe6--PDzPN0fzA" type="3005" element="_00uC1t-QEe6--PDzPN0fzA">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_04kBAd-QEe6--PDzPN0fzA" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_04kBAt-QEe6--PDzPN0fzA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_U8M4od1MEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_U8M4ot1MEe6i1owEqUeyrg" x="434" y="462" width="55" height="60"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_xU0UAN1MEe6i1owEqUeyrg" type="2001" element="_xT9YYN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_xU0UA91MEe6i1owEqUeyrg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_xU0UBN1MEe6i1owEqUeyrg" x="25" y="35"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_04kBA9-QEe6--PDzPN0fzA" type="3005" element="_00rmkN-QEe6--PDzPN0fzA">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_04kBBN-QEe6--PDzPN0fzA" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_04kBBd-QEe6--PDzPN0fzA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_xU0UAd1MEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xU0UAt1MEe6i1owEqUeyrg" x="608" y="630" width="55" height="60"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_xU0UBd1MEe6i1owEqUeyrg" type="2001" element="_xT9_d91MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_xU0UCN1MEe6i1owEqUeyrg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_xU0UCd1MEe6i1owEqUeyrg" x="25" y="35"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_04koEN-QEe6--PDzPN0fzA" type="3005" element="_00up4N-QEe6--PDzPN0fzA">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_04koEd-QEe6--PDzPN0fzA" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_04koEt-QEe6--PDzPN0fzA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_xU0UBt1MEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xU0UB91MEe6i1owEqUeyrg" x="260" y="630" width="55" height="60"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_xU0UCt1MEe6i1owEqUeyrg" type="2001" element="_xT9_et1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_xU07EN1MEe6i1owEqUeyrg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_xU07Ed1MEe6i1owEqUeyrg" x="25" y="35"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_04lPIN-QEe6--PDzPN0fzA" type="3005" element="_00up49-QEe6--PDzPN0fzA">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_04lPId-QEe6--PDzPN0fzA" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_04lPIt-QEe6--PDzPN0fzA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_xU0UC91MEe6i1owEqUeyrg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xU0UDN1MEe6i1owEqUeyrg" x="248" y="360" width="55" height="60"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_U8Fj4t1MEe6i1owEqUeyrg"/>
-        <edges xmi:type="notation:Edge" xmi:id="_o9qWQN-FEe6Lz4KWzpYF-A" type="4001" element="_o9TJ4N-FEe6Lz4KWzpYF-A" source="_xU0UBd1MEe6i1owEqUeyrg" target="_xU0UCt1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_o9qWRN-FEe6Lz4KWzpYF-A" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o9qWRd-FEe6Lz4KWzpYF-A" x="-8" y="-4"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_o9qWRt-FEe6Lz4KWzpYF-A" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o9qWR9-FEe6Lz4KWzpYF-A" x="21" y="-2"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_o9qWSN-FEe6Lz4KWzpYF-A" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_o9qWSd-FEe6Lz4KWzpYF-A" x="15" y="-3"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_o9qWQd-FEe6Lz4KWzpYF-A"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_o9qWQt-FEe6Lz4KWzpYF-A" fontName="Segoe UI"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_o9qWQ9-FEe6Lz4KWzpYF-A" points="[-2, -30, 10, 240]$[-11, -240, 1, 30]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_o9qWSt-FEe6Lz4KWzpYF-A" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_o9qWS9-FEe6Lz4KWzpYF-A" id="(0.5,0.5)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_7VwG4N-QEe6ssqp_o9BxyA" type="4001" element="_7VIb0N-QEe6ssqp_o9BxyA" source="_U8LDcN1MEe6i1owEqUeyrg" target="_U8MRkN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_7V4pwN-QEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7V4pwd-QEe6ssqp_o9BxyA" x="3" y="-11"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7V87MN-QEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7V87Md-QEe6ssqp_o9BxyA" x="1" y="5"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7V-JUN-QEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7V-JUd-QEe6ssqp_o9BxyA" x="-1" y="5"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7VwG4d-QEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_7VwG4t-QEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7VwG49-QEe6ssqp_o9BxyA" points="[16, -30, -98, 174]$[97, -174, -17, 30]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7WMy0N-QEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7WMy0d-QEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_7WMy0t-QEe6ssqp_o9BxyA" type="4001" element="_7VLfIN-QEe6ssqp_o9BxyA" source="_U8M4oN1MEe6i1owEqUeyrg" target="_U8MRkN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_7WNZ4N-QEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7WNZ4d-QEe6ssqp_o9BxyA" x="-4" y="-12"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7WNZ4t-QEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7WNZ49-QEe6ssqp_o9BxyA" x="19" y="3"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7WNZ5N-QEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7WNZ5d-QEe6ssqp_o9BxyA" x="17" y="5"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7WMy09-QEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_7WMy1N-QEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7WMy1d-QEe6ssqp_o9BxyA" points="[-6, -30, 78, 390]$[-78, -390, 6, 30]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7WOA8N-QEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7WOA8d-QEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_7WOoAN-QEe6ssqp_o9BxyA" type="4001" element="_7VMtQN-QEe6ssqp_o9BxyA" source="_xU0UCt1MEe6i1owEqUeyrg" target="_U8LDcN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_7WOoBN-QEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7WOoBd-QEe6ssqp_o9BxyA" x="3" y="-1"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7WOoBt-QEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7WOoB9-QEe6ssqp_o9BxyA" x="5"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7WOoCN-QEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7WOoCd-QEe6ssqp_o9BxyA" x="2" y="-1"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7WOoAd-QEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_7WOoAt-QEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7WOoA9-QEe6ssqp_o9BxyA" points="[-4, -30, 8, 84]$[-9, -84, 3, 30]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7WOoCt-QEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7WOoC9-QEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_JB5ooN-jEe6ssqp_o9BxyA" type="4001" element="_HjPSRt-jEe6ssqp_o9BxyA" source="_xU0UAN1MEe6i1owEqUeyrg" target="_U8M4oN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_JB5opN-jEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JB5opd-jEe6ssqp_o9BxyA" x="14" y="-5"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_JB5opt-jEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JB5op9-jEe6ssqp_o9BxyA" x="-2" y="5"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_JB6PsN-jEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JB6Psd-jEe6ssqp_o9BxyA" x="1" y="5"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_JB5ood-jEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_JB5oot-jEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JB5oo9-jEe6ssqp_o9BxyA" points="[-27, -27, 147, 141]$[-146, -141, 28, 27]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JB6Pst-jEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JCe3cN-jEe6ssqp_o9BxyA" id="(0.5,0.5)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_7XJSYN-uEe6lBvz5AgYdzg" type="4001" element="_7WtNiN-uEe6lBvz5AgYdzg" source="_xU0UBd1MEe6i1owEqUeyrg" target="_U8M4oN1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_7XJSZN-uEe6lBvz5AgYdzg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7XJSZd-uEe6lBvz5AgYdzg" x="1" y="-16"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7XJSZt-uEe6lBvz5AgYdzg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7XJSZ9-uEe6lBvz5AgYdzg" x="1" y="6"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7XJSaN-uEe6lBvz5AgYdzg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7XJSad-uEe6lBvz5AgYdzg" x="2" y="4"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7XJSYd-uEe6lBvz5AgYdzg"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_7XJSYt-uEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7XJSY9-uEe6lBvz5AgYdzg" points="[28, -28, -146, 140]$[147, -142, -27, 26]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7XJ5cN-uEe6lBvz5AgYdzg" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7XJ5cd-uEe6lBvz5AgYdzg" id="(0.5,0.5)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_WetVkN-vEe6lBvz5AgYdzg" type="4001" element="_WeU7Et-vEe6lBvz5AgYdzg" source="_U8M4oN1MEe6i1owEqUeyrg" target="_xU0UCt1MEe6i1owEqUeyrg">
-          <children xmi:type="notation:Node" xmi:id="_WetVlN-vEe6lBvz5AgYdzg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WetVld-vEe6lBvz5AgYdzg" x="3" y="-4"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_WetVlt-vEe6lBvz5AgYdzg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WetVl9-vEe6lBvz5AgYdzg" y="6"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_WetVmN-vEe6lBvz5AgYdzg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WetVmd-vEe6lBvz5AgYdzg" x="1" y="5"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_WetVkd-vEe6lBvz5AgYdzg"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_WetVkt-vEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WetVk9-vEe6lBvz5AgYdzg" points="[-27, -15, 159, 87]$[-158, -87, 28, 15]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Wet8oN-vEe6lBvz5AgYdzg" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Wet8od-vEe6lBvz5AgYdzg" id="(0.5,0.5)"/>
-        </edges>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_U8KcZ91MEe6i1owEqUeyrg" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_U8KcaN1MEe6i1owEqUeyrg"/>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_xT9YYN1MEe6i1owEqUeyrg" name="man1" outgoingEdges="_HjPSRt-jEe6ssqp_o9BxyA" width="3" height="3" resizeKind="NSEW">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_00rmkN-QEe6--PDzPN0fzA" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CsCdMOEsEe65S5aYbde1Ug" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_U8JOQN1MEe6i1owEqUeyrg" name="man2" outgoingEdges="_7VIb0N-QEe6ssqp_o9BxyA" incomingEdges="_7VMtQN-QEe6ssqp_o9BxyA" width="3" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_CsGuoOEsEe65S5aYbde1Ug" name="man2" outgoingEdges="_CsSU0uEsEe65S5aYbde1Ug" incomingEdges="_CsTi8OEsEe65S5aYbde1Ug" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
       <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_00uC0N-QEe6--PDzPN0fzA" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CsGuoeEsEe65S5aYbde1Ug" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_U8KcYd1MEe6i1owEqUeyrg" name="man3" incomingEdges="_7VIb0N-QEe6ssqp_o9BxyA _7VLfIN-QEe6ssqp_o9BxyA" width="3" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_CsHVsOEsEe65S5aYbde1Ug" name="man3" incomingEdges="_CsSU0uEsEe65S5aYbde1Ug _CsS74OEsEe65S5aYbde1Ug _eB6CIOEsEe65S5aYbde1Ug _eCIEkOEsEe65S5aYbde1Ug _eCJ5wOEsEe65S5aYbde1Ug" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
       <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_00uC09-QEe6--PDzPN0fzA" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CsHVseEsEe65S5aYbde1Ug" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_U8KcZN1MEe6i1owEqUeyrg" name="man4" outgoingEdges="_7VLfIN-QEe6ssqp_o9BxyA _WeU7Et-vEe6lBvz5AgYdzg" incomingEdges="_HjPSRt-jEe6ssqp_o9BxyA _7WtNiN-uEe6lBvz5AgYdzg" width="3" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_CsHVs-EsEe65S5aYbde1Ug" name="man4" outgoingEdges="_CsPRgOEsEe65S5aYbde1Ug _CsS74OEsEe65S5aYbde1Ug" incomingEdges="_CsRtwOEsEe65S5aYbde1Ug _CsS74-EsEe65S5aYbde1Ug" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
       <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_00uC1t-QEe6--PDzPN0fzA" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CsH8wOEsEe65S5aYbde1Ug" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_xT9_d91MEe6i1owEqUeyrg" name="man5" outgoingEdges="_o9TJ4N-FEe6Lz4KWzpYF-A _7WtNiN-uEe6lBvz5AgYdzg" width="3" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_CsH8wuEsEe65S5aYbde1Ug" name="man5" outgoingEdges="_CsQfoeEsEe65S5aYbde1Ug _CsS74-EsEe65S5aYbde1Ug _eCIEkOEsEe65S5aYbde1Ug" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
       <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_00up4N-QEe6--PDzPN0fzA" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CsH8w-EsEe65S5aYbde1Ug" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Man']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_xT9_et1MEe6i1owEqUeyrg" name="woman1" outgoingEdges="_7VMtQN-QEe6ssqp_o9BxyA" incomingEdges="_o9TJ4N-FEe6Lz4KWzpYF-A _WeU7Et-vEe6lBvz5AgYdzg" width="3" height="3" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_CsIj0OEsEe65S5aYbde1Ug" name="woman1" outgoingEdges="_CsTi8OEsEe65S5aYbde1Ug _eCJ5wOEsEe65S5aYbde1Ug" incomingEdges="_CsPRgOEsEe65S5aYbde1Ug _CsQfoeEsEe65S5aYbde1Ug" width="3" height="3" resizeKind="NSEW">
       <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
       <semanticElements xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_00up49-QEe6--PDzPN0fzA" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/woman.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_CsIj0eEsEe65S5aYbde1Ug" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.family/icons/woman.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Woman']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@nodeMappings[name='Woman']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_o9TJ4N-FEe6Lz4KWzpYF-A" sourceNode="_xT9_d91MEe6i1owEqUeyrg" targetNode="_xT9_et1MEe6i1owEqUeyrg">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_o9Tw8N-FEe6Lz4KWzpYF-A" centered="Both" strokeColor="173,127,168">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CsPRgOEsEe65S5aYbde1Ug" sourceNode="_CsHVs-EsEe65S5aYbde1Ug" targetNode="_CsIj0OEsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CsP4kOEsEe65S5aYbde1Ug" centered="Both" strokeColor="173,127,168">
         <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Mother']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Mother']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7VIb0N-QEe6ssqp_o9BxyA" sourceNode="_U8JOQN1MEe6i1owEqUeyrg" targetNode="_U8KcYd1MEe6i1owEqUeyrg">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7VJC4N-QEe6ssqp_o9BxyA" centered="Both" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CsQfoeEsEe65S5aYbde1Ug" sourceNode="_CsH8wuEsEe65S5aYbde1Ug" targetNode="_CsIj0OEsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CsRGsOEsEe65S5aYbde1Ug" centered="Both" strokeColor="173,127,168">
+        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Mother']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Mother']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7VLfIN-QEe6ssqp_o9BxyA" sourceNode="_U8KcZN1MEe6i1owEqUeyrg" targetNode="_U8KcYd1MEe6i1owEqUeyrg">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7VLfId-QEe6ssqp_o9BxyA" centered="Both" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7VMtQN-QEe6ssqp_o9BxyA" sourceNode="_xT9_et1MEe6i1owEqUeyrg" targetNode="_U8JOQN1MEe6i1owEqUeyrg">
-      <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7VMtQd-QEe6ssqp_o9BxyA" centered="Both" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_HjPSRt-jEe6ssqp_o9BxyA" sourceNode="_xT9YYN1MEe6i1owEqUeyrg" targetNode="_U8KcZN1MEe6i1owEqUeyrg">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CsRtwOEsEe65S5aYbde1Ug" sourceNode="_CsAoAOEsEe65S5aYbde1Ug" targetNode="_CsHVs-EsEe65S5aYbde1Ug">
       <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_HjPSR9-jEe6ssqp_o9BxyA" centered="Both" strokeColor="114,159,207">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CsSU0OEsEe65S5aYbde1Ug" centered="Both" strokeColor="114,159,207">
         <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7WtNiN-uEe6lBvz5AgYdzg" sourceNode="_xT9_d91MEe6i1owEqUeyrg" targetNode="_U8KcZN1MEe6i1owEqUeyrg">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7Wt0kN-uEe6lBvz5AgYdzg" centered="Both" strokeColor="114,159,207">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CsSU0uEsEe65S5aYbde1Ug" sourceNode="_CsGuoOEsEe65S5aYbde1Ug" targetNode="_CsHVsOEsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CsSU0-EsEe65S5aYbde1Ug" centered="Both" strokeColor="114,159,207">
         <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WeU7Et-vEe6lBvz5AgYdzg" sourceNode="_U8KcZN1MEe6i1owEqUeyrg" targetNode="_xT9_et1MEe6i1owEqUeyrg">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CsS74OEsEe65S5aYbde1Ug" sourceNode="_CsHVs-EsEe65S5aYbde1Ug" targetNode="_CsHVsOEsEe65S5aYbde1Ug">
       <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_WeU7E9-vEe6lBvz5AgYdzg" centered="Both" strokeColor="173,127,168">
-        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Mother']/@style"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CsS74eEsEe65S5aYbde1Ug" centered="Both" strokeColor="114,159,207">
+        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Mother']"/>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CsS74-EsEe65S5aYbde1Ug" sourceNode="_CsH8wuEsEe65S5aYbde1Ug" targetNode="_CsHVs-EsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CsS75OEsEe65S5aYbde1Ug" centered="Both" strokeColor="114,159,207">
+        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CsTi8OEsEe65S5aYbde1Ug" sourceNode="_CsIj0OEsEe65S5aYbde1Ug" targetNode="_CsGuoOEsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_CsTi8eEsEe65S5aYbde1Ug" centered="Both" strokeColor="114,159,207">
+        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Father']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_eB6CIOEsEe65S5aYbde1Ug" sourceNode="_CsAoAOEsEe65S5aYbde1Ug" targetNode="_CsHVsOEsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_eB6CIeEsEe65S5aYbde1Ug" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Grandad']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_eB6CIuEsEe65S5aYbde1Ug" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Grandad']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_eCIEkOEsEe65S5aYbde1Ug" sourceNode="_CsH8wuEsEe65S5aYbde1Ug" targetNode="_CsHVsOEsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_eCIEkeEsEe65S5aYbde1Ug" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Grandad']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_eCIEkuEsEe65S5aYbde1Ug" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Grandad']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_eCJ5wOEsEe65S5aYbde1Ug" sourceNode="_CsIj0OEsEe65S5aYbde1Ug" targetNode="_CsHVsOEsEe65S5aYbde1Ug">
+      <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_eCJ5weEsEe65S5aYbde1Ug" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Grandad']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_eCJ5wuEsEe65S5aYbde1Ug" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer/@edgeMappings[name='Grandad']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_U77y4N1MEe6i1owEqUeyrg"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_CbSEYOEsEe65S5aYbde1Ug"/>
     <activatedLayers xmi:type="description_1:Layer" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Persons']/@defaultLayer"/>
-    <target xmi:type="basicfamily:Family" href="family.basicfamily#/"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_s91JoN-REe6ssqp_o9BxyA">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_s9_hsN-REe6ssqp_o9BxyA" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_s9_hsd-REe6ssqp_o9BxyA" type="Sirius" element="_s91JoN-REe6ssqp_o9BxyA" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_s-EaMN-REe6ssqp_o9BxyA" type="2003" element="_s-AIwN-REe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_s-FoUN-REe6ssqp_o9BxyA" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_s-FoUd-REe6ssqp_o9BxyA" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_s-G2cN-REe6ssqp_o9BxyA" type="3010" element="_s-B98N-REe6ssqp_o9BxyA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_s-G2cd-REe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_s-G2ct-REe6ssqp_o9BxyA"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_s-G2c9-REe6ssqp_o9BxyA" type="3010" element="_s-B98t-REe6ssqp_o9BxyA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_s-G2dN-REe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_s-G2dd-REe6ssqp_o9BxyA"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_s-FoUt-REe6ssqp_o9BxyA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_s-FoU9-REe6ssqp_o9BxyA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_s-EaMd-REe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="12" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s-EaMt-REe6ssqp_o9BxyA" x="258" y="150"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_s-FoVN-REe6ssqp_o9BxyA" type="2003" element="_s-ClAN-REe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_s-FoV9-REe6ssqp_o9BxyA" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_s-GPYN-REe6ssqp_o9BxyA" type="7004">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_s-GPYd-REe6ssqp_o9BxyA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_s-GPYt-REe6ssqp_o9BxyA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_s-FoVd-REe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="10" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s-FoVt-REe6ssqp_o9BxyA" x="390" y="114"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_s9_hst-REe6ssqp_o9BxyA"/>
-        <edges xmi:type="notation:Edge" xmi:id="_s-G2dt-REe6ssqp_o9BxyA" type="4001" element="_s-DMEN-REe6ssqp_o9BxyA" source="_s-EaMN-REe6ssqp_o9BxyA" target="_s-FoVN-REe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_s-G2et-REe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s-G2e9-REe6ssqp_o9BxyA" x="-15" y="2"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_s-G2fN-REe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s-G2fd-REe6ssqp_o9BxyA" x="12" y="-3"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_s-G2ft-REe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s-G2f9-REe6ssqp_o9BxyA" x="10" y="-4"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_s-G2d9-REe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_s-G2eN-REe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_s-G2ed-REe6ssqp_o9BxyA" points="[36, 2, -101, -8]$[137, 10, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_s-Kg0N-REe6ssqp_o9BxyA" id="(0.5135135135135135,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_s-Kg0d-REe6ssqp_o9BxyA" id="(0.5058823529411764,1.0)"/>
-        </edges>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_s-DzIN-REe6ssqp_o9BxyA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_s-DzId-REe6ssqp_o9BxyA"/>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_s-AIwN-REe6ssqp_o9BxyA" name="man3" outgoingEdges="_s-DMEN-REe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_s-BW4N-REe6ssqp_o9BxyA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_s-B98N-REe6ssqp_o9BxyA" name="man2">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_s-B98d-REe6ssqp_o9BxyA">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_s-B98t-REe6ssqp_o9BxyA" name="man4">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_s-B989-REe6ssqp_o9BxyA">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_s-ClAN-REe6ssqp_o9BxyA" name="Siblings" incomingEdges="_s-DMEN-REe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_s-ClAd-REe6ssqp_o9BxyA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,245,181">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_s-DMEN-REe6ssqp_o9BxyA" sourceNode="_s-AIwN-REe6ssqp_o9BxyA" targetNode="_s-ClAN-REe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_s-DMEd-REe6ssqp_o9BxyA" sourceArrow="OutputFillClosedArrow" targetArrow="OutputFillClosedArrow" size="2">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_s-DMEt-REe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_s91Jod-REe6ssqp_o9BxyA"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer"/>
-    <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_coO-wN-SEe6ssqp_o9BxyA">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_coPl0d-SEe6ssqp_o9BxyA" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_coPl0t-SEe6ssqp_o9BxyA" type="Sirius" element="_coO-wN-SEe6ssqp_o9BxyA" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_coSCEN-SEe6ssqp_o9BxyA" type="2003" element="_coQM4N-SEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_coSCHt-SEe6ssqp_o9BxyA" type="3012" element="_coQz8N-SEe6ssqp_o9BxyA">
-            <children xmi:type="notation:Node" xmi:id="_coSpIN-SEe6ssqp_o9BxyA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_coSpId-SEe6ssqp_o9BxyA" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_coTQMN-SEe6ssqp_o9BxyA" type="3003" element="_coQz8d-SEe6ssqp_o9BxyA">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_coTQMd-SEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coTQMt-SEe6ssqp_o9BxyA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_coSCH9-SEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coSCIN-SEe6ssqp_o9BxyA" x="-22" width="30" height="30"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_coSpIt-SEe6ssqp_o9BxyA" type="3012" element="_coQz89-SEe6ssqp_o9BxyA">
-            <children xmi:type="notation:Node" xmi:id="_coSpJd-SEe6ssqp_o9BxyA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_coSpJt-SEe6ssqp_o9BxyA" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_coTQM9-SEe6ssqp_o9BxyA" type="3003" element="_coQz9N-SEe6ssqp_o9BxyA">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_coTQNN-SEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coTQNd-SEe6ssqp_o9BxyA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_coSpI9-SEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coSpJN-SEe6ssqp_o9BxyA" x="12" y="119" width="30" height="30"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_coSCE9-SEe6ssqp_o9BxyA" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_coSCFN-SEe6ssqp_o9BxyA" type="7004">
-            <styles xmi:type="notation:SortingStyle" xmi:id="_coSCFd-SEe6ssqp_o9BxyA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_coSCFt-SEe6ssqp_o9BxyA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_coSCEd-SEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="12" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coSCEt-SEe6ssqp_o9BxyA" x="414" y="288" width="117" height="129"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_coSCF9-SEe6ssqp_o9BxyA" type="2003" element="_coQz9t-SEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_coSCGt-SEe6ssqp_o9BxyA" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_coSCG9-SEe6ssqp_o9BxyA" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_coTQNt-SEe6ssqp_o9BxyA" type="3010" element="_coRbAN-SEe6ssqp_o9BxyA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_coTQN9-SEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_coTQON-SEe6ssqp_o9BxyA"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_coSCHN-SEe6ssqp_o9BxyA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_coSCHd-SEe6ssqp_o9BxyA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_coSCGN-SEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="10" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coSCGd-SEe6ssqp_o9BxyA" x="408" y="174"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_coPl09-SEe6ssqp_o9BxyA"/>
-        <edges xmi:type="notation:Edge" xmi:id="_coTQOd-SEe6ssqp_o9BxyA" type="4001" element="_coRbAt-SEe6ssqp_o9BxyA" source="_coSCEN-SEe6ssqp_o9BxyA" target="_coSCF9-SEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_coTQPd-SEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coTQPt-SEe6ssqp_o9BxyA" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_coTQP9-SEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coTQQN-SEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_coTQQd-SEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_coTQQt-SEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_coTQOt-SEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_coTQO9-SEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_coTQPN-SEe6ssqp_o9BxyA" points="[-1, 0, -1, 60]$[-1, -60, -1, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_coTQQ9-SEe6ssqp_o9BxyA" id="(0.33043478260869563,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_coTQRN-SEe6ssqp_o9BxyA" id="(0.5058823529411764,1.0)"/>
-        </edges>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_coRbB9-SEe6ssqp_o9BxyA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_coRbCN-SEe6ssqp_o9BxyA"/>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_coQM4N-SEe6ssqp_o9BxyA" name="man5" outgoingEdges="_coRbAt-SEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_coQz8N-SEe6ssqp_o9BxyA" name="man4" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_coQz8d-SEe6ssqp_o9BxyA" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']"/>
-      </ownedBorderedNodes>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_coQz89-SEe6ssqp_o9BxyA" name="woman1" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <semanticElements xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_coQz9N-SEe6ssqp_o9BxyA" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']"/>
-      </ownedBorderedNodes>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_coQM4d-SEe6ssqp_o9BxyA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_coQz9t-SEe6ssqp_o9BxyA" name="Siblings" incomingEdges="_coRbAt-SEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_coQz99-SEe6ssqp_o9BxyA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,245,181">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_coRbAN-SEe6ssqp_o9BxyA" name="man1">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_coRbAd-SEe6ssqp_o9BxyA">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_coRbAt-SEe6ssqp_o9BxyA" sourceNode="_coQM4N-SEe6ssqp_o9BxyA" targetNode="_coQz9t-SEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_coRbA9-SEe6ssqp_o9BxyA" sourceArrow="OutputFillClosedArrow" targetArrow="OutputFillClosedArrow" size="2">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_coRbBN-SEe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_coO-wd-SEe6ssqp_o9BxyA"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer"/>
-    <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_yRamUN-VEe6ssqp_o9BxyA">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_yRbNYN-VEe6ssqp_o9BxyA" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_yRbNYd-VEe6ssqp_o9BxyA" type="Sirius" element="_yRamUN-VEe6ssqp_o9BxyA" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_oaR_wN-uEe6lBvz5AgYdzg" type="2003" element="_oZv0QN-uEe6lBvz5AgYdzg">
-          <children xmi:type="notation:Node" xmi:id="_TcJjgN-vEe6lBvz5AgYdzg" type="3012" element="_TaKmgN-vEe6lBvz5AgYdzg">
-            <children xmi:type="notation:Node" xmi:id="_TcKKkN-vEe6lBvz5AgYdzg" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_TcKKkd-vEe6lBvz5AgYdzg" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_TcL_wN-vEe6lBvz5AgYdzg" type="3003" element="_TaKmgd-vEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_TcL_wd-vEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TcL_wt-vEe6lBvz5AgYdzg"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_TcJjgd-vEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TcJjgt-vEe6lBvz5AgYdzg" x="125" y="36" width="99" height="56"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_WevKyN-vEe6lBvz5AgYdzg" type="3012" element="_WeX-Yd-vEe6lBvz5AgYdzg">
-            <children xmi:type="notation:Node" xmi:id="_WevKy9-vEe6lBvz5AgYdzg" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_WevKzN-vEe6lBvz5AgYdzg" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Wevx0N-vEe6lBvz5AgYdzg" type="3003" element="_WeYlcN-vEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_Wevx0d-vEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Wevx0t-vEe6lBvz5AgYdzg"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_WevKyd-vEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WevKyt-vEe6lBvz5AgYdzg" x="-91" y="36" width="99" height="62"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_oaW4QN-uEe6lBvz5AgYdzg" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_oaXfUN-uEe6lBvz5AgYdzg" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_oalhwN-uEe6lBvz5AgYdzg" type="3010" element="_oZ8BgN-uEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_oalhwd-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_oalhwt-uEe6lBvz5AgYdzg"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_7XMVsN-uEe6lBvz5AgYdzg" type="3010" element="_7Ww349-uEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_7XMVsd-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_7XMVst-uEe6lBvz5AgYdzg"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_oaXfUd-uEe6lBvz5AgYdzg"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_oaXfUt-uEe6lBvz5AgYdzg"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_oaR_wd-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oaR_wt-uEe6lBvz5AgYdzg" x="516" y="348" width="135" height="111"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_oaYGYN-uEe6lBvz5AgYdzg" type="2003" element="_oZ8okd-uEe6lBvz5AgYdzg">
-          <children xmi:type="notation:Node" xmi:id="_oaYGY9-uEe6lBvz5AgYdzg" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_oaYGZN-uEe6lBvz5AgYdzg" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_oamI0N-uEe6lBvz5AgYdzg" type="3010" element="_oZ92sN-uEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_oamI0d-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_oamI0t-uEe6lBvz5AgYdzg"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Wevx09-vEe6lBvz5AgYdzg" type="3010" element="_WeZMh9-vEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_Wevx1N-vEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_Wevx1d-vEe6lBvz5AgYdzg"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_oaYGZd-uEe6lBvz5AgYdzg"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_oaYGZt-uEe6lBvz5AgYdzg"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_oaYGYd-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oaYGYt-uEe6lBvz5AgYdzg" x="168" y="210" width="173" height="141"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_yRbNYt-VEe6ssqp_o9BxyA"/>
-        <edges xmi:type="notation:Edge" xmi:id="_oa31oN-uEe6lBvz5AgYdzg" type="4001" element="_oaCIIN-uEe6lBvz5AgYdzg" source="_oaR_wN-uEe6lBvz5AgYdzg" target="_oaYGYN-uEe6lBvz5AgYdzg">
-          <children xmi:type="notation:Node" xmi:id="_oa5DwN-uEe6lBvz5AgYdzg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oa5Dwd-uEe6lBvz5AgYdzg" x="23" y="-2"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_oa5q0N-uEe6lBvz5AgYdzg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oa5q0d-uEe6lBvz5AgYdzg" x="48" y="1"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_oa6R4N-uEe6lBvz5AgYdzg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oa6R4d-uEe6lBvz5AgYdzg" x="-8"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_oa31od-uEe6lBvz5AgYdzg"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_oa31ot-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_oa31o9-uEe6lBvz5AgYdzg" points="[-67, -26, 262, 97]$[-242, -91, 87, 32]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_obCNsN-uEe6lBvz5AgYdzg" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_obCNsd-uEe6lBvz5AgYdzg" id="(0.5,0.5)"/>
-        </edges>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_yRcbhN-VEe6ssqp_o9BxyA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_yRcbhd-VEe6ssqp_o9BxyA"/>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_oZv0QN-uEe6lBvz5AgYdzg" name="man4" outgoingEdges="_oaCIIN-uEe6lBvz5AgYdzg">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_TaKmgN-vEe6lBvz5AgYdzg" name="man3" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" uid="_TaKmgd-vEe6lBvz5AgYdzg" labelSize="12" borderSize="2" borderSizeComputationExpression="aql:2" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@borderedNodeMappings[name='Parent']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@borderedNodeMappings[name='Parent']"/>
-      </ownedBorderedNodes>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_WeX-Yd-vEe6lBvz5AgYdzg" name="woman1" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <semanticElements xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" uid="_WeYlcN-vEe6lBvz5AgYdzg" labelSize="12" borderSize="2" borderSizeComputationExpression="aql:2" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@borderedNodeMappings[name='Parent']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@borderedNodeMappings[name='Parent']"/>
-      </ownedBorderedNodes>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_oZ4XIN-uEe6lBvz5AgYdzg" labelSize="12" borderSize="2" borderSizeComputationExpression="aql:2" foregroundColor="204,242,166">
-        <description xmi:type="style:FlatContainerStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_oZ8BgN-uEe6lBvz5AgYdzg" name="man1">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_oZ8okN-uEe6lBvz5AgYdzg" labelSize="12" borderSize="2" borderSizeComputationExpression="aql:2" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@subNodeMappings[name='Child']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@subNodeMappings[name='Child']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_7Ww349-uEe6lBvz5AgYdzg" name="man5">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_7Ww35N-uEe6lBvz5AgYdzg" labelSize="12" borderSize="2" borderSizeComputationExpression="aql:2" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@subNodeMappings[name='Child']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']/@subNodeMappings[name='Child']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_oZ8okd-uEe6lBvz5AgYdzg" name="Siblings" incomingEdges="_oaCIIN-uEe6lBvz5AgYdzg">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_oZ8okt-uEe6lBvz5AgYdzg" labelSize="12" showIcon="false" borderSize="2" borderSizeComputationExpression="aql:2" foregroundColor="255,245,181">
-        <description xmi:type="style:FlatContainerStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Siblings']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Siblings']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_oZ92sN-uEe6lBvz5AgYdzg" name="man2">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_oZ92sd-uEe6lBvz5AgYdzg" labelSize="12" borderSize="2" borderSizeComputationExpression="aql:2" labelPosition="node" color="255,245,181">
-          <description xmi:type="style:SquareDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Siblings']/@subNodeMappings[name='Sibling']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Siblings']/@subNodeMappings[name='Sibling']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_WeZMh9-vEe6lBvz5AgYdzg" name="man5">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_WeaaoN-vEe6lBvz5AgYdzg" labelSize="12" borderSize="2" borderSizeComputationExpression="aql:2" labelPosition="node" color="255,245,181">
-          <description xmi:type="style:SquareDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Siblings']/@subNodeMappings[name='Sibling']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Siblings']/@subNodeMappings[name='Sibling']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_oaCIIN-uEe6lBvz5AgYdzg" sourceNode="_oZv0QN-uEe6lBvz5AgYdzg" targetNode="_oZ8okd-uEe6lBvz5AgYdzg">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_oaCvMN-uEe6lBvz5AgYdzg" centered="Both">
-        <description xmi:type="style:EdgeStyleDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@edgeMappings[name='SiblingsEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_oaCvMd-uEe6lBvz5AgYdzg" showIcon="false"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@edgeMappings[name='SiblingsEdge']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_yRamUd-VEe6ssqp_o9BxyA"/>
-    <activatedLayers xmi:type="description_1:Layer" href="../description/basicfamily.odesign#//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer"/>
-    <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_pRzxkN-WEe6ssqp_o9BxyA">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pR0YoN-WEe6ssqp_o9BxyA" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_pR0Yod-WEe6ssqp_o9BxyA" type="Sirius" element="_pRzxkN-WEe6ssqp_o9BxyA" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_pR3b8t-WEe6ssqp_o9BxyA" type="2003" element="_pR0_sN-WEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_pR4DCt-WEe6ssqp_o9BxyA" type="3012" element="_pR0_s9-WEe6ssqp_o9BxyA">
-            <children xmi:type="notation:Node" xmi:id="_pR4DDd-WEe6ssqp_o9BxyA" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_pR4DDt-WEe6ssqp_o9BxyA" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_pR5RIN-WEe6ssqp_o9BxyA" type="3003" element="_pR0_tN-WEe6ssqp_o9BxyA">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_pR5RId-WEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pR5RIt-WEe6ssqp_o9BxyA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_pR4DC9-WEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pR4DDN-WEe6ssqp_o9BxyA" x="-48" y="32" width="56" height="43"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_Wevx1t-vEe6lBvz5AgYdzg" type="3012" element="_WebBst-vEe6lBvz5AgYdzg">
-            <children xmi:type="notation:Node" xmi:id="_Wevx2d-vEe6lBvz5AgYdzg" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_Wevx2t-vEe6lBvz5AgYdzg" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Wevx29-vEe6lBvz5AgYdzg" type="3003" element="_WebBs9-vEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_Wevx3N-vEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Wevx3d-vEe6lBvz5AgYdzg"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_Wevx19-vEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Wevx2N-vEe6lBvz5AgYdzg" x="101" y="33" width="62" height="42"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_pR3b9d-WEe6ssqp_o9BxyA" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_pR4DAN-WEe6ssqp_o9BxyA" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_JB62wN-jEe6ssqp_o9BxyA" type="3010" element="_JBpxBd-jEe6ssqp_o9BxyA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_JB62wd-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_JB62wt-jEe6ssqp_o9BxyA"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_7XLurN-uEe6lBvz5AgYdzg" type="3010" element="_7WytFd-uEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_7XLurd-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_7XLurt-uEe6lBvz5AgYdzg"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_pR4DAd-WEe6ssqp_o9BxyA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_pR4DAt-WEe6ssqp_o9BxyA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_pR3b89-WEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="12" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pR3b9N-WEe6ssqp_o9BxyA" x="408" y="228" width="111"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_pR4DA9-WEe6ssqp_o9BxyA" type="2003" element="_pR2N0N-WEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_pR4DBt-WEe6ssqp_o9BxyA" type="5007"/>
-          <children xmi:type="notation:Node" xmi:id="_pR4DB9-WEe6ssqp_o9BxyA" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_pR54MN-WEe6ssqp_o9BxyA" type="3010" element="_pR2N09-WEe6ssqp_o9BxyA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_pR54Md-WEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_pR54Mt-WEe6ssqp_o9BxyA"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_WewY4N-vEe6lBvz5AgYdzg" type="3010" element="_Webowd-vEe6lBvz5AgYdzg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_WewY4d-vEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_WewY4t-vEe6lBvz5AgYdzg"/>
-            </children>
-            <styles xmi:type="notation:SortingStyle" xmi:id="_pR4DCN-WEe6ssqp_o9BxyA"/>
-            <styles xmi:type="notation:FilteringStyle" xmi:id="_pR4DCd-WEe6ssqp_o9BxyA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_pR4DBN-WEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="10" bold="true"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pR4DBd-WEe6ssqp_o9BxyA" x="408" y="102"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_pR0Yot-WEe6ssqp_o9BxyA"/>
-        <edges xmi:type="notation:Edge" xmi:id="_pR54M9-WEe6ssqp_o9BxyA" type="4001" element="_pR204d-WEe6ssqp_o9BxyA" source="_pR3b8t-WEe6ssqp_o9BxyA" target="_pR4DA9-WEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_pR54N9-WEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pR54ON-WEe6ssqp_o9BxyA" x="-7" y="-2"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_pR54Od-WEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pR54Ot-WEe6ssqp_o9BxyA" x="12"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_pR54O9-WEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pR54PN-WEe6ssqp_o9BxyA" x="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_pR54NN-WEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_pR54Nd-WEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_pR54Nt-WEe6ssqp_o9BxyA" points="[0, 0, -5, 73]$[5, -73, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_pR6fQN-WEe6ssqp_o9BxyA" id="(0.3486238532110092,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_pR6fQd-WEe6ssqp_o9BxyA" id="(0.5058823529411764,1.0)"/>
-        </edges>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pR3b8N-WEe6ssqp_o9BxyA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_pR3b8d-WEe6ssqp_o9BxyA"/>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_pR0_sN-WEe6ssqp_o9BxyA" name="man4" outgoingEdges="_pR204d-WEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_pR0_s9-WEe6ssqp_o9BxyA" name="man3" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" uid="_pR0_tN-WEe6ssqp_o9BxyA" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']"/>
-      </ownedBorderedNodes>
-      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_WebBst-vEe6lBvz5AgYdzg" name="woman1" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <semanticElements xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" uid="_WebBs9-vEe6lBvz5AgYdzg" labelPosition="node" color="255,255,255">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@borderedNodeMappings[name='ParentNode']"/>
-      </ownedBorderedNodes>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pR0_sd-WEe6ssqp_o9BxyA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" foregroundColor="204,242,166">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_JBpxBd-jEe6ssqp_o9BxyA" name="man1">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_JBpxBt-jEe6ssqp_o9BxyA">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_7WytFd-uEe6lBvz5AgYdzg" name="man5">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_7WzUIN-uEe6lBvz5AgYdzg">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='PersonContainer']/@subNodeMappings[name='ChildrenNode']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_pR2N0N-WEe6ssqp_o9BxyA" name="Siblings" incomingEdges="_pR204d-WEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pR2N0d-WEe6ssqp_o9BxyA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" foregroundColor="255,245,181">
-        <labelFormat>bold</labelFormat>
-        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_pR2N09-WEe6ssqp_o9BxyA" name="man2">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_pR204N-WEe6ssqp_o9BxyA">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_Webowd-vEe6lBvz5AgYdzg" name="man5">
-        <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-        <ownedStyle xmi:type="diagram:Square" uid="_Webowt-vEe6lBvz5AgYdzg">
-          <description xmi:type="style:SquareDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@containerMappings[name='SiblingContainer']/@subNodeMappings[name='SiblingNode']"/>
-      </ownedElements>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_pR204d-WEe6ssqp_o9BxyA" sourceNode="_pR0_sN-WEe6ssqp_o9BxyA" targetNode="_pR2N0N-WEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_pR204t-WEe6ssqp_o9BxyA" sourceArrow="OutputFillClosedArrow" targetArrow="OutputFillClosedArrow" size="2">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_pR2049-WEe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer/@edgeMappings[name='SiblingsEdge']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_pRzxkd-WEe6ssqp_o9BxyA"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Relationships%20diagram']/@defaultLayer"/>
-    <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-  </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_MShE0N-jEe6ssqp_o9BxyA">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_MShr4d-jEe6ssqp_o9BxyA" source="GMF_DIAGRAMS">
-      <data xmi:type="notation:Diagram" xmi:id="_MShr4t-jEe6ssqp_o9BxyA" type="Sirius" element="_MShE0N-jEe6ssqp_o9BxyA" measurementUnit="Pixel">
-        <children xmi:type="notation:Node" xmi:id="_MSkIJN-jEe6ssqp_o9BxyA" type="2001" element="_MSiS8N-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MSkvMN-jEe6ssqp_o9BxyA" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_MSkvMd-jEe6ssqp_o9BxyA" y="-18"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_36ryqt-uEe6lBvz5AgYdzg" type="3005" element="_36WbYd-uEe6lBvz5AgYdzg">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_36ryq9-uEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_36ryrN-uEe6lBvz5AgYdzg"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_MSkIJd-jEe6ssqp_o9BxyA" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MSkIJt-jEe6ssqp_o9BxyA" x="101" y="402" width="40" height="40"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_MSqOwN-jEe6ssqp_o9BxyA" type="2001" element="_MSiS9t-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MSqOw9-jEe6ssqp_o9BxyA" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_MSqOxN-jEe6ssqp_o9BxyA" x="41" y="11"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_36ryrd-uEe6lBvz5AgYdzg" type="3005" element="_36gMYd-uEe6lBvz5AgYdzg">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_36ryrt-uEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_36ryr9-uEe6lBvz5AgYdzg"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_MSqOwd-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MSqOwt-jEe6ssqp_o9BxyA" y="102" width="40" height="40"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_MStSEN-jEe6ssqp_o9BxyA" type="2001" element="_MSi6A9-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MSt5IN-jEe6ssqp_o9BxyA" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_MSt5Id-jEe6ssqp_o9BxyA" x="41" y="6"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_36rysN-uEe6lBvz5AgYdzg" type="3005" element="_36gMZN-uEe6lBvz5AgYdzg">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_36rysd-uEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_36ryst-uEe6lBvz5AgYdzg"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_MStSEd-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MStSEt-jEe6ssqp_o9BxyA" x="66" width="40" height="40"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_MSwVYN-jEe6ssqp_o9BxyA" type="2001" element="_MSi6B9-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MSwVY9-jEe6ssqp_o9BxyA" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_MSwVZN-jEe6ssqp_o9BxyA" x="-4" y="-29"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_36rys9-uEe6lBvz5AgYdzg" type="3005" element="_36gMZ9-uEe6lBvz5AgYdzg">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_36rytN-uEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_36rytd-uEe6lBvz5AgYdzg"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_MSwVYd-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MSwVYt-jEe6ssqp_o9BxyA" x="64" y="300" width="40" height="40"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_MS0m0N-jEe6ssqp_o9BxyA" type="2001" element="_MSi6C9-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MS0m09-jEe6ssqp_o9BxyA" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_MS0m1N-jEe6ssqp_o9BxyA" y="-18"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_36rytt-uEe6lBvz5AgYdzg" type="3005" element="_36gMat-uEe6lBvz5AgYdzg">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_36ryt9-uEe6lBvz5AgYdzg" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_36ryuN-uEe6lBvz5AgYdzg"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_MS0m0d-jEe6ssqp_o9BxyA" fontColor="8947848" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS0m0t-jEe6ssqp_o9BxyA" y="402" width="40" height="40"/>
-        </children>
-        <children xmi:type="notation:Node" xmi:id="_MS4RMN-jEe6ssqp_o9BxyA" type="2001" element="_MSi6Dt-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MS4RM9-jEe6ssqp_o9BxyA" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_MS4RNN-jEe6ssqp_o9BxyA" x="-4" y="-18"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS--5t-jEe6ssqp_o9BxyA" type="3005" element="_MSi6D9-jEe6ssqp_o9BxyA">
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_MS--59-jEe6ssqp_o9BxyA" fontName="Segoe UI"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS--6N-jEe6ssqp_o9BxyA"/>
-          </children>
-          <styles xmi:type="notation:ShapeStyle" xmi:id="_MS4RMd-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS4RMt-jEe6ssqp_o9BxyA" y="198" width="40" height="40"/>
-        </children>
-        <styles xmi:type="notation:DiagramStyle" xmi:id="_MShr49-jEe6ssqp_o9BxyA"/>
-        <edges xmi:type="notation:Edge" xmi:id="_MS--6d-jEe6ssqp_o9BxyA" type="4001" element="_MSjhEd-jEe6ssqp_o9BxyA" source="_MSkIJN-jEe6ssqp_o9BxyA" target="_MSwVYN-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MS_l8N-jEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_l8d-jEe6ssqp_o9BxyA" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_l8t-jEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_l89-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_l9N-jEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_l9d-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_MS--6t-jEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_MS--69-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MS--7N-jEe6ssqp_o9BxyA" points="[0, 0, 34, 60]$[-34, -60, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MS_l9t-jEe6ssqp_o9BxyA" id="(0.5,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MS_l99-jEe6ssqp_o9BxyA" id="(0.5,1.0)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_MS_l-N-jEe6ssqp_o9BxyA" type="4001" element="_MSjhFt-jEe6ssqp_o9BxyA" source="_MSqOwN-jEe6ssqp_o9BxyA" target="_MStSEN-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MS_l_N-jEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_l_d-jEe6ssqp_o9BxyA" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_l_t-jEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_l_9-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_mAN-jEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_mAd-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_MS_l-d-jEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_MS_l-t-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MS_l-9-jEe6ssqp_o9BxyA" points="[0, 0, -65, 60]$[65, -60, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MS_mAt-jEe6ssqp_o9BxyA" id="(0.5,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MS_mA9-jEe6ssqp_o9BxyA" id="(0.5,1.0)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_MS_mBN-jEe6ssqp_o9BxyA" type="4001" element="_MSjhG9-jEe6ssqp_o9BxyA" source="_MSwVYN-jEe6ssqp_o9BxyA" target="_MStSEN-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MS_mCN-jEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_mCd-jEe6ssqp_o9BxyA" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_mCt-jEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_mC9-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_mDN-jEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_mDd-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_MS_mBd-jEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_MS_mBt-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MS_mB9-jEe6ssqp_o9BxyA" points="[0, 0, 0, 260]$[0, -260, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MS_mDt-jEe6ssqp_o9BxyA" id="(0.5,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MS_mD9-jEe6ssqp_o9BxyA" id="(0.5,1.0)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_MS_mHN-jEe6ssqp_o9BxyA" type="4001" element="_MSjhJd-jEe6ssqp_o9BxyA" source="_MS4RMN-jEe6ssqp_o9BxyA" target="_MSqOwN-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MS_mIN-jEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_mId-jEe6ssqp_o9BxyA" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_mIt-jEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_mI9-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MS_mJN-jEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MS_mJd-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_MS_mHd-jEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_MS_mHt-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MS_mH9-jEe6ssqp_o9BxyA" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTANAN-jEe6ssqp_o9BxyA" id="(0.5,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTANAd-jEe6ssqp_o9BxyA" id="(0.5,1.0)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_MTANAt-jEe6ssqp_o9BxyA" type="4001" element="_MSjhKt-jEe6ssqp_o9BxyA" source="_MS0m0N-jEe6ssqp_o9BxyA" target="_MS4RMN-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_MTANBt-jEe6ssqp_o9BxyA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MTANB9-jEe6ssqp_o9BxyA" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MTANCN-jEe6ssqp_o9BxyA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MTANCd-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_MTANCt-jEe6ssqp_o9BxyA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MTANC9-jEe6ssqp_o9BxyA" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_MTANA9-jEe6ssqp_o9BxyA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_MTANBN-jEe6ssqp_o9BxyA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MTANBd-jEe6ssqp_o9BxyA" points="[0, 0, -1, 160]$[1, -160, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTANDN-jEe6ssqp_o9BxyA" id="(0.5,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MTANDd-jEe6ssqp_o9BxyA" id="(0.5,1.0)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_7XLuoN-uEe6lBvz5AgYdzg" type="4001" element="_7XHdON-uEe6lBvz5AgYdzg" source="_MS0m0N-jEe6ssqp_o9BxyA" target="_MSwVYN-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_7XLupN-uEe6lBvz5AgYdzg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7XLupd-uEe6lBvz5AgYdzg" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7XLupt-uEe6lBvz5AgYdzg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7XLup9-uEe6lBvz5AgYdzg" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_7XLuqN-uEe6lBvz5AgYdzg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7XLuqd-uEe6lBvz5AgYdzg" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_7XLuod-uEe6lBvz5AgYdzg"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_7XLuot-uEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7XLuo9-uEe6lBvz5AgYdzg" points="[0, 0, -66, 60]$[66, -60, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7XLuqt-uEe6lBvz5AgYdzg" id="(0.5,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_7XLuq9-uEe6lBvz5AgYdzg" id="(0.5,1.0)"/>
-        </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_WeujsN-vEe6lBvz5AgYdzg" type="4001" element="_WergeN-vEe6lBvz5AgYdzg" source="_MSwVYN-jEe6ssqp_o9BxyA" target="_MS4RMN-jEe6ssqp_o9BxyA">
-          <children xmi:type="notation:Node" xmi:id="_WevKwN-vEe6lBvz5AgYdzg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WevKwd-vEe6lBvz5AgYdzg" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_WevKwt-vEe6lBvz5AgYdzg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WevKw9-vEe6lBvz5AgYdzg" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_WevKxN-vEe6lBvz5AgYdzg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WevKxd-vEe6lBvz5AgYdzg" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Weujsd-vEe6lBvz5AgYdzg"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_Weujst-vEe6lBvz5AgYdzg" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Weujs9-vEe6lBvz5AgYdzg" points="[0, 0, 65, 60]$[-65, -60, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WevKxt-vEe6lBvz5AgYdzg" id="(0.5,0.0)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WevKx9-vEe6lBvz5AgYdzg" id="(0.5,1.0)"/>
-        </edges>
-      </data>
-    </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_MSiS8d-jEe6ssqp_o9BxyA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_MSiS8t-jEe6ssqp_o9BxyA"/>
-    </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_MSiS8N-jEe6ssqp_o9BxyA" name="man1" outgoingEdges="_MSjhEd-jEe6ssqp_o9BxyA" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_36WbYd-uEe6lBvz5AgYdzg" showIcon="false" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/man.svg">
-        <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_MSiS9t-jEe6ssqp_o9BxyA" name="man2" outgoingEdges="_MSjhFt-jEe6ssqp_o9BxyA" incomingEdges="_MSjhJd-jEe6ssqp_o9BxyA" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_36gMYd-uEe6lBvz5AgYdzg" showIcon="false" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/man.svg">
-        <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_MSi6A9-jEe6ssqp_o9BxyA" name="man3" incomingEdges="_MSjhFt-jEe6ssqp_o9BxyA _MSjhG9-jEe6ssqp_o9BxyA" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.3"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_36gMZN-uEe6lBvz5AgYdzg" showIcon="false" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/man.svg">
-        <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_MSi6B9-jEe6ssqp_o9BxyA" name="man4" outgoingEdges="_MSjhG9-jEe6ssqp_o9BxyA _WergeN-vEe6lBvz5AgYdzg" incomingEdges="_MSjhEd-jEe6ssqp_o9BxyA _7XHdON-uEe6lBvz5AgYdzg" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_36gMZ9-uEe6lBvz5AgYdzg" showIcon="false" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/man.svg">
-        <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_MSi6C9-jEe6ssqp_o9BxyA" name="man5" outgoingEdges="_MSjhKt-jEe6ssqp_o9BxyA _7XHdON-uEe6lBvz5AgYdzg" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <semanticElements xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_36gMat-uEe6lBvz5AgYdzg" showIcon="false" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/man.svg">
-        <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@nodeMappings[name='ManNode']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" uid="_MSi6Dt-jEe6ssqp_o9BxyA" name="woman1" outgoingEdges="_MSjhJd-jEe6ssqp_o9BxyA" incomingEdges="_MSjhKt-jEe6ssqp_o9BxyA _WergeN-vEe6lBvz5AgYdzg" width="4" height="4" resizeKind="NSEW">
-      <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-      <semanticElements xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_MSi6D9-jEe6ssqp_o9BxyA" showIcon="false" workspacePath="/org.eclipse.sirius.sample.basicfamily.advanced.design/icons/woman.svg">
-        <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@nodeMappings[name='WomanNode']/@style"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@nodeMappings[name='WomanNode']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MSjhEd-jEe6ssqp_o9BxyA" sourceNode="_MSiS8N-jEe6ssqp_o9BxyA" targetNode="_MSi6B9-jEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.0"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MSjhEt-jEe6ssqp_o9BxyA" size="2" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MSjhE9-jEe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MSjhFt-jEe6ssqp_o9BxyA" sourceNode="_MSiS9t-jEe6ssqp_o9BxyA" targetNode="_MSi6A9-jEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.2"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MSjhF9-jEe6ssqp_o9BxyA" size="2" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MSjhGN-jEe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MSjhG9-jEe6ssqp_o9BxyA" sourceNode="_MSi6B9-jEe6ssqp_o9BxyA" targetNode="_MSi6A9-jEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MSjhHN-jEe6ssqp_o9BxyA" size="2" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MSjhHd-jEe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MSjhJd-jEe6ssqp_o9BxyA" sourceNode="_MSi6Dt-jEe6ssqp_o9BxyA" targetNode="_MSiS9t-jEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Woman" href="family.basicfamily#//@members.1"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MSjhJt-jEe6ssqp_o9BxyA" size="2" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MSjhJ9-jEe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_MSjhKt-jEe6ssqp_o9BxyA" sourceNode="_MSi6C9-jEe6ssqp_o9BxyA" targetNode="_MSi6Dt-jEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_MSkIIN-jEe6ssqp_o9BxyA" size="2" strokeColor="173,127,168">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@edgeMappings[name='motherEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_MSkIId-jEe6ssqp_o9BxyA"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@edgeMappings[name='motherEdge']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_7XHdON-uEe6lBvz5AgYdzg" sourceNode="_MSi6C9-jEe6ssqp_o9BxyA" targetNode="_MSi6B9-jEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_7XHdOd-uEe6lBvz5AgYdzg" size="2" strokeColor="114,159,207">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_7XHdOt-uEe6lBvz5AgYdzg"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']/@edgeMappings[name='fatherEdge']"/>
-    </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_WergeN-vEe6lBvz5AgYdzg" sourceNode="_MSi6B9-jEe6ssqp_o9BxyA" targetNode="_MSi6Dt-jEe6ssqp_o9BxyA">
-      <target xmi:type="basicfamily:Man" href="family.basicfamily#//@members.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Werged-vEe6lBvz5AgYdzg" size="2" strokeColor="173,127,168">
-        <description xmi:type="style:EdgeStyleDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@edgeMappings[name='motherEdge']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Werget-vEe6lBvz5AgYdzg"/>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']/@edgeMappings[name='motherEdge']"/>
-    </ownedDiagramElements>
-    <description xmi:type="description_1:DiagramDescription" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_MShE0d-jEe6ssqp_o9BxyA"/>
-    <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@defaultLayer"/>
-    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Men']"/>
-    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/resource/org.eclipse.sirius.sample.basicfamily.advanced.design/description/basicfamily.odesign#//@ownedViewpoints[name='persons%20(Basic%20Family%20Advanced%20Tutorial%20Solution)']/@ownedRepresentations[name='Persons%20diagram']/@additionalLayers[name='Women']"/>
     <target xmi:type="basicfamily:Family" href="family.basicfamily#/"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

@@ -1,0 +1,228 @@
+@namespace(uri="http://www.example.org/ftp", prefix="ftp")
+package ftp;
+
+class FaultTree {
+	val FTNode[+] ftnodes;
+	ref FTNode[1] root;
+}
+
+class FTNode {
+}
+
+class OrGate extends FTNode {
+	ref FTNode[2..*] inputs;
+}
+
+class AndGate extends FTNode {
+	ref FTNode[2..*] inputs;
+}
+
+class Fault extends FTNode {
+	attr String[1] description;
+}
+
+class Observation {
+	op FaultTree[1] buildFaultTree();
+	ref Component[1] component;
+	val PortValue[*] portValues;
+	attr String[1] name;
+	attr int faultLimit;
+	val FaultTree faulttree;
+}
+
+class Component extends CompositionElement {
+	attr String name;
+	attr String[1] type;
+}
+
+class Port {
+	op TypedPortValue[1] newPortValue();
+	attr String name;
+	attr String[1] type;
+}
+
+class Connection extends CompositionElement {
+	ref Port[1] fromPort;
+	ref Port[1] toPort;
+}
+
+class DigintalConnection extends Connection {
+}
+
+class AnalogConnection extends Connection {
+}
+
+class SignalConnection extends DigintalConnection {
+}
+
+class ElectricalConnection extends AnalogConnection {
+}
+
+class HydraulicConnection extends AnalogConnection {
+}
+
+class MechanicalConnection extends AnalogConnection {
+}
+
+class PrimitiveComponent extends Component {
+}
+
+class ComposedComponent extends Component {
+	val CompositionElement[*] composition;
+	val Port[*] ports;
+}
+
+class CompositionElement {
+}
+
+class PortValue {
+	ref Port[1] port;
+	val TypedPortValue[1] value;
+}
+
+class Resistor extends PrimitiveComponent {
+	attr float[1] resistance = "6.0";
+	val ElectricalPort[1] inPort;
+	val ElectricalPort[1] outPort;
+}
+
+class Capacitor extends PrimitiveComponent {
+}
+
+class AnalogBattery extends PrimitiveComponent {
+	val ElectricalPort[1] inPort;
+	val ElectricalPort[1] outPort;
+	attr float[1] voltage = "12.0";
+}
+
+class AnalogSwitch extends PrimitiveComponent {
+	val ElectricalPort[1] inPort;
+	val SignalPort[1] setPort;
+	val ElectricalPort[1] outPort;
+}
+
+class AnalogLamp extends PrimitiveComponent {
+	val ElectricalPort[1] inPort;
+	val ElectricalPort[1] outPort;
+	val VisualPort[1] lightPort;
+}
+
+class DigitalBattery extends PrimitiveComponent {
+	val SignalPort[1] inPort;
+	val SignalPort[1] outPort;
+}
+
+class DigitalSwitch extends PrimitiveComponent {
+	val SignalPort[1] inPort;
+	val SignalPort[1] setPort;
+	val SignalPort[1] outPort;
+}
+
+class DigitalLamp extends PrimitiveComponent {
+	val SignalPort[1] inPort;
+	val SignalPort[1] outPort;
+	val VisualPort[1] lightPort;
+}
+
+class Not extends PrimitiveComponent {
+}
+
+class Xor extends PrimitiveComponent {
+}
+
+class And extends PrimitiveComponent {
+}
+
+class NTransistor extends PrimitiveComponent {
+	val SignalPort[1] gate;
+	val SignalPort[1] source;
+	val SignalPort[1] drain;
+}
+
+class PTransistor extends PrimitiveComponent {
+	val SignalPort[1] gate;
+	val SignalPort[1] source;
+	val SignalPort[1] drain;
+}
+
+class DFlipFlop extends PrimitiveComponent {
+	val SignalPort[1] inPort;
+	val SignalPort[1] clockPort;
+	val SignalPort[1] outPort;
+	val SignalPort[1] statePort;
+}
+
+class SignalPort extends Port {
+}
+
+class ElectricalPort extends Port {
+}
+
+class HydraulicPort extends Port {
+}
+
+class VisualPort extends Port {
+}
+
+class VisualConnection extends Connection {
+}
+
+class FaultTreeContext {
+	val ComposedComponent[1] composition;
+	val Observation[*] observations;
+}
+
+class RootEvent extends FTNode {
+	attr String[1] observation;
+	ref FTNode[+] inputs;
+}
+
+class MechanicalPort extends Port {
+}
+
+class TypedPortValue {
+}
+
+class SignalValue extends TypedPortValue {
+	attr SignalValues[1] signal;
+}
+
+class ElectricalValue extends TypedPortValue {
+	attr float[1] current;
+	attr float[1] voltage;
+	attr boolean[1] anyCurrent;
+	attr boolean[1] anyVoltage;
+}
+
+class HydraulicValue extends TypedPortValue {
+	attr float[1] flow;
+	attr float[1] pressure;
+	attr boolean[1] anyFlow;
+	attr boolean[1] anyPressure;
+}
+
+enum SignalValues {
+	off = 0;
+	on = 1;
+	any = 2;
+}
+
+enum VisualValues {
+	light = 0;
+	dark = 1;
+	any = 2;
+}
+
+class VisualValue extends TypedPortValue {
+	attr VisualValues[1] bulb;
+}
+
+class FloatValue extends TypedPortValue {
+	attr float[1] value;
+}
+
+class SignalConstant extends PrimitiveComponent {
+	val SignalPort[1] outPort;
+	attr SignalValues[1] value;
+}
+

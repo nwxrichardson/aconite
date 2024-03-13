@@ -1,0 +1,123 @@
+@namespace(uri="http://eclipse.org/eugenia/simplebpmn", prefix="sbpmn")
+@sirius(iconFolder = "uk.ac.york.aconite.bpmn/svg/")
+package SimpleBPMN;
+
+//Make use of the importas in here 
+
+@sirius.diagram(name = "BPD")
+class BusinessProcessDiagram {
+	@sirius.tool.creation(container = "Group", name = "Group Creation")
+	@sirius.tool.creation(container = "Pool", name = "Pool Creation")
+	val BPMNElement[*] elements;
+}
+
+class BPMNElement {
+	attr String name;
+}
+
+/* SWIMLANES */
+
+abstract class Swimlane extends BPMNElement {
+	
+}
+
+@sirius.container(name = "Lane", container = "Pool")
+class Lane extends Swimlane {
+	@sirius.tool.creation(container = "XOR", name = "XOR Creation")
+	@sirius.tool.creation(container = "OR", name = "OR Creation")
+	@sirius.tool.creation(container = "AND", name = "AND Creation")
+	@sirius.tool.creation(container = "Start Event", name = "Start Event Creation")
+	@sirius.tool.creation(container = "Intermediate Event", name = "Intermediate Event Creation")
+	@sirius.tool.creation(container = "End Event", name = "End Event Creation")
+	@sirius.tool.creation(container = "Activity", name = "Activity Creation")
+	val FlowObject[*] flowObjects;
+}
+
+@sirius.container(name = "Pool", sce = "elements", container = "BPD")
+class Pool extends Swimlane {
+	@sirius.tool.creation(container = "Lane", name = "Lane Creation")	
+	val Lane[*] lanes;
+}
+
+/* CONNECTING OBJECTS */
+
+@sirius.edge(container = "BPD", name="Link",~abstract = "true",  source = "from", target = "to", color = "black", sourceNode = "Activity, OR, AND, XOR, Start Event", targetNode = "Activity, OR, AND, XOR, End Event")
+abstract class ConnectingObject extends BPMNElement {
+	ref FlowObject from;
+	ref FlowObject to;
+}
+
+@sirius.edge(~import = "Link", container = "BPD", name="Message Flow")
+class MessageFlow extends ConnectingObject {
+	
+}
+
+@sirius.edge(~import = "Link", container = "BPD", name="Sequence Flow")
+class SequenceFlow extends ConnectingObject {
+	
+}
+
+@sirius.edge(~import = "Link", container = "BPD", name="Association")
+@gmf.link(style="dot", target.decoration="arrow")
+class Association extends ConnectingObject {
+	
+}
+
+/* FLOW OBJECTS */
+
+@sirius.node(~abstract = "true",container = "Lane", name = "Flow", shape = "image", sce = "flowObjects", borderSize = "0")
+abstract class FlowObject extends BPMNElement {
+
+}
+
+abstract class Gateway extends FlowObject {
+	
+}
+
+@sirius.node(~import = "Flow", name = "XOR",  imagePath = "xor-gateway.svg")
+class XOR extends Gateway {
+	
+}
+
+@sirius.node(~import = "Flow", name = "OR",  imagePath = "or-gateway.svg")
+class OR extends Gateway {
+	
+}
+
+@sirius.node(~import = "Flow", name = "AND",  imagePath = "and-gateway.svg")
+class AND extends Gateway {
+}
+
+@sirius.node(~import = "Flow", name = "Start Event",  imagePath = "start-event.svg")
+class StartEvent extends FlowObject {
+}
+
+@sirius.node(~import = "Flow", name = "Intermediate Event",  imagePath = "intermediate-event.svg")
+class IntermediateEvent extends FlowObject {
+}
+
+@sirius.node(~import = "Flow", name = "End Event",  imagePath = "end-event.svg")
+class EndEvent extends FlowObject {
+}
+
+@sirius.node(name = "Activity", container = "Lane", sce = "flowObjects")
+class Activity extends FlowObject {
+
+}
+
+/* ARTIFACTS */
+
+@gmf.node(label="name")
+abstract class Artifact extends BPMNElement {
+	
+}
+
+@sirius.node(container = "Lane", name="Data Object", imagePath = "data-object.svg")
+class DataObject extends Artifact {
+	
+}
+
+@sirius.container(container = "BPD", name = "Group", sce = "elements")
+class Group extends Artifact {
+	val BPMNElement[*] elements;
+}

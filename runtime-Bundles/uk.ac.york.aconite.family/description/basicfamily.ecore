@@ -9,7 +9,7 @@
     <eAnnotations source="sirius.diagram">
       <details key="name" value="Relationships"/>
     </eAnnotations>
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="sirius.template">
       <details key="name" value="Rel Default"/>
       <details key="abstract" value="true"/>
       <details key="color" value="white"/>
@@ -38,7 +38,7 @@
       <details key="import" value="Rel Default"/>
       <details key="name" value="Siblings"/>
       <details key="proLabelExpression" value="Siblings"/>
-      <details key="foregroundColor" value="light_yellow"/>
+      <details key="froegroundColor" value="light_yellow"/>
       <details key="container" value="Relationships"/>
       <details key="showIcon" value="false"/>
     </eAnnotations>

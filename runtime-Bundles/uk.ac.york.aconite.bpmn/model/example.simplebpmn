@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbpmn:BusinessProcessDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sbpmn="http://eclipse.org/eugenia/simplebpmn" xmi:id="_S7b2UOBjEe684qFZJOTPPg">
+  <elements xsi:type="sbpmn:Pool" xmi:id="_AVXdoOBkEe684qFZJOTPPg" name="Pool">
+    <lanes xmi:id="_AvPWMOBkEe684qFZJOTPPg" name="Lane 1">
+      <flowObjects xsi:type="sbpmn:StartEvent"/>
+      <flowObjects xsi:type="sbpmn:Activity" name="Activity"/>
+      <flowObjects xsi:type="sbpmn:Activity" name="Activity 2"/>
+      <flowObjects xsi:type="sbpmn:XOR"/>
+      <flowObjects xsi:type="sbpmn:Activity" name="Activity 3"/>
+    </lanes>
+    <lanes xmi:id="_D1hKoOBkEe684qFZJOTPPg" name="Lane 2">
+      <flowObjects xsi:type="sbpmn:Activity" name="Activity 4"/>
+    </lanes>
+  </elements>
+  <elements xsi:type="sbpmn:Pool" xmi:id="_HSDi8OBkEe684qFZJOTPPg" name="Pool 2"/>
+  <elements xsi:type="sbpmn:SequenceFlow" from="//@elements.0/@lanes.0/@flowObjects.1" to="//@elements.0/@lanes.0/@flowObjects.2"/>
+  <elements xsi:type="sbpmn:MessageFlow" from="//@elements.0/@lanes.0/@flowObjects.1" to="//@elements.0/@lanes.0/@flowObjects.2"/>
+  <elements xsi:type="sbpmn:SequenceFlow" from="//@elements.0/@lanes.0/@flowObjects.0" to="//@elements.0/@lanes.0/@flowObjects.1"/>
+  <elements xsi:type="sbpmn:MessageFlow" from="//@elements.0/@lanes.0/@flowObjects.2" to="//@elements.0/@lanes.0/@flowObjects.3"/>
+  <elements xsi:type="sbpmn:SequenceFlow" from="//@elements.0/@lanes.0/@flowObjects.1" to="//@elements.0/@lanes.0/@flowObjects.3"/>
+  <elements xsi:type="sbpmn:SequenceFlow" from="//@elements.0/@lanes.0/@flowObjects.3" to="//@elements.0/@lanes.0/@flowObjects.4"/>
+  <elements xsi:type="sbpmn:MessageFlow" from="//@elements.0/@lanes.0/@flowObjects.4" to="//@elements.0/@lanes.1/@flowObjects.0"/>
+  <elements xsi:type="sbpmn:Group" name="Group">
+    <elements xsi:type="sbpmn:Pool" name="Pool"/>
+  </elements>
+</sbpmn:BusinessProcessDiagram>

@@ -1,13 +1,23 @@
 @sirius(iconFolder = "uk.ac.york.aconite.family/icons/")
 @namespace(uri="http://www.eclipse.org/sirius/sample/basicfamily", prefix="basicfamily")
 package basicfamily;
-
+//Order in a nicer way
+//Rename to candidates <- sce					
+//Add within to options for container
+//Change pro to labelValue
+//template rather than import + fix it
 @sirius.diagram(name = "Relationships")
-@sirius.node(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
+
+@sirius.template(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
+
 @sirius.container(~import = "Rel Default", name = "Person", foregroundColor = "light_green", container = "Relationships")
+
 @sirius.border(~import = "Rel Default", name = "Parent", container =  "Person", sce = "parents")
+
 @sirius.node(~import = "Rel Default", name = "Child", container = "Person", sce = "children")
-@sirius.container(~import = "Rel Default", name = "Siblings", proLabelExpression = "Siblings", foregroundColor = "light_yellow", container = "Relationships", showIcon = "false")
+
+@sirius.container(~import = "Rel Default", name = "Siblings", proLabelExpression = "Siblings", froegroundColor = "light_yellow", container = "Relationships", showIcon = "false")
+
 @sirius.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
 abstract class Person {
 	attr String name;

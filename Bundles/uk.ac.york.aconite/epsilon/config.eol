@@ -41,7 +41,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "proxyStatement"	: return "aql:diagram.target";
 		case "reconnectable"	: return "false";
 		case "creatable"	: return "false";
-		case "directlyEditable"	: return "false";
+		case "directlyEditable"	: return "true";
 		case "condition"	: return "aql:false";
 		case "childrenPresentation"	: return "FreeForm";
 		case "sce"	: return self.getVal("semanticCandidatesExpression").replaceFirst(".","");
