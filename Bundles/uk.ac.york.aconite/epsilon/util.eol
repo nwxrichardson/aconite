@@ -8,8 +8,7 @@ operation Any getRoute(target : Any) : String {
 	var len = 0;
 	var pos =  "";
 	var supers =  Set{};
-	target.println();
-	supers.add(self);
+	supers.add(target);
 	while (rtn = "" and supers.size() != len) {
 		len = supers.size();
 		var newSuper = Sequence{};
@@ -24,7 +23,7 @@ operation Any getRoute(target : Any) : String {
 			}
 		} 
 	}
-	rtn.println();
+	
 	return rtn;
 }
 

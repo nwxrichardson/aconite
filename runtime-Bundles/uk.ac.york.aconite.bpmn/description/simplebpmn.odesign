@@ -27,39 +27,39 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Pool" label="Pool" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::Pool">
+        <containerMappings name="Pool" label="Pool" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.elements" domainClass="SimpleBPMN::Pool">
           <subContainerMappings name="Lane" label="Lane" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.lanes" domainClass="SimpleBPMN::Lane">
-            <subNodeMappings name="XOR" label="XOR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::XOR">
+            <subNodeMappings name="XOR" label="XOR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::XOR">
               <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/xor-gateway.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="OR" label="OR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::OR">
+            <subNodeMappings name="OR" label="OR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::OR">
               <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/or-gateway.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="AND" label="AND" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::AND">
+            <subNodeMappings name="AND" label="AND" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::AND">
               <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/and-gateway.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Start Event" label="Start Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::StartEvent">
+            <subNodeMappings name="Start Event" label="Start Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::StartEvent">
               <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/start-event.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Intermediate Event" label="Intermediate Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::IntermediateEvent">
+            <subNodeMappings name="Intermediate Event" label="Intermediate Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::IntermediateEvent">
               <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/intermediate-event.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="End Event" label="End Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::EndEvent">
+            <subNodeMappings name="End Event" label="End Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::EndEvent">
               <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/end-event.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -93,7 +93,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Group" label="Group" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::Group">
+        <containerMappings name="Group" label="Group" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.elements" domainClass="SimpleBPMN::Group">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
