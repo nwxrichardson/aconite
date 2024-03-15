@@ -6,8 +6,6 @@ package SimpleBPMN;
 
 @sirius.diagram(name = "BPD")
 class BusinessProcessDiagram {
-	@sirius.tool.creation(container = "Group", name = "Group Creation")
-	@sirius.tool.creation(container = "Pool", name = "Pool Creation")
 	val BPMNElement[*] elements;
 }
 
@@ -28,7 +26,6 @@ class Lane extends Swimlane {
 
 @sirius.container(name = "Pool", container = "BPD")
 class Pool extends Swimlane {
-	@sirius.tool.creation(container = "Lane", name = "Lane Creation")	
 	val Lane[*] lanes;
 }
 

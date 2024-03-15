@@ -4,7 +4,7 @@
     <semanticResources>example.simplebpmn</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_RSzc4OBpEe6F9tgXVVr5kA">
       <viewpoint xmi:type="description:Viewpoint" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aOPE0OB_Ee6F9tgXVVr5kA" name="new BPD" repPath="#_aOOdwOB_Ee6F9tgXVVr5kA" changeId="80cf1697-1101-4b5f-8057-89e64e16172e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_aOPE0OB_Ee6F9tgXVVr5kA" name="new BPD" repPath="#_aOOdwOB_Ee6F9tgXVVr5kA" changeId="fb472235-dbf5-48c0-81d5-3c8db6f0b436">
         <description xmi:type="description_1:DiagramDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']"/>
         <target xmi:type="sbpmn:BusinessProcessDiagram" href="example.simplebpmn#_S7b2UOBjEe684qFZJOTPPg"/>
       </ownedRepresentationDescriptors>
@@ -39,7 +39,7 @@
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6GcjcuK3Ee6HipYoKGgtpA"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_6GVOseK3Ee6HipYoKGgtpA" fontName="Segoe UI" fontHeight="12"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6GVOsuK3Ee6HipYoKGgtpA" x="30" y="359" width="30" height="30"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6GVOsuK3Ee6HipYoKGgtpA" x="42" y="347" width="30" height="30"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_6GauQOK3Ee6HipYoKGgtpA" type="3007" element="_6BkDceK3Ee6HipYoKGgtpA">
                   <children xmi:type="notation:Node" xmi:id="_6GbVUOK3Ee6HipYoKGgtpA" type="5003">
@@ -98,7 +98,7 @@
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_6CEZw-K3Ee6HipYoKGgtpA"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_6CDyteK3Ee6HipYoKGgtpA" fontName="Segoe UI" fontHeight="12"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6CDytuK3Ee6HipYoKGgtpA" x="30" y="29"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6CDytuK3Ee6HipYoKGgtpA" x="30" y="35"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_6CAvYeK3Ee6HipYoKGgtpA"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_6CAvYuK3Ee6HipYoKGgtpA"/>
@@ -113,7 +113,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_6CB9g-K3Ee6HipYoKGgtpA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_6CBWceK3Ee6HipYoKGgtpA" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6CBWcuK3Ee6HipYoKGgtpA" x="282" y="150"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6CBWcuK3Ee6HipYoKGgtpA" x="282" y="222"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_aOPr4uB_Ee6F9tgXVVr5kA"/>
         <edges xmi:type="notation:Edge" xmi:id="_6Ghb8OK3Ee6HipYoKGgtpA" type="4001" element="_6BrYMOK3Ee6HipYoKGgtpA" source="_6GauQOK3Ee6HipYoKGgtpA" target="_6GbVUuK3Ee6HipYoKGgtpA">
@@ -150,17 +150,17 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_6Gr0AuK3Ee6HipYoKGgtpA" type="4001" element="_6Bxe0OK3Ee6HipYoKGgtpA" source="_6Gb8YOK3Ee6HipYoKGgtpA" target="_6GdKieK3Ee6HipYoKGgtpA">
           <children xmi:type="notation:Node" xmi:id="_6Gr0BuK3Ee6HipYoKGgtpA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6Gr0B-K3Ee6HipYoKGgtpA" y="-10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6Gr0B-K3Ee6HipYoKGgtpA" y="-11"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_6Gr0COK3Ee6HipYoKGgtpA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6Gr0CeK3Ee6HipYoKGgtpA" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6Gr0CeK3Ee6HipYoKGgtpA" x="2" y="10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_6Gr0CuK3Ee6HipYoKGgtpA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6Gr0C-K3Ee6HipYoKGgtpA" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6Gr0C-K3Ee6HipYoKGgtpA" x="3" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_6Gr0A-K3Ee6HipYoKGgtpA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_6Gr0BOK3Ee6HipYoKGgtpA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6Gr0BeK3Ee6HipYoKGgtpA" points="[-5, -15, 25, 93]$[-26, -93, 4, 15]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6Gr0BeK3Ee6HipYoKGgtpA" points="[-5, -15, 25, 87]$[-26, -87, 4, 15]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6Gr0DOK3Ee6HipYoKGgtpA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6Gr0DeK3Ee6HipYoKGgtpA" id="(0.5,0.5)"/>
         </edges>
@@ -245,6 +245,9 @@
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_6BjcYeK3Ee6HipYoKGgtpA" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="sbpmn:StartEvent" href="example.simplebpmn#//@elements.0/@lanes.0/@flowObjects.0"/>
           <semanticElements xmi:type="sbpmn:StartEvent" href="example.simplebpmn#//@elements.0/@lanes.0/@flowObjects.0"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
           <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_6BjcYuK3Ee6HipYoKGgtpA" labelSize="12" showIcon="false" borderSizeComputationExpression="aql:0" workspacePath="uk.ac.york.aconite.bpmn/svg/start-event.svg">
             <description xmi:type="style:WorkspaceImageDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event']/@style"/>
           </ownedStyle>
@@ -281,6 +284,9 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_6BbgkeK3Ee6HipYoKGgtpA" name="Lane 2">
         <target xmi:type="sbpmn:Lane" href="example.simplebpmn#_D1hKoOBkEe684qFZJOTPPg"/>
         <semanticElements xmi:type="sbpmn:Lane" href="example.simplebpmn#_D1hKoOBkEe684qFZJOTPPg"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_6BbgkuK3Ee6HipYoKGgtpA" labelSize="12" showIcon="false" borderSize="2" borderSizeComputationExpression="aql:2" backgroundColor="255,245,181" foregroundColor="255,245,181">
           <description xmi:type="style:FlatContainerStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@style"/>
         </ownedStyle>

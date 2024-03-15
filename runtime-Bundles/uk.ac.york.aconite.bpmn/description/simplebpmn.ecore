@@ -9,16 +9,7 @@
       <details key="name" value="BPD"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//BPMNElement" containment="true">
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="Group"/>
-        <details key="name" value="Group Creation"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="Pool"/>
-        <details key="name" value="Pool Creation"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        eType="#//BPMNElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BPMNElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -38,12 +29,7 @@
       <details key="container" value="BPD"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lanes" upperBound="-1"
-        eType="#//Lane" containment="true">
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="Lane"/>
-        <details key="name" value="Lane Creation"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        eType="#//Lane" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectingObject" abstract="true" eSuperTypes="#//BPMNElement">
     <eAnnotations source="sirius.edge">

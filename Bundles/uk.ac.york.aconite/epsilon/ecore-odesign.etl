@@ -2,7 +2,7 @@ import "config.eol";
 
 
 /*
-Add creatable to them all and make it so that each object trys to figure out if it has a valid creation -> Maybe see if you can add proxies to references
+
 Fix Annotation statements with a function that offloads the getting of the right sources -> This woulld maybe have to check the equivalent type is a subtype 
 Add supertypes to the automatic sourceNode and targetNode
 Make the many container work and give them unique names afterwards (might require playing with id vs label)
@@ -12,7 +12,8 @@ Maybe make creatable the default
 Make source and target try and figure out for themselves the same as sce
 Future work would include separating the two versions
 Allow @sirius to alter defaults?
- 
+Add Proxies to creatable and make everything a operation Maybe see if you can add proxies to references 
+Pick nicer auto names and make one tool box for everything
 
 
 Add within to options for container
