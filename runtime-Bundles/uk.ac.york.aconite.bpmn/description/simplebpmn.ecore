@@ -30,36 +30,7 @@
       <details key="container" value="Pool"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="flowObjects" upperBound="-1"
-        eType="#//FlowObject" containment="true">
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="XOR"/>
-        <details key="name" value="XOR Creation"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="OR"/>
-        <details key="name" value="OR Creation"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="AND"/>
-        <details key="name" value="AND Creation"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="Start Event"/>
-        <details key="name" value="Start Event Creation"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="Intermediate Event"/>
-        <details key="name" value="Intermediate Event Creation"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="End Event"/>
-        <details key="name" value="End Event Creation"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="container" value="Activity"/>
-        <details key="name" value="Activity Creation"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        eType="#//FlowObject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pool" eSuperTypes="#//Swimlane">
     <eAnnotations source="sirius.container">
@@ -188,7 +159,6 @@
     <eAnnotations source="sirius.container">
       <details key="container" value="BPD"/>
       <details key="name" value="Group"/>
-      <details key="sce" value="elements"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
         eType="#//BPMNElement" containment="true"/>

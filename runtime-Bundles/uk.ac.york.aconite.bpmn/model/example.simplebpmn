@@ -23,4 +23,5 @@
   <elements xsi:type="sbpmn:Group" name="Group">
     <elements xsi:type="sbpmn:Pool" name="Pool"/>
   </elements>
+  <elements xsi:type="sbpmn:Pool"/>
 </sbpmn:BusinessProcessDiagram>

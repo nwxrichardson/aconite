@@ -27,7 +27,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "labelSize"	: return "12";
 		case "labelColor"	: return "black";
 		case "labelExpression"	: return "name";
-		case "proLabelExpression"	: return "aql:self." + self.getVal("labelExpression");
+		case "labelValue"	: return "aql:self." + self.getVal("labelExpression");
 		case "labelAlignment"	: return "CENTER";
 		case "borderSize"	: return self.getVal("borderSizeComputationExpression");
 		case "borderLineStyle"	: return "solid";
@@ -40,12 +40,12 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "proxyType"	: return "Diagram";
 		case "proxyStatement"	: return "aql:diagram.target";
 		case "reconnectable"	: return "false";
-		case "creatable"	: return "false";
+		case "creatable"	: return "true";
 		case "directlyEditable"	: return "true";
 		case "condition"	: return "aql:false";
 		case "childrenPresentation"	: return "FreeForm";
-		
-		case "sce"	: return self.getVal("semanticCandidatesExpression").replaceFirst(".","");
+		case "sce"	: return self.getVal("candidates");
+		case "candidates"	: return self.getVal("semanticCandidatesExpression").replaceFirst(".","");
 		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}

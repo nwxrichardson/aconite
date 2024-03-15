@@ -23,13 +23,6 @@ abstract class Swimlane extends BPMNElement {
 
 @sirius.container(name = "Lane", container = "Pool")
 class Lane extends Swimlane {
-	@sirius.tool.creation(container = "XOR", name = "XOR Creation")
-	@sirius.tool.creation(container = "OR", name = "OR Creation")
-	@sirius.tool.creation(container = "AND", name = "AND Creation")
-	@sirius.tool.creation(container = "Start Event", name = "Start Event Creation")
-	@sirius.tool.creation(container = "Intermediate Event", name = "Intermediate Event Creation")
-	@sirius.tool.creation(container = "End Event", name = "End Event Creation")
-	@sirius.tool.creation(container = "Activity", name = "Activity Creation")
 	val FlowObject[*] flowObjects;
 }
 
@@ -117,7 +110,7 @@ class DataObject extends Artifact {
 	
 }
 
-@sirius.container(container = "BPD", name = "Group", sce = "elements")
+@sirius.container(container = "BPD", name = "Group")
 class Group extends Artifact {
 	val BPMNElement[*] elements;
 }

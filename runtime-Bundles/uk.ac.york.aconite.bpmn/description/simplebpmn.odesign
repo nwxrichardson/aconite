@@ -4,63 +4,63 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BPD" domainClass="SimpleBPMN::BusinessProcessDiagram">
       <defaultLayer name="Default">
         <edgeMappings name="Message Flow" label="Message Flow" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" sourceMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='End%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetFinderExpression="aql:self.to" sourceFinderExpression="aql:self.from" domainClass="SimpleBPMN::MessageFlow" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]" endsCentering="Both">
+          <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="Sequence Flow" label="Sequence Flow" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" sourceMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='End%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetFinderExpression="aql:self.to" sourceFinderExpression="aql:self.from" domainClass="SimpleBPMN::SequenceFlow" useDomainElement="true">
-          <style sizeComputationExpression="[eContents()->size()/]" endsCentering="Both">
+          <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Association" label="Association" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" sourceMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='End%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetFinderExpression="aql:self.to" sourceFinderExpression="aql:self.from" domainClass="SimpleBPMN::Association" useDomainElement="true" pathExpression="aql:" pathNodeMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Data%20Object'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='End%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Intermediate%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR']">
-          <style sizeComputationExpression="[eContents()->size()/]" endsCentering="Both">
+        <edgeMappings name="Association" label="Association" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" sourceMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetMapping="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='End%20Event'] //@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']" targetFinderExpression="aql:self.to" sourceFinderExpression="aql:self.from" domainClass="SimpleBPMN::Association" useDomainElement="true">
+          <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Pool" label="Pool" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.elements" domainClass="SimpleBPMN::Pool">
+        <containerMappings name="Pool" label="Pool" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::Pool">
           <subContainerMappings name="Lane" label="Lane" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.lanes" domainClass="SimpleBPMN::Lane">
-            <subNodeMappings name="XOR" label="XOR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::XOR">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.bpmn/svg/xor-gateway.svg">
+            <subNodeMappings name="XOR" label="XOR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::XOR">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/xor-gateway.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="OR" label="OR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::OR">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.bpmn/svg/or-gateway.svg">
+            <subNodeMappings name="OR" label="OR" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::OR">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/or-gateway.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="AND" label="AND" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::AND">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.bpmn/svg/and-gateway.svg">
+            <subNodeMappings name="AND" label="AND" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::AND">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/and-gateway.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Start Event" label="Start Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::StartEvent">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.bpmn/svg/start-event.svg">
+            <subNodeMappings name="Start Event" label="Start Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::StartEvent">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/start-event.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="Intermediate Event" label="Intermediate Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::IntermediateEvent">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.bpmn/svg/intermediate-event.svg">
+            <subNodeMappings name="Intermediate Event" label="Intermediate Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::IntermediateEvent">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/intermediate-event.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subNodeMappings name="End Event" label="End Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self.flowObjects" domainClass="SimpleBPMN::EndEvent">
-              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.bpmn/svg/end-event.svg">
+            <subNodeMappings name="End Event" label="End Event" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::EndEvent">
+              <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.bpmn/svg/end-event.svg">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
@@ -93,8 +93,16 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </containerMappings>
+        <containerMappings name="Group" label="Group" labelDirectEdit="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@toolSections.1/@ownedTools[name='']" semanticCandidatesExpression="aql:self" domainClass="SimpleBPMN::Group">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="aql:2" labelSize="12" showIcon="false" labelExpression="aql:self.name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
         <toolSections name="Generated Creation Tools">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add to Group Creation" forceRefresh="true">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Add to Group Creation" forceRefresh="true" containerMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Group']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -109,69 +117,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::Pool" referenceName="elements"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add to XOR Creation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::XOR" referenceName="flowObjects"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add to OR Creation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::OR" referenceName="flowObjects"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add to AND Creation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::AND" referenceName="flowObjects"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add to Start Event Creation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::StartEvent" referenceName="flowObjects"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add to Intermediate Event Creation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Intermediate%20Event']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::IntermediateEvent" referenceName="flowObjects"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add to End Event Creation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='End%20Event']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::EndEvent" referenceName="flowObjects"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Add to Activity Creation" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::Activity" referenceName="flowObjects"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
