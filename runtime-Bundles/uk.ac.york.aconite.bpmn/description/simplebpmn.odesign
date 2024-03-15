@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0">
   <ownedViewpoints name="SimpleBPMN">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BPD" domainClass="SimpleBPMN::BusinessProcessDiagram">
       <defaultLayer name="Default">
@@ -143,10 +143,66 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Intermediate Event in Lane" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Intermediate%20Event']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::IntermediateEvent" referenceName="flowObjects"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create OR in Lane" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='OR']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::OR" referenceName="flowObjects"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Sequence Flow in BusinessProcessDiagram" edgeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.getParentDiagram().target">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::SequenceFlow" referenceName="elements">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="from" valueExpression="aql:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="to" valueExpression="aql:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Pool in BusinessProcessDiagram" containerMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::Pool" referenceName="elements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Start Event in Lane" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Start%20Event']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::StartEvent" referenceName="flowObjects"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel">
@@ -167,10 +223,22 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel">
-            <mask mask="{0}"/>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Activity in Lane" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::Activity" referenceName="flowObjects"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create End Event in Lane" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='End%20Event']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::EndEvent" referenceName="flowObjects"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel">
@@ -191,10 +259,13 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel">
-            <mask mask="{0}"/>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create AND in Lane" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='AND']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::AND" referenceName="flowObjects"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel">
@@ -209,10 +280,71 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Association in BusinessProcessDiagram" edgeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Association']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.getParentDiagram().target">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::Association" referenceName="elements">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="from" valueExpression="aql:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="to" valueExpression="aql:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Lane in Pool" containerMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::Lane" referenceName="lanes"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create XOR in Lane" nodeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Pool']/@subContainerMappings[name='Lane']/@subNodeMappings[name='XOR']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::XOR" referenceName="flowObjects"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Group in BusinessProcessDiagram" containerMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='Group']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::Group" referenceName="elements"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Message Flow in BusinessProcessDiagram" edgeMappings="//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Message%20Flow']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:sourceView.getParentDiagram().target">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="SimpleBPMN::MessageFlow" referenceName="elements">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="from" valueExpression="aql:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="to" valueExpression="aql:target"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

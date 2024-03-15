@@ -79,10 +79,6 @@
       <details key="container" value="BPD"/>
       <details key="name" value="Association"/>
     </eAnnotations>
-    <eAnnotations source="gmf.link">
-      <details key="style" value="dot"/>
-      <details key="target.decoration" value="arrow"/>
-    </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FlowObject" abstract="true" eSuperTypes="#//BPMNElement">
     <eAnnotations source="sirius.node">

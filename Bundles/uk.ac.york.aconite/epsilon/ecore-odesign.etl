@@ -58,11 +58,6 @@ pre {
 	delete randomStyle;
 }
 
-operation Source!EAnnotation getAccepts() : Sequence<Source!EAnnotation>{
-	var diagram = self.getDiagram();
-	return annotations.select(i|i.getDiagram() = diagram and i.eAllReference.exists(j|j.eType = self.eModelElement));
-}
-
 @cached
 operation getImgFolder() : String {
 	return  annotations.selectOne(i|i.Source = "sirius").getVal("iconFolder");
@@ -142,7 +137,7 @@ operation Target!AbstractToolDescription addToCreate(diagram : Source!EAnnotatio
 }
 
 operation Source!EClass oneRef(ref : String) : Boolean {
-	return self.eReferences.selectOne(i|i.name = 'person').oneRef();
+	return self.eAllReferences.selectOne(i|i.name = ref).oneRef();
 }
 
 operation Source!EReference oneRef() : Boolean {
@@ -256,6 +251,28 @@ rule NodeFromAnnotation
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	
+	if (s.getVal("creatable").asBoolean()){
+		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
+		if (conRef.isDefined()){
+			var create = new Target!NodeCreationDescription;
+			create.initialOperation = new Target!InitialNodeCreationOperation;
+			create.nodeMappings.add(t);
+			create.name = "Create " + t.name + " in " + container.name;
+			
+			var changeContext = new Target!ChangeContext;
+			create.initialOperation = new Target!InitialNodeCreationOperation;
+			changeContext.browseExpression = "var:container";
+			create.initialOperation.firstModelOperations = changeContext;
+			
+			var createIns = new Target!CreateInstance;
+			createIns.referenceName = conRef.name;
+			createIns.typeName = element.getDC();
+			changeContext.subModelOperations.add(createIns);
+			
+			create.addToHidden(s.getDiagram());
+		}
+	}	
+	
 	}
 	
 @lazy
@@ -282,24 +299,27 @@ rule ContainerFromAnnotation
 	
 	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
 	
-//	if (s.getVal("creatable").asBoolean()){
-//		var createEdge = new Target!EdgeCreationDescription;
-//		createEdge.name = "Add to " + s.eModelElement.name.ftuc();
-//		createEdge.addToHidden(s.getDiagram());
-//		createEdge.edgeMappings.add(t);
-//		var init = new Target!InitEdgeCreationOperation;
-//		createEdge.initialOperation = init;
-//		var chng = new Target!ChangeContext;
-//		init.firstModelOperations = chng;
-//		var set = new Target!SetValue;
-//		chng.subModelOperations.add(set);
-//		set.featureName = element.name;
-//		if (element.oneRef()){
-//			set.valueExpression = "aql:target";
-//		} else {
-//			set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
-//		}
-//	}
+	if (s.getVal("creatable").asBoolean()){
+		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
+		if (conRef.isDefined()){
+			var create = new Target!ContainerCreationDescription;
+			create.initialOperation = new Target!InitialNodeCreationOperation;
+			create.containerMappings.add(t);
+			create.name = "Create " + t.name + " in " + container.name;
+			
+			var changeContext = new Target!ChangeContext;
+			create.initialOperation = new Target!InitialNodeCreationOperation;
+			changeContext.browseExpression = "var:container";
+			create.initialOperation.firstModelOperations = changeContext;
+			
+			var createIns = new Target!CreateInstance;
+			createIns.referenceName = conRef.name;
+			createIns.typeName = element.getDC();
+			changeContext.subModelOperations.add(createIns);
+			
+			create.addToHidden(s.getDiagram());
+		}
+	}	
 	
 	}
 
@@ -315,7 +335,7 @@ rule AbsEdgeFromAnnotation
 	t.style = new Target!EdgeStyleDescription;	
 	t.style.endsCentering = Target!CenteringStyle#Both;
 	if (not (s.getVals("sourceNode") = Sequence{""})){
-	t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name")) ).equivalent();}
+	t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name"))).equivalent();}
 	if (not (s.getVals("targetNode")= Sequence{""})){
 	t.targetMapping = annotations.select(i|s.getVals("targetNode").exists(j|j = i.getVal("name"))).equivalent();}	
 	
@@ -449,6 +469,44 @@ rule EleEdgeFromAnnotation
 	//TODO Remove this work around
 	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
 	//TODO make this a function
+	if (s.getVal("creatable").asBoolean()){
+		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
+		if (conRef.isDefined()){
+			var create = new Target!EdgeCreationDescription;
+			create.initialOperation = new Target!InitEdgeCreationOperation;
+			create.edgeMappings.add(t);
+			create.name = "Create " + t.name + " in " + container.name;
+			
+			var changeContext = new Target!ChangeContext;
+			changeContext.browseExpression = "aql:sourceView.getParentDiagram().target";
+			create.initialOperation.firstModelOperations = changeContext;
+			
+			var createIns = new Target!CreateInstance;
+			createIns.referenceName = conRef.name;
+			createIns.typeName = element.getDC();
+			changeContext.subModelOperations.add(createIns);
+			var createSou = new Target!SetValue;
+			createIns.subModelOperations.add(createSou);
+			createSou.featureName = s.getVal("source");
+			if (element.oneRef(s.getVal("source"))){
+				createSou.valueExpression = "aql:source";
+			} else {
+				createSou.valueExpression = "aql:self." + s.getVal("source") + " + Sequence{source}";
+			}
+			
+			var createTar = new Target!SetValue;
+			createIns.subModelOperations.add(createTar);
+			createTar.featureName = s.getVal("target");
+			if (element.oneRef(s.getVal("target"))){
+				createTar.valueExpression = "aql:target";
+			} else {
+				createTar.valueExpression = "aql:self." + s.getVal("target") + " + Sequence{target}";
+			}
+			
+			create.addToHidden(s.getDiagram());
+		}
+	}	
+	
 	if (s.getVal("reconnectable").asBoolean()) {
 		var sourceConnect = new Target!ReconnectEdgeDescription;
 		sourceConnect.addToHidden(s.getDiagram());

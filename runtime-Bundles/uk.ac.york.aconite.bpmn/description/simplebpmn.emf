@@ -51,7 +51,6 @@ class SequenceFlow extends ConnectingObject {
 }
 
 @sirius.edge(~import = "Link", container = "BPD", name="Association")
-@gmf.link(style="dot", target.decoration="arrow")
 class Association extends ConnectingObject {
 	
 }

@@ -65,23 +65,6 @@
     <element xmi:type="sbpmn:Pool" href="example.simplebpmn#_HSDi8OBkEe684qFZJOTPPg"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i28wd-BmEe6F9tgXVVr5kA" x="516" y="-36" width="1669" height="217"/>
   </children>
-  <children xmi:type="notation:Shape" xmi:id="_eirDkOCBEe6F9tgXVVr5kA" type="2009" fontName="Segoe UI">
-    <children xmi:type="notation:DecorationNode" xmi:id="_eirDk-CBEe6F9tgXVVr5kA" type="5009">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_eirDlOCBEe6F9tgXVVr5kA" y="5"/>
-    </children>
-    <children xmi:type="notation:BasicCompartment" xmi:id="_eirDleCBEe6F9tgXVVr5kA" type="7001">
-      <children xmi:type="notation:Shape" xmi:id="_fisWIOCBEe6F9tgXVVr5kA" type="3005" fontName="Segoe UI">
-        <children xmi:type="notation:DecorationNode" xmi:id="_fisWI-CBEe6F9tgXVVr5kA" type="5018"/>
-        <children xmi:type="notation:BasicCompartment" xmi:id="_fisWJOCBEe6F9tgXVVr5kA" type="7009"/>
-        <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_fisWIeCBEe6F9tgXVVr5kA"/>
-        <element xmi:type="sbpmn:Pool" href="example.simplebpmn#//@elements.9/@elements.0"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fisWIuCBEe6F9tgXVVr5kA" x="519" y="274"/>
-      </children>
-    </children>
-    <styles xmi:type="notation:HintedDiagramLinkStyle" xmi:id="_eirDkeCBEe6F9tgXVVr5kA"/>
-    <element xmi:type="sbpmn:Group" href="example.simplebpmn#//@elements.9"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eirDkuCBEe6F9tgXVVr5kA" x="696" y="912" width="1230" height="708"/>
-  </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_iscwoeBmEe6F9tgXVVr5kA"/>
   <element xmi:type="sbpmn:BusinessProcessDiagram" href="example.simplebpmn#_S7b2UOBjEe684qFZJOTPPg"/>
   <edges xmi:type="notation:Edge" xmi:id="_F3TfYOBoEe6F9tgXVVr5kA" type="4002" source="_sVaZgOBnEe6F9tgXVVr5kA" target="_9JPjEOBnEe6F9tgXVVr5kA">
