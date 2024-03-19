@@ -2,12 +2,12 @@ import "config.eol";
 
 
 /*
+
 Fix tools overlap
-Add import properly
+Make Import an option for multiple containment
 Fix Annotation statements with a function that offloads the getting of the right sources -> This woulld maybe have to check the equivalent type is a subtype 
 Add edge description to allow for customising -> Look into if you are able to add any other versions
 Fix creatable to be added at the end the same way as the tool shortcuts
-Maybe make creatable the default
 Make source and target try and figure out for themselves the same as sce
 Future work would include separating the two versions
 Allow @sirius to alter defaults?
