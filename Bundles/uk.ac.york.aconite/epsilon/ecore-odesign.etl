@@ -40,21 +40,6 @@ pre {
 		i.details.putAll(copyDetails);
 		}
 	}
-	var newAnnotations = new Sequence;
-	var revAnnotations = new Sequence;
-	for (i in annotations){
-		var containers = i.getVals("container");
-		if (containers.size() != 1){
-			for (j in containers){
-				var `new` = emfTool.getECoreUtil.copy(i);
-				`new`.details.put("container",j);
-				`new`.eModelElement = i.eModelElement;
-				`new`.details.selectOne(i|i.key = 'name').value = j.ftuc() + " - " + `new`.getVal("name");
-				newAnnotations.add(`new`);
-			} revAnnotations.add(i);
-		} 
-	} annotations.addAll(newAnnotations);
-	annotations.removeAll(revAnnotations);
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
@@ -101,6 +86,17 @@ operation Source!EAnnotation getVal(key : String, def : String) : String{
 
 }
 
+operation Sequence<String> rtnVals() : String {
+	var rtn = "";
+	for (i in self){
+		if ("" = rtn){
+			rtn = i;
+		} else {
+			rtn += ", " + i;
+		}
+	}
+	return rtn;
+}
 
 operation Source!EAnnotation getVals(key : String) : Sequence{
 	var tmp = self.details.selectOne(i|i.key = key);
