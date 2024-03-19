@@ -19,4 +19,11 @@
   <elements xsi:type="sbpmn:SequenceFlow" from="//@elements.0/@lanes.0/@flowObjects.1" to="//@elements.0/@lanes.0/@flowObjects.3"/>
   <elements xsi:type="sbpmn:SequenceFlow" from="//@elements.0/@lanes.0/@flowObjects.3" to="//@elements.0/@lanes.0/@flowObjects.4"/>
   <elements xsi:type="sbpmn:MessageFlow" from="//@elements.0/@lanes.0/@flowObjects.4" to="//@elements.0/@lanes.1/@flowObjects.0"/>
+  <elements xsi:type="sbpmn:SequenceFlow" from="//@elements.0/@lanes.0/@flowObjects.0" to="//@elements.0/@lanes.0/@flowObjects.1"/>
+  <elements xsi:type="sbpmn:Group" name="Group">
+    <elements xsi:type="sbpmn:Pool" name="Pool">
+      <lanes name="Lane"/>
+    </elements>
+  </elements>
+  <elements xsi:type="sbpmn:Lane"/>
 </sbpmn:BusinessProcessDiagram>

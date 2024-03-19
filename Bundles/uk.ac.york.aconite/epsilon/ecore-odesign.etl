@@ -2,7 +2,7 @@ import "config.eol";
 
 
 /*
-
+Add import properly
 Fix Annotation statements with a function that offloads the getting of the right sources -> This woulld maybe have to check the equivalent type is a subtype 
 Add supertypes to the automatic sourceNode and targetNode
 Make the many container work and give them unique names afterwards (might require playing with id vs label)
@@ -24,6 +24,7 @@ Add some tests
 
 
 pre {
+	"\nInitialising...".println();
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 	var hiddenTools = new Map<Target!AbstractToolDescription,Source!EAnnotation>;
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
@@ -57,6 +58,7 @@ pre {
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
 	delete randomStyle;
+	"Running...".println();
 }
 
 @cached
@@ -188,10 +190,9 @@ rule DiagramFromAnnotation
 
 	defaultLayer.name = "Default";
 	t.defaultLayer = defaultLayer;
-	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
-	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.edge").equivalent());
-	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
-
+	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.node")).equivalent());
+	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.edge")).equivalent());
+	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.container")).equivalent());
 	}
 	
 @abstract 
@@ -238,9 +239,17 @@ rule AbstractNodeFromAnnotation
 rule NodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!NodeMapping 
+	extends SudoNodeFromAnnotation{
+		guard : not s.Source.endsWith("import") and not s.Source.endsWith("description")
+	}
+	
+@abstract
+rule SudoNodeFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!NodeMapping 
 	extends AbstractNodeFromAnnotation{
 	
-	guard : (s.Source.startsWith("sirius.node") or s.Source.startsWith("sirius.border")) and not s.Source.endsWith("description")
+	guard : (s.Source.startsWith("sirius.node") or s.Source.startsWith("sirius.border"))
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
@@ -275,14 +284,22 @@ rule NodeFromAnnotation
 	}	
 	
 	}
-	
+
 @lazy
 rule ContainerFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ContainerMapping 
+	extends SudoContainerFromAnnotation{
+	guard : not s.Source.endsWith("import") and not s.Source.endsWith("description")	
+	}
+	
+@abstract
+rule SudoContainerFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!ContainerMapping 
 	extends AbstractNodeFromAnnotation{
 	
-	guard : s.Source = "sirius.container"
+	guard : s.Source.startsWith("sirius.container")
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
@@ -294,9 +311,9 @@ rule ContainerFromAnnotation
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	
-	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.node").equivalent());
+	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.node")).equivalent());
 	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.border").equivalent());
-	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.container").equivalent());
+	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.container")).equivalent());
 	
 	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
 	
@@ -704,24 +721,26 @@ rule AbstractMappingImportFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!AbstractMappingImport{
 	guard : s.Source.endsWith("import")
-	t.hideSubMappings = s.getVal("hideSubMappings");
-	t.inheritsAncestorFilters = s.getVal("inheritsAncestorFilters");
+	t.hideSubMappings = s.getVal("hideSubMappings").asBoolean();
+	t.inheritsAncestorFilters = s.getVal("inheritsAncestorFilters").asBoolean();
 	}
 
 @lazy
 rule ImportNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!NodeMappingImport
-	extends AbstractNodeFromAnnotation, AbstractMappingImportFromAnnotation{
-	importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.node").equivalent();
+	extends SudoNodeFromAnnotation, AbstractMappingImportFromAnnotation{
+	guard : s.Source.startsWith("sirius.node")
+	t.importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.node").equivalent();
 	}
 	
 @lazy
 rule ImportContainerFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ContainerMappingImport
-	extends ContainerFromAnnotation, AbstractMappingImportFromAnnotation{
-	importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.container").equivalent();
+	extends SudoContainerFromAnnotation, AbstractMappingImportFromAnnotation{
+	guard : s.Source.startsWith("sirius.container")
+	t.importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.container").equivalent();
 	}
 
 /*
@@ -787,7 +806,7 @@ rule NodeStyleFromAnnotation
  	t.resizeKind = Target!ResizeKind#NSEW.VALUES.selectOne(i|i.literal = s.getVal("resizeKind"));
 	t.sizeComputationExpression = s.getVal("sizeComputationExpression");
 	}
-	
+		
 @abstract
 rule ContainerStyleFromAnnotation
 	transform s : Source!EAnnotation
@@ -916,4 +935,5 @@ post {
 		}
 		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
 	}
+	"Done!".println();
 }	

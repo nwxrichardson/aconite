@@ -18,7 +18,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Lane" eSuperTypes="#//Swimlane">
     <eAnnotations source="sirius.container">
       <details key="name" value="Lane"/>
-      <details key="container" value="Pool"/>
+      <details key="container" value=" Pool, Group, BPD,"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="flowObjects" upperBound="-1"
         eType="#//FlowObject" containment="true"/>
@@ -26,7 +26,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Pool" eSuperTypes="#//Swimlane">
     <eAnnotations source="sirius.container">
       <details key="name" value="Pool"/>
-      <details key="container" value="BPD"/>
+      <details key="container" value="BPD, Group"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lanes" upperBound="-1"
         eType="#//Lane" containment="true"/>
@@ -125,11 +125,7 @@
       <details key="sce" value="flowObjects"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Artifact" abstract="true" eSuperTypes="#//BPMNElement">
-    <eAnnotations source="gmf.node">
-      <details key="label" value="name"/>
-    </eAnnotations>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Artifact" abstract="true" eSuperTypes="#//BPMNElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataObject" eSuperTypes="#//Artifact">
     <eAnnotations source="sirius.node">
       <details key="container" value="Lane"/>

@@ -18,13 +18,12 @@ class BPMNElement {
 abstract class Swimlane extends BPMNElement {
 	
 }
-
-@sirius.container(name = "Lane", container = "Pool")
+@sirius.container(name = "Lane", container = " Pool, Group, BPD,")
 class Lane extends Swimlane {
 	val FlowObject[*] flowObjects;
 }
 
-@sirius.container(name = "Pool", container = "BPD")
+@sirius.container(name = "Pool", container = "BPD, Group")
 class Pool extends Swimlane {
 	val Lane[*] lanes;
 }
@@ -96,7 +95,6 @@ class Activity extends FlowObject {
 
 /* ARTIFACTS */
 
-@gmf.node(label="name")
 abstract class Artifact extends BPMNElement {
 	
 }
