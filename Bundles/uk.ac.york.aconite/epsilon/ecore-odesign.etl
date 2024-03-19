@@ -2,10 +2,9 @@ import "config.eol";
 
 
 /*
+Fix tools overlap
 Add import properly
 Fix Annotation statements with a function that offloads the getting of the right sources -> This woulld maybe have to check the equivalent type is a subtype 
-Add supertypes to the automatic sourceNode and targetNode
-Make the many container work and give them unique names afterwards (might require playing with id vs label)
 Add edge description to allow for customising -> Look into if you are able to add any other versions
 Fix creatable to be added at the end the same way as the tool shortcuts
 Maybe make creatable the default
@@ -39,6 +38,40 @@ pre {
 		}
 		i.details.putAll(copyDetails);
 		}
+	}
+	while (annotations.exists(i|i.getVals("container").size() > 1)){
+	
+		var newAnnotations = new Sequence;
+		var revAnnotations = new Sequence;
+		var i = annotations.selectOne(op|op.getVals("container").size() > 1);
+			var containers = i.getVals("container");
+			if (containers.size() != 1){
+				for (j in containers){
+					var `new` = emfTool.getECoreUtil.copy(i);
+					`new`.details.put("container",j);
+					`new`.eModelElement = i.eModelElement;
+					`new`.details.selectOne(i|i.key = 'name').value = j + " - " + `new`.getVal("name");
+					newAnnotations.add(`new`);
+					
+					var editing = annotations.select(op|op.getVals("container").contains(i.getVal("name")));
+					for (edit in editing) {
+						var curCon = edit.getVals("container");
+						curCon.add(`new`.getVal("name"));
+						edit.details.selectOne(op|op.key = "container").value = curCon.rtnVals();
+					}
+					
+				} 
+				var editing = annotations.select(op|op.getVals("container").contains(i.getVal("name")));
+					for (edit in editing) {
+						var curCon = edit.getVals("container");
+						curCon.remove(i.getVal("name"));
+						edit.details.selectOne(op|op.key = "container").value = curCon.rtnVals();
+				}
+				revAnnotations.add(i);
+			} 
+		annotations.addAll(newAnnotations);
+		annotations.removeAll(revAnnotations);
+		
 	}
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
@@ -374,11 +407,13 @@ rule RefEdgeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass and i.Source != "sirius.diagram" and (not s.getVal("abstract").asBoolean())).equivalent();}
+	t.sourceMapping = annotations.select(i|i.Source != "sirius" and element.eContainingClass.isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and (not s.getVal("abstract").asBoolean())).equivalent();
+	}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");	
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
+	t.targetMapping = annotations.select(i|i.Source != "sirius" and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram").equivalent();
+	}
 	
 	if (s.getVal("creatable").asBoolean()){
 		var createEdge = new Target!EdgeCreationDescription;
@@ -476,12 +511,12 @@ rule EleEdgeFromAnnotation
 	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source")) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
+	t.sourceMapping = annotations.select(i|i.Source != "sirius" and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	//TODO Remove this work around
-	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
+	t.targetMapping = annotations.select(i|i.Source != "sirius" and element.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
 	//TODO make this a function
 	if (s.getVal("creatable").asBoolean()){
 		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
