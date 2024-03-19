@@ -50,6 +50,10 @@ pre {
 					var `new` = emfTool.getECoreUtil.copy(i);
 					`new`.details.put("container",j);
 					`new`.eModelElement = i.eModelElement;
+					var labelE = new Source!EStringToStringMapEntry; 
+					labelE.key = "label";
+					labelE.value = `new`.getVal("label");
+					`new`.details.add(labelE);
 					`new`.details.selectOne(i|i.key = 'name').value = j + " - " + `new`.getVal("name");
 					newAnnotations.add(`new`);
 					
@@ -296,7 +300,7 @@ rule SudoNodeFromAnnotation
 			var create = new Target!NodeCreationDescription;
 			create.initialOperation = new Target!InitialNodeCreationOperation;
 			create.nodeMappings.add(t);
-			create.name = "Create " + t.name + " in " + container.name;
+			create.name = "Create " + s.getVal("label") + " in " + container.name;
 			
 			var changeContext = new Target!ChangeContext;
 			create.initialOperation = new Target!InitialNodeCreationOperation;
@@ -352,7 +356,7 @@ rule SudoContainerFromAnnotation
 			var create = new Target!ContainerCreationDescription;
 			create.initialOperation = new Target!InitialNodeCreationOperation;
 			create.containerMappings.add(t);
-			create.name = "Create " + t.name + " in " + container.name;
+			create.name = "Create " + s.getVal("label") + " in " + container.name;
 			
 			var changeContext = new Target!ChangeContext;
 			create.initialOperation = new Target!InitialNodeCreationOperation;

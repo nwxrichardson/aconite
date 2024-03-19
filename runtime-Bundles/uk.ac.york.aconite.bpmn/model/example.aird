@@ -4,7 +4,7 @@
     <semanticResources>example.simplebpmn</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_RSzc4OBpEe6F9tgXVVr5kA">
       <viewpoint xmi:type="description:Viewpoint" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_E9mngOLqEe6KobDcxsy6IQ" name="new BPD" repPath="#_E9mAcOLqEe6KobDcxsy6IQ" changeId="09daa571-203e-49b5-8e65-a5884bc5df31">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_E9mngOLqEe6KobDcxsy6IQ" name="new BPD" repPath="#_E9mAcOLqEe6KobDcxsy6IQ" changeId="c2398215-0c2a-4825-9568-7e0f9cd871d9">
         <description xmi:type="description_1:DiagramDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']"/>
         <target xmi:type="sbpmn:BusinessProcessDiagram" href="example.simplebpmn#_S7b2UOBjEe684qFZJOTPPg"/>
       </ownedRepresentationDescriptors>
@@ -44,7 +44,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_E9pq0-LqEe6KobDcxsy6IQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_E9pDw-LqEe6KobDcxsy6IQ" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E9pDxOLqEe6KobDcxsy6IQ" x="414" y="252" width="363" height="303"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E9pDxOLqEe6KobDcxsy6IQ" x="384" y="223" width="363" height="303"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_wi6lYOXxEe64cu5RL7QKPQ" type="2002" element="_wir74OXxEe64cu5RL7QKPQ">
           <children xmi:type="notation:Node" xmi:id="_wi6lY-XxEe64cu5RL7QKPQ" type="5006"/>
@@ -147,6 +147,15 @@
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_wi6laOXxEe64cu5RL7QKPQ" fontName="Segoe UI" fontHeight="12"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wi6laeXxEe64cu5RL7QKPQ" x="396" y="72"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_wE0scOX3Ee65_9ddWc7OsA" type="2002" element="_wEnREOX3Ee65_9ddWc7OsA">
+          <children xmi:type="notation:Node" xmi:id="_wE1TgOX3Ee65_9ddWc7OsA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_wE16kOX3Ee65_9ddWc7OsA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_wE16keX3Ee65_9ddWc7OsA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_wE16kuX3Ee65_9ddWc7OsA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_wE0sceX3Ee65_9ddWc7OsA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wE0scuX3Ee65_9ddWc7OsA" x="468" y="594"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_E9nOkuLqEe6KobDcxsy6IQ"/>
         <edges xmi:type="notation:Edge" xmi:id="_Qlna8OX0Ee65_9ddWc7OsA" type="4001" element="_QlNLQOX0Ee65_9ddWc7OsA" source="_wjFkgOXxEe64cu5RL7QKPQ" target="_wjGLkOXxEe64cu5RL7QKPQ">
@@ -382,7 +391,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlNLQOX0Ee65_9ddWc7OsA" sourceNode="_witKCOXxEe64cu5RL7QKPQ" targetNode="_wiuYIuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.3"/>
       <semanticElements xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.3"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlNLQeX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlNLQeX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Message%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlNLQuX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -391,7 +400,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlQ1ouX0Ee65_9ddWc7OsA" sourceNode="_wiuYIuXxEe64cu5RL7QKPQ" targetNode="_witKAuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.4"/>
       <semanticElements xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlQ1o-X0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlQ1o-X0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Message%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlQ1pOX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -400,7 +409,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlRcsuX0Ee65_9ddWc7OsA" sourceNode="_wiuYJeXxEe64cu5RL7QKPQ" targetNode="_wiuYKOXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.7"/>
       <semanticElements xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.7"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlRcs-X0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlRcs-X0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Message%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlRctOX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -409,7 +418,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSDwOX0Ee65_9ddWc7OsA" sourceNode="_witKCOXxEe64cu5RL7QKPQ" targetNode="_wiuYIuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.2"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.2"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSDweX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSDweX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSDwuX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -418,7 +427,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSq0OX0Ee65_9ddWc7OsA" sourceNode="_witKCOXxEe64cu5RL7QKPQ" targetNode="_witKAuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.5"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq0eX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq0eX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSq0uX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -427,7 +436,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSq1eX0Ee65_9ddWc7OsA" sourceNode="_witKAuXxEe64cu5RL7QKPQ" targetNode="_wiuYJeXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.6"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.6"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq1uX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq1uX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSq1-X0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -436,11 +445,22 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSq2uX0Ee65_9ddWc7OsA" sourceNode="_witKBeXxEe64cu5RL7QKPQ" targetNode="_witKCOXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.8"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.8"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq2-X0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq2-X0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSq3OX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_wEnREOX3Ee65_9ddWc7OsA" name="Lane 3">
+      <target xmi:type="sbpmn:Lane" href="example.simplebpmn#//@elements.10"/>
+      <semanticElements xmi:type="sbpmn:Lane" href="example.simplebpmn#//@elements.10"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_wEnREeX3Ee65_9ddWc7OsA" labelSize="12" showIcon="false" borderSize="2" borderSizeComputationExpression="aql:2" backgroundColor="255,245,181" foregroundColor="255,245,181">
+        <description xmi:type="style:FlatContainerStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='BPD%20-%20Lane']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@containerMappings[name='BPD%20-%20Lane']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_E9mAceLqEe6KobDcxsy6IQ"/>

@@ -25,4 +25,5 @@
       <lanes name="Lane"/>
     </elements>
   </elements>
+  <elements xsi:type="sbpmn:Lane" name="Lane 3"/>
 </sbpmn:BusinessProcessDiagram>
