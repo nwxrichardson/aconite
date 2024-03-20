@@ -8,20 +8,20 @@ package basicfamily;
 //template rather than import + fix it
 @sirius.diagram(name = "Relationships")
 
-@sirius.template(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
+@sirius.node(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
 
 @sirius.container(~import = "Rel Default", name = "Person", foregroundColor = "light_green", container = "Relationships")
 
-@sirius.border(~import = "Rel Default", name = "Parent", container =  "Person", sce = "parents")
+@sirius.border(~import = "Rel Default", name = "Parent", container =  "Person")
 
-@sirius.node(~import = "Rel Default", name = "Child", container = "Person", sce = "children")
+@sirius.node(~import = "Rel Default", name = "Child", container = "Person")
 
-@sirius.container(~import = "Rel Default", name = "Siblings", proLabelExpression = "Siblings", froegroundColor = "light_yellow", container = "Relationships", showIcon = "false")
+@sirius.container(~import = "Rel Default", name = "Siblings", labelValue = "Siblings", foregroundColor = "light_yellow", container = "Relationships", showIcon = "false")
 
 @sirius.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
 abstract class Person {
 	attr String name;
-	@sirius.edge(name = "SiblingsEdge", labelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")
+	@sirius.edge(name = "SiblingsEdge",creatable = "false", labelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")
 	ref Person[*]#parents children;
 	ref Person[0..2]#children parents;
 	@sirius.edge(creatable = "true", name = "Mother", container = "Persons" , sourceNode = "Man, Woman", reconnectable = "true", labelExpression = "", color = "purple")
@@ -33,8 +33,6 @@ abstract class Person {
 @sirius.diagram(name = "Persons")
 class Family {
 	attr String name;
-	@sirius.tool.creation(name = "Men", container = "Man")
-	@sirius.tool.creation(name = "Women", container = "Woman")
 	val Person[*] members;
 }
 

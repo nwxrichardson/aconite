@@ -14,7 +14,7 @@ Allow @sirius to alter defaults?
 Add Proxies to creatable and make everything a operation Maybe see if you can add proxies to references 
 Pick nicer auto names and make one tool box for everything
 
-
+//Change pro to labelValue
 Add within to options for container
 template rather than import + fix it
 
@@ -79,6 +79,7 @@ pre {
 	}
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
+//	annotations.Source.println();
 	delete randomStyle;
 	"Running...".println();
 }
@@ -411,12 +412,12 @@ rule RefEdgeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.Source != "sirius" and element.eContainingClass.isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and (not s.getVal("abstract").asBoolean())).equivalent();
+	t.sourceMapping = annotations.select(i|Sequence{"sirius.edge","sirius.node","sirius.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eContainingClass.isSuperTypeOf(i.eModelElement) and (not s.getVal("abstract").asBoolean())).equivalent();
 	}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");	
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|i.Source != "sirius" and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram").equivalent();
+	t.targetMapping = annotations.select(i|Sequence{"sirius.edge","sirius.node","sirius.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement)).equivalent();
 	}
 	
 	if (s.getVal("creatable").asBoolean()){
@@ -965,10 +966,24 @@ post {
 		if (not gotHidden.contains(hiddenTools.get(tool))){
 			gotHidden.add(hiddenTools.get(tool));
 			var hiddenBox = new Target!ToolSection;
-			hiddenBox.name = "Generated Hidden Tools";
+			hiddenBox.name = "Generated Auto Tools";
 			hiddenTools.get(tool).equivalent().defaultLayer.toolSections.add(hiddenBox);
 		}
-		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
+		var cur = hiddenTools.get(tool).equivalent().defaultLayer.toolSections.selectOne(i|i.name = "Generated Auto Tools").ownedTools;
+		var toggle = true;
+		for (curTool in cur){
+			if (curTool.name = tool.name) {
+				toggle = false;
+				if (curTool.isTypeOf(Target!NodeCreationDescription)){curTool.nodeMappings.addAll(tool.nodeMappings);}
+				if (curTool.isTypeOf(Target!ContainerCreationDescription)){curTool.containerMappings.addAll(tool.containerMappings);}
+			}
+		}
+		if (toggle){
+			cur.add(tool);
+		} else {
+			
+			delete tool;
+		}
 	}
 	"Done!".println();
 }	
