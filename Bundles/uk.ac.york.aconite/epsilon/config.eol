@@ -45,6 +45,9 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "condition"	: return "aql:false";
 		case "childrenPresentation"	: return "FreeForm";
 		case "sce"	: return self.getVal("candidates");
+		case "endsCentering"	: return "Both";
+		case "sourceArrow"	: return "NoDecoration";
+		case "targetArrow"	: return "InputArrow";
 		case "candidates"	: return self.getVal("semanticCandidatesExpression").replaceFirst(".","");
 		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);

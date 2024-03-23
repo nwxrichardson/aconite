@@ -346,20 +346,21 @@ rule AbsEdgeFromAnnotation
 	
 	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalEdgeFromAnnotation");
 	
-	t.style = new Target!EdgeStyleDescription;	
-	t.style.endsCentering = Target!CenteringStyle#Both;
+	var preStyled = emfTool.getECoreUtil.copy(annotations.select(i|i.source = s.source + ".description").selectOne(i|i.getVal("edge") = s.getVal("name")));
+	if (preStyled.isUndefined()){
+		var styleAnnotation = emfTool.getECoreUtil.copy(s);
+		styleAnnotation.Source = s.source + ".description" ;
+		styleAnnotation.details.put("edge", s.getVal("name"));
+		t.style = styleAnnotation.equivalent();	
+	} else {
+		t.style = preStyled.equivalent();
+	}
+	
+	
 	if (not (s.getVals("sourceNode") = Sequence{""})){
 	t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name"))).equivalent();}
 	if (not (s.getVals("targetNode")= Sequence{""})){
 	t.targetMapping = annotations.select(i|s.getVals("targetNode").exists(j|j = i.getVal("name"))).equivalent();}	
-	
-	var label = s.getVal("labelExpression");
-	if (label != ""){
-	t.style.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
-	t.style.centerLabelStyleDescription.labelExpression = "aql:self." + label;
-	t.style.centerLabelStyleDescription.showIcon = false;
-	}
-	t.style.strokeColor = s.getVal("color").getColor();
 	}
 	
 @lazy
@@ -823,6 +824,23 @@ rule ContainerStyleFromAnnotation
  *      SIRIUS STYLES 
  *----------------------------------------------------------------------------------
  */		
+	
+@lazy
+rule EdgeStyleFromAnnotation
+	transform 	s : Source!EAnnotation
+	to 			t : Target!EdgeStyleDescription{
+	guard : s.source = "sirius.edge.description" and not s.getVal("abstract").asBoolean()	
+		t.endsCentering = Target!CenteringStyle#Both.VALUES.selectOne(i|i.literal = s.getVal("endsCentering"));
+		t.sourceArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("sourceArrow"));
+		t.targetArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("target	Arrow"));
+		var label = s.getVal("labelExpression");
+		if (label != ""){
+			t.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
+			t.centerLabelStyleDescription.labelExpression = "aql:self." + label;
+			t.centerLabelStyleDescription.showIcon = false;
+		}
+		t.strokeColor = s.getVal("color").getColor();
+	}	
 	
 @lazy
 rule FlatContainerFromAnnotation
