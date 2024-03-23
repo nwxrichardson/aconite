@@ -14,11 +14,11 @@ Allow @sirius to alter defaults?
 Add Proxies to creatable and make everything a operation Maybe see if you can add proxies to references 
 Pick nicer auto names and make one tool box for everything
 
-//Change pro to labelValue
 Add within to options for container
 template rather than import + fix it
 
 Add some tests
+
 */
 
 
@@ -241,6 +241,7 @@ rule AbstractMappingFromAnnotation
 	if (s.getVal("directlyEditable").asBoolean()){
 		var directEdit = new Target!DirectEditLabel;
 		directEdit.addToHidden(s.getDiagram());
+		directEdit.name = s.getVal("label") + "Direct Editing";
 		t.labelDirectEdit = directEdit;
 		
 		var init = new Target!InitialOperation;
@@ -974,6 +975,10 @@ post {
 		for (curTool in cur){
 			if (curTool.name = tool.name) {
 				toggle = false;
+				if (curTool.isTypeOf(Target!DirectEditLabel)){
+					var editing = annotations.equivalent().selectOne(op|op.isKindOf(Target!DiagramElementMapping) and op.labelDirectEdit = tool);
+					if (editing.isDefined()){editing.labelDirectEdit = curTool;}
+				}
 				if (curTool.isTypeOf(Target!NodeCreationDescription)){curTool.nodeMappings.addAll(tool.nodeMappings);}
 				if (curTool.isTypeOf(Target!ContainerCreationDescription)){curTool.containerMappings.addAll(tool.containerMappings);}
 			}
