@@ -25,5 +25,7 @@
       <lanes name="Lane"/>
     </elements>
   </elements>
-  <elements xsi:type="sbpmn:Lane"/>
+  <elements xsi:type="sbpmn:Lane" name="Lane 3">
+    <flowObjects xsi:type="sbpmn:StartEvent" name=""/>
+  </elements>
 </sbpmn:BusinessProcessDiagram>

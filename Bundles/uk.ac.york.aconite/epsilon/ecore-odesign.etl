@@ -2,24 +2,23 @@ import "config.eol";
 
 
 /*
-Add import properly
+
+Fix tools overlap
+Make Import an option for multiple containment
 Fix Annotation statements with a function that offloads the getting of the right sources -> This woulld maybe have to check the equivalent type is a subtype 
-Add supertypes to the automatic sourceNode and targetNode
-Make the many container work and give them unique names afterwards (might require playing with id vs label)
 Add edge description to allow for customising -> Look into if you are able to add any other versions
 Fix creatable to be added at the end the same way as the tool shortcuts
-Maybe make creatable the default
 Make source and target try and figure out for themselves the same as sce
 Future work would include separating the two versions
 Allow @sirius to alter defaults?
 Add Proxies to creatable and make everything a operation Maybe see if you can add proxies to references 
 Pick nicer auto names and make one tool box for everything
 
-
 Add within to options for container
 template rather than import + fix it
 
 Add some tests
+
 */
 
 
@@ -40,8 +39,47 @@ pre {
 		i.details.putAll(copyDetails);
 		}
 	}
+	while (annotations.exists(i|i.getVals("container").size() > 1)){
+	
+		var newAnnotations = new Sequence;
+		var revAnnotations = new Sequence;
+		var i = annotations.selectOne(op|op.getVals("container").size() > 1);
+			var containers = i.getVals("container");
+			if (containers.size() != 1){
+				for (j in containers){
+					var `new` = emfTool.getECoreUtil.copy(i);
+					`new`.details.put("container",j);
+					`new`.eModelElement = i.eModelElement;
+					var labelE = new Source!EStringToStringMapEntry; 
+					labelE.key = "label";
+					labelE.value = `new`.getVal("label");
+					`new`.details.add(labelE);
+					`new`.details.selectOne(i|i.key = 'name').value = j + " - " + `new`.getVal("name");
+					newAnnotations.add(`new`);
+					
+					var editing = annotations.select(op|op.getVals("container").contains(i.getVal("name")));
+					for (edit in editing) {
+						var curCon = edit.getVals("container");
+						curCon.add(`new`.getVal("name"));
+						edit.details.selectOne(op|op.key = "container").value = curCon.rtnVals();
+					}
+					
+				} 
+				var editing = annotations.select(op|op.getVals("container").contains(i.getVal("name")));
+					for (edit in editing) {
+						var curCon = edit.getVals("container");
+						curCon.remove(i.getVal("name"));
+						edit.details.selectOne(op|op.key = "container").value = curCon.rtnVals();
+				}
+				revAnnotations.add(i);
+			} 
+		annotations.addAll(newAnnotations);
+		annotations.removeAll(revAnnotations);
+		
+	}
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
+//	annotations.Source.println();
 	delete randomStyle;
 	"Running...".println();
 }
@@ -203,6 +241,7 @@ rule AbstractMappingFromAnnotation
 	if (s.getVal("directlyEditable").asBoolean()){
 		var directEdit = new Target!DirectEditLabel;
 		directEdit.addToHidden(s.getDiagram());
+		directEdit.name = s.getVal("label") + "Direct Editing";
 		t.labelDirectEdit = directEdit;
 		
 		var init = new Target!InitialOperation;
@@ -263,7 +302,7 @@ rule SudoNodeFromAnnotation
 			var create = new Target!NodeCreationDescription;
 			create.initialOperation = new Target!InitialNodeCreationOperation;
 			create.nodeMappings.add(t);
-			create.name = "Create " + t.name + " in " + container.name;
+			create.name = "Create " + s.getVal("label") + " in " + container.name;
 			
 			var changeContext = new Target!ChangeContext;
 			create.initialOperation = new Target!InitialNodeCreationOperation;
@@ -319,7 +358,7 @@ rule SudoContainerFromAnnotation
 			var create = new Target!ContainerCreationDescription;
 			create.initialOperation = new Target!InitialNodeCreationOperation;
 			create.containerMappings.add(t);
-			create.name = "Create " + t.name + " in " + container.name;
+			create.name = "Create " + s.getVal("label") + " in " + container.name;
 			
 			var changeContext = new Target!ChangeContext;
 			create.initialOperation = new Target!InitialNodeCreationOperation;
@@ -375,11 +414,13 @@ rule RefEdgeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.eContainingClass and i.Source != "sirius.diagram" and (not s.getVal("abstract").asBoolean())).equivalent();}
+	t.sourceMapping = annotations.select(i|Sequence{"sirius.edge","sirius.node","sirius.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eContainingClass.isSuperTypeOf(i.eModelElement) and (not s.getVal("abstract").asBoolean())).equivalent();
+	}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");	
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|i.eModelElement = element.eType.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram").equivalent();}
+	t.targetMapping = annotations.select(i|Sequence{"sirius.edge","sirius.node","sirius.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement)).equivalent();
+	}
 	
 	if (s.getVal("creatable").asBoolean()){
 		var createEdge = new Target!EdgeCreationDescription;
@@ -477,12 +518,12 @@ rule EleEdgeFromAnnotation
 	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("source")) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
+	t.sourceMapping = annotations.select(i|i.Source != "sirius" and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	//TODO Remove this work around
-	t.targetMapping = annotations.select(i|i.eModelElement = element.getEndOf(s.getVal("target")) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
+	t.targetMapping = annotations.select(i|i.Source != "sirius" and element.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
 	//TODO make this a function
 	if (s.getVal("creatable").asBoolean()){
 		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
@@ -944,10 +985,28 @@ post {
 		if (not gotHidden.contains(hiddenTools.get(tool))){
 			gotHidden.add(hiddenTools.get(tool));
 			var hiddenBox = new Target!ToolSection;
-			hiddenBox.name = "Generated Hidden Tools";
+			hiddenBox.name = "Generated Auto Tools";
 			hiddenTools.get(tool).equivalent().defaultLayer.toolSections.add(hiddenBox);
 		}
-		hiddenTools.get(tool).equivalent().defaultLayer.toolSections.selectOne(i|i.name = "Generated Hidden Tools").ownedTools.add(tool);
+		var cur = hiddenTools.get(tool).equivalent().defaultLayer.toolSections.selectOne(i|i.name = "Generated Auto Tools").ownedTools;
+		var toggle = true;
+		for (curTool in cur){
+			if (curTool.name = tool.name) {
+				toggle = false;
+				if (curTool.isTypeOf(Target!DirectEditLabel)){
+					var editing = annotations.equivalent().selectOne(op|op.isKindOf(Target!DiagramElementMapping) and op.labelDirectEdit = tool);
+					if (editing.isDefined()){editing.labelDirectEdit = curTool;}
+				}
+				if (curTool.isTypeOf(Target!NodeCreationDescription)){curTool.nodeMappings.addAll(tool.nodeMappings);}
+				if (curTool.isTypeOf(Target!ContainerCreationDescription)){curTool.containerMappings.addAll(tool.containerMappings);}
+			}
+		}
+		if (toggle){
+			cur.add(tool);
+		} else {
+			
+			delete tool;
+		}
 	}
 	"Done!".println();
 }	

@@ -18,19 +18,19 @@ class BPMNElement {
 abstract class Swimlane extends BPMNElement {
 	
 }
-@sirius.container(name = "Lane", container = "Group, Pool")
+@sirius.container(name = "Lane", container = "BPD, Group, Pool")
 class Lane extends Swimlane {
 	val FlowObject[*] flowObjects;
 }
 
-@sirius.container(name = "Pool", container = "BPD")
+@sirius.container(name = "Pool", container = "BPD, Group")
 class Pool extends Swimlane {
 	val Lane[*] lanes;
 }
 
 /* CONNECTING OBJECTS */
 
-@sirius.edge(container = "BPD", name="Link",~abstract = "true",  source = "from", target = "to", color = "black", sourceNode = "Activity, OR, AND, XOR, Start Event", targetNode = "Activity, OR, AND, XOR, End Event")
+@sirius.edge(container = "BPD", name="Link",~abstract = "true",  source = "from", target = "to", color = "black")
 abstract class ConnectingObject extends BPMNElement {
 	ref FlowObject from;
 	ref FlowObject to;
