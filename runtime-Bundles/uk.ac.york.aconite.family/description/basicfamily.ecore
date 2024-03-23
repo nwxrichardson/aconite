@@ -9,7 +9,7 @@
     <eAnnotations source="sirius.diagram">
       <details key="name" value="Relationships"/>
     </eAnnotations>
-    <eAnnotations source="sirius.template">
+    <eAnnotations source="sirius.node">
       <details key="name" value="Rel Default"/>
       <details key="abstract" value="true"/>
       <details key="color" value="white"/>
@@ -26,19 +26,17 @@
       <details key="import" value="Rel Default"/>
       <details key="name" value="Parent"/>
       <details key="container" value="Person"/>
-      <details key="sce" value="parents"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
       <details key="import" value="Rel Default"/>
       <details key="name" value="Child"/>
       <details key="container" value="Person"/>
-      <details key="sce" value="children"/>
     </eAnnotations>
     <eAnnotations source="sirius.container">
       <details key="import" value="Rel Default"/>
       <details key="name" value="Siblings"/>
-      <details key="proLabelExpression" value="Siblings"/>
-      <details key="froegroundColor" value="light_yellow"/>
+      <details key="labelValue" value="Siblings"/>
+      <details key="foregroundColor" value="light_yellow"/>
       <details key="container" value="Relationships"/>
       <details key="showIcon" value="false"/>
     </eAnnotations>
@@ -53,6 +51,7 @@
         eType="#//Person" eOpposite="#//Person/parents">
       <eAnnotations source="sirius.edge">
         <details key="name" value="SiblingsEdge"/>
+        <details key="creatable" value="false"/>
         <details key="labelExpression" value=""/>
         <details key="color" value="gray"/>
         <details key="container" value="Relationships"/>
@@ -90,16 +89,7 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//Person" containment="true">
-      <eAnnotations source="sirius.tool.creation">
-        <details key="name" value="Men"/>
-        <details key="container" value="Man"/>
-      </eAnnotations>
-      <eAnnotations source="sirius.tool.creation">
-        <details key="name" value="Women"/>
-        <details key="container" value="Woman"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+        eType="#//Person" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Man" eSuperTypes="#//Person">
     <eAnnotations source="sirius.node">
