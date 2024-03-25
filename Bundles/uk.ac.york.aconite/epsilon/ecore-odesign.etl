@@ -468,9 +468,9 @@ rule RefEdgeFromAnnotation
 		targ.subModelOperations.add(set);
 		set.featureName = element.name;
 		if (element.oneRef()){
-			set.valueExpression = "aql:target";
+			set.valueExpression = "aql:otherEnd.target";
 		} else {
-			set.valueExpression = "aql:self." + element.name + " + Sequence{target}";
+			set.valueExpression = "aql:self." + element.name + " + Sequence{otherEnd.target}";
 		}
 		var targerConnect = new Target!ReconnectEdgeDescription;
 		targerConnect.addToHidden(s.getDiagram());
