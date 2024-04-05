@@ -1,7 +1,21 @@
+
 context EAnnotation {
 
 	critique ContainerIsName {
-		check : EAnnotation.all.exists(i|i.details.get("name") = self.details.get("container"))
+		check : self.details.get("container") = "" or EAnnotation.all.exists(i|i.details.get("name") = self.details.get("container"))
+	}
+	
+	critique ImportExists {
+		check : self.details.get("import") = "" or EAnnotation.all.exists(i|i.details.get("name") = self.details.get("import"))
+		message : self.details.get("name") + '\'s import does not exist.'
+	}
+
+	critique UniqueName {
+		check : EAnnotation.all.atMostNMatch(i|i.details.get("name") = self.details.get("name"),1)
+	}
+	
+	critique HasName {
+		check : self.details.get("name") != ""
 	}
 
 }
