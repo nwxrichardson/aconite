@@ -1,27 +1,5 @@
 import "config.eol";
 
-
-/*
-
-Fix tools overlap
-Make Import an option for multiple containment
-Fix Annotation statements with a function that offloads the getting of the right sources -> This woulld maybe have to check the equivalent type is a subtype 
-Add edge description to allow for customising -> Look into if you are able to add any other versions
-Fix creatable to be added at the end the same way as the tool shortcuts
-Make source and target try and figure out for themselves the same as sce
-Future work would include separating the two versions
-Allow @sirius to alter defaults?
-Add Proxies to creatable and make everything a operation Maybe see if you can add proxies to references 
-Pick nicer auto names and make one tool box for everything
-
-Add within to options for container
-template rather than import + fix it
-
-Add some tests
-
-*/
-
-
 pre {
 	"\nInitialising...".println();
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
@@ -29,10 +7,10 @@ pre {
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
 	for (i in annotations) {
 		i.details.put("abstract", i.getVal("abstract"));
-		if (i.details.containsKey("import")){
+		if (i.details.containsKey("extend")){
 		
 		var copyDetails = emfTool.getECoreUtil.copy(i).details;
-		var imports =  i.getVals("import").invert();
+		var imports =  i.getVals("extend").invert();
 		for (j in imports) {
 			i.details.putAll(emfTool.getECoreUtil.copy(annotations.selectOne(k|k.getVal("name") = j)).details);
 		}
@@ -77,35 +55,44 @@ pre {
 		annotations.removeAll(revAnnotations);
 		
 	}
+	// Copy the colour pallette from the Sirius Models
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
-//	annotations.Source.println();
 	delete randomStyle;
+	
 	"Running...".println();
 }
 
+// Get the image folder, using cached to save the output the first time it is called
 @cached
 operation getImgFolder() : String {
 	return  annotations.selectOne(i|i.Source = "sirius").getVal("iconFolder");
 } 
 
+//Add the file to the folder
 operation String makeImg() : String {
 	if (self != "") {
 	return getImgFolder() + self;
 	} return "";
 }
 
+// Get colour based on the name
 @cached
 operation String getColor() : Target!SystemColor  {
 	return colorPalette.selectOne(i|i.name = self);
 }
 
+// Get the diagram of a node or container
 @cached
 operation Source!EAnnotation getDiagram() : Source!EAnnotation{
 	if (self.Source = "sirius.diagram") {return self;}
 	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
 }  
 
+/*
+ * Get the value of as a string from the details or the default
+ * This is the fundemantal building block 
+ */
 operation Source!EAnnotation getVal(key : String) : String{
 
 	var tmp = self.details.selectOne(i|i.key = key);
@@ -116,14 +103,15 @@ operation Source!EAnnotation getVal(key : String) : String{
 
 }
 
+// Backup function that can be called with a new default
 operation Source!EAnnotation getVal(key : String, def : String) : String{
-
 	var rtn = self.getVal(key);
 	if (rtn != ""){return rtn;}
 	return def;
 
 }
 
+// Converts a sequence of strings back to a single string
 operation Sequence<String> rtnVals() : String {
 	var rtn = "";
 	for (i in self){
@@ -136,6 +124,7 @@ operation Sequence<String> rtnVals() : String {
 	return rtn;
 }
 
+// Convert a string to a sequence of strings
 operation Source!EAnnotation getVals(key : String) : Sequence{
 	var tmp = self.details.selectOne(i|i.key = key);
 	if (tmp.isDefined()){
@@ -149,10 +138,12 @@ operation Source!EAnnotation getVals(key : String, def : String) : Sequence{
 	return Sequence(def);
 }
 
+// Formatting a domain class
 operation Source!EClass getDC() : String {
 	return self.ePackage.name + "::" + self.name;
 }
 	
+// 
 operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	if (expression = ""){return self;}
 	var splited = expression.split("\\.");
@@ -181,6 +172,14 @@ operation Source!EReference oneRef() : Boolean {
 	return self.upperBound = 1;
 }
 
+
+
+/*
+ *----------------------------------------------------------------------------------
+ *      INITIALISATION OF PACKAGE
+ *----------------------------------------------------------------------------------
+ */
+
 rule PackageFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!Group {
@@ -188,8 +187,28 @@ rule PackageFromAnnotation
 	guard : s.Source = "sirius"
 	var viewpoint = new Target!Viewpoint;
 	t.ownedViewpoints.add(viewpoint);
+	
+/*
+ * From here until the post section the vast majority of things ar set in of two ways 
+ * which are helpfully used once each within the setting of the package.
+ *
+ * 1.) 	Setting a reference, used the annotations which is a container of all of the
+ * 		annotations used. This is then filtered and convert via other rules using
+ *		.equivalent(). (Future versions would remove this filtering in favour of a
+ *		a longer preamble.)
+ */	
+	
 	var diagrams = annotations.select(i|i.Source = "sirius.diagram").equivalent();
 	viewpoint.ownedRepresentations.addAll(diagrams);	
+	
+/* 
+ * 2.)	Setting an attribute, the use of .getVal() does most of the work before 
+ *		conversion. For most this is .asDATATYPE() with colour using the operation
+ *		and ENum uses out existing option to get the value and then filter by the getVal()
+ *
+ * 		t.type = Target!ENum#OneOption.VALUES.selectOne(i|i.literal = s.getVal("type"));
+ */
+	
 	viewpoint.name = s.getVal("name");
 }
 
@@ -518,12 +537,13 @@ rule EleEdgeFromAnnotation
 	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.Source != "sirius" and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
+	t.sourceMapping = annotations.select(i|i.Source != "sirius" and i.eModelElement.isTypeOf(Source!EClass) and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	//TODO Remove this work around
-	t.targetMapping = annotations.select(i|i.Source != "sirius" and element.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
+	
+	t.targetMapping = annotations.select(i|i.Source != "sirius" and i.eModelElement.isTypeOf(Source!EClass) and element.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
 	//TODO make this a function
 	if (s.getVal("creatable").asBoolean()){
 		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
@@ -903,8 +923,8 @@ rule ShapeContainerFromAnnotation
 	extends ContainerStyleFromAnnotation{
 	guard : s.getVal("shape") = "shape"
 	
-	t.backgroundColor = s.getVal("color", "lightYellow").getColor();
-	//Pointless
+	t.backgroundColor = s.getVal("color").getColor();
+	//Pointless - But needed!
 	t.shape = Target!ContainerShape#parallelogram.VALUES.selectOne(i|i.literal = s.getVal("shape","parallelogram"));
 	
 	}
@@ -978,7 +998,7 @@ rule WorkspaceImageNodeFromAnnotation
 	t.workspacePath = s.getVal("imagePath").makeImg();
 	}
 
-	
+// -----------------------------------------------------------------	
 post {
 	var gotHidden = new Sequence;
 	for (tool in hiddenTools.keySet()){

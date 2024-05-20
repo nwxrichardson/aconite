@@ -2,8 +2,6 @@ import "util.eol";
 
 // Note: Whichever one needs to access its default should be put first in the java code
 operation Target!EAnnotation getDefault(key : String) : String {
-//	key.println();
-//	self.details.println();
 	switch (key){
 		case "name"	: return self.eModelElement.name;
 		case "createElements" 	: return "true";	
@@ -39,7 +37,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "abstract"	: return "false";
 		case "proxyType"	: return "Diagram";
 		case "proxyStatement"	: return "aql:diagram.target";
-		case "reconnectable"	: return "false";
+		case "reconnectable"	: return "true";
 		case "creatable"	: return "true";
 		case "directlyEditable"	: return "true";
 		case "condition"	: return "aql:false";
