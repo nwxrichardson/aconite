@@ -5,20 +5,31 @@ pre {
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 	var hiddenTools = new Map<Target!AbstractToolDescription,Source!EAnnotation>;
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
+	
 	for (i in annotations) {
+		// Make a an abstract = false in the details if it is not already set
 		i.details.put("abstract", i.getVal("abstract"));
 		if (i.details.containsKey("extend")){
-		
-		var copyDetails = emfTool.getECoreUtil.copy(i).details;
-		var imports =  i.getVals("extend").invert();
-		for (j in imports) {
-			i.details.putAll(emfTool.getECoreUtil.copy(annotations.selectOne(k|k.getVal("name") = j)).details);
-		}
-		i.details.putAll(copyDetails);
+			//Copy initial details to override at the end
+			var copyDetails = emfTool.getECoreUtil.copy(i).details;
+			// Get the extends in reverse order
+			var imports =  i.getVals("extend").invert();
+			// For each copy the details, the order sets out the priority 
+			for (j in imports) {
+				i.details.putAll(emfTool.getECoreUtil.copy(annotations.selectOne(k|k.getVal("name") = j)).details);
+			}
+			// Copy back the original details to override anything change by others
+			i.details.putAll(copyDetails);
 		}
 	}
-	while (annotations.exists(i|i.getVals("container").size() > 1)){
 	
+	/* 
+	 * While there exists an annotation with two containers copy them out and add to the name
+	 * and set the container to the same option. This happens all the way down and happens in
+	 * any order. The reason is that the names in this case do not matter in future it will
+	 * be a hash but makes no reference
+	 */
+	while (annotations.exists(i|i.getVals("container").size() > 1)){
 		var newAnnotations = new Sequence;
 		var revAnnotations = new Sequence;
 		var i = annotations.selectOne(op|op.getVals("container").size() > 1);
@@ -998,7 +1009,12 @@ rule WorkspaceImageNodeFromAnnotation
 	t.workspacePath = s.getVal("imagePath").makeImg();
 	}
 
-// -----------------------------------------------------------------	
+/* 
+ * ----------------------------------------------------------------------------------
+ * 		POST
+ * ----------------------------------------------------------------------------------
+ */
+
 post {
 	var gotHidden = new Sequence;
 	for (tool in hiddenTools.keySet()){
@@ -1024,7 +1040,6 @@ post {
 		if (toggle){
 			cur.add(tool);
 		} else {
-			
 			delete tool;
 		}
 	}

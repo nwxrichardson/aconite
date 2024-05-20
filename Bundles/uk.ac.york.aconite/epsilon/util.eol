@@ -1,4 +1,3 @@
-
 //Warning Any and slight inefficency if inheritance is wrong
 operation Any getRoute(target : Any) : String {
 	
