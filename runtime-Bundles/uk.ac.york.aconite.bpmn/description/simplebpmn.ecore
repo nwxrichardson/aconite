@@ -45,21 +45,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageFlow" eSuperTypes="#//ConnectingObject">
     <eAnnotations source="sirius.edge">
-      <details key="import" value="Link"/>
+      <details key="extend" value="Link"/>
       <details key="container" value="BPD"/>
       <details key="name" value="Message Flow"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SequenceFlow" eSuperTypes="#//ConnectingObject">
     <eAnnotations source="sirius.edge">
-      <details key="import" value="Link"/>
+      <details key="extend" value="Link"/>
       <details key="container" value="BPD"/>
       <details key="name" value="Sequence Flow"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Association" eSuperTypes="#//ConnectingObject">
     <eAnnotations source="sirius.edge">
-      <details key="import" value="Link"/>
+      <details key="extend" value="Link"/>
       <details key="container" value="BPD"/>
       <details key="name" value="Association"/>
     </eAnnotations>
@@ -76,42 +76,42 @@
   <eClassifiers xsi:type="ecore:EClass" name="Gateway" abstract="true" eSuperTypes="#//FlowObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="XOR" eSuperTypes="#//Gateway">
     <eAnnotations source="sirius.node">
-      <details key="import" value="Flow"/>
+      <details key="extend" value="Flow"/>
       <details key="name" value="XOR"/>
       <details key="imagePath" value="xor-gateway.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OR" eSuperTypes="#//Gateway">
     <eAnnotations source="sirius.node">
-      <details key="import" value="Flow"/>
+      <details key="extend" value="Flow"/>
       <details key="name" value="OR"/>
       <details key="imagePath" value="or-gateway.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//Gateway">
     <eAnnotations source="sirius.node">
-      <details key="import" value="Flow"/>
+      <details key="extend" value="Flow"/>
       <details key="name" value="AND"/>
       <details key="imagePath" value="and-gateway.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StartEvent" eSuperTypes="#//FlowObject">
     <eAnnotations source="sirius.node">
-      <details key="import" value="Flow"/>
+      <details key="extend" value="Flow"/>
       <details key="name" value="Start Event"/>
       <details key="imagePath" value="start-event.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediateEvent" eSuperTypes="#//FlowObject">
     <eAnnotations source="sirius.node">
-      <details key="import" value="Flow"/>
+      <details key="extend" value="Flow"/>
       <details key="name" value="Intermediate Event"/>
       <details key="imagePath" value="intermediate-event.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EndEvent" eSuperTypes="#//FlowObject">
     <eAnnotations source="sirius.node">
-      <details key="import" value="Flow"/>
+      <details key="extend" value="Flow"/>
       <details key="name" value="End Event"/>
       <details key="imagePath" value="end-event.svg"/>
     </eAnnotations>
@@ -120,7 +120,6 @@
     <eAnnotations source="sirius.node">
       <details key="name" value="Activity"/>
       <details key="container" value="Lane"/>
-      <details key="sce" value="flowObjects"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Artifact" abstract="true" eSuperTypes="#//BPMNElement"/>

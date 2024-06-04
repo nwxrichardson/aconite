@@ -17,23 +17,25 @@
       <details key="childrenPresentation" value="List"/>
     </eAnnotations>
     <eAnnotations source="sirius.container">
-      <details key="import" value="Rel Default"/>
+      <details key="extend" value="Rel Default"/>
       <details key="name" value="Person"/>
       <details key="foregroundColor" value="light_green"/>
       <details key="container" value="Relationships"/>
     </eAnnotations>
     <eAnnotations source="sirius.border">
-      <details key="import" value="Rel Default"/>
+      <details key="extend" value="Rel Default"/>
+      <details key="sce" value="parents"/>
       <details key="name" value="Parent"/>
       <details key="container" value="Person"/>
     </eAnnotations>
     <eAnnotations source="sirius.node">
-      <details key="import" value="Rel Default"/>
+      <details key="extend" value="Rel Default"/>
+      <details key="sce" value="children"/>
       <details key="name" value="Child"/>
       <details key="container" value="Person"/>
     </eAnnotations>
     <eAnnotations source="sirius.container">
-      <details key="import" value="Rel Default"/>
+      <details key="extend" value="Rel Default"/>
       <details key="name" value="Siblings"/>
       <details key="labelValue" value="Siblings"/>
       <details key="foregroundColor" value="light_yellow"/>
@@ -69,7 +71,6 @@
         <details key="name" value="Mother"/>
         <details key="container" value="Persons"/>
         <details key="sourceNode" value="Man, Woman"/>
-        <details key="reconnectable" value="true"/>
         <details key="labelExpression" value=""/>
         <details key="color" value="purple"/>
       </eAnnotations>
@@ -77,7 +78,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="father" eType="#//Man"
         derived="true">
       <eAnnotations source="sirius.edge">
-        <details key="import" value="Mother"/>
+        <details key="extend" value="Mother"/>
         <details key="name" value="Father"/>
         <details key="color" value="blue"/>
       </eAnnotations>
@@ -95,7 +96,6 @@
     <eAnnotations source="sirius.node">
       <details key="name" value="Man"/>
       <details key="container" value="Persons"/>
-      <details key="sce" value="members"/>
       <details key="shape" value="image"/>
       <details key="imagePath" value="man.svg"/>
       <details key="borderSize" value="0"/>
@@ -104,7 +104,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
     <eAnnotations source="sirius.node">
-      <details key="import" value="Man"/>
+      <details key="extend" value="Man"/>
       <details key="name" value="Woman"/>
       <details key="imagePath" value="woman.svg"/>
     </eAnnotations>

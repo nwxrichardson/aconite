@@ -36,17 +36,17 @@ abstract class ConnectingObject extends BPMNElement {
 	ref FlowObject to;
 }
 
-@sirius.edge(~import = "Link", container = "BPD", name="Message Flow")
+@sirius.edge(extend = "Link", container = "BPD", name="Message Flow")
 class MessageFlow extends ConnectingObject {
 	
 }
 
-@sirius.edge(~import = "Link", container = "BPD", name="Sequence Flow")
+@sirius.edge(extend = "Link", container = "BPD", name="Sequence Flow")
 class SequenceFlow extends ConnectingObject {
 	
 }
 
-@sirius.edge(~import = "Link", container = "BPD", name="Association")
+@sirius.edge(extend = "Link", container = "BPD", name="Association")
 class Association extends ConnectingObject {
 	
 }
@@ -62,33 +62,33 @@ abstract class Gateway extends FlowObject {
 	
 }
 
-@sirius.node(~import = "Flow", name = "XOR",  imagePath = "xor-gateway.svg")
+@sirius.node(extend = "Flow", name = "XOR",  imagePath = "xor-gateway.svg")
 class XOR extends Gateway {
 	
 }
 
-@sirius.node(~import = "Flow", name = "OR",  imagePath = "or-gateway.svg")
+@sirius.node(extend = "Flow", name = "OR",  imagePath = "or-gateway.svg")
 class OR extends Gateway {
 	
 }
 
-@sirius.node(~import = "Flow", name = "AND",  imagePath = "and-gateway.svg")
+@sirius.node(extend = "Flow", name = "AND",  imagePath = "and-gateway.svg")
 class AND extends Gateway {
 }
 
-@sirius.node(~import = "Flow", name = "Start Event",  imagePath = "start-event.svg")
+@sirius.node(extend = "Flow", name = "Start Event",  imagePath = "start-event.svg")
 class StartEvent extends FlowObject {
 }
 
-@sirius.node(~import = "Flow", name = "Intermediate Event",  imagePath = "intermediate-event.svg")
+@sirius.node(extend = "Flow", name = "Intermediate Event",  imagePath = "intermediate-event.svg")
 class IntermediateEvent extends FlowObject {
 }
 
-@sirius.node(~import = "Flow", name = "End Event",  imagePath = "end-event.svg")
+@sirius.node(extend = "Flow", name = "End Event",  imagePath = "end-event.svg")
 class EndEvent extends FlowObject {
 }
 
-@sirius.node(name = "Activity", container = "Lane", sce = "flowObjects")
+@sirius.node(name = "Activity", container = "Lane")
 class Activity extends FlowObject {
 
 }

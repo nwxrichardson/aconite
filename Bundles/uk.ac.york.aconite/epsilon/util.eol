@@ -28,13 +28,14 @@ operation Any getRoute(target : Any) : String {
 
 
 //Could be made more effiecent if you can pass a limit which stops if it is going to be longer than any previous solution
+//Also need fixing to manage multiple of the same type at a specific level
 operation Any getPosRoute(target : Any) : String {
 	if (self = target) {return "";}
 	var seen = Set{self};
 	var curSize = -1;
 	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
-	routes.keySet();
 	while ((not routes.containsKey(target)) and seen.size() > curSize){
+	routes.println();
 	curSize = seen.size();
 	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
