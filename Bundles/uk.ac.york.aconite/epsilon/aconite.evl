@@ -7,10 +7,11 @@ post {
 }
 
 context EAnnotation {
-
+	guard : not self.getVal("abstract").asBoolean()
+	
 	critique ContainerIsName {
 		check : self.getVals("container") = Sequence{""} or self.getVals("container").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
-		message : self.toString() + "container is not a name"
+		message : self.toAnno() + "container is not a name"
 			fix {
 			title : "Choose new container"
 			do {
@@ -20,7 +21,7 @@ context EAnnotation {
 		}
 	
 	critique ImportExists {
-		check : self.details.get("extend") = "" or EAnnotation.all.exists(i|i.details.get("name") = self.details.get("extend"))
+		check : self.details.get("extend") = "" or self.getVals("extend").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
 		message : self.details.get("name") + '\'s import does not exist.'
 	}
 
@@ -30,14 +31,15 @@ context EAnnotation {
 	}
 	
 	critique HasName {
-		guard : self.source = "sirius"
+		guard : self.source != "sirius"
 		check : self.getVal("name") != ""
-		message :  " requires a name"
+		message : self.toAnno() + " requires a name"
 	}
 	
 	critique EdgeDirectlyInDiagram {
 		guard : self.source = "sirius.edge"
-		check : EAnnotation.all.select(i|i.source = "sirius.diagram").exists(i|self.getVals("container").exists(j|j = i.details.get("name")))
+		check : self.dirInDiagram()
+		message : self.toAnno() + " edge not directly in diagram"
 	}
 	
 	critique ValidColor {
@@ -85,7 +87,15 @@ operation String isColor() : Boolean{
 	return colors.contains(self);
 }
 
-operation EAnnotation toString() : String {
+@cached
+operation EAnnotation dirInDiagram() : Boolean {
+	if (EAnnotation.all.select(i|i.source = "sirius.diagram").exists(i|self.getVals("container").exists(j|j = i.details.get("name")))) {return true;}
+			if (self.getVal("container") = ""	){
+				return self.getVals("extend").exists(i|EAnnotation.all.selectOne(j|j.getVal("name") = i).dirInDiagram());
+			} return false;
+}
+
+operation EAnnotation toAnno() : String {
 	var rtn = "@";
 	rtn += self.source+ "{";
 	for (entry : EStringToStringMapEntry in self.details){

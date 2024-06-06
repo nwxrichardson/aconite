@@ -1,41 +1,14 @@
 //Warning Any and slight inefficency if inheritance is wrong
-operation Any getRoute(target : Any) : String {
 	
-	var rtn = self.getPosRoute(target);
-	if (rtn != ""){return rtn;}
-	
-	var len = 0;
-	var pos =  "";
-	var supers =  Set{};
-	supers.add(target);
-	while (rtn = "" and supers.size() != len) {
-		len = supers.size();
-		var newSuper = Sequence{};
-		for (i in supers){
-			newSuper.addAll(i.eSuperTypes);
-		}
-		supers.addAll(newSuper);
-		for (i in supers) {
-			var pos = self.getPosRoute(i);
-			if (pos != "" and rtn.split(".").size() > pos.split(".").size()){
-				rtn = pos;
-			}
-		} 
-	}
-	
-	return rtn;
-}
-
-
-//Could be made more effiecent if you can pass a limit which stops if it is going to be longer than any previous solution
-//Also need fixing to manage multiple of the same type at a specific level
-operation Any getPosRoute(target : Any) : String {
+	operation Any getRoute(target : Any) : String {
 	if (self = target) {return "";}
 	var seen = Set{self};
 	var curSize = -1;
-	var routes = self.eAllReferences.aggregate(i|i.eType,"." + i.name);
-	while ((not routes.containsKey(target)) and seen.size() > curSize){
-	routes.println();
+	var routes = self.eAllReferences.invert().aggregate(i|i.eType, "." + i.name);
+	var supers = target.closure(i|i.eSuperTypes);
+	supers.add(target);
+	while ((not routes.keySet().exists(i|supers.contains(i))) and seen.size() > curSize){
+	
 	curSize = seen.size();
 	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
@@ -47,7 +20,24 @@ operation Any getPosRoute(target : Any) : String {
 	}
 	routes = newRoutes;
 	}
-	if  (routes.containsKey(target)){
-	return routes.get(target);
-	} return "";
+	target = target.asSet();
+	var options = Sequence{};
+	while (target != 0){
+		
+		options = Sequence{};
+		for (pos : Source!EClass in target){
+			if (routes.containsKey(pos)){
+				options.add(routes.get(pos));
+			}
+		}
+		if (options.size() != 0){
+			if (options.size() = 1){return options.first();}
+			return options.sortBy(i|i.asSequence().count(".")).first();
+		}
+		target = target.collect(i|i.eSuperTypes).flatten();
+	}
+
+	 return "";
 }
+//Could be made more effiecent if you can pass a limit which stops if it is going to be longer than any previous solution
+//Also need fixing to manage multiple of the same type at a specific level
