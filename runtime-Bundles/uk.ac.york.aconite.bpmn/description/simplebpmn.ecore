@@ -46,21 +46,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="MessageFlow" eSuperTypes="#//ConnectingObject">
     <eAnnotations source="sirius.edge">
       <details key="extend" value="Link"/>
-      <details key="container" value="BPD"/>
+      <details key="lineStyle" value="dash"/>
       <details key="name" value="Message Flow"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SequenceFlow" eSuperTypes="#//ConnectingObject">
     <eAnnotations source="sirius.edge">
       <details key="extend" value="Link"/>
-      <details key="container" value="BPD"/>
       <details key="name" value="Sequence Flow"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Association" eSuperTypes="#//ConnectingObject">
     <eAnnotations source="sirius.edge">
       <details key="extend" value="Link"/>
-      <details key="container" value="BPD"/>
+      <details key="lineStlye" value="dot"/>
       <details key="name" value="Association"/>
     </eAnnotations>
   </eClassifiers>
@@ -127,6 +126,7 @@
     <eAnnotations source="sirius.node">
       <details key="container" value="Lane"/>
       <details key="name" value="Data Object"/>
+      <details key="shape" value="image"/>
       <details key="imagePath" value="data-object.svg"/>
     </eAnnotations>
   </eClassifiers>

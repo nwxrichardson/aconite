@@ -1,7 +1,6 @@
 //Warning Any and slight inefficency if inheritance is wrong
 	
 	operation Any getRoute(target : Any) : String {
-	if (self = target) {return "";}
 	var seen = Set{self};
 	var curSize = -1;
 	var routes = self.eAllReferences.invert().aggregate(i|i.eType, "." + i.name);
@@ -13,7 +12,7 @@
 	seen.addAll(routes.keySet());
 	var newRoutes = new Map;
 	for (i in routes.keySet()){
-		newRoutes.putAll(i.eAllReferences.aggregate(j|j.eType,routes.get(i) + "." + j.name ));
+		newRoutes.putAll(i.eAllReferences.invert().aggregate(j|j.eType,routes.get(i) + "." + j.name ));
 	}
 	for (i in seen){
 		newRoutes.remove(i);
@@ -36,8 +35,8 @@
 		}
 		target = target.collect(i|i.eSuperTypes).flatten();
 	}
-
-	 return "";
+	if (self = target) {return "";}
+	return ".eAllContents()";
 }
 //Could be made more effiecent if you can pass a limit which stops if it is going to be longer than any previous solution
 //Also need fixing to manage multiple of the same type at a specific level

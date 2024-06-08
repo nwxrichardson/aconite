@@ -10,13 +10,13 @@ package basicfamily;
 
 @sirius.node(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
 
-@sirius.container(extend = "Rel Default", name = "Person", foregroundColor = "light_green", container = "Relationships")
+@sirius.container(extend = "Rel Default", name = "Person",sce = "", foregroundColor = "light_green", container = "Relationships")
 
 @sirius.border(extend = "Rel Default", sce="parents", name = "Parent", container =  "Person")
 
-@sirius.node(extend = "Rel Default", sce = "children", name = "Child", container = "Person")
+@sirius.node(extend = "Rel Default", name = "Child", container = "Person")
 
-@sirius.container(extend = "Rel Default", name = "Siblings", labelValue = "Siblings", foregroundColor = "light_yellow", container = "Relationships", showIcon = "false")
+@sirius.container(extend = "Rel Default", name = "Siblings", sce = "", labelValue = "Siblings", foregroundColor = "light_yellow", container = "Relationships", showIcon = "false")
 
 @sirius.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
 abstract class Person {
@@ -24,19 +24,19 @@ abstract class Person {
 	@sirius.edge(name = "SiblingsEdge",creatable = "false", labelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")
 	ref Person[*]#parents children;
 	ref Person[0..2]#children parents;
-	@sirius.edge(creatable = "true", name = "Mother", container = "Persons" , sourceNode = "Man, Woman", labelExpression = "", color = "purple")
+	@sirius.edge(reconnectable = "false", name = "Mother", container = "Family" , sourceNode = "Man, Woman", labelExpression = "", color = "purple")
 	derived ref Woman mother;
 	@sirius.edge(extend = "Mother", name = "Father", color = "blue")
 	derived ref Man father;
 }
 
-@sirius.diagram(name = "Persons")
+@sirius.diagram(name = "Family")
 class Family {
 	attr String name;
 	val Person[*] members;
 }
-	
-@sirius.node(name = "Man", container = "Persons", shape = "image", imagePath = "man.svg", borderSize= "0", directlyEditable = "true")
+
+@sirius.container(name = "Man", container = "Family", shape = "image", imagePath = "man.svg", borderSize= "0")
 class Man extends Person {
 }
 

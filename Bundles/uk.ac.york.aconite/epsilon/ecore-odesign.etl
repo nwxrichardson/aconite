@@ -904,7 +904,8 @@ rule EdgeStyleFromAnnotation
 	guard : s.source = "sirius.edge.description" and not s.getVal("abstract").asBoolean()	
 		t.endsCentering = Target!CenteringStyle#Both.VALUES.selectOne(i|i.literal = s.getVal("endsCentering"));
 		t.sourceArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("sourceArrow"));
-		t.targetArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("target	Arrow"));
+		t.targetArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("targetArrow"));
+		t.lineStyle = Target!LineStyle#solid.VALUES.selectOne(i|i.literal = s.getVal("lineStyle"));
 		var label = s.getVal("labelExpression");
 		if (label != ""){
 			t.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;

@@ -4,7 +4,7 @@
     <semanticResources>example.simplebpmn</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_RSzc4OBpEe6F9tgXVVr5kA">
       <viewpoint xmi:type="description:Viewpoint" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_E9mngOLqEe6KobDcxsy6IQ" name="new BPD" repPath="#_E9mAcOLqEe6KobDcxsy6IQ" changeId="1f73baf3-1194-4928-a14b-ed45c3d742b8">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_E9mngOLqEe6KobDcxsy6IQ" name="new BPD" repPath="#_E9mAcOLqEe6KobDcxsy6IQ" changeId="1ae2d77e-f6a7-43f2-8d21-7e55e8e5d4a2">
         <description xmi:type="description_1:DiagramDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']"/>
         <target xmi:type="sbpmn:BusinessProcessDiagram" href="example.simplebpmn#_S7b2UOBjEe684qFZJOTPPg"/>
       </ownedRepresentationDescriptors>
@@ -44,7 +44,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_E9pq0-LqEe6KobDcxsy6IQ"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_E9pDw-LqEe6KobDcxsy6IQ" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E9pDxOLqEe6KobDcxsy6IQ" x="384" y="222" width="363" height="303"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E9pDxOLqEe6KobDcxsy6IQ" x="414" y="180" width="363" height="303"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_wi6lYOXxEe64cu5RL7QKPQ" type="2002" element="_wir74OXxEe64cu5RL7QKPQ">
           <children xmi:type="notation:Node" xmi:id="_wi6lY-XxEe64cu5RL7QKPQ" type="5006"/>
@@ -105,7 +105,7 @@
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wjGyouXxEe64cu5RL7QKPQ"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_wjGLluXxEe64cu5RL7QKPQ" fontName="Segoe UI" fontHeight="12"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wjGLl-XxEe64cu5RL7QKPQ" x="138" y="59" width="106" height="62"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wjGLl-XxEe64cu5RL7QKPQ" x="136" y="73" width="106" height="62"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_wi7Mh-XxEe64cu5RL7QKPQ"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_wi7MiOXxEe64cu5RL7QKPQ"/>
@@ -203,17 +203,17 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_Ql5HwuX0Ee65_9ddWc7OsA" type="4001" element="_QlRcsuX0Ee65_9ddWc7OsA" source="_wjGLleXxEe64cu5RL7QKPQ" target="_wjGyo-XxEe64cu5RL7QKPQ">
           <children xmi:type="notation:Node" xmi:id="_Ql5HxuX0Ee65_9ddWc7OsA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql5Hx-X0Ee65_9ddWc7OsA" x="1" y="-11"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql5Hx-X0Ee65_9ddWc7OsA" x="2" y="-11"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_Ql5HyOX0Ee65_9ddWc7OsA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql5HyeX0Ee65_9ddWc7OsA" y="9"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql5HyeX0Ee65_9ddWc7OsA" x="2" y="8"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_Ql5HyuX0Ee65_9ddWc7OsA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql5Hy-X0Ee65_9ddWc7OsA" x="5" y="9"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql5Hy-X0Ee65_9ddWc7OsA" x="6" y="8"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_Ql5Hw-X0Ee65_9ddWc7OsA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_Ql5HxOX0Ee65_9ddWc7OsA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ql5HxeX0Ee65_9ddWc7OsA" points="[-16, -31, 68, 137]$[-69, -137, 15, 31]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ql5HxeX0Ee65_9ddWc7OsA" points="[-14, -31, 68, 151]$[-69, -151, 13, 31]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ql5u0OX0Ee65_9ddWc7OsA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ql5u0eX0Ee65_9ddWc7OsA" id="(0.5,0.5)"/>
         </edges>
@@ -251,17 +251,17 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_Ql688uX0Ee65_9ddWc7OsA" type="4001" element="_QlSq1eX0Ee65_9ddWc7OsA" source="_wi7zhOXxEe64cu5RL7QKPQ" target="_wjGLleXxEe64cu5RL7QKPQ">
           <children xmi:type="notation:Node" xmi:id="_Ql689uX0Ee65_9ddWc7OsA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql689-X0Ee65_9ddWc7OsA" x="-11" y="-5"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql689-X0Ee65_9ddWc7OsA" x="-12" y="-5"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_Ql68-OX0Ee65_9ddWc7OsA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql68-eX0Ee65_9ddWc7OsA" x="6" y="1"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql68-eX0Ee65_9ddWc7OsA" x="4"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_Ql68-uX0Ee65_9ddWc7OsA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql68--X0Ee65_9ddWc7OsA" x="-1" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ql68--X0Ee65_9ddWc7OsA" x="-1" y="8"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_Ql688-X0Ee65_9ddWc7OsA"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_Ql689OX0Ee65_9ddWc7OsA" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ql689eX0Ee65_9ddWc7OsA" points="[15, -2, -101, 12]$[63, -8, -53, 6]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ql689eX0Ee65_9ddWc7OsA" points="[15, 0, -99, 0]$[61, 0, -53, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ql68_OX0Ee65_9ddWc7OsA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Ql68_eX0Ee65_9ddWc7OsA" id="(0.5,0.5)"/>
         </edges>
@@ -417,7 +417,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlNLQOX0Ee65_9ddWc7OsA" sourceNode="_witKCOXxEe64cu5RL7QKPQ" targetNode="_wiuYIuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.3"/>
       <semanticElements xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.3"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlNLQeX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlNLQeX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Message%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlNLQuX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -426,7 +426,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlQ1ouX0Ee65_9ddWc7OsA" sourceNode="_wiuYIuXxEe64cu5RL7QKPQ" targetNode="_witKAuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.4"/>
       <semanticElements xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.4"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlQ1o-X0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlQ1o-X0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Message%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlQ1pOX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -435,7 +435,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlRcsuX0Ee65_9ddWc7OsA" sourceNode="_wiuYJeXxEe64cu5RL7QKPQ" targetNode="_wiuYKOXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.7"/>
       <semanticElements xmi:type="sbpmn:MessageFlow" href="example.simplebpmn#//@elements.7"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlRcs-X0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlRcs-X0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Message%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlRctOX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -444,7 +444,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSDwOX0Ee65_9ddWc7OsA" sourceNode="_witKCOXxEe64cu5RL7QKPQ" targetNode="_wiuYIuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.2"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.2"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSDweX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSDweX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSDwuX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -453,7 +453,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSq0OX0Ee65_9ddWc7OsA" sourceNode="_witKCOXxEe64cu5RL7QKPQ" targetNode="_witKAuXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.5"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.5"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq0eX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq0eX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSq0uX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -462,7 +462,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSq1eX0Ee65_9ddWc7OsA" sourceNode="_witKAuXxEe64cu5RL7QKPQ" targetNode="_wiuYJeXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.6"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.6"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq1uX0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq1uX0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSq1-X0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>
@@ -471,7 +471,7 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_QlSq2uX0Ee65_9ddWc7OsA" sourceNode="_witKBeXxEe64cu5RL7QKPQ" targetNode="_witKCOXxEe64cu5RL7QKPQ">
       <target xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.8"/>
       <semanticElements xmi:type="sbpmn:SequenceFlow" href="example.simplebpmn#//@elements.8"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq2-X0Ee65_9ddWc7OsA" centered="Both" strokeColor="0,0,0">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_QlSq2-X0Ee65_9ddWc7OsA" size="0" centered="Both" strokeColor="0,0,0">
         <description xmi:type="style:EdgeStyleDescription" href="../description/simplebpmn.odesign#//@ownedViewpoints[name='SimpleBPMN']/@ownedRepresentations[name='BPD']/@defaultLayer/@edgeMappings[name='Sequence%20Flow']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_QlSq3OX0Ee65_9ddWc7OsA" showIcon="false"/>
       </ownedStyle>

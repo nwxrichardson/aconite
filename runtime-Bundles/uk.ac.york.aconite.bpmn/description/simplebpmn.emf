@@ -2,8 +2,6 @@
 @sirius(iconFolder = "uk.ac.york.aconite.bpmn/svg/")
 package SimpleBPMN;
 
-//Make use of the importas in here 
-
 @sirius.diagram(name = "BPD")
 class BusinessProcessDiagram {
 	val BPMNElement[*] elements;
@@ -36,17 +34,17 @@ abstract class ConnectingObject extends BPMNElement {
 	ref FlowObject to;
 }
 
-@sirius.edge(extend = "Link", container = "BPD", name="Message Flow")
+@sirius.edge(extend = "Link", lineStyle = "dash", name="Message Flow")
 class MessageFlow extends ConnectingObject {
 	
 }
 
-@sirius.edge(extend = "Link", container = "BPD", name="Sequence Flow")
+@sirius.edge(extend = "Link", name="Sequence Flow")
 class SequenceFlow extends ConnectingObject {
 	
 }
 
-@sirius.edge(extend = "Link", container = "BPD", name="Association")
+@sirius.edge(extend = "Link", lineStlye = "dot", name="Association")
 class Association extends ConnectingObject {
 	
 }
@@ -99,7 +97,7 @@ abstract class Artifact extends BPMNElement {
 	
 }
 
-@sirius.node(container = "Lane", name="Data Object", imagePath = "data-object.svg")
+@sirius.node(container = "Lane", name="Data Object", shape = "image", imagePath = "data-object.svg")
 class DataObject extends Artifact {
 	
 }

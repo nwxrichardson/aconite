@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <basicfamily:Family xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basicfamily="http://www.eclipse.org/sirius/sample/basicfamily">
-  <members xsi:type="basicfamily:Man" name="man1" parents="//@members.1 //@members.4"/>
-  <members xsi:type="basicfamily:Woman" name="woman1" children="//@members.5 //@members.4 //@members.0" parents="//@members.4"/>
-  <members xsi:type="basicfamily:Man" name="man2" parents="//@members.3"/>
-  <members xsi:type="basicfamily:Man" name="man 3" children="//@members.2 //@members.4"/>
-  <members xsi:type="basicfamily:Man" name="man4" children="//@members.1 //@members.5 //@members.0" parents="//@members.3 //@members.1"/>
-  <members xsi:type="basicfamily:Man" name="man5" parents="//@members.1 //@members.4"/>
+  <members xsi:type="basicfamily:Man" name="Paul" children="//@members.2 //@members.9"/>
+  <members xsi:type="basicfamily:Woman" name="Isa" children="//@members.2 //@members.9"/>
+  <members xsi:type="basicfamily:Man" name="Elias" children="//@members.6 //@members.5 //@members.3 //@members.4" parents="//@members.0 //@members.1" mother="//@members.1" father="//@members.0"/>
+  <members xsi:type="basicfamily:Man" name="Bryan" parents="//@members.2" father="//@members.2"/>
+  <members xsi:type="basicfamily:Woman" name="Fiona" parents="//@members.2" father="//@members.2"/>
+  <members xsi:type="basicfamily:Woman" name="Clara" parents="//@members.2" father="//@members.2"/>
+  <members xsi:type="basicfamily:Man" name="Dave" children="//@members.7" parents="//@members.2" father="//@members.2"/>
+  <members xsi:type="basicfamily:Man" name="Alain" parents="//@members.6 //@members.8" mother="//@members.8" father="//@members.6"/>
+  <members xsi:type="basicfamily:Woman" name="Katell" children="//@members.7"/>
+  <members xsi:type="basicfamily:Woman" name="Lea" parents="//@members.1 //@members.0" mother="//@members.1" father="//@members.0"/>
 </basicfamily:Family>

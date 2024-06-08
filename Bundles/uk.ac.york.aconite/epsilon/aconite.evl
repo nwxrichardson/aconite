@@ -1,9 +1,26 @@
 pre {
 // "Running...".println();
+var inDiagram = EAnnotation.all.select(i|i.source = "sirius.diagram").collect(i|i.getVal("name")).asSet();
+var size = 0;
+while (inDiagram.size() != size){
+	size = inDiagram.size();
+	inDiagram.addAll(EAnnotation.all.select(i|inDiagram.containsAll(i.getVals("container"))).collect(i|i.getVal("name")));
+}
 }
 
 post {
 // "Done...".println();
+}
+
+context EPackage {
+	critique UniqueName {
+		check {
+		var names = EAnnotation.all.collect(i|i.details.get("name")).select(i|i.isTypeOf(String));
+		names = names.reject(i|names.atMostNMatch(j|j = i,1));
+		return names.size() = 0;
+		}
+		message : "One or more annotations share the name(s): " + names.asSet().toList()
+	}
 }
 
 context EAnnotation {
@@ -12,25 +29,14 @@ context EAnnotation {
 	critique ContainerIsName {
 		check : self.getVals("container") = Sequence{""} or self.getVals("container").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
 		message : self.toAnno() + "container is not a name"
-			fix {
-			title : "Choose new container"
-			do {
-				UserInput.choose("Select new container?", EAnnotation.all.select(i|i.source = "sirius.container" or i.source = "sirius.diagram").toString());
-			}
-		} 
 		}
 	
-	critique ImportExists {
+	constraint ImportExists {
 		check : self.details.get("extend") = "" or self.getVals("extend").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
 		message : self.details.get("name") + '\'s import does not exist.'
 	}
-
-	critique UniqueName {
-		check : EAnnotation.all.atMostNMatch(i|i.details.get("name") = self.details.get("name"),1)
-		message : "One or more annotations share the name: " + self.getVal("name") 
-	}
 	
-	critique HasName {
+	constraint HasName {
 		guard : self.source != "sirius"
 		check : self.getVal("name") != ""
 		message : self.toAnno() + " requires a name"
@@ -42,19 +48,25 @@ context EAnnotation {
 		message : self.toAnno() + " edge not directly in diagram"
 	}
 	
-	critique ValidColor {
+	constraint ValidColor {
 		guard : self.getVal("color") != "" 
 		check : self.getVal("color").isColor()
 	}
 	
-	critique showIconIsBoolean{
+	constraint showIconIsBoolean{
 		check : self.getVal("showIcon") = "" or self.getVal("showIcon").isBoolean()	
-		message : "showIcon requires a Boolean"
+		message : "In" + self.toAnno() + "showIcon requires a Boolean"
 	}
 	
-	critique labelSizeIsInteger{
+	constraint labelSizeIsInteger{
 		check : self.getVal("labelSize") = "" or self.getVal("labelSize").isInteger()	
-		message : "labelSize requires an Integer"
+		message : "In" + self.toAnno() + "labelSize requires an Integer"
+	}
+	
+	critique annotationNotInDiagram{
+		guard : self.satisfies("ContainerIsName") and self.getVals("container") != Sequence{""}
+		check : inDiagram.contains(self.getVal("name"))		
+		message : self.toAnno() + "Not in diagram"
 	}
 }
 
@@ -103,6 +115,15 @@ operation EAnnotation toAnno() : String {
 	}
 	rtn += "}";
 	return rtn;
+}
+
+operation Set toList() : String {
+	var rtn = "";
+	var first = true;
+	for (ele : String in self) {
+		if (first) {rtn += ele; first = false;}
+		else {rtn += ", " + ele;}
+	} return rtn;
 }
 
 
