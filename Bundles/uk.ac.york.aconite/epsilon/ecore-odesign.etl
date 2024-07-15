@@ -542,7 +542,7 @@ rule EleEdgeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 
 	t.label = s.getVal("label");
-	
+	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
 	//TODO

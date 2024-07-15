@@ -9,7 +9,7 @@
 	while ((not routes.keySet().exists(i|supers.contains(i))) and seen.size() > curSize){
 	
 	curSize = seen.size();
-	seen.addAll(routes.keySet());
+	seen.addAll(routes.keySet());	
 	var newRoutes = new Map;
 	for (i in routes.keySet()){
 		newRoutes.putAll(i.eAllReferences.invert().aggregate(j|j.eType,routes.get(i) + "." + j.name ));

@@ -51,6 +51,7 @@ context EAnnotation {
 	constraint ValidColor {
 		guard : self.getVal("color") != "" 
 		check : self.getVal("color").isColor()
+		message : self.toAnno() + " has an invalid color"
 	}
 	
 	constraint showIconIsBoolean{
