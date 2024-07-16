@@ -1,6 +1,6 @@
 pre {
 // "Running...".println();
-var inDiagram = EAnnotation.all.select(i|i.source = "sirius.diagram").collect(i|i.getVal("name")).asSet();
+var inDiagram = EAnnotation.all.select(i|i.source = "aconite.diagram").collect(i|i.getVal("name")).asSet();
 var size = 0;
 while (inDiagram.size() != size){
 	size = inDiagram.size();
@@ -37,13 +37,13 @@ context EAnnotation {
 	}
 	
 	constraint HasName {
-		guard : self.source != "sirius"
+		guard : self.source != "aconite"
 		check : self.getVal("name") != ""
 		message : self.toAnno() + " requires a name"
 	}
 	
 	critique EdgeDirectlyInDiagram {
-		guard : self.source = "sirius.edge"
+		guard : self.source = "aconite.edge"
 		check : self.dirInDiagram()
 		message : self.toAnno() + " edge not directly in diagram"
 	}
@@ -102,7 +102,7 @@ operation String isColor() : Boolean{
 
 @cached
 operation EAnnotation dirInDiagram() : Boolean {
-	if (EAnnotation.all.select(i|i.source = "sirius.diagram").exists(i|self.getVals("container").exists(j|j = i.details.get("name")))) {return true;}
+	if (EAnnotation.all.select(i|i.source = "aconite.diagram").exists(i|self.getVals("container").exists(j|j = i.details.get("name")))) {return true;}
 			if (self.getVal("container") = ""	){
 				return self.getVals("extend").exists(i|EAnnotation.all.selectOne(j|j.getVal("name") = i).dirInDiagram());
 			} return false;

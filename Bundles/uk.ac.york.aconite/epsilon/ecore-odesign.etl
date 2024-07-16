@@ -77,7 +77,7 @@ pre {
 // Get the image folder, using cached to save the output the first time it is called
 @cached
 operation getImgFolder() : String {
-	return  annotations.selectOne(i|i.Source = "sirius").getVal("iconFolder");
+	return  annotations.selectOne(i|i.Source = "aconite").getVal("iconFolder");
 } 
 
 //Add the file to the folder
@@ -96,7 +96,7 @@ operation String getColor() : Target!SystemColor  {
 // Get the diagram of a node or container
 @cached
 operation Source!EAnnotation getDiagram() : Source!EAnnotation{
-	if (self.Source = "sirius.diagram") {return self;}
+	if (self.Source = "aconite.diagram") {return self;}
 	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
 }  
 
@@ -195,7 +195,7 @@ rule PackageFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!Group {
 	
-	guard : s.Source = "sirius"
+	guard : s.Source = "aconite"
 	var viewpoint = new Target!Viewpoint;
 	t.ownedViewpoints.add(viewpoint);
 	
@@ -209,7 +209,7 @@ rule PackageFromAnnotation
  *		a longer preamble.)
  */	
 	
-	var diagrams = annotations.select(i|i.Source = "sirius.diagram").equivalent();
+	var diagrams = annotations.select(i|i.Source = "aconite.diagram").equivalent();
 	viewpoint.ownedRepresentations.addAll(diagrams);	
 	
 /* 
@@ -237,13 +237,13 @@ rule DiagramFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!DiagramDescription {
 	
-	guard : s.Source = "sirius.diagram" and not s.getVal("abstract").asBoolean()
+	guard : s.Source = "aconite.diagram" and not s.getVal("abstract").asBoolean()
 	var element = s.eModelElement;
 	t.domainClass = element.getDC();
 	t.name = s.getVal("name");
 	var defaultLayer = new Target!Layer;
 
-	var tools = annotations.select(i|i.Source.startsWith("sirius.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
+	var tools = annotations.select(i|i.Source.startsWith("aconite.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
 	if (tools.notEmpty()){
 		var toolBox = new Target!ToolSection;
 		toolBox.name = "Generated Creation Tools";
@@ -254,9 +254,9 @@ rule DiagramFromAnnotation
 
 	defaultLayer.name = "Default";
 	t.defaultLayer = defaultLayer;
-	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.node")).equivalent());
-	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.edge")).equivalent());
-	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.container")).equivalent());
+	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.node")).equivalent());
+	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.edge")).equivalent());
+	defaultLayer.containerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.container")).equivalent());
 	}
 	
 @abstract 
@@ -314,14 +314,14 @@ rule SudoNodeFromAnnotation
 	to 			t : Target!NodeMapping 
 	extends AbstractNodeFromAnnotation{
 	
-	guard : (s.Source.startsWith("sirius.node") or s.Source.startsWith("sirius.border"))
+	guard : (s.Source.startsWith("aconite.node") or s.Source.startsWith("aconite.border"))
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
 	t.label = s.getVal("label", t.name);
 	
-	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
+	t.conditionnalStyles = annotations.select(i|i.Source = "aconite.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
 	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
@@ -364,21 +364,21 @@ rule SudoContainerFromAnnotation
 	to 			t : Target!ContainerMapping 
 	extends AbstractNodeFromAnnotation{
 	
-	guard : s.Source.startsWith("sirius.container")
+	guard : s.Source.startsWith("aconite.container")
 	
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	
 	t.label = s.getVal("label", t.name);
 	
-	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
+	t.conditionnalStyles = annotations.select(i|i.Source = "aconite.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
 	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	
-	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.node")).equivalent());
-	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "sirius.border").equivalent());
-	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("sirius.container")).equivalent());
+	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.node")).equivalent());
+	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "aconite.border").equivalent());
+	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.container")).equivalent());
 	
 	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
 	
@@ -411,9 +411,9 @@ rule AbsEdgeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!EdgeMapping 
 	extends AbstractMappingFromAnnotation {
-	guard : s.Source = "sirius.edge"
+	guard : s.Source = "aconite.edge"
 	
-	t.conditionnalStyles = annotations.select(i|i.Source = "sirius.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalEdgeFromAnnotation");
+	t.conditionnalStyles = annotations.select(i|i.Source = "aconite.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalEdgeFromAnnotation");
 	
 	var preStyled = emfTool.getECoreUtil.copy(annotations.select(i|i.source = s.source + ".description").selectOne(i|i.getVal("edge") = s.getVal("name")));
 	if (preStyled.isUndefined()){
@@ -444,12 +444,12 @@ rule RefEdgeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|Sequence{"sirius.edge","sirius.node","sirius.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eContainingClass.isSuperTypeOf(i.eModelElement) and (not s.getVal("abstract").asBoolean())).equivalent();
+	t.sourceMapping = annotations.select(i|Sequence{"aconite.edge","aconite.node","aconite.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eContainingClass.isSuperTypeOf(i.eModelElement) and (not s.getVal("abstract").asBoolean())).equivalent();
 	}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");	
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|Sequence{"sirius.edge","sirius.node","sirius.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement)).equivalent();
+	t.targetMapping = annotations.select(i|Sequence{"aconite.edge","aconite.node","aconite.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement)).equivalent();
 	}
 	
 	if (s.getVal("creatable").asBoolean()){
@@ -548,13 +548,13 @@ rule EleEdgeFromAnnotation
 	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.Source != "sirius" and i.eModelElement.isTypeOf(Source!EClass) and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and not i.Source.endsWith("description")).equivalent();}
+	t.sourceMapping = annotations.select(i|i.Source != "aconite" and i.eModelElement.isTypeOf(Source!EClass) and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "aconite.diagram" and i.Source != "aconite.condition" and not i.Source.endsWith("description")).equivalent();}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
 	//TODO Remove this work around
 	
-	t.targetMapping = annotations.select(i|i.Source != "sirius" and i.eModelElement.isTypeOf(Source!EClass) and element.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "sirius.diagram" and i.Source != "sirius.condition" and i.Source != "sirius.diagram" and not i.Source.endsWith("description")).equivalent();}
+	t.targetMapping = annotations.select(i|i.Source != "aconite" and i.eModelElement.isTypeOf(Source!EClass) and element.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement) and i.Source != "aconite.diagram" and i.Source != "aconite.condition" and i.Source != "aconite.diagram" and not i.Source.endsWith("description")).equivalent();}
 	//TODO make this a function
 	if (s.getVal("creatable").asBoolean()){
 		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
@@ -659,7 +659,7 @@ rule EleEdgeFromAnnotation
 rule ConditionalFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ConditionalStyleDescription {
-	guard : s.Source = "sirius.condition"
+	guard : s.Source = "aconite.condition"
 	t.predicateExpression = s.getVal("condition");
 	} 
 	
@@ -668,7 +668,7 @@ rule ConditionalNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ConditionalNodeStyleDescription 
 	extends ConditionalFromAnnotation {
-		 t.style = annotations.selectOne(i|i.Source = "sirius.node.description" and i.getVal("node") = s.getVal("name")).equivalent();
+		 t.style = annotations.selectOne(i|i.Source = "aconite.node.description" and i.getVal("node") = s.getVal("name")).equivalent();
 	} 
 
 @lazy
@@ -676,7 +676,7 @@ rule ConditionalContainerFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ConditionalContainerStyleDescription 
 	extends ConditionalFromAnnotation {
-		 t.style = annotations.selectOne(i|i.Source = "sirius.container.description" and i.getVal("node") = s.getVal("name")).equivalent();
+		 t.style = annotations.selectOne(i|i.Source = "aconite.container.description" and i.getVal("node") = s.getVal("name")).equivalent();
 	} 
 	
 @lazy
@@ -684,7 +684,7 @@ rule ConditionalContainerFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ConditionalEdgeStyleDescription 
 	extends ConditionalFromAnnotation {
-		 t.style = annotations.selectOne(i|i.Source = "sirius.edge.description" and i.getVal("node") = s.getVal("name")).equivalent();
+		 t.style = annotations.selectOne(i|i.Source = "aconite.edge.description" and i.getVal("node") = s.getVal("name")).equivalent();
 	} 
 
 /*
@@ -698,7 +698,7 @@ rule ConditionalContainerFromAnnotation
 rule ReferenceCreationToolFromAnnotation
 	transform s : Source!EAnnotation 
 	to t : Target!MappingBasedToolDescription {
-	guard : s.Source = "sirius.tool.creation.reference" and not s.getVal("abstract").asBoolean()
+	guard : s.Source = "aconite.tool.creation.reference" and not s.getVal("abstract").asBoolean()
 	t.forceRefresh = true;
 	t.name = "Add to " + s.eModelElement.name.ftuc();
 	}
@@ -738,7 +738,7 @@ rule ContainerReferenceCreationToolFromAnnotation
 rule CreationToolFromAnnotation
 	transform s : Source!EAnnotation 
 	to t : Target!MappingBasedToolDescription {
-	guard : s.Source = "sirius.tool.creation" and not s.getVal("abstract").asBoolean()
+	guard : s.Source = "aconite.tool.creation" and not s.getVal("abstract").asBoolean()
 	t.forceRefresh = true;
 	t.name = "Add to " + s.getVal("name").ftuc();
 	}
@@ -748,7 +748,7 @@ rule ContainerCreationToolFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!ContainerCreationDescription 
 	extends CreationToolFromAnnotation {
-	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.container"
+	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "aconite.container"
 	var element = annotations.select(i|i.getVal("name") = s.getVal("container"));
 	t.containerMappings = element.equivalent();
 	var changeContext = new Target!ChangeContext;
@@ -766,7 +766,7 @@ rule NodeCreationToolFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!NodeCreationDescription 
 	extends CreationToolFromAnnotation {
-	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "sirius.node"
+	guard : s.getVal("container") != "" and annotations.selectOne(i|i.getVal("name") = s.getVal("container")).Source = "aconite.node"
 	var element = annotations.select(i|i.getVal("name") = s.getVal("container"));
 	t.nodeMappings = element.equivalent();
 	var changeContext = new Target!ChangeContext;
@@ -799,8 +799,8 @@ rule ImportNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!NodeMappingImport
 	extends SudoNodeFromAnnotation, AbstractMappingImportFromAnnotation{
-	guard : s.Source.startsWith("sirius.node")
-	t.importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.node").equivalent();
+	guard : s.Source.startsWith("aconite.node")
+	t.importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "aconite.node").equivalent();
 	}
 	
 @lazy
@@ -808,8 +808,8 @@ rule ImportContainerFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ContainerMappingImport
 	extends SudoContainerFromAnnotation, AbstractMappingImportFromAnnotation{
-	guard : s.Source.startsWith("sirius.container")
-	t.importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "sirius.container").equivalent();
+	guard : s.Source.startsWith("aconite.container")
+	t.importedMapping = annotations.select(i|i.getVal("name") = s.getVal("importedMapping")).selectOne(i|i.Source = "aconite.container").equivalent();
 	}
 
 /*
@@ -867,7 +867,7 @@ rule NodeStyleFromAnnotation
 	to t : Target!NodeStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
-	guard : (s.source = "sirius.node.description" or s.source = "sirius.border.description") and (not s.getVal("abstract").asBoolean())
+	guard : (s.source = "aconite.node.description" or s.source = "aconite.border.description") and (not s.getVal("abstract").asBoolean())
 	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
  	t.iconPath = s.getVal("iconPath");
@@ -882,7 +882,7 @@ rule ContainerStyleFromAnnotation
 	to t : Target!ContainerStyleDescription
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation , RoundedCornerFromAnnotation
 	{
-	guard : s.source = "sirius.container.description" and not s.getVal("abstract").asBoolean()
+	guard : s.source = "aconite.container.description" and not s.getVal("abstract").asBoolean()
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault","false").asBoolean();
  	t.iconPath = s.getVal("iconPath");
 	t.heightComputationExpression = s.getVal("heightComputationExpression");
@@ -901,7 +901,7 @@ rule ContainerStyleFromAnnotation
 rule EdgeStyleFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!EdgeStyleDescription{
-	guard : s.source = "sirius.edge.description" and not s.getVal("abstract").asBoolean()	
+	guard : s.source = "aconite.edge.description" and not s.getVal("abstract").asBoolean()	
 		t.endsCentering = Target!CenteringStyle#Both.VALUES.selectOne(i|i.literal = s.getVal("endsCentering"));
 		t.sourceArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("sourceArrow"));
 		t.targetArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("targetArrow"));
