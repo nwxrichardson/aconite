@@ -1008,8 +1008,7 @@ rule WorkspaceImageNodeFromAnnotation
 	guard : s.getVal("shape") = "image"
 	
 	t.workspacePath = s.getVal("imagePath").makeImg();
-	}
-
+}
 /* 
  * ----------------------------------------------------------------------------------
  * 		POST

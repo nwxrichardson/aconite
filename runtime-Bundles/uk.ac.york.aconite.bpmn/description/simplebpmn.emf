@@ -1,8 +1,8 @@
 @namespace(uri="http://eclipse.org/eugenia/simplebpmn", prefix="sbpmn")
-@sirius(iconFolder = "uk.ac.york.aconite.bpmn/svg/")
+@aconite(iconFolder = "uk.ac.york.aconite.bpmn/svg/")
 package SimpleBPMN;
 
-@sirius.diagram(name = "BPD")
+@aconite.diagram(name = "BPD")
 class BusinessProcessDiagram {
 	val BPMNElement[*] elements;
 }
@@ -16,42 +16,42 @@ class BPMNElement {
 abstract class Swimlane extends BPMNElement {
 	
 }
-@sirius.container(name = "Lane", container = "BPD, Group, Pool")
+@aconite.container(name = "Lane", container = "BPD, Group, Pool")
 class Lane extends Swimlane {
 	val FlowObject[*] flowObjects;
 }
 
-@sirius.container(name = "Pool", container = "BPD, Group")
+@aconite.container(name = "Pool", container = "BPD, Group")
 class Pool extends Swimlane {
 	val Lane[*] lanes;
 }
 
 /* CONNECTING OBJECTS */
 
-@sirius.edge(container = "BPD", name="Link",~abstract = "true",  source = "from", target = "to", color = "black")
+@aconite.edge(container = "BPD", name="Link",~abstract = "true",  source = "from", target = "to", color = "black")
 abstract class ConnectingObject extends BPMNElement {
 	ref FlowObject from;
 	ref FlowObject to;
 }
 
-@sirius.edge(extend = "Link", lineStyle = "dash", name="Message Flow")
+@aconite.edge(extend = "Link", lineStyle = "dash", name="Message Flow")
 class MessageFlow extends ConnectingObject {
 	
 }
 
-@sirius.edge(extend = "Link", name="Sequence Flow")
+@aconite.edge(extend = "Link", name="Sequence Flow")
 class SequenceFlow extends ConnectingObject {
 	
 }
 
-@sirius.edge(extend = "Link", lineStlye = "dot", name="Association")
+@aconite.edge(extend = "Link", lineStlye = "dot", name="Association")
 class Association extends ConnectingObject {
 	
 }
 
 /* FLOW OBJECTS */
 
-@sirius.node(~abstract = "true",container = "Lane", name = "Flow", shape = "image", borderSize = "0")
+@aconite.node(~abstract = "true",container = "Lane", name = "Flow", shape = "image", borderSize = "0")
 abstract class FlowObject extends BPMNElement {
 
 }
@@ -60,33 +60,33 @@ abstract class Gateway extends FlowObject {
 	
 }
 
-@sirius.node(extend = "Flow", name = "XOR",  imagePath = "xor-gateway.svg")
+@aconite.node(extend = "Flow", name = "XOR",  imagePath = "xor-gateway.svg")
 class XOR extends Gateway {
 	
 }
 
-@sirius.node(extend = "Flow", name = "OR",  imagePath = "or-gateway.svg")
+@aconite.node(extend = "Flow", name = "OR",  imagePath = "or-gateway.svg")
 class OR extends Gateway {
 	
 }
 
-@sirius.node(extend = "Flow", name = "AND",  imagePath = "and-gateway.svg")
+@aconite.node(extend = "Flow", name = "AND",  imagePath = "and-gateway.svg")
 class AND extends Gateway {
 }
 
-@sirius.node(extend = "Flow", name = "Start Event",  imagePath = "start-event.svg")
+@aconite.node(extend = "Flow", name = "Start Event",  imagePath = "start-event.svg")
 class StartEvent extends FlowObject {
 }
 
-@sirius.node(extend = "Flow", name = "Intermediate Event",  imagePath = "intermediate-event.svg")
+@aconite.node(extend = "Flow", name = "Intermediate Event",  imagePath = "intermediate-event.svg")
 class IntermediateEvent extends FlowObject {
 }
 
-@sirius.node(extend = "Flow", name = "End Event",  imagePath = "end-event.svg")
+@aconite.node(extend = "Flow", name = "End Event",  imagePath = "end-event.svg")
 class EndEvent extends FlowObject {
 }
 
-@sirius.node(name = "Activity", container = "Lane")
+@aconite.node(name = "Activity", container = "Lane")
 class Activity extends FlowObject {
 
 }
@@ -97,12 +97,12 @@ abstract class Artifact extends BPMNElement {
 	
 }
 
-@sirius.node(container = "Lane", name="Data Object", shape = "image", imagePath = "data-object.svg")
+@aconite.node(container = "Lane", name="Data Object", shape = "image", imagePath = "data-object.svg")
 class DataObject extends Artifact {
 	
 }
 
-@sirius.container(container = "BPD", name = "Group")
+@aconite.container(container = "BPD", name = "Group")
 class Group extends Artifact {
 	val BPMNElement[*] elements;
 }

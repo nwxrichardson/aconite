@@ -7,7 +7,6 @@
 	var supers = target.closure(i|i.eSuperTypes);
 	supers.add(target);
 	while ((not routes.keySet().exists(i|supers.contains(i))) and seen.size() > curSize){
-	
 	curSize = seen.size();
 	seen.addAll(routes.keySet());	
 	var newRoutes = new Map;
@@ -19,6 +18,12 @@
 	}
 	routes = newRoutes;
 	}
+	
+	if (not routes.keySet().exists(i|supers.contains(i))){
+		if (self = target) {return "";}
+		return ".eAllContents()";
+	}
+	
 	target = target.asSet();
 	var options = Sequence{};
 	while (target != 0){
@@ -35,8 +40,7 @@
 		}
 		target = target.collect(i|i.eSuperTypes).flatten();
 	}
-	if (self = target) {return "";}
-	return ".eAllContents()";
+	
 }
 //Could be made more effiecent if you can pass a limit which stops if it is going to be longer than any previous solution
 //Also need fixing to manage multiple of the same type at a specific level

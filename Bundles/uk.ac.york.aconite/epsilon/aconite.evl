@@ -48,10 +48,47 @@ context EAnnotation {
 		message : self.toAnno() + " edge not directly in diagram"
 	}
 	
-	constraint ValidColor {
+	constraint createElementsIsBoolean{
+		check : self.getVal("createElements") = "" or self.getVal("createElements").isBoolean()	
+		message : "In" + self.toAnno() + "createElements requires a Boolean"
+	}
+	
+	constraint synchronizationLockIsBoolean{
+		check : self.getVal("synchronizationLock") = "" or self.getVal("synchronizationLock").isBoolean()	
+		message : "In" + self.toAnno() + "synchronizationLock requires a Boolean"
+	}
+	
+	constraint colorIsColor {
 		guard : self.getVal("color") != "" 
 		check : self.getVal("color").isColor()
 		message : self.toAnno() + " has an invalid color"
+	}
+	
+	constraint backgroundColorIsColor {
+		guard : self.getVal("backgroundColor") != "" 
+		check : self.getVal("backgroundColor").isColor()
+		message : self.toAnno() + " has an invalid backgroundColor"
+	}
+	
+	constraint foregroundColorIsColor {
+		guard : self.getVal("foregroundColor") != "" 
+		check : self.getVal("foregroundColor").isColor()
+		message : self.toAnno() + " has an invalid foregroundColor"
+	}
+	
+	constraint heightIsInteger{
+		check : self.getVal("height") = "" or self.getVal("height").isInteger()	
+		message : "In" + self.toAnno() + "height requires an Integer"
+	}
+	
+	constraint widthIsInteger{
+		check : self.getVal("width") = "" or self.getVal("width").isInteger()	
+		message : "In" + self.toAnno() + "width requires an Integer"
+	}
+	
+	constraint roundedCornerIsBoolean{
+		check : self.getVal("roundedCorner") = "" or self.getVal("roundedCorner").isBoolean()	
+		message : "In" + self.toAnno() + "roundedCorner requires a Boolean"
 	}
 	
 	constraint showIconIsBoolean{
@@ -63,6 +100,29 @@ context EAnnotation {
 		check : self.getVal("labelSize") = "" or self.getVal("labelSize").isInteger()	
 		message : "In" + self.toAnno() + "labelSize requires an Integer"
 	}
+	
+	constraint labelColorIsColor {
+		guard : self.getVal("labelColor") != "" 
+		check : self.getVal("labelColor").isColor()
+		message : self.toAnno() + " has an invalid labelColor"
+	}
+	
+	constraint borderColorIsColor {
+		guard : self.getVal("borderColor") != "" 
+		check : self.getVal("borderColor").isColor()
+		message : self.toAnno() + " has an invalid borderColor"
+	}
+	
+	///////////////////////////////////////////////////
+	
+	
+	
+	
+	constraint labelSizeIsInteger{
+		check : self.getVal("labelSize") = "" or self.getVal("labelSize").isInteger()	
+		message : "In" + self.toAnno() + "labelSize requires an Integer"
+	}
+	
 	
 	critique annotationNotInDiagram{
 		guard : self.satisfies("ContainerIsName") and self.getVals("container") != Sequence{""}

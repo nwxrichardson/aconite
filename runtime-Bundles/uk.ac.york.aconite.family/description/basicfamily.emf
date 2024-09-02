@@ -1,4 +1,4 @@
-@sirius(iconFolder = "uk.ac.york.aconite.family/icons/")
+@aconite(iconFolder = "uk.ac.york.aconite.family/icons/")
 @namespace(uri="http://www.eclipse.org/sirius/sample/basicfamily", prefix="basicfamily")
 package basicfamily;
 //Order in a nicer way
@@ -6,41 +6,41 @@ package basicfamily;
 //Add within to options for container
 //Change pro to labelValue
 //template rather than import + fix it
-@sirius.diagram(name = "Relationships")
+@aconite.diagram(name = "Relationships")
 
-@sirius.node(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
+@aconite.node(name = "Rel Default",~abstract = "true", color = "white", showIcon = "true", childrenPresentation = "List")
 
-@sirius.container(extend = "Rel Default", name = "Person",sce = "", foregroundColor = "light_green", container = "Relationships")
+@aconite.container(extend = "Rel Default", name = "Person",sce = "", foregroundColor = "light_green", container = "Relationships")
 
-@sirius.border(extend = "Rel Default", sce="parents", name = "Parent", container =  "Person")
+@aconite.border(extend = "Rel Default", sce="parents", name = "Parent", container =  "Person")
 
-@sirius.node(extend = "Rel Default", name = "Child", container = "Person")
+@aconite.node(extend = "Rel Default", name = "Child", container = "Person")
 
-@sirius.container(extend = "Rel Default", name = "Siblings", sce = "", labelValue = "Siblings", foregroundColor = "light_yellow", container = "Relationships", showIcon = "false")
+@aconite.container(extend = "Rel Default", name = "Siblings", sce = "", labelValue = "Siblings", foregroundColor = "light_yellow", container = "Relationships", showIcon = "false")
 
-@sirius.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
+@aconite.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
 abstract class Person {
 	attr String name;
-	@sirius.edge(name = "SiblingsEdge",creatable = "false", labelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")
+	@aconite.edge(name = "SiblingsEdge",creatable = "falses", labelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")
 	ref Person[*]#parents children;
 	ref Person[0..2]#children parents;
-	@sirius.edge(reconnectable = "false", name = "Mother", container = "Family" , sourceNode = "Man, Woman", labelExpression = "", color = "purple")
+	@aconite.edge(reconnectable = "false", name = "Mother", container = "Family" , sourceNode = "Man, Woman", labelExpression = "", color = "purple")
 	derived ref Woman mother;
-	@sirius.edge(extend = "Mother", name = "Father", color = "blue")
+	@aconite.edge(extend = "Mother", name = "Father", color = "blue")
 	derived ref Man father;
 }
 
-@sirius.diagram(name = "Family")
+@aconite.diagram(name = "Family")
 class Family {
 	attr String name;
 	val Person[*] members;
 }
 
-@sirius.container(name = "Man", container = "Family", shape = "image", imagePath = "man.svg", borderSize= "0")
+@aconite.node(name = "Man", container = "Family", shape = "image", imagePath = "man.svg", borderSize= "0")
 class Man extends Person {
 }
 
-@sirius.node(extend = "Man", name = "Woman", imagePath = "woman.svg")
+@aconite.node(extend = "Man", name = "Woman", imagePath = "woman.svg")
 class Woman extends Person {
 }
 

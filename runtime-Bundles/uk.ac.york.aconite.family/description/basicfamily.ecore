@@ -2,39 +2,39 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="basicfamily" nsURI="http://www.eclipse.org/sirius/sample/basicfamily"
     nsPrefix="basicfamily">
-  <eAnnotations source="sirius">
+  <eAnnotations source="aconite">
     <details key="iconFolder" value="uk.ac.york.aconite.family/icons/"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Person" abstract="true">
-    <eAnnotations source="sirius.diagram">
+    <eAnnotations source="aconite.diagram">
       <details key="name" value="Relationships"/>
     </eAnnotations>
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="name" value="Rel Default"/>
       <details key="abstract" value="true"/>
       <details key="color" value="white"/>
       <details key="showIcon" value="true"/>
       <details key="childrenPresentation" value="List"/>
     </eAnnotations>
-    <eAnnotations source="sirius.container">
+    <eAnnotations source="aconite.container">
       <details key="extend" value="Rel Default"/>
       <details key="name" value="Person"/>
       <details key="sce" value=""/>
       <details key="foregroundColor" value="light_green"/>
       <details key="container" value="Relationships"/>
     </eAnnotations>
-    <eAnnotations source="sirius.border">
+    <eAnnotations source="aconite.border">
       <details key="extend" value="Rel Default"/>
       <details key="sce" value="parents"/>
       <details key="name" value="Parent"/>
       <details key="container" value="Person"/>
     </eAnnotations>
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Rel Default"/>
       <details key="name" value="Child"/>
       <details key="container" value="Person"/>
     </eAnnotations>
-    <eAnnotations source="sirius.container">
+    <eAnnotations source="aconite.container">
       <details key="extend" value="Rel Default"/>
       <details key="name" value="Siblings"/>
       <details key="sce" value=""/>
@@ -43,7 +43,7 @@
       <details key="container" value="Relationships"/>
       <details key="showIcon" value="false"/>
     </eAnnotations>
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="name" value="Sibling"/>
       <details key="container" value="Siblings"/>
       <details key="sce" value="parents.children->excluding(self)"/>
@@ -52,9 +52,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
         eType="#//Person" eOpposite="#//Person/parents">
-      <eAnnotations source="sirius.edge">
+      <eAnnotations source="aconite.edge">
         <details key="name" value="SiblingsEdge"/>
-        <details key="creatable" value="false"/>
+        <details key="creatable" value="falses"/>
         <details key="labelExpression" value=""/>
         <details key="color" value="gray"/>
         <details key="container" value="Relationships"/>
@@ -67,7 +67,7 @@
         eType="#//Person" eOpposite="#//Person/children"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mother" eType="#//Woman"
         derived="true">
-      <eAnnotations source="sirius.edge">
+      <eAnnotations source="aconite.edge">
         <details key="reconnectable" value="false"/>
         <details key="name" value="Mother"/>
         <details key="container" value="Family"/>
@@ -78,7 +78,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="father" eType="#//Man"
         derived="true">
-      <eAnnotations source="sirius.edge">
+      <eAnnotations source="aconite.edge">
         <details key="extend" value="Mother"/>
         <details key="name" value="Father"/>
         <details key="color" value="blue"/>
@@ -86,7 +86,7 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Family">
-    <eAnnotations source="sirius.diagram">
+    <eAnnotations source="aconite.diagram">
       <details key="name" value="Family"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -94,7 +94,7 @@
         eType="#//Person" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Man" eSuperTypes="#//Person">
-    <eAnnotations source="sirius.container">
+    <eAnnotations source="aconite.node">
       <details key="name" value="Man"/>
       <details key="container" value="Family"/>
       <details key="shape" value="image"/>
@@ -103,7 +103,7 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Man"/>
       <details key="name" value="Woman"/>
       <details key="imagePath" value="woman.svg"/>

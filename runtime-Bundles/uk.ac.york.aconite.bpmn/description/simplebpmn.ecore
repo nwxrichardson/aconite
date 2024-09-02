@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="SimpleBPMN" nsURI="http://eclipse.org/eugenia/simplebpmn" nsPrefix="sbpmn">
-  <eAnnotations source="sirius">
+  <eAnnotations source="aconite">
     <details key="iconFolder" value="uk.ac.york.aconite.bpmn/svg/"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="BusinessProcessDiagram">
-    <eAnnotations source="sirius.diagram">
+    <eAnnotations source="aconite.diagram">
       <details key="name" value="BPD"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
@@ -16,7 +16,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Swimlane" abstract="true" eSuperTypes="#//BPMNElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Lane" eSuperTypes="#//Swimlane">
-    <eAnnotations source="sirius.container">
+    <eAnnotations source="aconite.container">
       <details key="name" value="Lane"/>
       <details key="container" value="BPD, Group, Pool"/>
     </eAnnotations>
@@ -24,7 +24,7 @@
         eType="#//FlowObject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pool" eSuperTypes="#//Swimlane">
-    <eAnnotations source="sirius.container">
+    <eAnnotations source="aconite.container">
       <details key="name" value="Pool"/>
       <details key="container" value="BPD, Group"/>
     </eAnnotations>
@@ -32,7 +32,7 @@
         eType="#//Lane" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectingObject" abstract="true" eSuperTypes="#//BPMNElement">
-    <eAnnotations source="sirius.edge">
+    <eAnnotations source="aconite.edge">
       <details key="container" value="BPD"/>
       <details key="name" value="Link"/>
       <details key="abstract" value="true"/>
@@ -44,27 +44,27 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="#//FlowObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageFlow" eSuperTypes="#//ConnectingObject">
-    <eAnnotations source="sirius.edge">
+    <eAnnotations source="aconite.edge">
       <details key="extend" value="Link"/>
       <details key="lineStyle" value="dash"/>
       <details key="name" value="Message Flow"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SequenceFlow" eSuperTypes="#//ConnectingObject">
-    <eAnnotations source="sirius.edge">
+    <eAnnotations source="aconite.edge">
       <details key="extend" value="Link"/>
       <details key="name" value="Sequence Flow"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Association" eSuperTypes="#//ConnectingObject">
-    <eAnnotations source="sirius.edge">
+    <eAnnotations source="aconite.edge">
       <details key="extend" value="Link"/>
       <details key="lineStlye" value="dot"/>
       <details key="name" value="Association"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FlowObject" abstract="true" eSuperTypes="#//BPMNElement">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="abstract" value="true"/>
       <details key="container" value="Lane"/>
       <details key="name" value="Flow"/>
@@ -74,56 +74,56 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Gateway" abstract="true" eSuperTypes="#//FlowObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="XOR" eSuperTypes="#//Gateway">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Flow"/>
       <details key="name" value="XOR"/>
       <details key="imagePath" value="xor-gateway.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OR" eSuperTypes="#//Gateway">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Flow"/>
       <details key="name" value="OR"/>
       <details key="imagePath" value="or-gateway.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//Gateway">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Flow"/>
       <details key="name" value="AND"/>
       <details key="imagePath" value="and-gateway.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StartEvent" eSuperTypes="#//FlowObject">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Flow"/>
       <details key="name" value="Start Event"/>
       <details key="imagePath" value="start-event.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediateEvent" eSuperTypes="#//FlowObject">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Flow"/>
       <details key="name" value="Intermediate Event"/>
       <details key="imagePath" value="intermediate-event.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EndEvent" eSuperTypes="#//FlowObject">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="extend" value="Flow"/>
       <details key="name" value="End Event"/>
       <details key="imagePath" value="end-event.svg"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Activity" eSuperTypes="#//FlowObject">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="name" value="Activity"/>
       <details key="container" value="Lane"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Artifact" abstract="true" eSuperTypes="#//BPMNElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="DataObject" eSuperTypes="#//Artifact">
-    <eAnnotations source="sirius.node">
+    <eAnnotations source="aconite.node">
       <details key="container" value="Lane"/>
       <details key="name" value="Data Object"/>
       <details key="shape" value="image"/>
@@ -131,7 +131,7 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//Artifact">
-    <eAnnotations source="sirius.container">
+    <eAnnotations source="aconite.container">
       <details key="container" value="BPD"/>
       <details key="name" value="Group"/>
     </eAnnotations>
