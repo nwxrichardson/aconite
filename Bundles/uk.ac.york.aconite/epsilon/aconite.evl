@@ -48,6 +48,12 @@ context EAnnotation {
 		message : self.toAnno() + " edge not directly in diagram"
 	}
 	
+/*
+ *----------------------------------------------------------------------------------
+ *      TYPES CHECKING
+ *----------------------------------------------------------------------------------
+ */	
+	
 	constraint createElementsIsBoolean{
 		check : self.getVal("createElements") = "" or self.getVal("createElements").isBoolean()	
 		message : "In" + self.toAnno() + "createElements requires a Boolean"
@@ -113,16 +119,35 @@ context EAnnotation {
 		message : self.toAnno() + " has an invalid borderColor"
 	}
 	
-	///////////////////////////////////////////////////
-	
-	
-	
-	
-	constraint labelSizeIsInteger{
-		check : self.getVal("labelSize") = "" or self.getVal("labelSize").isInteger()	
-		message : "In" + self.toAnno() + "labelSize requires an Integer"
+	constraint hideSubMappingsIsBoolean{
+		check : self.getVal("hideSubMappings") = "" or self.getVal("hideSubMappings").isBoolean()	
+		message : "In" + self.toAnno() + "hideSubMappings requires a Boolean"
 	}
 	
+	constraint inheritsAncestorFiltersIsBoolean{
+		check : self.getVal("inheritsAncestorFilters") = "" or self.getVal("inheritsAncestorFilters").isBoolean()	
+		message : "In" + self.toAnno() + "inheritsAncestorFilters requires a Boolean"
+	}
+	
+	constraint abstractIsBoolean{
+		check : self.getVal("abstract") = "" or self.getVal("abstract").isBoolean()	
+		message : "In" + self.toAnno() + "abstract requires a Boolean"
+	}
+	
+	constraint reconnectableIsBoolean{
+		check : self.getVal("reconnectable") = "" or self.getVal("reconnectable").isBoolean()	
+		message : "In" + self.toAnno() + "reconnectable requires a Boolean"
+	}
+	
+	constraint creatableIsBoolean{
+		check : self.getVal("creatable") = "" or self.getVal("creatable").isBoolean()	
+		message : "In" + self.toAnno() + "creatable requires a Boolean"
+	}
+	
+	constraint directlyEditableIsBoolean{
+		check : self.getVal("directlyEditable") = "" or self.getVal("directlyEditable").isBoolean()	
+		message : "In" + self.toAnno() + "directlyEditable requires a Boolean"
+	}	
 	
 	critique annotationNotInDiagram{
 		guard : self.satisfies("ContainerIsName") and self.getVals("container") != Sequence{""}
@@ -130,6 +155,12 @@ context EAnnotation {
 		message : self.toAnno() + "Not in diagram"
 	}
 }
+
+/*
+ *----------------------------------------------------------------------------------
+ *      HELPER OPERATIONS
+ *----------------------------------------------------------------------------------
+ */	
 
 operation EAnnotation getVals(key : String) : Sequence{
 	var tmp = self.details.selectOne(i|i.key = key);

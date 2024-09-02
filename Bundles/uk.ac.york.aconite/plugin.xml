@@ -21,24 +21,41 @@
 	</extension>
 	<extension
    			point="org.eclipse.ui.menus">
-   		<menuContribution
-   			allPopups="false"
-   			locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
-   			<command
-   				commandId="uk.ac.york.aconite.Ecore2Sirius"
-   				label="Generate Odesign from Ecore"
-   				style="push">
-   			</command>
-   		</menuContribution>
-   		<menuContribution
-   			allPopups="false"
-   			locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
-   			<command
-   				commandId="uk.ac.york.aconite.Sirius2Ecore"
-   				label="Generate Annotated Ecore from Odesign"
-   				style="push">
-   			</command>
-   		</menuContribution>
+     <menuContribution
+           allPopups="false"
+           locationURI="popup:org.eclipse.ui.popup.any?before=compareWithMenu">
+        <menu
+              icon="icons/AconiteIcon.png"
+              label="Aconite">
+           <command
+                 commandId="uk.ac.york.aconite.Ecore2Sirius"
+                 label="Generate Odesign"
+                 style="push">
+              <visibleWhen
+                    checkEnabled="false">
+                 <with
+                       variable="activeMenuSelection">
+                    <iterate
+                          ifEmpty="false">
+                       <adapt
+                             type="org.eclipse.core.resources.IResource">
+                             <or>
+                             <test
+                                   property="org.eclipse.core.resources.extension"
+                                   value="emf">
+                             </test>
+                             <test
+                                   property="org.eclipse.core.resources.extension"
+                                   value="ecore">
+                             </test>
+                          </or>
+                       </adapt>
+                    </iterate>
+                 </with>
+              </visibleWhen>
+           </command>
+         </menu>
+     </menuContribution>
    	</extension>
    	 <extension
          point="org.eclipse.epsilon.evl.emf.validation">

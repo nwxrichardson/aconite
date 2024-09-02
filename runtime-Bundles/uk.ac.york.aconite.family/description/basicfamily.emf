@@ -21,7 +21,7 @@ package basicfamily;
 @aconite.node(name = "Sibling",  container = "Siblings", sce = "parents.children->excluding(self)", showIcon = "true")
 abstract class Person {
 	attr String name;
-	@aconite.edge(name = "SiblingsEdge",creatable = "falses", labelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")
+	@aconite.edge(name = "SiblingsEdge",creatable = "false", labelExpression = "", color = "gray", container = "Relationships", targetFinderExpression = "aql:self", sourceNode = "Person", targetNode = "Siblings")
 	ref Person[*]#parents children;
 	ref Person[0..2]#children parents;
 	@aconite.edge(reconnectable = "false", name = "Mother", container = "Family" , sourceNode = "Man, Woman", labelExpression = "", color = "purple")

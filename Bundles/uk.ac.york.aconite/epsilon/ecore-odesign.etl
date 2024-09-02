@@ -26,8 +26,8 @@ pre {
 	/* 
 	 * While there exists an annotation with two containers copy them out and add to the name
 	 * and set the container to the same option. This happens all the way down and happens in
-	 * any order. The reason is that the names in this case do not matter in future it will
-	 * be a hash but makes no reference
+	 * any order. The reason is that the names in this case do not matter in the future it will
+	 * be a hash but makes no difference.
 	 */
 	while (annotations.exists(i|i.getVals("container").size() > 1)){
 		var newAnnotations = new Sequence;
@@ -183,7 +183,14 @@ operation Source!EReference oneRef() : Boolean {
 	return self.upperBound = 1;
 }
 
-
+operation Sequence alignStyle(set : String) : Any {
+	for (opt in self) {
+		var optStr = opt.toString().toLowerCase().replace("_","");
+		if (optStr = set){
+			return opt;
+		}
+	}
+}
 
 /*
  *----------------------------------------------------------------------------------
@@ -242,7 +249,6 @@ rule DiagramFromAnnotation
 	t.domainClass = element.getDC();
 	t.name = s.getVal("name");
 	var defaultLayer = new Target!Layer;
-
 	var tools = annotations.select(i|i.Source.startsWith("aconite.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
 	if (tools.notEmpty()){
 		var toolBox = new Target!ToolSection;
@@ -380,7 +386,7 @@ rule SudoContainerFromAnnotation
 	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "aconite.border").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.container")).equivalent());
 	
-	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.selectOne(i|i.literal = s.getVal("childrenPresentation"));
+	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.alignStyle(s.getVal("childrenPresentation"));
 	
 	if (s.getVal("creatable").asBoolean()){
 		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
@@ -439,7 +445,6 @@ rule RefEdgeFromAnnotation
 	extends AbsEdgeFromAnnotation {
 	guard : s.eModelElement.isTypeOf(Source!EReference)
 	
-	//TODO Make this work the way one would expect
 	var element = s.eModelElement;
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	t.label = s.getVal("label", t.name);
@@ -680,7 +685,7 @@ rule ConditionalContainerFromAnnotation
 	} 
 	
 @lazy
-rule ConditionalContainerFromAnnotation
+rule ConditionalEdgeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!ConditionalEdgeStyleDescription 
 	extends ConditionalFromAnnotation {
@@ -823,7 +828,7 @@ rule BorderedStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!BorderedStyleDescription{
 	t.borderColor = s.getVal("borderColor").getColor();
-	t.borderLineStyle = Target!LineStyle#dot.VALUES.selectOne(i|i.literal = s.getVal("borderLineStyle"));
+	t.borderLineStyle = Target!LineStyle#dot.VALUES.alignStyle(s.getVal("borderLineStyle"));
 	t.borderSizeComputationExpression = "aql:" + s.getVal("borderSize");
 	}
 	
@@ -832,10 +837,10 @@ rule LabelStyleFromAnnotation
 	transform s : Source!EAnnotation
 	to t : Target!LabelStyleDescription{
 	t.iconPath = s.getVal("iconPath").makeImg();
-	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.selectOne(i|i.literal = s.getVal("labelAlignment"));
+	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.alignStyle(s.getVal("labelAlignment"));
 	t.labelColor = s.getVal("labelColor").getColor();
 	t.labelExpression = s.getVal("labelValue");
-	t.labelFormat = Target!FontFormat#bold.VALUES.select(i|s.getVals("borderLineStyle").exists(j|j = i.literal));
+	t.labelFormat = Target!FontFormat#bold.VALUES.alignStyle(s.getVal("borderLineStyle"));
 	t.labelSize = s.getVal("labelSize").asInteger();
 	t.showIcon = s.getVal("showIcon").asBoolean();
 	}
@@ -868,11 +873,11 @@ rule NodeStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
 	guard : (s.source = "aconite.node.description" or s.source = "aconite.border.description") and (not s.getVal("abstract").asBoolean())
-	t.forbiddenSides = Target!Side#NORTH.VALUES.select(i|s.getVals("forbiddenSides").exists(j|j = i.literal));
+	t.forbiddenSides = Target!Side#NORTH.VALUES.alignStyle(s.getVal("forbiddenSides"));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
  	t.iconPath = s.getVal("iconPath");
- 	t.labelPosition = Target!LabelPosition#node.VALUES.selectOne(i|i.literal = s.getVal("labelPosition"));
- 	t.resizeKind = Target!ResizeKind#NSEW.VALUES.selectOne(i|i.literal = s.getVal("resizeKind"));
+ 	t.labelPosition = Target!LabelPosition#node.VALUES.alignStyle(s.getVal("labelPosition"));
+ 	t.resizeKind = Target!ResizeKind#NSEW.VALUES.alignStyle(s.getVal("resizeKind"));
 	t.sizeComputationExpression = s.getVal("sizeComputationExpression");
 	}
 		
@@ -902,10 +907,10 @@ rule EdgeStyleFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!EdgeStyleDescription{
 	guard : s.source = "aconite.edge.description" and not s.getVal("abstract").asBoolean()	
-		t.endsCentering = Target!CenteringStyle#Both.VALUES.selectOne(i|i.literal = s.getVal("endsCentering"));
-		t.sourceArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("sourceArrow"));
-		t.targetArrow = Target!EdgeArrows#NoDecoration.VALUES.selectOne(i|i.literal = s.getVal("targetArrow"));
-		t.lineStyle = Target!LineStyle#solid.VALUES.selectOne(i|i.literal = s.getVal("lineStyle"));
+		t.endsCentering = Target!CenteringStyle#Both.VALUES.alignStyle(s.getVal("endsCentering"));
+		t.sourceArrow = Target!EdgeArrows#NoDecoration.VALUES.alignStyle(s.getVal("sourceArrow"));
+		t.targetArrow = Target!EdgeArrows#NoDecoration.VALUES.alignStyle(s.getVal("targetArrow"));
+		t.lineStyle = Target!LineStyle#solid.VALUES.alignStyle(s.getVal("lineStyle"));
 		var label = s.getVal("labelExpression");
 		if (label != ""){
 			t.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
@@ -924,7 +929,7 @@ rule FlatContainerFromAnnotation
 	
 	t.backgroundColor = s.getVal("backgroundColor").getColor();
 	t.foregroundColor = s.getVal("foregroundColor").getColor();
-	t.backgroundStyle = Target!BackgroundStyle#Liquid.VALUES.selectOne(i|i.literal = s.getVal("backgroundStyle","GradientLeftToRight"));
+	t.backgroundStyle = Target!BackgroundStyle#Liquid.VALUES.alignStyle(s.getVal("backgroundStyle"));
 	
 	}
 	
@@ -937,7 +942,7 @@ rule ShapeContainerFromAnnotation
 	
 	t.backgroundColor = s.getVal("color").getColor();
 	//Pointless - But needed!
-	t.shape = Target!ContainerShape#parallelogram.VALUES.selectOne(i|i.literal = s.getVal("shape","parallelogram"));
+	t.shape = Target!ContainerShape#parallelogram.VALUES.alignStyle(s.getVal("shape","parallelogram"));
 	
 	}
 

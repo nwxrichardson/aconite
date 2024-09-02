@@ -54,7 +54,7 @@
         eType="#//Person" eOpposite="#//Person/parents">
       <eAnnotations source="aconite.edge">
         <details key="name" value="SiblingsEdge"/>
-        <details key="creatable" value="falses"/>
+        <details key="creatable" value="false"/>
         <details key="labelExpression" value=""/>
         <details key="color" value="gray"/>
         <details key="container" value="Relationships"/>
