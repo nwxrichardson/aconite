@@ -174,7 +174,7 @@ operation EAnnotation getVal(key : String) : String{
 
 	var tmp = self.details.selectOne(i|i.key = key);
 	if (tmp.isDefined()){
-	return tmp.value;
+		return tmp.value;
 	}
 	return "";
 

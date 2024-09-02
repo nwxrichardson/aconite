@@ -45,6 +45,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "sce"	: return self.getVal("candidates");
 		case "endsCentering"	: return "Both";
 		case "sourceArrow"	: return "NoDecoration";
+		case "backgroundStyle"	: return "GradientLeftToRight";
 		case "targetArrow"	: return "InputArrow";
 		case "lineStyle"	: return "solid";
 		case "candidates"	: return self.getVal("semanticCandidatesExpression").replaceFirst(".","");
