@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>uk.ac.york.aconite</groupId>
+  <artifactId>aconite</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <tycho.version>4.0.3</tycho.version>
+    <tycho.scmUrl>scm:git:https://github.com/nwxrichardson/Aconite.git</tycho.scmUrl>
+    <java.version>17</java.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>license-feature</id>
+      <url>https://download.eclipse.org/cbi/updates/license</url>
+      <layout>p2</layout>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>eclipse</id>
+      <url>https://repo.eclipse.org/content/groups/cbi</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>dash-licenses-snapshots</id>
+      <url>https://repo.eclipse.org/content/repositories/dash-licenses-releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <modules>
+    <module>bundles</module>
+    <module>features</module>
+    <module>releng</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <extensions>true</extensions>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.0</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+      </plugin>
+
+      <!-- Generate source bundles (exclude target so we don't enter
+           an infinite loop for binary-only plugins, which have itself
+           as the source). -->
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-source-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <executions>
+          <execution>
+            <id>plugin-source</id>
+            <goals>
+              <goal>plugin-source</goal>
+            </goals>
+            <configuration>
+              <excludes>
+                <exclude>target/**</exclude>
+              </excludes>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-versions-plugin</artifactId>
+        <version>${tycho.version}</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho.version}</version>
+        <configuration>
+          <targetDefinitionIncludeSource>ignore</targetDefinitionIncludeSource>
+          <executionEnvironment>JavaSE-${java.version}</executionEnvironment>
+          <target>
+            <artifact>
+              <groupId>${project.groupId}</groupId>
+              <artifactId>uk.ac.york.aconite.target</artifactId>
+              <version>${project.version}</version>
+            </artifact>
+          </target>
+          <environments>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>aarch64</arch>
+            </environment>
+          </environments>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.8.2</version>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.5.0</version>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>3.6.3</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+  </build>
+
+</project>
