@@ -184,9 +184,12 @@ operation Source!EReference oneRef() : Boolean {
 }
 
 operation Sequence alignStyle(set : String) : Any {
+	set.println();
+	set = set.toString().toLowerCase().replace("_","");
 	for (opt in self) {
 		var optStr = opt.toString().toLowerCase().replace("_","");
 		if (optStr = set){
+			optStr.println();
 			return opt;
 		}
 	}
@@ -875,7 +878,6 @@ rule NodeStyleFromAnnotation
 	guard : (s.source = "aconite.node.description" or s.source = "aconite.border.description") and (not s.getVal("abstract").asBoolean())
 	t.forbiddenSides = Target!Side#NORTH.VALUES.alignStyle(s.getVal("forbiddenSides"));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
- 	t.iconPath = s.getVal("iconPath");
  	t.labelPosition = Target!LabelPosition#node.VALUES.alignStyle(s.getVal("labelPosition"));
  	t.resizeKind = Target!ResizeKind#NSEW.VALUES.alignStyle(s.getVal("resizeKind"));
 	t.sizeComputationExpression = s.getVal("sizeComputationExpression");
@@ -889,7 +891,6 @@ rule ContainerStyleFromAnnotation
 	{
 	guard : s.source = "aconite.container.description" and not s.getVal("abstract").asBoolean()
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault","false").asBoolean();
- 	t.iconPath = s.getVal("iconPath");
 	t.heightComputationExpression = s.getVal("heightComputationExpression");
 	t.widthComputationExpression = s.getVal("widthComputationExpression");
 	t.roundedCorner = s.getVal("roundedCorner").asBoolean();
@@ -997,7 +998,7 @@ rule LozengeNodeFromAnnotation
 	transform 	s : Source!EAnnotation
 	to 			t : Target!LozengeNodeDescription 
 	extends NodeStyleFromAnnotation{
-	guard : s.getVal("shape") = "ellipse"
+	guard : s.getVal("shape") = "lozenge"
 	//Maybe make a colourable rule
 	t.color = s.getVal("color").getColor();
 	t.heightComputationExpression = s.getVal("heightComputationExpression","2");

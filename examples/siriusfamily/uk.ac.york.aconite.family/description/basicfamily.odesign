@@ -4,20 +4,20 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Relationships" domainClass="basicfamily::Person">
       <defaultLayer name="Default">
         <edgeMappings name="SiblingsEdge" label="SiblingsEdge" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='SiblingsEdgeDirect%20Editing']" sourceMapping="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Person']" targetMapping="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@containerMappings[name='Siblings']" targetFinderExpression="aql:self" reconnections="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='SiblingsEdge%20Source%20Reconnector'] //@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='SiblingsEdge%20Target%20Reconnector']">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
-        <containerMappings name="Person" label="Person" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDirect%20Editing']" semanticCandidatesExpression="aql:self" domainClass="basicfamily::Person">
+        <containerMappings name="Person" label="Person" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='PersonDirect%20Editing']" semanticCandidatesExpression="aql:self" domainClass="basicfamily::Person" childrenPresentation="List">
           <borderedNodeMappings name="Parent" label="Parent" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='ParentDirect%20Editing']" semanticCandidatesExpression="aql:self.parents" domainClass="basicfamily::Person">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" labelExpression="aql:self.name" labelPosition="node">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </borderedNodeMappings>
           <subNodeMappings name="Child" label="Child" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='ChildDirect%20Editing']" semanticCandidatesExpression="aql:self.children" domainClass="basicfamily::Person">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" labelExpression="aql:self.name" labelPosition="node">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -30,9 +30,9 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Siblings" label="Siblings" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='SiblingsDirect%20Editing']" semanticCandidatesExpression="aql:self" domainClass="basicfamily::Person">
+        <containerMappings name="Siblings" label="Siblings" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='SiblingsDirect%20Editing']" semanticCandidatesExpression="aql:self" domainClass="basicfamily::Person" childrenPresentation="List">
           <subNodeMappings name="Sibling" label="Sibling" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Relationships']/@defaultLayer/@toolSections.0/@ownedTools[name='SiblingDirect%20Editing']" semanticCandidatesExpression="aql:self.parents.children->excluding(self)" domainClass="basicfamily::Person">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" labelExpression="aql:self.name" labelPosition="node">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="aql:2" labelSize="12" labelExpression="aql:self.name" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -46,10 +46,36 @@
           </style>
         </containerMappings>
         <toolSections name="Generated Auto Tools">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="SiblingsEdge Target Reconnector" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="children" elementExpression="aql:source"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="children" valueExpression="aql:self.children + Sequence{target}"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="SiblingDirect Editing">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="PersonDirect Editing">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="SiblingsEdgeDirect Editing">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="SiblingsDirect Editing">
@@ -58,7 +84,13 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="PersonDirect Editing">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="ChildDirect Editing">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="ParentDirect Editing">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
@@ -82,76 +114,44 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="SiblingsEdge Target Reconnector" forceRefresh="true">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext">
-                <subModelOperations xsi:type="tool_1:Unset" featureName="children" elementExpression="aql:source"/>
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="children" valueExpression="aql:self.children + Sequence{target}"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="ChildDirect Editing">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="SiblingsEdgeDirect Editing">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="" valueExpression="var:0"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="ParentDirect Editing">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
-            </initialOperation>
-          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Family" domainClass="basicfamily::Family">
       <defaultLayer name="Default">
         <nodeMappings name="Man" label="Man" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@toolSections.0/@ownedTools[name='ManDirect%20Editing']" semanticCandidatesExpression="aql:self.members" domainClass="basicfamily::Man">
-          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.family/icons/man.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="Woman" label="Woman" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@toolSections.0/@ownedTools[name='WomanDirect%20Editing']" semanticCandidatesExpression="aql:self.members" domainClass="basicfamily::Woman">
-          <borderedNodeMappings name="Woman" label="Woman" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@toolSections.0/@ownedTools[name='WomanDirect%20Editing']" semanticCandidatesExpression="aql:self.members" domainClass="basicfamily::Woman">
-            <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.family/icons/woman.svg">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </borderedNodeMappings>
-          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" arcWidth="1" arcHeight="1" workspacePath="uk.ac.york.aconite.family/icons/woman.svg">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="aql:0" labelSize="12" showIcon="false" labelExpression="aql:self.name" resizeKind="NSEW" workspacePath="uk.ac.york.aconite.family/icons/woman.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <edgeMappings name="Mother" label="Mother" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@toolSections.0/@ownedTools[name='MotherDirect%20Editing']" sourceMapping="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Man'] //@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Woman']" targetMapping="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Woman']" targetFinderExpression="aql:self.mother">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="Father" label="Father" labelDirectEdit="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@toolSections.0/@ownedTools[name='FatherDirect%20Editing']" sourceMapping="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Man'] //@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Woman']" targetMapping="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Man']" targetFinderExpression="aql:self.father">
-          <style sizeComputationExpression="[eContents()->size()/]">
+          <style endsCentering="Both">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </edgeMappings>
         <toolSections name="Generated Auto Tools">
-          <ownedTools xsi:type="tool:DirectEditLabel" name="ManDirect Editing">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="WomanDirect Editing">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="MotherDirect Editing">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="Add to Father" edgeMappings="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@edgeMappings[name='Father']">
@@ -163,21 +163,6 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext">
                 <subModelOperations xsi:type="tool_1:SetValue" featureName="father" valueExpression="aql:target"/>
               </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Woman in Family" nodeMappings="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Woman']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="basicfamily::Woman" referenceName="members"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="WomanDirect Editing">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Man in Family" nodeMappings="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Man']">
@@ -206,10 +191,19 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="MotherDirect Editing">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Woman in Family" nodeMappings="//@ownedViewpoints[name='basicfamily']/@ownedRepresentations[name='Family']/@defaultLayer/@nodeMappings[name='Woman']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="basicfamily::Woman" referenceName="members"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="ManDirect Editing">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:0"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
