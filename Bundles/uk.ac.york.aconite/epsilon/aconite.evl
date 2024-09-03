@@ -1,15 +1,15 @@
 pre {
-// "Running...".println();
-var inDiagram = EAnnotation.all.select(i|i.source = "aconite.diagram").collect(i|i.getVal("name")).asSet();
-var size = 0;
-while (inDiagram.size() != size){
-	size = inDiagram.size();
-	inDiagram.addAll(EAnnotation.all.select(i|inDiagram.containsAll(i.getVals("container"))).collect(i|i.getVal("name")));
-}
+	// "Running...".println();
+	var inDiagram = EAnnotation.all.select(i|i.source = "aconite.diagram").collect(i|i.getVal("name")).asSet();
+	var size = 0;
+	while (inDiagram.size() != size){
+		size = inDiagram.size();
+		inDiagram.addAll(EAnnotation.all.select(i|inDiagram.containsAll(i.getVals("container"))).collect(i|i.getVal("name")));
+	}
 }
 
 post {
-// "Done...".println();
+	// "Done...".println();
 }
 
 context EPackage {
