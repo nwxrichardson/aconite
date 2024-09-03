@@ -1,8 +1,0 @@
-[% 	for (i in EAttribute.all) {%]
-[% 		if (i.eType.name = "EBoolean") {%]
-critique [%=i.name%]IsBoolean{
-		check : self.getVal("[%=i.name%]") = "" or self.getVal("[%=i.name%]").isBoolean()	
-		message : "[%=i.name%] requires a Boolean"
-	}
-[%		}%]
-[%	}%]
