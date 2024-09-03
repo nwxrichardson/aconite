@@ -1,3 +1,4 @@
-
+bin/
+*.class
 runtime-Bundles/eugenia.experiment.design/models/untitled.aird
 runtime-Bundles/uk.ac.york.aconite.family/description/basicfamily.odesign
