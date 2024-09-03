@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="uk.ac.york.aconite.feature">
+      <category name="uk.ac.york.aconite.category"/>
+   </feature>
+   <category-def name="uk.ac.york.aconite.category" label="Aconite"/>
+   <repository-reference location="http://download.eclipse.org/epsilon/updates/2.5/" name="Epsilon 2.5" enabled="true" />
+</site>
