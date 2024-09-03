@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated simplebpmn -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="SimpleBPMN.presentation.SimpleBPMNModelWizardID"
+            name="%_UI_SimpleBPMNModelWizard_label"
+            class="SimpleBPMN.presentation.SimpleBPMNModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/SimpleBPMNModelFile.gif">
+         <description>%_UI_SimpleBPMNModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated simplebpmn -->
+      <editor
+            id="SimpleBPMN.presentation.SimpleBPMNEditorID"
+            name="%_UI_SimpleBPMNEditor_label"
+            icon="icons/full/obj16/SimpleBPMNModelFile.gif"
+            extensions="simplebpmn"
+            class="SimpleBPMN.presentation.SimpleBPMNEditor"
+            contributorClass="SimpleBPMN.presentation.SimpleBPMNActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
