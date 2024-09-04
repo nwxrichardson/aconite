@@ -43,14 +43,11 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: update-site
-    - name: Create Github Pages Folder
+        path: _site/updates
+    - name: Create Github Pages Index
       shell: bash
       run: |
-        ls
-        mkdir -p _site/updates
-        cd _site/updates
-        unzip ../../update-site.zip
-        cd ..
+        cd _site
         echo "<html><body>This is an Eclipse update site.</body></html>" > index.html
     - name: Upload Github Pages Artifact
       uses: actions/upload-pages-artifact@v3
