@@ -46,6 +46,7 @@ jobs:
     - name: Create Github Pages Folder
       shell: bash
       run: |
+        ls
         mkdir -p _site/updates
         cd _site/updates
         unzip ../../update-site.zip
