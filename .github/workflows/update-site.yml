@@ -47,8 +47,8 @@ jobs:
     - name: Create Github Pages Index
       shell: bash
       run: |
-        cd _site
-        echo "<html><body>This is an Eclipse update site.</body></html>" > index.html
+        echo '<html><body>The <a href="updates">updates</a> folder has the Aconite update site.</body></html>' > _site/index.html
+        echo "<html><body>This is an Eclipse update site.</body></html>" > _site/updates/index.html
     - name: Upload Github Pages Artifact
       uses: actions/upload-pages-artifact@v3
     - name: Deploy to GitHub Pages
