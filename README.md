@@ -1,8 +1,17 @@
 # Aconite
 ## Introduction
 This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/) targeting instead the Sirius Model Editor. It allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius Editor for models that conform to the metamodel. It is done in a way that both allows access to all of the feature but the defaults are set in such a way to be a gentle introduction to Sirius and aql. 
-## Instruction of use
-The full set of instructions on how to get started are in the readme located in the examples file. This is to allow the table below to be the main screen as we realise that people will need to refer to this page from time to time.
+## Requirement
+- Eclipse Modeling Environment 2023-09
+- Epsilon 2.5+
+- Emfatic 1.1+
+- Sirius 7
+## Quick-start
+The first step of any setup with Aconite, once you have cloned the repo, is to import uk.ac.york.aconite; for this, we go to File > Import; then, within the wizard opened, find General > Existing Projects into Workspace. We then import everything from the bundle file of the cloned repo.
+### Running with examples
+To run our examples, we are going import again an Existing Project into Workspace; this time opening up the examples files and selecting one of the examples (bpmn, siriusfamily...) and import all four projects. Once this is done we right click on the uk.ac.york.aconite project and select Run As > Eclipse application. This should open a runtime instance of Eclipse into which we are going to again import from that same project this time only selecting original project (uk.ac.york.XXX without .edit or .editor). Within this project will be a description folder containing a file XXX.emf this file can be opened and altered to generate a new odesign based on the changes save and then right click on the .emf file Aconite > Generate Odesign (Be aware it will override any edit in the design.)
+### Running on your models
+Import your model files to the main Eclipse Instance, then on uk.ac.york.aconite project Run As > Eclipse application. In this environment import the project that contains the .ecore or .emf file. Add in some annotations to the the model using the table of annotations and properties as reference, each has the default example for a model at the start of each section. Once these are added right click the model file Aconite > Generate Odesign (Be aware it will override any edit in the design). 
  ## Table of annotations and properties
  ### @aconite
 For Aconite to work each Ecore file must contain exactly one @aconite
