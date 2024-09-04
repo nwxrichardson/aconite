@@ -12,36 +12,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tycho.version>4.0.3</tycho.version>
     <tycho.scmUrl>scm:git:https://github.com/nwxrichardson/Aconite.git</tycho.scmUrl>
-    <java.version>17</java.version>
+    <java.source.version>17</java.source.version>
+    <java.target.version>11</java.target.version>
   </properties>
-
-  <repositories>
-    <repository>
-      <id>license-feature</id>
-      <url>https://download.eclipse.org/cbi/updates/license</url>
-      <layout>p2</layout>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>eclipse</id>
-      <url>https://repo.eclipse.org/content/groups/cbi</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>dash-licenses-snapshots</id>
-      <url>https://repo.eclipse.org/content/repositories/dash-licenses-releases/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </pluginRepository>
-  </pluginRepositories>
 
   <modules>
     <module>bundles</module>
@@ -58,8 +31,8 @@
         <extensions>true</extensions>
         <configuration>
           <encoding>UTF-8</encoding>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
+          <source>${java.source.version}</source>
+          <target>${java.target.version}</target>
         </configuration>
       </plugin>
 
@@ -69,8 +42,8 @@
         <version>3.10.0</version>
         <configuration>
           <encoding>UTF-8</encoding>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
+          <source>${java.source.version}</source>
+          <target>${java.target.version}</target>
         </configuration>
       </plugin>
 
@@ -108,7 +81,7 @@
         <version>${tycho.version}</version>
         <configuration>
           <targetDefinitionIncludeSource>ignore</targetDefinitionIncludeSource>
-          <executionEnvironment>JavaSE-${java.version}</executionEnvironment>
+          <executionEnvironment>JavaSE-${java.source.version}</executionEnvironment>
           <target>
             <artifact>
               <groupId>${project.groupId}</groupId>
@@ -155,11 +128,6 @@
 
     <pluginManagement>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.5.0</version>
-            </plugin>
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-javadoc-plugin</artifactId>
