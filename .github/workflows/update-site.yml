@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: read
     steps:
     - uses: actions/checkout@v4
     - name: Set up Maven 3.9.5
@@ -26,3 +28,31 @@ jobs:
       with:
         name: update-site
         path: releng/uk.ac.york.aconite.updatesite/target/repository
+  upload-site:
+    needs: build
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write     # to deploy to Pages
+      id-token: write  # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Download Update Site
+      uses: actions/download-artifact@v4
+      with:
+        name: update-site
+    - name: Create Github Pages Folder
+      shell: bash
+      run: |
+        mkdir -p _site/updates
+        cd _site/updates
+        unzip ../update-site.zip
+        cd ..
+        echo "<html><body>This is an Eclipse update site.</body></html>" > index.html
+    - name: Upload Github Pages Artifact
+      uses: actions/upload-pages-artifact@v3
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
