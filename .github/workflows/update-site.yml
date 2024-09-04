@@ -48,7 +48,7 @@ jobs:
       run: |
         mkdir -p _site/updates
         cd _site/updates
-        unzip ../update-site.zip
+        unzip ../../update-site.zip
         cd ..
         echo "<html><body>This is an Eclipse update site.</body></html>" > index.html
     - name: Upload Github Pages Artifact
