@@ -184,12 +184,10 @@ operation Source!EReference oneRef() : Boolean {
 }
 
 operation Sequence alignStyle(set : String) : Any {
-	set.println();
 	set = set.toString().toLowerCase().replace("_","");
 	for (opt in self) {
 		var optStr = opt.toString().toLowerCase().replace("_","");
 		if (optStr = set){
-			optStr.println();
 			return opt;
 		}
 	}
