@@ -183,3 +183,5 @@ Example : light_red, dark_chocolate, orange
 ### Prefix (optional)
 (light_, dark_)
 
+![Screenshot 2024-09-04 123300](https://github.com/user-attachments/assets/d7bfe009-ed22-4cb8-b246-e218cccd79dc)
+
