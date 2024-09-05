@@ -11,7 +11,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.epsilon.etl.engine,
  org.eclipse.core.resources,
  org.eclipse.emf.compare,
- org.eclipse.epsilon.flock.engine,
- org.eclipse.epsilon.eol.dt;bundle-version="2.5.0",
  org.eclipse.emf.ecore,
- org.eclipse.epsilon.evl.emf.validation
+ org.eclipse.epsilon.evl.emf.validation,
+ org.eclipse.epsilon.eol.dt,
+ org.eclipse.sirius.model;bundle-version="7.0.0",
+ org.eclipse.sirius.diagram.model;bundle-version="7.0.0"

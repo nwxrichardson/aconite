@@ -3,6 +3,7 @@ package uk.ac.york.aconite.atom;
 import java.util.Arrays;
 
 import org.eclipse.epsilon.emc.emf.EmfModel;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 public class OdesignModel extends EmfModel {
 
@@ -12,7 +13,10 @@ public class OdesignModel extends EmfModel {
 		putResourceStoreOption("ENCODING", "UTF-8");
 	}
 
-	private static final String[] SIRIUS_METAMODELS = new String[] { "http://www.eclipse.org/sirius/1.1.0",
+	private static final String[] SIRIUS_METAMODELS = new String[] {
+			ViewpointPackage.eNS_URI,
+			// TODO replace strings with other eNS_URI references
+
 			"http://www.eclipse.org/sirius/description/1.1.0", 
 			"http://www.eclipse.org/sirius/description/audit/1.1.0",
 			"http://www.eclipse.org/sirius/description/style/1.1.0",
