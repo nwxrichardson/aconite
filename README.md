@@ -3,15 +3,23 @@
 This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/) targeting instead the Sirius Model Editor. It allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius Editor for models that conform to the metamodel. It is done in a way that both allows access to all of the feature but the defaults are set in such a way to be a gentle introduction to Sirius and aql. 
 ## Requirement
 - Eclipse Modeling Environment 2023-09
+- Java 17+
 - Epsilon 2.5+
-- Emfatic 1.1+
+- Emfatic 1.1+ (To use textual notation)
 - Sirius 7
 ## Quick-start
-The first step of any setup with Aconite, once you have cloned the repo, is to import uk.ac.york.aconite; for this, we go to File > Import; then, within the wizard opened, find General > Existing Projects into Workspace. We then import everything from the bundle file of the cloned repo.
-### Running with examples
-To run our examples, we are going import again an Existing Project into Workspace; this time opening up the examples files and selecting one of the examples (bpmn, siriusfamily...) and import all four projects. Once this is done we right click on the uk.ac.york.aconite project and select Run As > Eclipse application. This should open a runtime instance of Eclipse into which we are going to again import from that same project this time only selecting original project (uk.ac.york.XXX without .edit or .editor). Within this project will be a description folder containing a file XXX.emf this file can be opened and altered to generate a new odesign based on the changes save and then right click on the .emf file Aconite > Generate Odesign (Be aware it will override any edit in the design.)
-### Running on your models
-Import your model files to the main Eclipse Instance, then on uk.ac.york.aconite project Run As > Eclipse application. In this environment import the project that contains the .ecore or .emf file. Add in some annotations to the the model using the table of annotations and properties as reference, each has the default example for a model at the start of each section. Once these are added right click the model file Aconite > Generate Odesign (Be aware it will override any edit in the design). 
+1. Install Eclipse through the [Eclipse installer](https://wiki.eclipse.org/Eclipse_Installer). Once you reach the welcome screen of Eclipse, go ahead an close that tab with the x in the top left.
+2. To install Aconite go to the menu bar and click Help > Install new software... Then click add on the wizard that appears and copy https://nwxrichardson.github.io/aconite/updates/ in the location and set the name as Aconite then click add. Select the tick box that appears and then click finished. It will ask to restart to install.
+3. Once it has restarted we are going to go to Help > Install new software... twice more. To install Epsilon and Emfatic for each we first select the drop down arrow next to the add.
+	1. Epsilon, from the dropdown select http://download.eclipse.org/epsilon/updates/2.5. In the main section we select Core, EMF, and Sirius Integration, but installing all of them won't break Aconite. Then hit finish and again it will ask to restart.
+	2. Emfatic (for textual notation), from the dropdown select http://download.eclipse.org/emfatic/update. Tick the Emfatic and hit finish.
+4. For Sirius we are going to go Help > Eclipse Marketplace, search for Sirius and hit install before a final restart.  
+5. Clone the repo. (Ignore if working on your own models. Skip to 7)
+6. Importing a project First we open File > Import in the wizard find General > Existing Projects into Workspace. Find the cloned repo and open examples folder and select on of the folders contained within and click Select Folder then click finish. 
+7. Right click the top project in the Model Explorer (The one containing the your metamodel) and select Run As... > Eclipse Application. 
+8. In this new runtime eclipse, we need to import our project which includes our metamodel. For our examples we do this by going File > Import in the wizard find General > Existing Projects into Workspace. Again we go examples and select a folder and click Select Folder, then instead of hitting Finish we untick all ones with an additional ending (XXX.edit, XXX.editor, XXX.tests) and then hit Finish.
+9. Now within this runtime eclipse open up the project and find a folder named description. Within this folder will be four files open the one ending .emf and make some edits, using the table of annotation and properties.
+10. To generate the new odesign simply select a file ending either .emf (or .ecore) and select Aconte > Generate Odesign
  ## Table of annotations and properties
  ### @aconite
 For Aconite to work each Ecore file must contain exactly one @aconite
