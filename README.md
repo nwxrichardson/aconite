@@ -28,7 +28,7 @@ Finally, for Sirius we are going to go to "Help > Eclipse Marketplace", search f
 
 ### Trying out Aconite on one of the provided examples
 
-Download the contents of the [`examples/siriusfamily`](examples/siriusfamily) folder.
+Clone the repository. We will use the example in its [`examples/siriusfamily`](examples/siriusfamily) folder.
 
 Import the projects in that folder into your Eclipse workspace, by clicking on the "File > Import" menu item, and selecting "General > Existing Projects into Workspace".
 Find the downloaded subdirectory and import these four projects:
