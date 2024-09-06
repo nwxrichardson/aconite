@@ -1,6 +1,16 @@
-//Warning Any and slight inefficency if inheritance is wrong
+/*********************************************************************
+ * Copyright (c) 2024 University of York, Rolls-Royce Controls
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ **********************************************************************/
+
+//Warning Any and slight inefficiency if inheritance is wrong
 	
-	operation Any getRoute(target : Any) : String {
+operation Any getRoute(target : Any) : String {
 	var seen = Set{self};
 	var curSize = -1;
 	var routes = self.eAllReferences.invert().aggregate(i|i.eType, "." + i.name);
@@ -42,5 +52,6 @@
 	}
 	
 }
-//Could be made more effiecent if you can pass a limit which stops if it is going to be longer than any previous solution
+
+//Could be made more efficient if you can pass a limit which stops if it is going to be longer than any previous solution
 //Also need fixing to manage multiple of the same type at a specific level

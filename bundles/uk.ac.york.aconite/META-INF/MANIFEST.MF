@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Aconite
 Bundle-SymbolicName: uk.ac.york.aconite;singleton:=true
+Bundle-Vendor: University of York
 Bundle-Version: 1.0.0.qualifier
 Automatic-Module-Name: uk.ac.york.aconite
 Bundle-RequiredExecutionEnvironment: JavaSE-11
