@@ -1,3 +1,12 @@
+/*********************************************************************
+* Copyright (c) 2024 University of York, Rolls-Royce Controls
+*
+* This program and the accompanying materials are made
+* available under the terms of the Eclipse Public License 2.0
+* which is available at https://www.eclipse.org/legal/epl-2.0/
+*
+* SPDX-License-Identifier: EPL-2.0
+**********************************************************************/
 package uk.ac.york.aconite.atom;
 
 import org.eclipse.core.resources.IFile;
@@ -14,7 +23,6 @@ import org.eclipse.epsilon.etl.EtlModule;
 import uk.ac.york.aconite.util.SDScore;
 
 public class SiriusReverser extends Job {
-
 
 	private URI outputURI;
 	private Resource output;
