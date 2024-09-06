@@ -17,8 +17,6 @@ Aconite is designed to expose as many Sirius features as possible, while providi
 - [Eclipse Sirius](https://eclipse.dev/sirius/) 7.x
 
 ## Quickstart guide
-[Same guide with images](GuideWithImages.md)
-
 ### Setting up the Eclipse IDE
 
 First, install Eclipse through the [Eclipse installer](https://www.eclipse.org/downloads/packages/installer), by choosing "Eclipse Modeling Tools" from its main window. The first time Eclipse is launched, it will show a "Welcome" tab: close it by clicking on the X button of the tab.
@@ -47,7 +45,14 @@ Find the downloaded subdirectory and import these four projects:
 Within the "Model Explorer" view, expand the `uk.ac.york.aconite.family` project and its `description` folder, and right-click on its `basicfamily.emf` file.
 Select "Aconite - Generate Odesign" to produce the `basicfamily.odesign` in the same folder.
 
-To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after each change. To view the result of these changes on the diagrams themselves, open up the model folder, then select `family.aird` and try out any of the representations by double-clicking.
+To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after each change. To view the result of these changes on the diagrams themselves, open up the model folder, then select `family.aird`. Pre-existing representation can be viewed by opening the drop downs, double-clicking on their contents. To generate a new representation double-click on those preceded by ![Representation](https://github.com/user-attachments/assets/75f637c0-79a7-424b-a451-3d0d581359e8), then select a valid model element (When the Finish button isn't greyed out).
+
+#### The family representation expected
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d1bc218d-17f3-4cf8-b2bb-04e53a095b86">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/60381f19-a710-4c83-9c1a-e2d859630740">
+  <img alt="A representation of the current family." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png" width = 300>
+</picture>
 
 ## Table of annotations and properties
 
