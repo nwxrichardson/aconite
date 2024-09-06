@@ -1,7 +1,12 @@
 # Aconite
 
 ## Introduction
-This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/) targeting instead the Sirius Model Editor. It allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius Editor for models that conform to the metamodel. It is done in a way that both allows access to all of the feature but the defaults are set in such a way to be a gentle introduction to Sirius and aql. 
+
+Aconite is a tool that generates graphical modelling notations from an annotated [Ecore metamodel](https://www.vogella.com/tutorials/EclipseEMF/article.html), targeting [Eclipse Sirius](https://eclipse.dev/sirius/).
+It is inspired on the approach followed by [Eugenia](https://eclipse.dev/epsilon/doc/eugenia/), which targeted the [Graphical Modeling Framework](https://projects.eclipse.org/projects/modeling.gmf-tooling) tooling (now archived).
+
+Aconite allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius editor for models that conform to the metamodel.
+Aconite is designed to expose as many Sirius features as possible, while providing sane defaults that act as a gentle introduction to Sirius and the [Acceleo Query Language](https://eclipse.dev/acceleo/documentation/). 
 
 ## Requirements
 
