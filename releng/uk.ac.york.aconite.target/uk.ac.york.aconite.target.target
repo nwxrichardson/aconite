@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Aconite Target Platform" sequenceNumber="1725355223">
+<target name="Aconite Target Platform" sequenceNumber="1725631246">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -103,6 +103,7 @@
       <unit id="org.eclipse.epsilon.evl.emf.validation" version="0.0.0"/>
       <unit id="org.eclipse.epsilon.evl.engine" version="0.0.0"/>
       <unit id="org.eclipse.epsilon.flock.engine" version="0.0.0"/>
+      <unit id="org.eclipse.epsilon.emc.emf.dt" version="0.0.0"/>
       <repository location="http://download.eclipse.org/epsilon/updates/2.5/"/>
     </location>
   </locations>

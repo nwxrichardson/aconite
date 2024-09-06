@@ -16,4 +16,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.epsilon.evl.emf.validation,
  org.eclipse.epsilon.eol.dt,
  org.eclipse.sirius.model;bundle-version="7.0.0",
- org.eclipse.sirius.diagram.model;bundle-version="7.0.0"
+ org.eclipse.sirius.diagram.model;bundle-version="7.0.0",
+ org.eclipse.epsilon.emc.emf.dt

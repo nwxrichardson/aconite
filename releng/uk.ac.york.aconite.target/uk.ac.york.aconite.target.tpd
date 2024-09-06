@@ -101,4 +101,5 @@ location "http://download.eclipse.org/epsilon/updates/2.5/" {
 	org.eclipse.epsilon.evl.emf.validation lazy
 	org.eclipse.epsilon.evl.engine lazy
 	org.eclipse.epsilon.flock.engine lazy
+	org.eclipse.epsilon.emc.emf.dt lazy
 }
