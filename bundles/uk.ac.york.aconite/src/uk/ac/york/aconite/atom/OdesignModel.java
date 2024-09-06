@@ -34,18 +34,6 @@ public class OdesignModel extends EmfModel {
 			FilterPackage.eNS_URI,
 			StylePackage.eNS_URI,
 			ToolPackage.eNS_URI
-//			// TODO replace strings with other eNS_URI references
-//			"http://www.eclipse.org/sirius/diagram/sequence/2.0.0",
-//			"http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0",
-//			"http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0",
-//			"http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0",
-//			"http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0",
-//			//"http://www.eclipse.org/sirius/dsl/formatdata/1.1.0",
-//			"http://www.eclipse.org/sirius/properties/1.0.0",
-//			//"http://www.eclipse.org/sirius/properties/1.0.0/ext/widgets/reference",
-//			"http://www.eclipse.org/sirius/table/1.1.0",
-//			"http://www.eclipse.org/sirius/table/description/1.1.0",
-//			"http://www.eclipse.org/sirius/tree/1.0.0",
-//			"http://www.eclipse.org/sirius/tree/description/1.0.0",
-			};
+	};
+
 }
