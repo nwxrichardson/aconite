@@ -13,14 +13,7 @@ import java.util.Arrays;
 
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
-import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.diagram.description.style.StylePackage;
-import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 public class OdesignModel extends EmfModel {
 
@@ -32,17 +25,22 @@ public class OdesignModel extends EmfModel {
 
 	private static final String[] SIRIUS_METAMODELS = new String[] {
 			ViewpointPackage.eNS_URI,
-			DescriptionPackage.eNS_URI,
-			AuditPackage.eNS_URI,
-			StylePackage.eNS_URI,
-			ToolPackage.eNS_URI,
-			ValidationPackage.eNS_URI,
+
+			// nested within ViewpointPackage
+			//DescriptionPackage.eNS_URI,
+			//AuditPackage.eNS_URI,
+			//StylePackage.eNS_URI,
+			//ToolPackage.eNS_URI,
+			//ValidationPackage.eNS_URI,
+
 			DiagramPackage.eNS_URI,
-			DescriptionPackage.eNS_URI,
-			ConcernPackage.eNS_URI,
-			FilterPackage.eNS_URI,
-			StylePackage.eNS_URI,
-			ToolPackage.eNS_URI
+
+			// nested within DiagramPackage
+			//DescriptionPackage.eNS_URI,
+			//ConcernPackage.eNS_URI,
+			//FilterPackage.eNS_URI,
+			//StylePackage.eNS_URI,
+			//ToolPackage.eNS_URI
 	};
 
 }
