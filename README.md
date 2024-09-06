@@ -17,7 +17,7 @@ Aconite is designed to expose as many Sirius features as possible, while providi
 - [Eclipse Sirius](https://eclipse.dev/sirius/) 7.x
 
 ## Quickstart guide
-[With images](GuideWithImage.md)
+[Same guide with images](GuideWithImages.md)
 
 ### Setting up the Eclipse IDE
 
