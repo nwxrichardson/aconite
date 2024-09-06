@@ -38,15 +38,10 @@ Find the downloaded subdirectory and import these four projects:
 * uk.ac.york.aconite.family.editor
 * uk.ac.york.aconite.family.tests
 
-Within the "Model Explorer" view, right click on the project providing the metamodel (the one without a suffix, e.g. `uk.ac.york.aconite.family`), and select "Run As... > Eclipse Application".
-
-In this nested Eclipse, import the same project (the one with the metamodel) by repeating the above steps.
-Do not import the other projects (e.g. `.edit`, `.editor`, `.tests`).
-
-Within the "Model Explorer" view of the nested Eclipse instance, expand the "description" folder and right-click on the `basicfamily.emf` file.
+Within the "Model Explorer" view, expand the `uk.ac.york.aconite.family` project and its `description` folder, and right-click on its `basicfamily.emf` file.
 Select "Aconite - Generate Odesign" to produce the `basicfamily.odesign` in the same folder.
 
-To experiment with Aconite, feel free to edit the `basicfamily.emf` file using the annotations documented below, and regenerate the `.odesign` file as above.
+To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after each change.
 
 ## Table of annotations and properties
 
