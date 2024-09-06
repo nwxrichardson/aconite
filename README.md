@@ -46,7 +46,7 @@ Find the downloaded subdirectory and import these four projects:
 Within the "Model Explorer" view, expand the `uk.ac.york.aconite.family` project and its `description` folder, and right-click on its `basicfamily.emf` file.
 Select "Aconite - Generate Odesign" to produce the `basicfamily.odesign` in the same folder.
 
-To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after each change.
+To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after each change. To view the result of these changes on the diagrams themselves, open up the model folder, then select `family.aird` and try out any of the representations by double-clicking.
 
 ## Table of annotations and properties
 
