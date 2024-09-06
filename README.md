@@ -1,13 +1,17 @@
 # Aconite
+
 ## Introduction
 This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/) targeting instead the Sirius Model Editor. It allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius Editor for models that conform to the metamodel. It is done in a way that both allows access to all of the feature but the defaults are set in such a way to be a gentle introduction to Sirius and aql. 
-## Requirement
+
+## Requirements
 - Eclipse Modeling Environment 2023-09
 - Java 17+
 - Epsilon 2.5+
 - Emfatic 1.1+ (To use textual notation)
 - Sirius 7
+
 ## Quick-start
+
 1. Install Eclipse through the [Eclipse installer](https://wiki.eclipse.org/Eclipse_Installer). Once you reach the welcome screen of Eclipse, go ahead an close that tab with the x in the top left.
 2. To install Aconite go to the menu bar and click Help > Install new software... Then click add on the wizard that appears and copy https://nwxrichardson.github.io/aconite/updates/ in the location and set the name as Aconite then click add. Select the tick box that appears and then click finished. It will ask to restart to install.
 3. Once it has restarted we are going to go to Help > Install new software... twice more. To install Epsilon and Emfatic for each we first select the drop down arrow next to the add.
@@ -20,9 +24,13 @@ This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/)
 8. In this new runtime eclipse, we need to import our project which includes our metamodel. For our examples we do this by going File > Import in the wizard find General > Existing Projects into Workspace. Again we go examples and select a folder and click Select Folder, then instead of hitting Finish we untick all ones with an additional ending (XXX.edit, XXX.editor, XXX.tests) and then hit Finish.
 9. Now within this runtime eclipse open up the project and find a folder named description. Within this folder will be four files open the one ending .emf and make some edits, using the table of annotation and properties.
 10. To generate the new odesign simply select a file ending either .emf (or .ecore) and select Aconte > Generate Odesign
- ## Table of annotations and properties
- ### @aconite
-For Aconite to work each Ecore file must contain exactly one @aconite
+
+## Table of annotations and properties
+
+### @aconite
+
+For Aconite to work, each Ecore file must contain exactly one @aconite annotation:
+
 ```java
 @aconite(iconFolder = "uk.ac.york.aconite.family/icons/")
 package basicfamily;
