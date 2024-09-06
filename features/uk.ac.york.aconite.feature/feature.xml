@@ -3,14 +3,16 @@
       id="uk.ac.york.aconite.feature"
       label="Aconite Feature"
       version="1.0.0.qualifier"
-      provider-name="University of York">
+      provider-name="University of York"
+      license-feature="org.eclipse.license"
+      license-feature-version="2.0.2.v20181016-2210">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="https://github.com/nwxrichardson/aconite">
+      Generates Sirius Viewpoint Description models from an annotated Emfatic metamodel.
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      Copyright (C) 2024 University of York, Rolls-Royce Controls.
    </copyright>
 
    <license url="http://www.example.com/license">
