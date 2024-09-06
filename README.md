@@ -4,26 +4,49 @@
 This work is based on Eugenia for GMF (https://eclipse.dev/epsilon/doc/eugenia/) targeting instead the Sirius Model Editor. It allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius Editor for models that conform to the metamodel. It is done in a way that both allows access to all of the feature but the defaults are set in such a way to be a gentle introduction to Sirius and aql. 
 
 ## Requirements
-- Eclipse Modeling Environment 2023-09
+
+- [Eclipse Modeling Tools](https://www.eclipse.org/downloads/packages/) 2023-09 or newer
 - Java 17+
-- Epsilon 2.5+
-- Emfatic 1.1+ (To use textual notation)
-- Sirius 7
+- [Eclipse Epsilon](https://eclipse.dev/epsilon/) 2.5.0+
+- [Eclipse Emfatic](https://eclipse.dev/emfatic/) 1.1+ (To use textual notation)
+- [Eclipse Sirius](https://eclipse.dev/sirius/) 7.x
 
-## Quick-start
+## Quickstart guide
 
-1. Install Eclipse through the [Eclipse installer](https://wiki.eclipse.org/Eclipse_Installer). Once you reach the welcome screen of Eclipse, go ahead an close that tab with the x in the top left.
-2. To install Aconite go to the menu bar and click Help > Install new software... Then click add on the wizard that appears and copy https://nwxrichardson.github.io/aconite/updates/ in the location and set the name as Aconite then click add. Select the tick box that appears and then click finished. It will ask to restart to install.
-3. Once it has restarted we are going to go to Help > Install new software... twice more. To install Epsilon and Emfatic for each we first select the drop down arrow next to the add.
-	1. Epsilon, from the dropdown select http://download.eclipse.org/epsilon/updates/2.5. In the main section we select Core, EMF, and Sirius Integration, but installing all of them won't break Aconite. Then hit finish and again it will ask to restart.
-	2. Emfatic (for textual notation), from the dropdown select http://download.eclipse.org/emfatic/update. Tick the Emfatic and hit finish.
-4. For Sirius we are going to go Help > Eclipse Marketplace, search for Sirius and hit install before a final restart.  
-5. Clone the repo. (Ignore if working on your own models. Skip to 7)
-6. Importing a project First we open File > Import in the wizard find General > Existing Projects into Workspace. Find the cloned repo and open examples folder and select on of the folders contained within and click Select Folder then click finish. 
-7. Right click the top project in the Model Explorer (The one containing the your metamodel) and select Run As... > Eclipse Application. 
-8. In this new runtime eclipse, we need to import our project which includes our metamodel. For our examples we do this by going File > Import in the wizard find General > Existing Projects into Workspace. Again we go examples and select a folder and click Select Folder, then instead of hitting Finish we untick all ones with an additional ending (XXX.edit, XXX.editor, XXX.tests) and then hit Finish.
-9. Now within this runtime eclipse open up the project and find a folder named description. Within this folder will be four files open the one ending .emf and make some edits, using the table of annotation and properties.
-10. To generate the new odesign simply select a file ending either .emf (or .ecore) and select Aconte > Generate Odesign
+### Setting up the Eclipse IDE
+
+First, install Eclipse through the [Eclipse installer](https://www.eclipse.org/downloads/packages/installer), by choosing "Eclipse Modeling Tools" from its main window. The first time Eclipse is launched, it will show a "Welcome" tab: close it by clicking on the X button of the tab.
+
+To install Aconite, go to the menu bar and click "Help > Install new software...", then replace the contents of "Work with:" with `https://nwxrichardson.github.io/aconite/updates/` and press Enter. Once the "Aconite" category appears in the list, click on "Select All" and then "Next". It should then list that the "Aconite Feature" is going to be installed. Accept the terms of the Eclipse Public License, indicate that you trust the update site (as it is currently unsigned), and let Eclipse restart once prompted.
+
+Once it has restarted, we are going to use "Help > Install new software..." twice more:
+
+1. First, to install Epsilon from `http://download.eclipse.org/epsilon/updates/2.5`. Select "Epsilon Core", "Epsilon EMF Integration - Epsilon EMF Integration", and "Epsilon Sirius Integration". Trust the `org.apache.commons.math3` library if required to do so.
+1. Next, install Emfatic from `http://download.eclipse.org/emfatic/update`. Select the "Emfatic" category.
+
+Finally, for Sirius we are going to go to "Help > Eclipse Marketplace", search for "Sirius" and click on "Install" before a final restart.
+
+### Trying out Aconite on one of the provided examples
+
+Download the contents of the [`examples/siriusfamily`](examples/siriusfamily) folder.
+
+Import the projects in that folder into your Eclipse workspace, by clicking on the "File > Import" menu item, and selecting "General > Existing Projects into Workspace".
+Find the downloaded subdirectory and import these four projects:
+
+* uk.ac.york.aconite.family
+* uk.ac.york.aconite.family.edit
+* uk.ac.york.aconite.family.editor
+* uk.ac.york.aconite.family.tests
+
+Within the "Model Explorer" view, right click on the project providing the metamodel (the one without a suffix, e.g. `uk.ac.york.aconite.family`), and select "Run As... > Eclipse Application".
+
+In this nested Eclipse, import the same project (the one with the metamodel) by repeating the above steps.
+Do not import the other projects (e.g. `.edit`, `.editor`, `.tests`).
+
+Within the "Model Explorer" view of the nested Eclipse instance, expand the "description" folder and right-click on the `basicfamily.emf` file.
+Select "Aconite - Generate Odesign" to produce the `basicfamily.odesign` in the same folder.
+
+To experiment with Aconite, feel free to edit the `basicfamily.emf` file using the annotations documented below, and regenerate the `.odesign` file as above.
 
 ## Table of annotations and properties
 
