@@ -164,7 +164,7 @@ operation Source!EClass getDC() : String {
 	return self.ePackage.name + "::" + self.name;
 }
 	
-// 
+//Gets the EClass reached by following the expression (requires the expression form, ref1.ref2.ref3)
 operation Source!EClass getEndOf(expression : String) : Source!EClass{
 	if (expression = ""){return self;}
 	var splited = expression.split("\\.");
@@ -193,6 +193,7 @@ operation Source!EReference oneRef() : Boolean {
 	return self.upperBound = 1;
 }
 
+// This function aligns the style of ENum strings so they can all be accepted 
 operation Sequence alignStyle(set : String) : Any {
 	set = set.toString().toLowerCase().replace("_","");
 	for (opt in self) {
@@ -235,7 +236,7 @@ rule PackageFromAnnotation
  *		conversion. For most this is .asDATATYPE() with colour using the operation
  *		and ENum uses out existing option to get the value and then filter by the getVal()
  *
- * 		t.type = Target!ENum#OneOption.VALUES.selectOne(i|i.literal = s.getVal("type"));
+ * 		t.type = Target!ENum#OneOption.VALUES.alignStyle(s.getVal("type"));
  */
 	
 	viewpoint.name = s.getVal("name");
@@ -260,15 +261,16 @@ rule DiagramFromAnnotation
 	t.domainClass = element.getDC();
 	t.name = s.getVal("name");
 	var defaultLayer = new Target!Layer;
-	var tools = annotations.select(i|i.Source.startsWith("aconite.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") and not i.getVal("abstract").asBoolean());
+	var tools = annotations.select(i|i.Source.startsWith("aconite.tool.creation") and i.getDiagram().getVal("name") = s.getVal("name") 
+		and not i.getVal("abstract").asBoolean());
 	if (tools.notEmpty()){
 		var toolBox = new Target!ToolSection;
 		toolBox.name = "Generated Creation Tools";
 		defaultLayer.toolSections.add(toolBox);
 		toolBox.ownedTools ::= tools;
 	}
-
-
+	
+	//Add all the contents of the diagram via container
 	defaultLayer.name = "Default";
 	t.defaultLayer = defaultLayer;
 	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.node")).equivalent());
@@ -307,12 +309,12 @@ rule AbstractNodeFromAnnotation
 	extends AbstractMappingFromAnnotation {
 	var preStyled = emfTool.getECoreUtil.copy(annotations.select(i|i.source = s.source + ".description").selectOne(i|i.getVal("node") = s.getVal("name")));
 	if (preStyled.isUndefined()){
-	var styleAnnotation = emfTool.getECoreUtil.copy(s);
-	styleAnnotation.Source = s.source + ".description" ;
-	styleAnnotation.details.put("node", s.getVal("name"));
-	t.style = styleAnnotation.equivalent();	
+		var styleAnnotation = emfTool.getECoreUtil.copy(s);
+		styleAnnotation.Source = s.source + ".description" ;
+		styleAnnotation.details.put("node", s.getVal("name"));
+		t.style = styleAnnotation.equivalent();	
 	} else {
-	t.style = preStyled.equivalent();
+		t.style = preStyled.equivalent();
 	}
 	
 	}
@@ -338,7 +340,8 @@ rule SudoNodeFromAnnotation
 	
 	t.label = s.getVal("label", t.name);
 	
-	t.conditionnalStyles = annotations.select(i|i.Source = "aconite.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
+	t.conditionnalStyles = annotations.select(i|i.Source = "aconite.condition" 
+	and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
 	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
@@ -388,7 +391,8 @@ rule SudoContainerFromAnnotation
 	
 	t.label = s.getVal("label", t.name);
 	
-	t.conditionnalStyles = annotations.select(i|i.Source = "aconite.condition" and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
+	t.conditionnalStyles = annotations.select(i|i.Source = "aconite.condition" 
+	and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
 	
 	t.domainClass = element.getDC();
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
@@ -444,9 +448,9 @@ rule AbsEdgeFromAnnotation
 	
 	
 	if (not (s.getVals("sourceNode") = Sequence{""})){
-	t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name"))).equivalent();}
+		t.sourceMapping = annotations.select(i|s.getVals("sourceNode").exists(j|j = i.getVal("name"))).equivalent();}
 	if (not (s.getVals("targetNode")= Sequence{""})){
-	t.targetMapping = annotations.select(i|s.getVals("targetNode").exists(j|j = i.getVal("name"))).equivalent();}	
+		t.targetMapping = annotations.select(i|s.getVals("targetNode").exists(j|j = i.getVal("name"))).equivalent();}	
 	}
 	
 @lazy
@@ -460,12 +464,16 @@ rule RefEdgeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 	t.label = s.getVal("label", t.name);
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|Sequence{"aconite.edge","aconite.node","aconite.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eContainingClass.isSuperTypeOf(i.eModelElement) and (not s.getVal("abstract").asBoolean())).equivalent();
+		t.sourceMapping = annotations.select(i|Sequence{"aconite.edge","aconite.node","aconite.container"}.contains(i.Source) 
+		and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) 
+		and element.eContainingClass.isSuperTypeOf(i.eModelElement) and (not s.getVal("abstract").asBoolean())).equivalent();
 	}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");	
 	if (t.targetMapping.isEmpty()){
-	t.targetMapping = annotations.select(i|Sequence{"aconite.edge","aconite.node","aconite.container"}.contains(i.Source) and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement)).equivalent();
+		t.targetMapping = annotations.select(i|Sequence{"aconite.edge","aconite.node","aconite.container"}.contains(i.Source) 
+		and i.eModelElement.isTypeOf(Source!EClass) and element.eType.getEndOf(s.getVal("target")).isTypeOf(Source!EClass) 
+		and element.eType.getEndOf(s.getVal("target")).isSuperTypeOf(i.eModelElement)).equivalent();
 	}
 	
 	if (s.getVal("creatable").asBoolean()){
@@ -561,10 +569,12 @@ rule EleEdgeFromAnnotation
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("sce").dot();
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
-	//TODO
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));
 	if (t.sourceMapping.isEmpty()){
-	t.sourceMapping = annotations.select(i|i.Source != "aconite" and i.eModelElement.isTypeOf(Source!EClass) and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "aconite.diagram" and i.Source != "aconite.condition" and not i.Source.endsWith("description")).equivalent();}
+		t.sourceMapping = annotations.select(i|i.Source != "aconite" and i.eModelElement.isTypeOf(Source!EClass) 
+		and element.getEndOf(s.getVal("source")).isSuperTypeOf(i.eModelElement) and i.Source != "aconite.diagram" 
+		and i.Source != "aconite.condition" and not i.Source.endsWith("description")).equivalent();
+		}
 
 	t.targetFinderExpression = s.getVal("targetFinderExpression");
 	if (t.targetMapping.isEmpty()){
@@ -743,7 +753,6 @@ rule ContainerReferenceCreationToolFromAnnotation
 	var refContext = new Target!ChangeContext;
 	refContext.browseExpression = "aql:element";
 	changeContext.subModelOperations.add(refContext);
-	//TODO Check that this works if it is only able to hold one reference
 	var setRef = new Target!SetValue;
 	setRef.featureName = s.eModelElement.name;
 	setRef.valueExpression = "aql: element." + s.eModelElement.name + " + Sequence{instance}";
@@ -1029,6 +1038,8 @@ rule WorkspaceImageNodeFromAnnotation
  * ----------------------------------------------------------------------------------
  */
 
+
+//Adds the tools that have been created throughout the process to the correct tool box, this is done to filter out any repeats
 post {
 	var gotHidden = new Sequence;
 	for (tool in hiddenTools.keySet()){
@@ -1057,5 +1068,5 @@ post {
 			delete tool;
 		}
 	}
-	"Done!".println();
+//	"Done!".println();
 }	
