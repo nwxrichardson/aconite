@@ -317,7 +317,7 @@ operation getArrow() : Sequence{
 	    "noDecoration", "outputArrow", "outputClosedArrow", "outputFillClosedArrow"};
 }
 
-operation getEndsCentering() : Sequence{
+operation getBackgroundStyle() : Sequence{
 	return Sequence{"gradientLeftToRight", "gradientRightToLeft", "Liquid"};
 }
 
