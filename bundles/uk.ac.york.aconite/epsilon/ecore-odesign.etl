@@ -193,17 +193,6 @@ operation Source!EReference oneRef() : Boolean {
 	return self.upperBound = 1;
 }
 
-// This function aligns the style of ENum strings so they can all be accepted 
-operation Sequence alignStyle(set : String) : Any {
-	set = set.toString().toLowerCase().replace("_","");
-	for (opt in self) {
-		var optStr = opt.toString().toLowerCase().replace("_","");
-		if (optStr = set){
-			return opt;
-		}
-	}
-}
-
 /*
  *----------------------------------------------------------------------------------
  *      INITIALISATION OF PACKAGE
@@ -860,7 +849,7 @@ rule LabelStyleFromAnnotation
 	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.alignStyle(s.getVal("labelAlignment"));
 	t.labelColor = s.getVal("labelColor").getColor();
 	t.labelExpression = s.getVal("labelValue");
-	t.labelFormat = Target!FontFormat#bold.VALUES.alignStyle(s.getVal("borderLineStyle"));
+	t.labelFormat = Target!FontFormat#bold.VALUES.alignStyle(s.getVals("labelFormat"));
 	t.labelSize = s.getVal("labelSize").asInteger();
 	t.showIcon = s.getVal("showIcon").asBoolean();
 	}
@@ -893,7 +882,7 @@ rule NodeStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
 	guard : (s.source = "aconite.node.description" or s.source = "aconite.border.description") and (not s.getVal("abstract").asBoolean())
-	t.forbiddenSides = Target!Side#NORTH.VALUES.alignStyle(s.getVal("forbiddenSides"));
+	t.forbiddenSides = Target!Side#NORTH.VALUES.alignStyle(s.getVals("forbiddenSides"));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
  	t.labelPosition = Target!LabelPosition#node.VALUES.alignStyle(s.getVal("labelPosition"));
  	t.resizeKind = Target!ResizeKind#NSEW.VALUES.alignStyle(s.getVal("resizeKind"));
@@ -1068,5 +1057,5 @@ post {
 			delete tool;
 		}
 	}
-//	"Done!".println();
+	"Done!".println();
 }	

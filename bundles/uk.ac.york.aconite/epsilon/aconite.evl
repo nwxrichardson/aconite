@@ -8,6 +8,8 @@
  * SPDX-License-Identifier: EPL-2.0
  **********************************************************************/
 
+import "util.eol";
+
 pre {
 	// "Running...".println();
 	var inDiagram = EAnnotation.all.select(i|i.source = "aconite.diagram").collect(i|i.getVal("name")).asSet();
@@ -40,9 +42,9 @@ context EPackage {
 }
 
 context EAnnotation {
-	guard : not self.getVal("abstract").asBoolean()
 	
 	critique ContainerIsName {
+		guard : not self.getVal("abstract").asBoolean()
 		check : self.getVals("container") = Sequence{""} or self.getVals("container").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
 		message : self.toAnno() + "container is not a name"
 		}
@@ -170,6 +172,74 @@ context EAnnotation {
 		check : inDiagram.contains(self.getVal("name"))		
 		message : self.toAnno() + "Not in diagram"
 	}
+
+/*
+ *----------------------------------------------------------------------------------
+ *      ENUM CHECKS
+ *----------------------------------------------------------------------------------
+ */	
+ 
+constraint childrenPresentationHasValidEnum{
+		check : self.getVal("childrenPresentation") = "" or getChildPresentation().anyAligned(self.getVal("childrenPresentation"))	
+		message : "In " + self.toAnno() + " childrenPresentation requires an ENUM from: " + getChildPresentation()
+	}	
+	
+constraint borderLineStyleHasValidEnum{
+		check : self.getVal("borderLineStyle") = "" or getBorderLineStyle().anyAligned(self.getVal("borderLineStyle"))	
+		message : "In " + self.toAnno() + " borderLineStyle requires an ENUM from: " + getBorderLineStyle()
+	}	
+	
+constraint labelAlignmentHasValidEnum{
+		check : self.getVal("labelAlignment") = "" or getLabelAlignment().anyAligned(self.getVal("labelAlignment"))	
+		message : "In " + self.toAnno() + " labelAlignment requires an ENUM from: " + getLabelAlignment()
+	}	
+	
+constraint labelFormatHasValidEnum{
+		check : self.getVal("labelFormat") = "" or getLabelFormat().anyAligned(self.getVals("labelFormat"))	
+		message : "In " + self.toAnno() + " labelFormat requires an ENUM from: " + getLabelFormat()
+	}	
+	
+constraint forbiddenSidesHasValidEnum{
+		check : self.getVal("forbiddenSides") = "" or getForbiddenSides().anyAligned(self.getVals("forbiddenSides"))	
+		message : "In " + self.toAnno() + " forbiddenSides requires an ENUM from: " + getForbiddenSides()
+	}	
+	
+constraint labelPositionHasValidEnum{
+		check : self.getVal("labelPosition") = "" or getLabelPosition().anyAligned(self.getVal("labelPosition"))	
+		message : "In " + self.toAnno() + " labelPosition requires an ENUM from: " + getLabelPosition()
+	}	
+	
+constraint resizeKindHasValidEnum{
+		check : self.getVal("resizeKind") = "" or getResizeKind().anyAligned(self.getVal("resizeKind"))	
+		message : "In " + self.toAnno() + " resizeKind requires an ENUM from: " + getResizeKind()
+	}	
+	
+constraint endsCenteringHasValidEnum{
+		check : self.getVal("endsCentering") = "" or getEndsCentering().anyAligned(self.getVal("endsCentering"))	
+		message : "In " + self.toAnno() + " endsCentering requires an ENUM from: " + getEndsCentering()
+	}	
+	
+constraint sourceArrowHasValidEnum{
+		check : self.getVal("sourceArrow") = "" or getArrow().anyAligned(self.getVal("sourceArrow"))	
+		message : "In " + self.toAnno() + " sourceArrow requires an ENUM from: " + getArrow()
+	}
+	
+constraint targetArrowHasValidEnum{
+		check : self.getVal("targetArrow") = "" or getArrow().anyAligned(self.getVal("targetArrow"))	
+		message : "In " + self.toAnno() + " targetArrow requires an ENUM from: " + getArrow()
+	}	
+	
+constraint lineStyleHasValidEnum{
+		check : self.getVal("lineStyle") = "" or getBorderLineStyle().anyAligned(self.getVal("lineStyle"))	
+		message : "In " + self.toAnno() + " lineStyle requires an ENUM from: " + getBorderLineStyle()
+	}	
+	
+constraint backgroundStyleHasValidEnum{
+		check : self.getVal("backgroundStyle") = "" or getBackgroundStyle().anyAligned(self.getVal("backgroundStyle"))	
+		message : "In " + self.toAnno() + " backgroundStyle requires an ENUM from: " + getBackgroundStyle()
+	}			
+	
+//This is the end of the EAnnotation context
 }
 
 /*
@@ -205,6 +275,50 @@ operation String isColor() : Boolean{
 							, "light_chocolate", "light_gray", "light_green", "light_orange", "light_purple", "light_red", "light_yellow", "light_blue"
 							, "dark_chocolate", "dark_gray", "dark_green", "dark_orange", "dark_purple", "dark_red", "dark_yellow", "dark_blue"};
 	return colors.contains(self);
+}
+
+operation getChildPresentation() : Sequence{
+	return Sequence{"freeForm", "horizontalStack", "list", "verticalStack"};
+}
+
+operation getBorderLineStyle() : Sequence{
+	return Sequence{"dash", "dashDot", "dot", "solid"};
+}
+
+operation getLabelAlignment() : Sequence{
+	return Sequence{"center", "left", "right"};
+}
+
+operation getLabelFormat() : Sequence{
+	return Sequence{"bold", "italic", "underline", "strikeThrough"};
+}
+
+operation getForbiddenSides() : Sequence{
+	return Sequence{"north", "east", "south", "west"};
+}
+
+operation getLabelPosition() : Sequence{
+	return Sequence{"border", "node"};
+}
+
+operation getResizeKind() : Sequence{
+	return Sequence{"eastWest", "node", "northSouth", "NSEW"};
+}
+
+operation getEndsCentering() : Sequence{
+	return Sequence{"both", "none", "source", "target"};
+}
+
+operation getArrow() : Sequence{
+	return Sequence{"circlePlus", "diamond", "diamondWithDot", "dot",
+	 "fillDiamond", "fillDiamondWithDot", "inputArrow", "inputArrowWithDiamond",
+	  "inputArrowWithDiamondAndDot", "inputArrowWithDot", "inputArrowWithFillDiamond",
+	   "inputArrowWithFillDiamondcAndDot", "inputClosedArrow", "inputFillClosedArrow",
+	    "noDecoration", "outputArrow", "outputClosedArrow", "outputFillClosedArrow"};
+}
+
+operation getEndsCentering() : Sequence{
+	return Sequence{"gradientLeftToRight", "gradientRightToLeft", "Liquid"};
 }
 
 @cached

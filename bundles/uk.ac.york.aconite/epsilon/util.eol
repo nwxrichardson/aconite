@@ -55,3 +55,38 @@ operation Any getRoute(target : Any) : String {
 
 //Could be made more efficient if you can pass a limit which stops if it is going to be longer than any previous solution
 //Also need fixing to manage multiple of the same type at a specific level
+
+// This function aligns the style of ENum strings so they can all be accepted 
+operation Sequence alignStyle(set : String) : Any {
+	for (opt in self) {
+		if (opt.toString().alignedStyle(set)){
+			return opt;
+		}
+	}
+}
+
+operation Sequence alignStyle(set : Sequence) : Any {
+	return set.collect(i|self.alignStyle(i.toString()));
+}
+
+operation Sequence anyAligned(set : Sequence) : Boolean {
+	for (item in set){
+		if (not self.anyAligned(item.toString())){
+			return false;	
+		}
+	} return true;
+}
+
+operation Sequence anyAligned(set : String) : Boolean {
+	for (opt in self) {
+		if (opt.toString().alignedStyle(set)){
+			return true;
+		}
+	} return false;
+}
+
+operation String alignedStyle(set : String) : Boolean {
+	set = set.toLowerCase().replace("_","");
+	var optStr = self.toLowerCase().replace("_","");
+	return optStr = set;
+}
