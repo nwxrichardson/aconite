@@ -53,8 +53,15 @@ Select "Aconite - Generate Odesign" to produce the `basicfamily.odesign` in the 
 
 To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after any changes. To view the results of these changes on the diagrams themselves, expand the `model` folder in the "Model Explorer" view, then select `family.aird`:
 
-* Pre-existing representations can be viewed from the "Representations" list in the `.aird` editor, by double-clicking on their contents.
+* Pre-existing representations can be viewed from the "Representations" list in the `.aird` editor, by double-clicking on their contents. One of the predefined representations is shown below.
 * To generate a new representation, double-click on those preceded by ![Representation](https://github.com/user-attachments/assets/75f637c0-79a7-424b-a451-3d0d581359e8), then select a valid model element (those for which the `Finish` button is enabled).
+
+#### The expected family representation
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d1bc218d-17f3-4cf8-b2bb-04e53a095b86">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/60381f19-a710-4c83-9c1a-e2d859630740">
+  <img alt="A representation of the current family." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png" width = 300>
+</picture>
 
 #### Making structural changes to the metamodel
 
@@ -65,13 +72,6 @@ To make structural changes to the metamodel (for example, changing the EClasses 
 1. Regenerate the `.ecore` file by right-clicking on the `.emf` file and using "Generate Ecore Package".
 1. Open the `.genmodel` file and regenerate the model/edit/editor code by right-clicking on the root of the tree.
 1. Launch the "runtime" Eclipse instance as above.
-
-#### The expected family representation
-<picture>
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d1bc218d-17f3-4cf8-b2bb-04e53a095b86">
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/60381f19-a710-4c83-9c1a-e2d859630740">
-  <img alt="A representation of the current family." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png" width = 300>
-</picture>
 
 ## Table of annotations and properties
 
