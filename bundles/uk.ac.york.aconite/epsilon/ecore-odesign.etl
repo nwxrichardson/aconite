@@ -151,11 +151,11 @@ operation Source!EAnnotation getVals(key : String) : Sequence{
 	if (tmp.isDefined()){
 	return tmp.value.split(",").collect(i|i.trim());
 	}
-	return Sequence{""};
+	return Sequence{};
 }
 operation Source!EAnnotation getVals(key : String, def : String) : Sequence{
 	var rtn = self.getVals(key);
-	if (rtn != Sequence{""}){return rtn;}
+	if (not rtn.isEmpty()){return rtn;}
 	return Sequence(def);
 }
 
@@ -849,7 +849,7 @@ rule LabelStyleFromAnnotation
 	t.labelAlignment = Target!LabelAlignment#CENTER.VALUES.alignStyle(s.getVal("labelAlignment"));
 	t.labelColor = s.getVal("labelColor").getColor();
 	t.labelExpression = s.getVal("labelValue");
-	t.labelFormat = Target!FontFormat#bold.VALUES.alignStyle(s.getVals("labelFormat"));
+	t.labelFormat.addAll(Target!FontFormat#bold.VALUES.alignStyle(s.getVals("labelFormat")));
 	t.labelSize = s.getVal("labelSize").asInteger();
 	t.showIcon = s.getVal("showIcon").asBoolean();
 	}
@@ -882,7 +882,7 @@ rule NodeStyleFromAnnotation
 	extends BorderedStyleFromAnnotation, LabelStyleFromAnnotation , TooltipFromAnnotation
 	{
 	guard : (s.source = "aconite.node.description" or s.source = "aconite.border.description") and (not s.getVal("abstract").asBoolean())
-	t.forbiddenSides = Target!Side#NORTH.VALUES.alignStyle(s.getVals("forbiddenSides"));
+	t.forbiddenSides.addAll(Target!Side#NORTH.VALUES.alignStyle(s.getVals("forbiddenSides")));
  	t.hideLabelByDefault = s.getVal("hideLabelByDefault").asBoolean();
  	t.labelPosition = Target!LabelPosition#node.VALUES.alignStyle(s.getVal("labelPosition"));
  	t.resizeKind = Target!ResizeKind#NSEW.VALUES.alignStyle(s.getVal("resizeKind"));
