@@ -32,6 +32,8 @@ Finally, for Sirius we are going to go to "Help > Eclipse Marketplace", search f
 
 ### Trying out Aconite on one of the provided examples
 
+#### Initial setup
+
 Clone the repository. We will use the example in its [`examples/siriusfamily`](examples/siriusfamily) folder.
 
 Import the projects in that folder into your Eclipse workspace, by clicking on the "File > Import" menu item and selecting "General > Existing Projects into Workspace".
@@ -42,16 +44,29 @@ Find the downloaded subdirectory and import these four projects:
 * uk.ac.york.aconite.family.editor
 * uk.ac.york.aconite.family.tests
 
-Once imported, right-click on `uk.ac.york.aconite.family` and click "Run As... > Eclipse Application". This will open a second runtime Eclipse into which we import only  `uk.ac.york.aconite.family` by clicking on the "File > Import" menu item and selecting "General > Existing Projects into Workspace" unticking the other projects. 
+Once imported, right-click on `uk.ac.york.aconite.family` and click "Run As... > Eclipse Application". This will open a nested ("runtime") Eclipse, into which we import only  `uk.ac.york.aconite.family` by clicking on the "File > Import" menu item and selecting "General > Existing Projects into Workspace" unticking the other projects.
+
+#### Experimenting with Aconite annotations
 
 Within the "Model Explorer" view of the runtime eclipse, expand the `uk.ac.york.aconite.family` project and its `description` folder, and right-click on its `basicfamily.emf` file.
 Select "Aconite - Generate Odesign" to produce the `basicfamily.odesign` in the same folder.
 
-To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after any changes. To view the result of these changes on the diagrams themselves, open up the model folder, then select `family.aird`. Pre-existing representation can be viewed by opening the drop downs and double-clicking on their contents. To generate a new representation, double-click on those preceded by ![Representation](https://github.com/user-attachments/assets/75f637c0-79a7-424b-a451-3d0d581359e8), then select a valid model element (when the `Finish` button isn't greyed out).
+To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and the annotations documented below, while regenerating the `.odesign` file as described above after any changes. To view the results of these changes on the diagrams themselves, expand the `model` folder in the "Model Explorer" view, then select `family.aird`:
 
-**Be Aware:** If you want to change the metamodel for the model, you will have to close the runtime eclipse and regenerate the model files before running as an Eclipse Application.
+* Pre-existing representations can be viewed from the "Representations" list in the `.aird` editor, by double-clicking on their contents.
+* To generate a new representation, double-click on those preceded by ![Representation](https://github.com/user-attachments/assets/75f637c0-79a7-424b-a451-3d0d581359e8), then select a valid model element (those for which the `Finish` button is enabled).
 
-#### The family representation expected
+#### Making structural changes to the metamodel
+
+To make structural changes to the metamodel (for example, changing the EClasses or their features), please follow these steps:
+
+1. Close the "runtime" Eclipse instance.
+1. Make the changes to the `.emf` file from the main Eclipse instance.
+1. Regenerate the `.ecore` file by right-clicking on the `.emf` file and using "Generate Ecore Package".
+1. Open the `.genmodel` file and regenerate the model/edit/editor code by right-clicking on the root of the tree.
+1. Launch the "runtime" Eclipse instance as above.
+
+#### The expected family representation
 <picture>
   <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d1bc218d-17f3-4cf8-b2bb-04e53a095b86">
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/60381f19-a710-4c83-9c1a-e2d859630740">
