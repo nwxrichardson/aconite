@@ -45,7 +45,7 @@ context EAnnotation {
 	
 	critique ContainerIsName {
 		guard : not self.getVal("abstract").asBoolean()
-		check : self.getVals("container") = Sequence{""} or self.getVals("container").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
+		check : self.getVals("container").isEmpty() or self.getVals("container").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
 		message : self.toAnno() + "container is not a name"
 		}
 	
@@ -253,7 +253,7 @@ operation EAnnotation getVals(key : String) : Sequence{
 	if (tmp.isDefined()){
 	return tmp.value.split(",").collect(i|i.trim());
 	}
-	return Sequence{""};
+	return Sequence{};
 }
 
 operation EAnnotation getVal(key : String) : String{
