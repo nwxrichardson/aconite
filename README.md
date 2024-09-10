@@ -89,7 +89,7 @@ package basicfamily;
 | iconFolder | This sets the location of a folder from which all icon paths and image paths start from. | ❎        | ""      |
 ### @aconite.diagram
 ``` java
-@aconite.diagram ( name = " Project Diagram ")
+@aconite.diagram ( name = "Project Diagram")
 class Project { /* ... */ }
 ```
 
@@ -100,13 +100,13 @@ class Project { /* ... */ }
 
 ### @aconite.container, @aconite.node, and @aconite.border Properties
 ``` java
-@aconite.container ( name = " Task Container ", container = " Project Diagram ")
+@aconite.container ( name = "Task Container", container = "Project Diagram")
 class Task { /* ... */ }
 
-@aconite.node ( name = " Deliverable Node ", container = " Task Container ")
+@aconite.node ( name = "Deliverable Node", container = "Task Container")
  class Deliverable { /* ... */ }
 
-@aconite.border ( name = " Lead Border Node",  container = " Deliverable Node ")
+@aconite.border ( name = "Lead Border Node",  container = "Deliverable Node")
 class Person { /* ... */ }
 ```
 
@@ -125,13 +125,13 @@ class Person { /* ... */ }
 ### @aconite.container.description, @aconite.node.description, and @aconite.border.description
 The following are also properties of @aconite.container, @aconite.node, and @aconite.border focused on presentation. They should be used in the @aconite.node form for simple annotations, but the .description version can be used if, for example, the annotation is too long or to contrast multiple designs without duplication. 
 ``` java
-@aconite.node ( name = " Deliverable Node ", container = " Task Container ")
-@aconite.node.description (node = " Deliverable Node ", color = "red")
+@aconite.node ( name = "Deliverable Node", container = "Task Container")
+@aconite.node.description (node = "Deliverable Node , color = "red")
  class Deliverable { /* ... */ }
 ```
 **or**
 ``` java
-@aconite.node ( name = " Deliverable Node ", container = " Task Container ", color = "red")
+@aconite.node ( name = "Deliverable Node", container = "Task Container", color = "red")
  class Deliverable { /* ... */ }
 ```
 
@@ -199,7 +199,7 @@ The following are also properties of @aconite.container, @aconite.node, and @aco
 ### Reference edges - those connected to an EReference
 ```java
 class Deliverable {
- @aconite.edge ( name =" Lead Edge ", container = " Leader Diagram ")
+ @aconite.edge ( name ="Lead Edge", container = "Leader Diagram")
  ref Person lead ;
  }
 ```
@@ -212,10 +212,10 @@ class Deliverable {
 ### Element edges - those connected to an EClass
 
 ```java
-@aconite.edge ( name =" Effort Edge ",
- container =" Effort Diagram ",
- labelExpression =" percentage ",
- source =" person ", target =" task ")
+@aconite.edge ( name = "Effort Edge",
+ container ="Effort Diagram",
+ labelExpression = "percentage",
+ source ="person", target ="task")
 class Effort {
  ref Task [1]# effort task ;
  ref Person person ;
