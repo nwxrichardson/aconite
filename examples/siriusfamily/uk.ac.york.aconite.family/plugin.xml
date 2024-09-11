@@ -12,5 +12,13 @@
             uri="http://www.eclipse.org/sirius/sample/basicfamily"
             class="basicfamily.BasicfamilyPackage"/>
    </extension>
+   <extension
+         point="org.eclipse.sirius.componentization">
+      <component
+            class="uk.ac.york.aconite.family.Activator"
+            id="uk.ac.york.aconite.family.sirius"
+            name="uk.ac.york.aconite.family.sirius">
+      </component>
+   </extension>
 
 </plugin>
