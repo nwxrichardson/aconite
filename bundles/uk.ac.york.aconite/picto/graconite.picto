@@ -1,0 +1,8 @@
+<?nsuri picto?>
+<picto format="egx" transformation="graconite.egx" standalone="true">
+    <model type="EMF">
+        <parameter name="name" value="M"/>
+        <parameter name="metamodelUri" value="http://www.eclipse.org/emf/2002/Ecore"/>
+         <parameter name="" value="http://www.eclipse.org/emf/2002/Ecore"/>
+    </model>
+</picto>

@@ -1,0 +1,13 @@
+
+rule ACONITE2GRAPHICVIZ
+    transform n : EPackage {
+
+    template : "aconite2graphviz.egl"
+
+    parameters : Map{
+        "path" = Sequence{"Aconite"},
+        "icon" = "diagram-ffffff",
+        "format" = "graphviz-circo"
+    }
+
+}
