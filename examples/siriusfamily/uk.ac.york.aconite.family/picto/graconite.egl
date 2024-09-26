@@ -1,0 +1,103 @@
+[%import  "config.eol";
+
+	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
+	var annotations = EAnnotation.all;
+	
+	for (i in annotations) {
+		// Make a an abstract = false in the details if it is not already set
+		i.details.put("abstract", i.getVal("abstract"));
+		if (i.details.containsKey("extend")){
+			//Copy initial details to override at the end
+			var copyDetails = emfTool.getECoreUtil.copy(i).details;
+			// Get the extends in reverse order
+			var imports =  i.getVals("extend").invert();
+			// For each copy the details, the order sets out the priority 
+			for (j in imports) {
+				i.details.putAll(emfTool.getECoreUtil.copy(annotations.selectOne(k|k.getVal("name") = j)).details);
+			}
+			// Copy back the original details to override anything change by others
+			i.details.putAll(copyDetails);
+		}
+	}
+%]
+@startuml
+[%for (anno in n.nodeContained()){%][%=anno.getOutput()%][%}%]
+
+[%=n.getEdges()%]
+@enduml
+
+[%operation EAnnotation getVal(key : String) : String{
+
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value;
+	}
+	return self.getDefault(key);
+
+}
+
+// Convert a string to a sequence of strings
+operation EAnnotation getVals(key : String) : Sequence{
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+		return tmp.value.split(",").collect(i|i.trim());
+	}
+	return Sequence{};
+}
+
+operation EAnnotation getOutput() : String {
+	var subEle = self.nodeContained();
+	var rtn = "rectangle " + self.getVal("name").replace(" ","_") + " #" + self.getVal("color").replace("_", "")+";line:black;line.bold;text:black";
+	if (not subEle.isEmpty()){
+	rtn += " {\n";
+	for (ele in subEle){
+		rtn += ele.getOutput() + "\n";
+	}
+	rtn += "}";
+	}
+	return rtn + " \n";
+}
+
+operation EAnnotation getEdges() : String {
+	var edges = self.edgeContained();
+	var rtn = "";
+	for (edge in edges){
+	var element = edge.eModelElement;
+	var sources = edge.getVals("sourceNode");
+	var targets = annotations.select(i|Sequence{"aconite.edge","aconite.node","aconite.container"}.contains(i.Source) 
+		and i.eModelElement.isTypeOf(EClass) and element.eType.getEndOf(edge.getVal("target")).isTypeOf(EClass) 
+		and element.eType.getEndOf(edge.getVal("target")).isSuperTypeOf(i.eModelElement));
+		for (source in sources){
+			for (target in targets){
+			rtn += source.replace(" ","_") + " --> " + target.getVal("name").replace(" ","_") + ": " + edge.getVal("name") + "\n";
+			}
+		}
+	}
+	
+	return rtn;
+}
+
+
+operation EAnnotation edgeContained() : Sequence {
+	return annotations.select(i|i.source = "aconite.edge" and 
+		i.getVals("container").contains(self.getVal("name")));
+}
+
+operation EAnnotation nodeContained() : Sequence {
+	return annotations.select(i|(i.source = "aconite.container" or i.source = "aconite.node") and 
+		i.getVals("container").contains(self.getVal("name")));
+}
+
+//Gets the EClass reached by following the expression (requires the expression form, ref1.ref2.ref3)
+operation EClass getEndOf(expression : String) : EClass{
+	if (expression = ""){return self;}
+	var splited = expression.split("\\.");
+	if (splited.size() = 0){return self;}
+	var rtn = self.getEAllReferences().selectOne(j|j.name = splited.get(0)).eType;
+	if (splited.size() = 1){
+	return rtn;}
+	else {
+	splited.remove(splited.get(0));
+	return rtn.getEndOf(splited.concat());}
+}
+%]

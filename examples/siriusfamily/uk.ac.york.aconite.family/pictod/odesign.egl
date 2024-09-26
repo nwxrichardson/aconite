@@ -1,0 +1,25 @@
+@startuml
+[%for (node in n.defaultLayer.eContents){%][%=node.getOutput()%][%}%]
+@enduml
+
+[%operation NodeMapping getOutput() : String {
+	return "rectangle " + self.name + " \n";
+}
+
+operation ContainerMapping getOutput() : String {
+	var color = self.style.foregroundColor;
+	var rtn = "rectangle " + self.name + "#" + color.getFColor() ;
+	return rtn + " \n";
+}
+
+operation Any getOutput() : String {
+	return "";
+}
+
+operation FixedColor getFColor() : String{
+	var red = self.red.hex();
+	var green = self.red.hex();
+	var blue = self.red.hex();
+	return red + green + blue;
+}
+%]

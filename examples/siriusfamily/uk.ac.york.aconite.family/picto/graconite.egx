@@ -1,0 +1,34 @@
+import "config.eol";
+
+rule ACONITE2GRAPHICVIZ
+    transform n : EAnnotation {
+	guard: n.source = "aconite.diagram"
+
+    template : "graconite.egl"
+
+    parameters : Map{
+        "path" = Sequence{n.getVal("name")},
+        "icon" = "diagram-ffffff",
+        "format" = "plantuml"
+    }
+
+}
+
+operation EAnnotation getVal(key : String) : String{
+
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value;
+	}
+	return self.getDefault(key);
+
+}
+
+// Convert a string to a sequence of strings
+operation EAnnotation getVals(key : String) : Sequence{
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value.split(",").collect(i|i.trim());
+	}
+	return Sequence{};
+}

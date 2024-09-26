@@ -1,0 +1,12 @@
+rule SIRIUS2PLANTUML
+    transform n : DiagramDescription {
+
+    template : "odesign.egl"
+
+    parameters : Map{
+        "path" = Sequence{n.name},
+        "icon" = "diagram-ffffff",
+        "format" = "plantuml"
+    }
+
+}

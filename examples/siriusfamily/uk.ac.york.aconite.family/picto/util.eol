@@ -1,0 +1,92 @@
+/*********************************************************************
+ * Copyright (c) 2024 University of York, Rolls-Royce Controls
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ **********************************************************************/
+
+//Warning Any and slight inefficiency if inheritance is wrong
+	
+operation Any getRoute(target : Any) : String {
+	var seen = Set{self};
+	var curSize = -1;
+	var routes = self.eAllReferences.invert().aggregate(i|i.eType, "." + i.name);
+	var supers = target.closure(i|i.eSuperTypes);
+	supers.add(target);
+	while ((not routes.keySet().exists(i|supers.contains(i))) and seen.size() > curSize){
+	curSize = seen.size();
+	seen.addAll(routes.keySet());	
+	var newRoutes = new Map;
+	for (i in routes.keySet()){
+		newRoutes.putAll(i.eAllReferences.invert().aggregate(j|j.eType,routes.get(i) + "." + j.name ));
+	}
+	for (i in seen){
+		newRoutes.remove(i);
+	}
+	routes = newRoutes;
+	}
+	
+	if (not routes.keySet().exists(i|supers.contains(i))){
+		if (self = target) {return "";}
+		return ".eAllContents()";
+	}
+	
+	target = target.asSet();
+	var options = Sequence{};
+	while (target != 0){
+		
+		options = Sequence{};
+		for (pos : Source!EClass in target){
+			if (routes.containsKey(pos)){
+				options.add(routes.get(pos));
+			}
+		}
+		if (options.size() != 0){
+			if (options.size() = 1){return options.first();}
+			return options.sortBy(i|i.asSequence().count(".")).first();
+		}
+		target = target.collect(i|i.eSuperTypes).flatten();
+	}
+	
+}
+
+//Could be made more efficient if you can pass a limit which stops if it is going to be longer than any previous solution
+//Also need fixing to manage multiple of the same type at a specific level
+
+// This function aligns the style of ENum strings so they can all be accepted 
+operation Sequence alignStyle(set : String) : Any {
+	for (opt in self) {
+		if (opt.toString().alignedStyle(set)){
+			return opt;
+		}
+	}
+}
+
+operation Sequence alignStyle(set : Sequence) : Any {
+	return set.collect(i|self.alignStyle(i.toString()));
+}
+
+operation Sequence anyAligned(set : Sequence) : Boolean {
+	for (item in set){
+		if (not self.anyAligned(item.toString())){
+			return false;	
+		}
+	} return true;
+}
+
+operation Sequence anyAligned(set : String) : Boolean {
+	for (opt in self) {
+		if (opt.toString().alignedStyle(set)){
+			return true;
+		}
+	} return false;
+}
+
+operation String alignedStyle(set : String) : Boolean {
+	set = set.toLowerCase().replace("_","");
+	var optStr = self.toLowerCase().replace("_","");
+	return optStr = set;
+}

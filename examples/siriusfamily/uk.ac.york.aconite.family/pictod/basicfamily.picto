@@ -1,0 +1,8 @@
+<?nsuri picto?>
+<picto format="egx" transformation="odesign.egx" standalone="true">
+    <model type="EMF">
+        <parameter name="name" value="M"/>
+        <parameter name="metamodelUri" value="http://www.eclipse.org/sirius/diagram/description/1.1.0"/>
+        <parameter name="modelFile" file="../description/basicfamily.odesign"/>
+      </model>
+</picto>

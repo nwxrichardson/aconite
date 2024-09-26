@@ -3,6 +3,6 @@
     <model type="EMF">
         <parameter name="name" value="M"/>
         <parameter name="metamodelUri" value="http://www.eclipse.org/emf/2002/Ecore"/>
-         <parameter name="" value="http://www.eclipse.org/emf/2002/Ecore"/>
-    </model>
+        <parameter name="modelFile" file="../description/basicfamily.emf"/>
+      </model>
 </picto>

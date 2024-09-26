@@ -1,0 +1,81 @@
+/*********************************************************************
+ * Copyright (c) 2024 University of York, Rolls-Royce Controls
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ **********************************************************************/
+
+import "util.eol";
+
+// Note: Whichever one needs to access its default should be put first in the java code
+operation EAnnotation getDefault(key : String) : String {
+	switch (key){
+		case "name"	: return self.eModelElement.name;
+		case "createElements" 	: return "true";	
+		case "synchronizationLock" 	: return "false";	
+		case "color" 	: return "light_yellow";
+		case "backgroundColor" 	: return self.getVal("color");
+		case "foregroundColor" 	: return self.getVal("color");
+		case "height" 	: return "0";	
+		case "width" 	: return "0";
+		case "roundedCorner" 	: return "false";
+		case "heightComputationExpression"	: return "-1";
+		case "widthComputationExpression"	: return "-1";
+		case "sizeComputationExpression" : return "3";
+		case "resizeKind"	: return "NSEW";
+		case "labelPosition"	: if (self.getVal("shape") != "image"){return "node";} return "border";
+		case "hideLabelByDefault"	: return "false";
+		case "arcHeight"	: return "1";
+		case "arcWidth"	: return "1";
+		case "showIcon"	: return "false";
+		case "label"	: return self.getVal("name");
+		case "labelSize"	: return "12";
+		case "labelColor"	: return "black";
+		case "labelExpression"	: return "name";
+		case "labelValue"	: return "aql:self." + self.getVal("labelExpression");
+		case "labelAlignment"	: return "CENTER";
+		case "borderSize"	: return self.getVal("borderSizeComputationExpression");
+		case "borderLineStyle"	: return "solid";
+		case "borderColor"	: return "black";
+		case "hideSubMappings"	: return "true";
+		case "inheritsAncestorFilters"	: return "true";
+		case "borderSizeComputationExpression"	: return "2";
+		case "importedMapping"	: return self.getVal("import");
+		case "abstract"	: return "false";
+		case "proxyType"	: return "Diagram";
+		case "proxyStatement"	: return "aql:diagram.target";
+		case "reconnectable"	: return "true";
+		case "creatable"	: return "true";
+		case "directlyEditable"	: return "true";
+		case "condition"	: return "aql:false";
+		case "childrenPresentation"	: return "FreeForm";
+		case "sce"	: return self.getVal("candidates");
+		case "endsCentering"	: return "Both";
+		case "sourceArrow"	: return "NoDecoration";
+		case "backgroundStyle"	: return "GradientLeftToRight";
+		case "targetArrow"	: return "InputArrow";
+		case "lineStyle"	: return "solid";
+		case "candidates"	: return self.getVal("semanticCandidatesExpression").replaceFirst(".","");
+		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
+		return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
+		} else {return "";}
+		}
+		case "targetFinderExpression" : return "aql:self" + self.getVal("targetFinder");
+		case "targetFinder" : {
+			if (self.eModelElement.isTypeOf(Source!EReference) or self.eModelElement.isTypeOf(Target!EReference)){
+				return self.eModelElement.name.dot() + self.getVal("target").dot();
+			} else {
+				return self.getVal("target").dot();
+			}
+		}
+		default : return "";
+	}
+}
+
+operation String dot() : String {
+	if (self != "") {return "."+self;}
+	return self;
+}
