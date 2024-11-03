@@ -52,14 +52,14 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "directlyEditable"	: return "true";
 		case "condition"	: return "aql:false";
 		case "childrenPresentation"	: return "FreeForm";
-		case "sce"	: return self.getVal("candidates");
+		case "semanticCandidatesExpression"	: return "aql:self" + s.getVal("sce").dot();
 		case "endsCentering"	: return "Both";
 		case "sourceArrow"	: return "NoDecoration";
 		case "backgroundStyle"	: return "GradientLeftToRight";
 		case "targetArrow"	: return "InputArrow";
 		case "lineStyle"	: return "solid";
-		case "candidates"	: return self.getVal("semanticCandidatesExpression").replaceFirst(".","");
-		case "semanticCandidatesExpression"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
+		case "candidates"	: return self.getVal("semanticCandidatesExpression");
+		case "sce"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}
 		}

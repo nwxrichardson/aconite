@@ -44,11 +44,18 @@ operation Any getDetails() : Map{
 	return tmp.aggregate(i|i.name,self.eGet(i).toValue());
 }
 
+operation Any container() : Any {
+	var rtn = self.eContainer;
+	if (rtn.isTypeOf(Odesign!Layer)){
+		return rtn.eContainer;
+	} return rtn;
+}
+
 rule Package2Package
 	transform s : Source!EPackage
 	to t : Target!EPackage{
-	var sirius = (new Target!EAnnotation);
-	sirius.source = "sirius";
+	var aconite = (new Target!EAnnotation);
+	aconite.source = "aconite";
 	t.name = s.name;
 	t.nsPrefix = s.nsPrefix;
 	t.nsURI = s.nsURI;
@@ -56,7 +63,7 @@ rule Package2Package
 	t.eFactoryInstance ::= s.eFactoryInstance;
 	t.eSubpackages ::= s.eSubpackages;
 	t.eAnnotations = s.eAnnotations;
-	t.eAnnotations.add(sirius);
+	t.eAnnotations.add(aconite);
 	}
 	
 rule Class2Class
@@ -119,7 +126,7 @@ rule Attr2Attr
 rule Diagram2Annotation
 	transform s : Odesign!DiagramDescription
 	to t : Target!EAnnotation {
-	t.source = "sirius.diagram";
+	t.source = "aconite.diagram";
 	var clazz = s.domainClass.split("::");
 	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
 	
@@ -133,10 +140,10 @@ rule Diagram2Annotation
 rule Node2Annotation
 	transform s : Odesign!NodeMapping
 	to t : Target!EAnnotation {
-	t.source = "sirius.node";
+	t.source = "aconite.node";
 	var clazz = s.domainClass.split("::");
 	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
-	
+	t.details.put("container", s.container().equivalent().getVal("name"));
 	t.details.putAll(s.getDetails());
 	var style = s.style.equivalent();
 	if (style.isDefined()) {
@@ -149,7 +156,7 @@ rule Node2Annotation
 rule Container2Annotation
 	transform s : Odesign!ContainerMapping
 	to t : Target!EAnnotation {
-	t.source = "sirius.container";
+	t.source = "aconite.container";
 	var clazz = s.domainClass.split("::");
 	t.eModelElement = classes.select(i|i.name = clazz.get(1)).selectOne(i|i.ePackage.name = clazz.get(0)).equivalent();
 	//TODO Manage subnodes
@@ -167,7 +174,7 @@ rule Container2Annotation
 rule SquareDescription2Annotation
 	transform s : Odesign!SquareDescription
 	to t : Target!EAnnotation{
-	t.source = "sirius.node.description";
+	t.source = "aconite.node.description";
 	t.details.putall(s.getDetails());
 	t.details.put("color", s.color.name);
 	}
@@ -176,7 +183,7 @@ rule SquareDescription2Annotation
 rule FlatDescription2Annotation
 	transform s : Odesign!FlatContainerStyle
 	to t : Target!EAnnotation{
-	t.source = "sirius.container.description";
+	t.source = "aconite.container.description";
 	t.details.putall(s.getDetails());
 	}
 	
@@ -184,7 +191,7 @@ rule FlatDescription2Annotation
 rule EdgeMapping2Annotation
 	transform s : Odesign!EdgeMapping
 	to t : Target!EAnnotation{
-	t.source = "sirius.edge";
+	t.source = "aconite.edge";
 	t.details.putAll(s.getDetails());
 	t.details.remove("useDomainElement");
 	//Alter this to swap to target from targetFinderExpression
@@ -201,7 +208,7 @@ rule EdgeMapping2Annotation
 	}
 	
 post {
-var annotations = Target.allContents.selectByType(Target!EAnnotation).select(i|i.source.startsWith("sirius")).flatten();
+var annotations = Target.allContents.selectByType(Target!EAnnotation).select(i|i.source.startsWith("aconite")).flatten();
 //Filter Out Duplicates
 for (i in annotations){
 	i.details.remove("domainClass");

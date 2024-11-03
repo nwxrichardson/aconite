@@ -54,7 +54,7 @@ context EAnnotation {
 		message : self.details.get("name") + '\'s import does not exist.'
 	}
 	
-	constraint HasName {
+	critique HasName {
 		guard : self.source != "aconite"
 		check : self.getVal("name") != ""
 		message : self.toAnno() + " requires a name"
