@@ -333,7 +333,7 @@ rule SudoNodeFromAnnotation
 	and i.getVal("node") = s.getVal("name")).equivalent("ConditionalNodeFromAnnotation");
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression");
+	t.semanticCandidatesExpression = "aql:self" + s.getVal("semanticCandidateExpression");
 	
 	if (s.getVal("creatable").asBoolean()){
 		var conRef = container.eAllReferences.selectOne(i|i.containment and i.eType.isSuperTypeOf(element));
@@ -384,7 +384,7 @@ rule SudoContainerFromAnnotation
 	and i.getVal("node") = s.getVal("name")).equivalent("ConditionalContainerFromAnnotation");
 	
 	t.domainClass = element.getDC();
-	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression");
+	t.semanticCandidatesExpression = "aql:self" + s.getVal("semanticCandidateExpression");
 	
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.node")).equivalent());
 	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "aconite.border").equivalent());
@@ -555,7 +555,7 @@ rule EleEdgeFromAnnotation
 	var container = annotations.selectOne(i|i.getVal("name") = s.getVal("container")).eModelElement;
 
 	t.label = s.getVal("label");
-	t.semanticCandidatesExpression = s.getVal("semanticCandidatesExpression");
+	t.semanticCandidatesExpression = "aql:self" + s.getVal("semanticCandidateExpression");
 	t.useDomainElement = true;
 	t.domainClass = element.getDC();
 	t.sourceFinderExpression = s.getVal("sourceFinderExpression", "aql:self." +  s.getVal("source"));

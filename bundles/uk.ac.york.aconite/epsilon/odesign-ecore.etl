@@ -21,18 +21,22 @@ operation Any toValue() : String{
 	return self.asString();
 }
 
+/*
+ * Get the value of as a string from the details or the default
+ * This is the fundemantal building block 
+ */
 operation Source!EAnnotation getVal(key : String) : String{
 
 	var tmp = self.details.selectOne(i|i.key = key);
 	if (tmp.isDefined()){
 	return tmp.value;
 	}
-	return "";
+	return self.getDefault(key);
 
 }
 
+// Backup function that can be called with a new default
 operation Source!EAnnotation getVal(key : String, def : String) : String{
-
 	var rtn = self.getVal(key);
 	if (rtn != ""){return rtn;}
 	return def;
@@ -214,7 +218,9 @@ for (i in annotations){
 	i.details.remove("domainClass");
 	var toRemove = Set{};
 	for (j in i.details) {
-		if (j.getValue = i.getDefault(j.getKey())){
+		i.getFinDef(j.getKey()).println();
+		j.getValue.println();
+		if (j.getValue = i.getFinDef(j.getKey())){
 			toRemove.add(j.getKey());
 		}
 	} for (rmv in toRemove) {i.details.remove(rmv);}

@@ -52,14 +52,15 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "directlyEditable"	: return "true";
 		case "condition"	: return "aql:false";
 		case "childrenPresentation"	: return "FreeForm";
-		case "semanticCandidatesExpression"	: return "aql:self" + s.getVal("sce").dot();
+		case "semanticCandidatesExpression"	: return self.getVal("sce");
 		case "endsCentering"	: return "Both";
 		case "sourceArrow"	: return "NoDecoration";
 		case "backgroundStyle"	: return "GradientLeftToRight";
 		case "targetArrow"	: return "InputArrow";
 		case "lineStyle"	: return "solid";
 		case "candidates"	: return self.getVal("semanticCandidatesExpression");
-		case "sce"	: { if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
+		case "sce"	: {
+		 if (self.eModelElement.isTypeOf(Source!EClass) or self.eModelElement.isTypeOf(Target!EClass)){ 
 		return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).eModelElement.getRoute(self.eModelElement);
 		} else {return "";}
 		}
@@ -74,6 +75,25 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		default : return "";
 	}
 }
+
+// Note: Whichever one needs to access its default should be put first in the java code
+operation Target!EAnnotation getAddOn(key : String, val : String) : String {
+	switch (key){
+		case "semanticCandidatesExpression"	: return "aql:self" + val;
+		case "borderSizeComputationExpression" : return "aql:" + val;
+		default : return val;
+	}
+}
+
+operation Target!EAnnotation getFinVal(key : String) : String{
+	return self.getAddOn(key, self.getVal(key));
+}
+
+
+operation Target!EAnnotation getFinDef(key : String) : String{
+	return self.getAddOn(key, self.getDefault(key));
+}
+
 
 operation String dot() : String {
 	if (self != "") {return "."+self;}
