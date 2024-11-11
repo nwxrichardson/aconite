@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Bundle-Activator: basicfamily.presentation.BasicfamilyEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: basicfamily.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,

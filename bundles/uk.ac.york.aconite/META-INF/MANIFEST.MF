@@ -5,7 +5,7 @@ Bundle-SymbolicName: uk.ac.york.aconite;singleton:=true
 Bundle-Vendor: University of York
 Bundle-Version: 1.0.0.qualifier
 Automatic-Module-Name: uk.ac.york.aconite
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.epsilon.emc.emf,
