@@ -218,7 +218,8 @@ rule PackageFromAnnotation
  */	
 	
 	var diagrams = annotations.select(i|i.Source = "aconite.diagram").equivalent();
-	viewpoint.ownedRepresentations.addAll(diagrams);	
+	viewpoint.ownedRepresentations.addAll(diagrams);
+		
 	
 /* 
  * 2.)	Setting an attribute, the use of .getVal() does most of the work before 
@@ -229,6 +230,15 @@ rule PackageFromAnnotation
  */
 	
 	viewpoint.name = s.getVal("name");
+	
+	var extensions = s.getVals("extension");
+	
+	for (extension in extensions){
+		var exElem = new Target!JavaExtension;
+		exElem.qualifiedClassName = extension;
+		viewpoint.ownedJavaExtensions.add(exElem);
+	}
+	
 }
 
 
