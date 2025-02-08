@@ -55,6 +55,14 @@ To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and th
 
 * Pre-existing representations can be viewed from the "Representations" list in the `.aird` editor, by double-clicking on their contents. One of the predefined representations is shown below.
 * To generate a new representation, double-click on those preceded by ![Representation](https://github.com/user-attachments/assets/75f637c0-79a7-424b-a451-3d0d581359e8), then select a valid model element (those for which the `Finish` button is enabled).
+* Representations can only be created for models `.aird` is aware of; to create views for a new model, you need to go to "Add > Browse Workspace" and then find the relevant model.
+
+<picture>
+<!--   <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/d1bc218d-17f3-4cf8-b2bb-04e53a095b86">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/60381f19-a710-4c83-9c1a-e2d859630740"> -->
+  <img alt="A representation of the current family." src="https://github.com/user-attachments/assets/763c8f7b-60b4-429c-9a06-7413d38ec0fe" width = 550>
+</picture>
+
 
 #### The expected family representation
 <picture>
