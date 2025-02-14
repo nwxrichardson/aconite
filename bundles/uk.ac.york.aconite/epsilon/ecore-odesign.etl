@@ -45,6 +45,7 @@ pre {
 		var i = annotations.selectOne(op|op.getVals("container").size() > 1);
 			var containers = i.getVals("container");
 			if (containers.size() != 1){
+				var first = true;
 				for (j in containers){
 					var `new` = emfTool.getECoreUtil.copy(i);
 					`new`.details.put("container",j);
@@ -54,6 +55,12 @@ pre {
 					labelE.value = `new`.getVal("label");
 					`new`.details.add(labelE);
 					`new`.details.selectOne(i|i.key = 'name').value = j + " - " + `new`.getVal("name");
+					if (first){
+						first = false;
+					} else {
+						`new`.details = `new`.details.rejectOne(i|i.key = 'reuse');
+					}
+					
 					newAnnotations.add(`new`);
 					
 					var editing = annotations.select(op|op.getVals("container").contains(i.getVal("name")));
@@ -218,7 +225,8 @@ rule PackageFromAnnotation
  */	
 	
 	var diagrams = annotations.select(i|i.Source = "aconite.diagram").equivalent();
-	viewpoint.ownedRepresentations.addAll(diagrams);	
+	viewpoint.ownedRepresentations.addAll(diagrams);
+		
 	
 /* 
  * 2.)	Setting an attribute, the use of .getVal() does most of the work before 
@@ -229,6 +237,15 @@ rule PackageFromAnnotation
  */
 	
 	viewpoint.name = s.getVal("name");
+	
+	var extensions = s.getVals("extension");
+	
+	for (extension in extensions){
+		var exElem = new Target!JavaExtension;
+		exElem.qualifiedClassName = extension;
+		viewpoint.ownedJavaExtensions.add(exElem);
+	}
+	
 }
 
 
@@ -276,6 +293,7 @@ rule AbstractMappingFromAnnotation
 	t.createElements = s.getVal("createElements").asBoolean;
 	t.synchronizationLock = s.getVal("synchronizationLock").asBoolean;
 	
+	
 	if (s.getVal("directlyEditable").asBoolean()){
 		var directEdit = new Target!DirectEditLabel;
 		directEdit.addToHidden(s.getDiagram());
@@ -305,7 +323,8 @@ rule AbstractNodeFromAnnotation
 	} else {
 		t.style = preStyled.equivalent();
 	}
-	
+	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "aconite.border").equivalent());
+	t.reusedBorderedNodeMappings.addAll(annotations.select(i|i.getVal("reuse") = t.name).select(i|i.Source = "aconite.border").equivalent());
 	}
 	
 @lazy
@@ -387,8 +406,10 @@ rule SudoContainerFromAnnotation
 	t.semanticCandidatesExpression = "aql:self" + s.getVal("semanticCandidateExpression");
 	
 	t.subNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.node")).equivalent());
-	t.borderedNodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source = "aconite.border").equivalent());
 	t.subContainerMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.container")).equivalent());
+	
+	t.reusedNodeMappings.addAll(annotations.select(i|i.getVal("reuse") = t.name).select(i|i.Source.startsWith("aconite.node")).equivalent());
+	t.reusedContainerMappings.addAll(annotations.select(i|i.getVal("reuse") = t.name).select(i|i.Source.startsWith("aconite.container")).equivalent());
 	
 	t.childrenPresentation = Target!ContainerLayout#FreeForm.VALUES.alignStyle(s.getVal("childrenPresentation"));
 	
