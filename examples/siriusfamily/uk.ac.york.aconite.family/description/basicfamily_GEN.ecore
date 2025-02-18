@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="basicfamily" nsURI="http://www.eclipse.org/sirius/sample/basicfamily"
+    nsPrefix="basicfamily">
+  <eAnnotations source="aconite">
+    <details key="iconFolder" value="uk.ac.york.aconite.family/icons/"/>
+  </eAnnotations>
+  <eAnnotations source="aconite"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Person">
+    <eAnnotations source="aconite.diagram">
+      <details key="name" value="Relationships"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.container">
+      <details key="name" value="Person"/>
+      <details key="childrenPresentation" value="List"/>
+      <details key="semanticCandidatesExpression" value="aql:self"/>
+      <details key="container" value="Relationships"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.container">
+      <details key="name" value="Siblings"/>
+      <details key="childrenPresentation" value="List"/>
+      <details key="semanticCandidatesExpression" value="aql:self"/>
+      <details key="container" value="Relationships"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node">
+      <details key="container" value="Person"/>
+      <details key="name" value="Parent"/>
+      <details key="semanticCandidatesExpression" value="aql:self"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node.description">
+      <details key="name" value="Parent Style"/>
+      <details key="labelExpression" value="aql:self.name"/>
+      <details key="showIcon" value="true"/>
+      <details key="color" value="white"/>
+      <details key="node" value="Parent"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node">
+      <details key="container" value="Person"/>
+      <details key="name" value="Child"/>
+      <details key="semanticCandidatesExpression" value="aql:self"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node.description">
+      <details key="name" value="Child Style"/>
+      <details key="labelExpression" value="aql:self.name"/>
+      <details key="showIcon" value="true"/>
+      <details key="color" value="white"/>
+      <details key="node" value="Child"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node">
+      <details key="container" value="Siblings"/>
+      <details key="name" value="Sibling"/>
+      <details key="semanticCandidatesExpression" value="aql:self"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node.description">
+      <details key="name" value="Sibling Style"/>
+      <details key="labelExpression" value="aql:self.name"/>
+      <details key="showIcon" value="true"/>
+      <details key="node" value="Sibling"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Person" eOpposite="#//Person/parents">
+      <eAnnotations source="aconite.edge">
+        <details key="name" value="SiblingsEdge"/>
+        <details key="creatable" value="false"/>
+        <details key="labelExpression" value=""/>
+        <details key="color" value="gray"/>
+        <details key="container" value="Relationships"/>
+        <details key="targetFinderExpression" value="aql:self"/>
+        <details key="sourceNode" value="Person"/>
+        <details key="targetNode" value="Siblings"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parents" upperBound="2"
+        eType="#//Person" eOpposite="#//Person/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mother" eType="#//Woman"
+        derived="true">
+      <eAnnotations source="aconite.edge">
+        <details key="reconnectable" value="false"/>
+        <details key="name" value="Mother"/>
+        <details key="container" value="Family"/>
+        <details key="sourceNode" value="Man, Woman"/>
+        <details key="labelExpression" value=""/>
+        <details key="color" value="purple"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="father" eType="#//Man"
+        derived="true">
+      <eAnnotations source="aconite.edge">
+        <details key="extend" value="Mother"/>
+        <details key="name" value="Father"/>
+        <details key="color" value="blue"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Family">
+    <eAnnotations source="aconite.diagram">
+      <details key="name" value="Family"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//Person" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Man" eSuperTypes="#//Person">
+    <eAnnotations source="aconite.node">
+      <details key="container" value="Family"/>
+      <details key="name" value="Man"/>
+      <details key="semanticCandidatesExpression" value="aql:self"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
+    <eAnnotations source="aconite.node">
+      <details key="container" value="Family"/>
+      <details key="name" value="Woman"/>
+      <details key="semanticCandidatesExpression" value="aql:self"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

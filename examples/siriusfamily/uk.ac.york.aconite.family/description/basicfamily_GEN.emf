@@ -1,0 +1,42 @@
+@aconite(iconFolder="uk.ac.york.aconite.family/icons/")
+@aconite
+@namespace(uri="http://www.eclipse.org/sirius/sample/basicfamily", prefix="basicfamily")
+package basicfamily;
+
+@aconite.diagram(name="Relationships")
+@aconite.container(name="Person", childrenPresentation="List", semanticCandidatesExpression="aql:self", container="Relationships")
+@aconite.container(name="Siblings", childrenPresentation="List", semanticCandidatesExpression="aql:self", container="Relationships")
+@aconite.node(container="Person", name="Parent", semanticCandidatesExpression="aql:self")
+@aconite.node.description(name="Parent Style", labelExpression="aql:self.name", showIcon="true", color="white", node="Parent")
+@aconite.node(container="Person", name="Child", semanticCandidatesExpression="aql:self")
+@aconite.node.description(name="Child Style", labelExpression="aql:self.name", showIcon="true", color="white", node="Child")
+@aconite.node(container="Siblings", name="Sibling", semanticCandidatesExpression="aql:self")
+@aconite.node.description(name="Sibling Style", labelExpression="aql:self.name", showIcon="true", node="Sibling")
+class Person {
+	attr String name;
+
+	@aconite.edge(name="SiblingsEdge", creatable="false", labelExpression="", color="gray", container="Relationships", targetFinderExpression="aql:self", sourceNode="Person", targetNode="Siblings")
+	ref Person[*]#parents children;
+	ref Person[0..2]#children parents;
+
+	@aconite.edge(reconnectable="false", name="Mother", container="Family", sourceNode="Man, Woman", labelExpression="", color="purple")
+	derived ref Woman mother;
+
+	@aconite.edge(extend="Mother", name="Father", color="blue")
+	derived ref Man father;
+}
+
+@aconite.diagram(name="Family")
+class Family {
+	attr String name;
+	val Person[*] members;
+}
+
+@aconite.node(container="Family", name="Man", semanticCandidatesExpression="aql:self")
+class Man extends Person {
+}
+
+@aconite.node(container="Family", name="Woman", semanticCandidatesExpression="aql:self")
+class Woman extends Person {
+}
+

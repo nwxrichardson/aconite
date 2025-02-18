@@ -80,7 +80,6 @@ public class SiriusReverser extends Job {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		output = target.getResource();
 		module.getContext().getModelRepository().dispose();
 	}
 	
