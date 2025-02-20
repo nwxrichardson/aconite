@@ -6,11 +6,11 @@ package basicfamily;
 @aconite.diagram(name="Relationships")
 @aconite.container(name="Person", childrenPresentation="List", semanticCandidatesExpression="aql:self", container="Relationships")
 @aconite.container(name="Siblings", childrenPresentation="List", semanticCandidatesExpression="aql:self", container="Relationships")
-@aconite.node(container="Person", name="Parent", semanticCandidatesExpression="aql:self")
+@aconite.node(container="Person", name="Parent", semanticCandidatesExpression="aql:selfparents")
 @aconite.node.description(name="Parent Style", labelExpression="aql:self.name", showIcon="true", color="white", node="Parent")
-@aconite.node(container="Person", name="Child", semanticCandidatesExpression="aql:self")
+@aconite.node(container="Person", name="Child")
 @aconite.node.description(name="Child Style", labelExpression="aql:self.name", showIcon="true", color="white", node="Child")
-@aconite.node(container="Siblings", name="Sibling", semanticCandidatesExpression="aql:self")
+@aconite.node(container="Siblings", name="Sibling", semanticCandidatesExpression="aql:selfparents.children->excluding(self)")
 @aconite.node.description(name="Sibling Style", labelExpression="aql:self.name", showIcon="true", node="Sibling")
 class Person {
 	attr String name;
@@ -32,11 +32,13 @@ class Family {
 	val Person[*] members;
 }
 
-@aconite.node(container="Family", name="Man", semanticCandidatesExpression="aql:self")
+@aconite.node(container="Family", name="Man")
+@aconite.node.description(name="Man Style", workspacePath="uk.ac.york.aconite.family/icons/man.svg", borderSizeComputationExpression="aql:0", arcHeight="10", labelExpression="aql:self.name", labelPosition="border", arcWidth="10", node="Man")
 class Man extends Person {
 }
 
-@aconite.node(container="Family", name="Woman", semanticCandidatesExpression="aql:self")
+@aconite.node(container="Family", name="Woman")
+@aconite.node.description(name="Woman Style", workspacePath="uk.ac.york.aconite.family/icons/woman.svg", borderSizeComputationExpression="aql:0", arcHeight="10", labelExpression="aql:self.name", labelPosition="border", arcWidth="10", node="Woman")
 class Woman extends Person {
 }
 

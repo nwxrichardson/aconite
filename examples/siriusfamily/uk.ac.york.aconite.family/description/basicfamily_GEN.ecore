@@ -25,7 +25,7 @@
     <eAnnotations source="aconite.node">
       <details key="container" value="Person"/>
       <details key="name" value="Parent"/>
-      <details key="semanticCandidatesExpression" value="aql:self"/>
+      <details key="semanticCandidatesExpression" value="aql:selfparents"/>
     </eAnnotations>
     <eAnnotations source="aconite.node.description">
       <details key="name" value="Parent Style"/>
@@ -37,7 +37,6 @@
     <eAnnotations source="aconite.node">
       <details key="container" value="Person"/>
       <details key="name" value="Child"/>
-      <details key="semanticCandidatesExpression" value="aql:self"/>
     </eAnnotations>
     <eAnnotations source="aconite.node.description">
       <details key="name" value="Child Style"/>
@@ -49,7 +48,7 @@
     <eAnnotations source="aconite.node">
       <details key="container" value="Siblings"/>
       <details key="name" value="Sibling"/>
-      <details key="semanticCandidatesExpression" value="aql:self"/>
+      <details key="semanticCandidatesExpression" value="aql:selfparents.children->excluding(self)"/>
     </eAnnotations>
     <eAnnotations source="aconite.node.description">
       <details key="name" value="Sibling Style"/>
@@ -105,14 +104,32 @@
     <eAnnotations source="aconite.node">
       <details key="container" value="Family"/>
       <details key="name" value="Man"/>
-      <details key="semanticCandidatesExpression" value="aql:self"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node.description">
+      <details key="name" value="Man Style"/>
+      <details key="workspacePath" value="uk.ac.york.aconite.family/icons/man.svg"/>
+      <details key="borderSizeComputationExpression" value="aql:0"/>
+      <details key="arcHeight" value="10"/>
+      <details key="labelExpression" value="aql:self.name"/>
+      <details key="labelPosition" value="border"/>
+      <details key="arcWidth" value="10"/>
+      <details key="node" value="Man"/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Woman" eSuperTypes="#//Person">
     <eAnnotations source="aconite.node">
       <details key="container" value="Family"/>
       <details key="name" value="Woman"/>
-      <details key="semanticCandidatesExpression" value="aql:self"/>
+    </eAnnotations>
+    <eAnnotations source="aconite.node.description">
+      <details key="name" value="Woman Style"/>
+      <details key="workspacePath" value="uk.ac.york.aconite.family/icons/woman.svg"/>
+      <details key="borderSizeComputationExpression" value="aql:0"/>
+      <details key="arcHeight" value="10"/>
+      <details key="labelExpression" value="aql:self.name"/>
+      <details key="labelPosition" value="border"/>
+      <details key="arcWidth" value="10"/>
+      <details key="node" value="Woman"/>
     </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

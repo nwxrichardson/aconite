@@ -184,6 +184,15 @@ rule SquareDescription2Annotation
 	}
 	
 @lazy	
+rule WorkspaceImage2Annotation
+	transform s : Odesign!WorkspaceImageDescription
+	to t : Target!EAnnotation{
+	t.details.put("name", s.eContainer().getName() + " Style");
+	t.source = "aconite.node.description";
+	t.details.putall(s.getDetails());
+	}
+	
+@lazy	
 rule FlatDescription2Annotation
 	transform s : Odesign!FlatContainerStyle
 	to t : Target!EAnnotation{
