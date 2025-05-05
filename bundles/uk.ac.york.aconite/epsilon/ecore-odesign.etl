@@ -215,7 +215,7 @@ rule PackageFromAnnotation
 	t.ownedViewpoints.add(viewpoint);
 	
 /*
- * From here until the post section the vast majority of things ar set in of two ways 
+ * From here until the post section the vast majority of things are set in of two ways 
  * which are helpfully used once each within the setting of the package.
  *
  * 1.) 	Setting a reference, used the annotations which is a container of all of the
