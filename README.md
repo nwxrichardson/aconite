@@ -71,6 +71,21 @@ To experiment with Aconite, edit the `basicfamily.emf` file using Emfatic and th
   <img alt="A representation of the current family." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png" width = 300>
 </picture>
 
+### QuickStart guide for a new Aconite Project
+#### Initial Setup
+First step is to create a new empty project by going "File > New > Project > Project".
+ 
+Then right-click on the new project "New > Other > Emfatic File" which will create an [Emfatic](https://eclipse.dev/emfatic/) file in which you can specify your metamodel. The next step is to generate the code metamodel, which starts by right-clicking the `.emf` file and clicking "Generate Ecore Metamodel". We then right-click the new `.ecore` file and go "New > Other > EMF Generator Model" and click through the wizard till the button greys out and click load before continuing to click through. This will create a `.genmodel`, open the file and right-click the top level element and select "Generate All". 
+
+This should generate the projects below from the project `original.project.name` we then right click the top project and go to "Run As > Eclipse Application". 
+
+* original.project.name.edit
+* original.project.name.editor
+* original.project.name.tests
+
+Within the nested ("runtime") Eclipse, into which we import only  `original.project.name` by clicking on the "File > Import" menu item and selecting "General > Existing Projects into Workspace" unticking the other projects.
+
+To allow us to be able to experiment with Aconite in this new project as in the example project (see above section) we need to create an instance of the model and the `.aird` file. To do this right click on the project "New > Other > _Package Name_ Model" this will create a model conforming to your metamodel. Then right-click on this new file "New > Representation File" and click through the the wizard. 
 #### Making structural changes to the metamodel
 
 To make structural changes to the metamodel (for example, changing the EClasses or their features), please follow these steps:
@@ -79,7 +94,9 @@ To make structural changes to the metamodel (for example, changing the EClasses 
 1. Make the changes to the `.emf` file from the main Eclipse instance.
 1. Regenerate the `.ecore` file by right-clicking on the `.emf` file and using "Generate Ecore Package".
 1. Open the `.genmodel` file and regenerate the model/edit/editor code by right-clicking on the root of the tree.
-1. Launch the "runtime" Eclipse instance as above.
+2. Launch the "runtime" Eclipse instance as above.
+#### Wider Context
+In order to simplify this QuickStart section we have ignored the underlying technologies that have been used. As Aconite is based on the generation of the Sirius VSM it is based on the Eclipse Modelling Framework [EMF](https://eclipsesource.com/blogs/tutorials/emf-tutorial/) which will be the source if you want to further customise your models. This is also true of Sirius which has more customisation options than Aconite currently allows for with full range to be found [here](https://eclipse.dev/sirius/doc/specifier/Sirius%20Specifier%20Manual.html).
 
 ## Table of annotations and properties
 
