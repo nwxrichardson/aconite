@@ -75,6 +75,19 @@ operation Target!EAnnotation getDefault(key : String) : String {
 	}
 }
 
+// Note: Whichever one needs to access its default should be put first in the java code
+operation Target!EAnnotation getReplacement(key : String) : String {
+	switch (key){
+		case "backgroundColor" 	: return self.getValNul("color");
+		case "foregroundColor" 	: return self.getValNul("color");
+		case "label"			: return self.getValNul("name");
+//		case "labelValue"		: return "aql:self." + self.getValNul("labelExpression");
+		case "borderSize"		: return self.getValNul("borderSizeComputationExpression");
+		case "importedMapping"	: return self.getValNul("import");
+		default : return null;
+	}
+}
+
 operation String dot() : String {
 	if (self != "") {return "."+self;}
 	return self;

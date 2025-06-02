@@ -42,6 +42,7 @@ context EPackage {
 }
 
 context EAnnotation {
+	guard : self.Source.startsWith("aconite")
 	
 	critique ContainerIsName {
 		guard : not self.getVal("abstract").asBoolean()
