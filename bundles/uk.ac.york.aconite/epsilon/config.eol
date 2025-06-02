@@ -19,6 +19,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "color" 	: return "light_yellow";
 		case "backgroundColor" 	: return self.getVal("color");
 		case "foregroundColor" 	: return self.getVal("color");
+		case "strokeColor" 	: return self.getVal("color","black");
 		case "height" 	: return "0";	
 		case "width" 	: return "0";
 		case "roundedCorner" 	: return "false";
