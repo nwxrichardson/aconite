@@ -11,11 +11,11 @@
 import "config.eol";
 
 pre {
-	"\nInitialising...".println();
+	"\nInitializing...".println();
 	var emfTool = new Native("org.eclipse.epsilon.emc.emf.tools.EmfTool");
 	var hiddenTools = new Map<Target!AbstractToolDescription,Source!EAnnotation>;
 	var annotations = Source.allContents.selectByType(Source!EAnnotation);
-	
+		
 	for (i in annotations) {
 		// Make a an abstract = false in the details if it is not already set
 		i.details.put("abstract", i.getVal("abstract"));
@@ -69,6 +69,12 @@ pre {
 						curCon.add(`new`.getVal("name"));
 						edit.details.selectOne(op|op.key = "container").value = curCon.rtnVals();
 					}
+					var editing = annotations.select(op|op.getVals("node").contains(i.getVal("name")));
+					for (edit in editing) {
+						var curCon = edit.getVals("node");
+						curCon.add(`new`.getVal("name"));
+						edit.details.selectOne(op|op.key = "node").value = curCon.rtnVals();
+					}
 					
 				} 
 				var editing = annotations.select(op|op.getVals("container").contains(i.getVal("name")));
@@ -77,12 +83,18 @@ pre {
 						curCon.remove(i.getVal("name"));
 						edit.details.selectOne(op|op.key = "container").value = curCon.rtnVals();
 				}
+				var editing = annotations.select(op|op.getVals("node").contains(i.getVal("name")));
+					for (edit in editing) {
+						var curCon = edit.getVals("node");
+						curCon.remove(i.getVal("name"));
+						edit.details.selectOne(op|op.key = "node").value = curCon.rtnVals();
+				}
 				revAnnotations.add(i);
 			} 
 		annotations.addAll(newAnnotations);
 		annotations.removeAll(revAnnotations);
-		
 	}
+	
 	// Copy the colour pallette from the Sirius Models
 	var randomStyle = new Target!SquareDescription;
 	var colorPalette = randomStyle.color.eContainer.entries;
@@ -107,6 +119,7 @@ operation String makeImg() : String {
 // Get colour based on the name
 @cached
 operation String getColor() : Target!SystemColor  {
+	if (self == null) return null;
 	return colorPalette.selectOne(i|i.name = self);
 }
 
@@ -114,8 +127,62 @@ operation String getColor() : Target!SystemColor  {
 @cached
 operation Source!EAnnotation getDiagram() : Source!EAnnotation{
 	if (self.Source = "aconite.diagram") {return self;}
+	if (   self.Source = "aconite.node" 
+		or self.Source = "aconite.container"
+		or self.Source = "aconite.edge") {
 	return annotations.selectOne(i|i.getVal("name") = self.getVal("container")).getDiagram();
+	} 
+	if (   self.Source = "aconite.node.description" 
+		or self.Source = "aconite.container.description"
+		or self.Source = "aconite.edge.description") {
+	return annotations.selectOne(i|i.getVal("name") = self.getVal("node")).getDiagram();
+	} 
 }  
+
+operation Source!EAnnotation createRefCol(name : String) : Target!EReferenceCustomization {
+	var obj = self.getValNul(name);
+	if (obj == null) return null;
+	return createRefCus(name, obj.getColor());
+}
+
+operation Source!EAnnotation createAttrBol(name : String) : Target!EAttributeCustomization {
+	var obj = self.getValNul(name);
+	if (obj == null) return null;
+	return createAttrCus(name, "aql:" + obj);
+}
+
+operation Source!EAnnotation createAttrInt(name : String) : Target!EAttributeCustomization {
+	var obj = self.getValNul(name);
+	if (obj == null) return null;
+	return createAttrCus(name, "aql:'" + obj + "'");
+}
+
+operation Source!EAnnotation createAttrStr(name : String) : Target!EAttributeCustomization {
+	var obj = self.getValNul(name);
+	if (obj == null) return null;
+	return createAttrCus(name, obj);
+}
+
+operation Source!EAnnotation createAttrNum(name : String) : Target!EAttributeCustomization {
+	var obj = self.getValNul(name);
+	if (obj == null) return null;
+	return createAttrCus(name, obj);
+}
+
+operation createRefCus(name : String, obj) : Target!EReferenceCustomization {
+	var setRef = new Target!EReferenceCustomization;
+		setRef.referenceName = name;
+		setRef.value = obj;
+		return setRef;
+}
+
+operation createAttrCus(name : String, obj) : Target!EAttributeCustomization {
+	if (obj == null) return null;
+	var setAttr = new Target!EAttributeCustomization;
+		setAttr.attributeName = name;
+		setAttr.value = obj;
+		return setAttr;
+}
 
 /*
  * Get the value of as a string from the details or the default
@@ -128,6 +195,16 @@ operation Source!EAnnotation getVal(key : String) : String{
 	return tmp.value;
 	}
 	return self.getDefault(key);
+
+}
+
+operation Source!EAnnotation getValNul(key : String) : String{
+
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value;
+	}
+	return self.getReplacement(key);
 
 }
 
@@ -278,6 +355,7 @@ rule DiagramFromAnnotation
 	
 	//Add all the contents of the diagram via container
 	defaultLayer.name = "Default";
+	defaultLayer.customization = new Target!Customization;
 	t.defaultLayer = defaultLayer;
 	defaultLayer.nodeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.node")).equivalent());
 	defaultLayer.edgeMappings.addAll(annotations.select(i|i.getVal("container") = t.name).select(i|i.Source.startsWith("aconite.edge")).equivalent());
@@ -722,6 +800,27 @@ rule ConditionalEdgeFromAnnotation
 	extends ConditionalFromAnnotation {
 		 t.style = annotations.selectOne(i|i.Source = "aconite.edge.description" and i.getVal("node") = s.getVal("name")).equivalent();
 	} 
+	
+rule CustomizationStyleFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!VSMElementCustomization
+	{
+	guard : s.Source = "aconite.customization" and (not s.getVal("abstract").asBoolean())
+		var predicateExpression = s.getVal("predicateExpression");
+		var nodesAn = annotations.select(i|s.getVals("node").contains(i.getVal("name")));
+		var nodes = nodesAn.equivalent().style;
+		
+		t.predicateExpression = predicateExpression;	
+		var newCus = s.getCustomizations();
+		for (customization in newCus) {customization.appliedOn.addAll(nodes);}
+		t.featureCustomizations.addAll(newCus);
+		
+		var cus = nodesAn.collect(i|i.getDiagram().equivalent().defaultLayer.customization);
+		for (diagram in cus) {
+			diagram.vsmElementCustomizations.add(emfTool.getECoreUtil.copy(t));
+		}
+		delete t;
+}
 
 /*
  *----------------------------------------------------------------------------------
@@ -889,6 +988,52 @@ rule RoundedCornerFromAnnotation
 	t.arcHeight = s.getVal("arcHeight").asInteger();
 	t.arcWidth = s.getVal("arcWidth").asInteger();
 	}
+/*
+ *----------------------------------------------------------------------------------
+ *     	CORVUS CUSTOMISATIONS 
+ *----------------------------------------------------------------------------------
+ */	
+
+rule DiffStyleFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Target!VSMElementCustomization
+	{
+	guard : s.Source = "aconite.diff.style" and (not s.getVal("abstract").asBoolean())
+		var predicateExpression = getStatePredicate(s.getVal("state"));
+		var nodesAn = annotations.select(i|i.getVal("name") = s.getVal("node"));
+		var nodes = nodesAn.equivalent().style;
+		var cus = nodesAn.first().getDiagram().equivalent().defaultLayer.customization;
+		cus.vsmElementCustomizations.add(t);
+		t.predicateExpression = predicateExpression;	
+		var newCus = s.getCustomizations();
+		for (customization in newCus) {customization.appliedOn.addAll(nodes);}
+		t.featureCustomizations.addAll(newCus);
+	}
+	
+rule MergeFilterFromAnnotation
+	transform s : Source!EAnnotation
+	to t : Sequence<Custom!Merge>
+	{
+	guard : (s.Source = "aconite.diff.include" or s.Source = "aconite.diff.exclude") and (not s.getVal("abstract").asBoolean())
+		for (node in s.getVals("node"))
+		{	
+			var m = new Custom!Merge;
+			switch (s.Source) {
+				case "aconite.diff.include" : m.include = true ;
+				case "aconite.diff.exclude" : m.include = false;
+			}
+		
+			mergeBox.mergers.add(m);
+			t.add(m);
+			m.diagramElementID = annotations.selectOne(i|i.getVal("name") = node).equivalent().getName();
+			m.diagram = s.getVal("diagram").asBoolean;
+			m.label = s.getVal("label").asBoolean;
+			m.graphic = s.getVal("graphic").asBoolean;
+			m.filter.add(s.eModelElement.eContainingClass.getDC() + "->" + s.eModelElement.name);
+		}
+		
+	}
+	
 
 /*
  *----------------------------------------------------------------------------------
@@ -939,13 +1084,14 @@ rule EdgeStyleFromAnnotation
 		t.sourceArrow = Target!EdgeArrows#NoDecoration.VALUES.alignStyle(s.getVal("sourceArrow"));
 		t.targetArrow = Target!EdgeArrows#NoDecoration.VALUES.alignStyle(s.getVal("targetArrow"));
 		t.lineStyle = Target!LineStyle#solid.VALUES.alignStyle(s.getVal("lineStyle"));
-		var label = s.getVal("labelExpression");
+		t.sizeComputationExpression = s.getVal("sizeComputationExpression");
+		var label = s.getVal("labelValue");
 		if (label != ""){
 			t.centerLabelStyleDescription = new Target!CenterLabelStyleDescription;
-			t.centerLabelStyleDescription.labelExpression = "aql:self." + label;
-			t.centerLabelStyleDescription.showIcon = false;
+			t.centerLabelStyleDescription.labelExpression = label;
+			t.centerLabelStyleDescription.showIcon = s.getVal("showIcon").asBoolean;
 		}
-		t.strokeColor = s.getVal("strokeColor").getColor();
+		t.strokeColor = s.getVal("color").getColor();
 	}	
 	
 @lazy

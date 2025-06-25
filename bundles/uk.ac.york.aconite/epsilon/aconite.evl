@@ -31,6 +31,8 @@ post {
  */	
 
 context EPackage {
+	guard : self.eAnnotations.exists(i|i.Source = "aconite")
+	
 	critique UniqueName {
 		check {
 		var names = EAnnotation.all.collect(i|i.details.get("name")).select(i|i.isTypeOf(String));
@@ -49,6 +51,11 @@ context EAnnotation {
 		check : self.getVals("container").isEmpty() or self.getVals("container").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
 		message : self.toAnno() + "container is not a name"
 		}
+	critique ContainerIsName {
+		guard : not self.getVal("abstract").asBoolean()
+		check : self.getVals("node").isEmpty() or self.getVals("node").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
+		message : self.toAnno() + "node is not a name"
+		}
 	
 	constraint ImportExists {
 		check : self.details.get("extend") = "" or self.getVals("extend").forAll(i| EAnnotation.all.exists(j|j.getVal("name") = i))
@@ -56,7 +63,7 @@ context EAnnotation {
 	}
 	
 	constraint HasName {
-		guard : self.source != "aconite"
+		guard : self.source != "aconite" and self.source != "aconite.customization"
 		check : self.getVal("name") != ""
 		message : self.toAnno() + " requires a name"
 	}

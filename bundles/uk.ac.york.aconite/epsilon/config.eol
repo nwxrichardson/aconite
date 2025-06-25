@@ -19,7 +19,7 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		case "color" 	: return "light_yellow";
 		case "backgroundColor" 	: return self.getVal("color");
 		case "foregroundColor" 	: return self.getVal("color");
-		case "strokeColor" 	: return self.getVal("color","black");
+		case "strokeColor" 		: return self.getVal("color");
 		case "height" 	: return "0";	
 		case "width" 	: return "0";
 		case "roundedCorner" 	: return "false";
@@ -74,6 +74,42 @@ operation Target!EAnnotation getDefault(key : String) : String {
 		}
 		default : return "";
 	}
+}
+
+operation Source!EAnnotation getCustomizations() : Sequence<Target!EStructuralFeatureCustomization> {
+	var rtn = new Sequence<Target!EStructuralFeatureCustomization>;
+	rtn.add(self.createRefCol("color"));
+	rtn.add(self.createRefCol("borderColor"));
+	rtn.add(self.createRefCol("labelColor"));
+	rtn.add(self.createRefCol("backgroundColor"));
+	rtn.add(self.createRefCol("foregroundColor"));
+	rtn.add(self.createAttrStr("iconPath"));
+	rtn.add(self.createAttrStr("imagePath"));
+	rtn.add(self.createAttrStr("labelExpression"));
+//	rtn.add(self.createAttrNum("labelFormat"));
+//	rtn.add(self.createAttrNum("borderLineStyle"));
+//	rtn.add(self.createAttrNum("forbiddenSides"));
+//	rtn.add(self.createAttrNum("labelAlignment"));
+//	rtn.add(self.createAttrNum("labelPosition"));
+//	rtn.add(self.createAttrNum("resizeKind"));
+//	rtn.add(self.createAttrNum("tooltipExpression"));
+//	rtn.add(self.createAttrNum("alignment"));
+	rtn.add(self.createAttrInt("labelSize"));
+	rtn.add(self.createAttrInt("height"));
+	rtn.add(self.createAttrInt("width"));
+	rtn.add(self.createAttrBol("showIcon"));
+	rtn.add(self.createAttrBol("cornerHeight"));
+	rtn.add(self.createAttrInt("cornerWidth"));
+	rtn.add(self.createAttrInt("cornerHeight"));
+	rtn.add(self.createAttrStr("borderSizeComputationExpression"));
+	rtn.add(self.createAttrStr("strokeSizeComputationExpression"));
+	rtn.add(self.createAttrStr("horizontalDiameterComputationExpression"));
+	rtn.add(self.createAttrStr("verticalDiameterComputationExpression"));
+	rtn.add(self.createAttrStr("heightComputationExpression"));
+	rtn.add(self.createAttrStr("widthComputationExpression"));
+	rtn.add(self.createAttrStr("providedShapeId"));
+	rtn = rtn.reject(r|r == null);
+	return rtn;
 }
 
 // Note: Whichever one needs to access its default should be put first in the java code
