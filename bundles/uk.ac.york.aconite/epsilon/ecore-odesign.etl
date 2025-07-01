@@ -163,10 +163,24 @@ operation Source!EAnnotation createAttrStr(name : String) : Target!EAttributeCus
 	return createAttrCus(name, obj);
 }
 
-operation Source!EAnnotation createAttrNum(name : String) : Target!EAttributeCustomization {
+operation Source!EAnnotation createAttrNum(name : String, enum : String) : Target!EAttributeCustomization {
 	var obj = self.getValNul(name);
 	if (obj == null) return null;
-	return createAttrCus(name, obj);
+	return createAttrCus(name,"aql:" + enum + "::" + obj);
+}
+
+operation Source!EAnnotation createAttrNums(name : String, enum : String) : Target!EAttributeCustomization {
+	var objs = self.getValsNul(name);
+	if (objs == Sequence{null}) return null;
+	var str = "aql:Sequence{";
+	var toggle = false;
+	for (obj in objs){
+		if (toggle) str += ", ";
+		else toggle = true;
+		str += enum + "::" + obj;
+	}
+	str += "}";
+	return createAttrCus(name, str);
 }
 
 operation createRefCus(name : String, obj) : Target!EReferenceCustomization {
@@ -205,6 +219,15 @@ operation Source!EAnnotation getValNul(key : String) : String{
 	return tmp.value;
 	}
 	return self.getReplacement(key);
+}
+
+operation Source!EAnnotation getValsNul(key : String) : Sequence{
+
+	var tmp = self.details.selectOne(i|i.key = key);
+	if (tmp.isDefined()){
+	return tmp.value.split(",").collect(i|i.trim());
+	}
+	return Sequence{self.getReplacement(key)};
 
 }
 
