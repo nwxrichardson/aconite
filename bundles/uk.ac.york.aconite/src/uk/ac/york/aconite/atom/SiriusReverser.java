@@ -20,7 +20,7 @@ import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.etl.EtlModule;
 
-import uk.ac.york.aconite.util.SDScore;
+import uk.ac.york.aconite.util.UriGenerator;
 
 public class SiriusReverser extends Job {
 
@@ -32,9 +32,9 @@ public class SiriusReverser extends Job {
 
 	public SiriusReverser(IFile ecore,IFile odesign) {
 		super("Generate Annotated Ecore from Odesign");
-		this.ecoreURI = SDScore.getPlatformURI(ecore);
-		this.odesignURI = SDScore.getPlatformURI(odesign);
-		this.outputURI = SDScore.getGenEcoreURI(ecore);
+		this.ecoreURI = UriGenerator.getPlatformURI(ecore);
+		this.odesignURI = UriGenerator.getPlatformURI(odesign);
+		this.outputURI = UriGenerator.getGenEcoreURI(ecore);
 	}
 	
 	@Override

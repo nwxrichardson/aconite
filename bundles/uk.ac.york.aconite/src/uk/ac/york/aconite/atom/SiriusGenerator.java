@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.etl.EtlModule;
-
-import uk.ac.york.aconite.util.SDScore;
+import uk.ac.york.aconite.util.UriGenerator;
 
 public class SiriusGenerator extends Job {
 
@@ -31,8 +30,8 @@ public class SiriusGenerator extends Job {
 
 	public SiriusGenerator(IFile ecore) {
 		super("Generate Odesign from Ecore");
-		this.inputURI = SDScore.getPlatformURI(ecore);
-		this.outputURI = SDScore.getOdesignURI(ecore);
+		this.inputURI = UriGenerator.getPlatformURI(ecore);
+		this.outputURI = UriGenerator.getOdesignURI(ecore);		
 	}
 	
 	@Override
@@ -69,7 +68,7 @@ public class SiriusGenerator extends Job {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		output = target.getResource();
+//		output = target.getResource();
 		module.getContext().getModelRepository().dispose();
 	}
 	

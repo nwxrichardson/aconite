@@ -12,9 +12,10 @@ package uk.ac.york.aconite.util;
 import java.io.File;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
 
-public class SDScore {
+public class UriGenerator {
 	
 	public static String getETLPlatform (IFile ecslipseFile) {
 		String txt = ecslipseFile.getLocation().toString();
@@ -73,6 +74,17 @@ public class SDScore {
 	public static URI getGenEcoreURI(IFile eclipseFile) {
 		String currentTxt = eclipseFile.getFullPath().toString();
 		return URI.createPlatformResourceURI(currentTxt.replace(".ecore", "_GEN.ecore"), true);
+	}
+	
+	public static URI getNewProjectURI(IFile eclipseFile) {
+		IPath newProjectPath = IPath.ROOT;
+		IPath currentTxt = eclipseFile.getFullPath();
+		newProjectPath = newProjectPath.append(currentTxt.segment(0)+".design/description")
+			.append(currentTxt.removeFirstSegments(1))
+			.removeFileExtension()
+			.addFileExtension("odesign");
+		System.out.println(newProjectPath);
+		return URI.createPlatformResourceURI(newProjectPath.toString(), true);
 	}
 	
 }
