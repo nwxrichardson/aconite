@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.model;bundle-version="7.0.0",
  org.eclipse.sirius.diagram.model;bundle-version="7.0.0",
  org.eclipse.epsilon.emc.emf.dt
+Import-Package: org.eclipse.sirius.ui.tools.api.project

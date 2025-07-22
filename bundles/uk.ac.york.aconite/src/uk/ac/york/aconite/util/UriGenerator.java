@@ -83,7 +83,6 @@ public class UriGenerator {
 			.append(currentTxt.removeFirstSegments(1))
 			.removeFileExtension()
 			.addFileExtension("odesign");
-		System.out.println(newProjectPath);
 		return URI.createPlatformResourceURI(newProjectPath.toString(), true);
 	}
 	

@@ -10,6 +10,7 @@
 package uk.ac.york.aconite.atom;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -19,6 +20,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.epsilon.emc.emf.EmfModel;
 import org.eclipse.epsilon.eol.dt.ExtensionPointToolNativeTypeDelegate;
 import org.eclipse.epsilon.etl.EtlModule;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.sirius.ui.tools.api.project.ViewpointSpecificationProject;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+
 import uk.ac.york.aconite.util.UriGenerator;
 
 public class SiriusGenerator extends Job {
@@ -31,7 +39,7 @@ public class SiriusGenerator extends Job {
 	public SiriusGenerator(IFile ecore) {
 		super("Generate Odesign from Ecore");
 		this.inputURI = UriGenerator.getPlatformURI(ecore);
-		this.outputURI = UriGenerator.getOdesignURI(ecore);		
+		this.outputURI = UriGenerator.getNewProjectURI(ecore);		
 	}
 	
 	@Override
@@ -42,6 +50,18 @@ public class SiriusGenerator extends Job {
 	}
 
 	public void generateOdesign() {
+		Display.getDefault().asyncExec(() -> {
+			try {
+				Shell activeShell = Display.getDefault().getActiveShell();
+				ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
+				ViewpointSpecificationProject
+					.createNewViewpointSpecificationProject(PlatformUI.getWorkbench(), outputURI.segment(1), null, 
+							outputURI.lastSegment(), ViewpointSpecificationProject.INITIAL_OBJECT_NAME, ViewpointSpecificationProject.ENCODING_DEFAULT, monitorDialog);
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 		EtlModule module = new EtlModule();
 		EmfModel source = new EmfModel();
 		EmfModel target = new OdesignModel();
