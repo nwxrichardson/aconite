@@ -1,0 +1,26 @@
+site_name: Aconite
+repo_url: https://github.com/nwxrichardson/aconite
+repo_name: nwxrichardson/aconite
+
+theme:
+  name: material
+  logo: assets/aconiteIcon.png
+  favicon: assets/aconiteIcon.png
+  palette: 
+
+      # Palette toggle for dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
