@@ -945,7 +945,7 @@ rule EdgeStyleFromAnnotation
 			t.centerLabelStyleDescription.labelExpression = "aql:self." + label;
 			t.centerLabelStyleDescription.showIcon = false;
 		}
-		t.strokeColor = s.getVal("color").getColor();
+		t.strokeColor = s.getVal("strokeColor").getColor();
 	}	
 	
 @lazy
