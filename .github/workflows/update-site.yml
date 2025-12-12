@@ -48,6 +48,7 @@ jobs:
       with:
         python-version: 3.x
     - run: pip install mkdocs-material
+    - run: cd website
     - run: mkdocs build
     - name: Upload Github Pages Artifact
       uses: actions/upload-pages-artifact@v3
