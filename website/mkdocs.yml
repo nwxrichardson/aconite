@@ -6,7 +6,7 @@ site_dir: ../_site
 theme:
   name: material
   logo: assets/aconiteIcon.png
-  favicon: assets/aconiteIcon.png
+  favicon: aconiteIcon.png
   palette: 
 
       # Palette toggle for dark mode
