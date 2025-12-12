@@ -39,11 +39,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-22.04
     steps:
-    - name: Download Update Site
-      uses: actions/download-artifact@v4
-      with:
-        name: update-site
-        path: _site/updates
     - uses: actions/checkout@v4
     - uses: actions/setup-python@v5
       with:
@@ -52,6 +47,11 @@ jobs:
     - run: |
         cd website
         mkdocs build
+    - name: Download Update Site
+      uses: actions/download-artifact@v4
+      with:
+        name: update-site
+        path: _site/updates
     - name: Upload Github Pages Artifact
       uses: actions/upload-pages-artifact@v3
     - name: Deploy to GitHub Pages
