@@ -1,12 +1,30 @@
 site_name: Aconite
 repo_url: https://github.com/nwxrichardson/aconite
 repo_name: nwxrichardson/aconite
-site_dir: ../_site
+site_dir: ../_site 
+markdown_extensions:
+  - abbr
+  - attr_list 
+  - tables
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  
+watch:
+  - includes
 
 theme:
+  features:
+    - content.tooltips
   name: material
   logo: assets/aconiteIcon.png
-  favicon: aconiteIcon.png
+  favicon: assets/aconiteIcon.png
   palette: 
 
       # Palette toggle for dark mode
