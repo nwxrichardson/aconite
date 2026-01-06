@@ -1,5 +1,5 @@
 # Home
-Aconite is a tool that generates graphical modelling notations from an annotated [Ecore metamodel](https://www.vogella.com/tutorials/EclipseEMF/article.html), targeting [Eclipse Sirius](https://eclipse.dev/sirius/).
+Aconite is a tool that generates graphical modelling notations from an annotated [Ecore Metamodel](https://www.vogella.com/tutorials/EclipseEMF/article.html), targeting [Eclipse Sirius](https://eclipse.dev/sirius/).
 It is inspired on the approach followed by [Eugenia](https://eclipse.dev/epsilon/doc/eugenia/), which targeted the [Graphical Modeling Framework](https://projects.eclipse.org/projects/modeling.gmf-tooling) tooling (now archived).
 
 Aconite allows you to add EAnnotations to an Ecore based metamodel to generate a Sirius editor for models that conform to the metamodel.

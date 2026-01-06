@@ -1,4 +1,13 @@
 # Getting Started
+## Requirements
+
+- [Eclipse Modeling Tools](https://www.eclipse.org/downloads/packages/) 2023-09 or newer
+- Java 17+
+- [Eclipse Epsilon](https://eclipse.dev/epsilon/) 2.5.0+
+- [Eclipse Emfatic](https://eclipse.dev/emfatic/) 1.1+ (To use textual notation)
+- [Eclipse Sirius](https://eclipse.dev/sirius/) 7.x
+
+
 ## Quickstart guide
 ### Setting up the Eclipse IDE
 
@@ -77,6 +86,6 @@ To make structural changes to the metamodel (for example, changing the EClasses 
 1. Make the changes to the `.emf` file from the main Eclipse instance.
 1. Regenerate the `.ecore` file by right-clicking on the `.emf` file and using "Generate Ecore Package".
 1. Open the `.genmodel` file and regenerate the model/edit/editor code by right-clicking on the root of the tree.
-2. Launch the "runtime" Eclipse instance as above.
+1. Launch the "runtime" Eclipse instance as above.
 #### Wider Context
 In order to simplify this QuickStart section we have ignored the underlying technologies that have been used. As Aconite is based on the generation of the Sirius VSM it is based on the Eclipse Modelling Framework [EMF](https://eclipsesource.com/blogs/tutorials/emf-tutorial/) which will be the source if you want to further customise your models. This is also true of Sirius which has more customisation options than Aconite currently allows for with full range to be found [here](https://eclipse.dev/sirius/doc/specifier/Sirius%20Specifier%20Manual.html).

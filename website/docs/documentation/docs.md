@@ -1,11 +1,3 @@
-## Requirements
-
-- [Eclipse Modeling Tools](https://www.eclipse.org/downloads/packages/) 2023-09 or newer
-- Java 17+
-- [Eclipse Epsilon](https://eclipse.dev/epsilon/) 2.5.0+
-- [Eclipse Emfatic](https://eclipse.dev/emfatic/) 1.1+ (To use textual notation)
-- [Eclipse Sirius](https://eclipse.dev/sirius/) 7.x
-
 
 ## Table of annotations and properties
 
